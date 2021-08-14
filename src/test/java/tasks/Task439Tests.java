@@ -52,4 +52,10 @@ class Task439Tests {
         Event actual = Task439.findLast(events);
         Assertions.assertSame(expected, actual);
     }
+    @Test
+    public void findLastEmpty() {
+        Event[] events = new Event[] {};
+        Event actual = Task439.findLast(events);
+        Assertions.assertNull(actual);
+    }
 }
