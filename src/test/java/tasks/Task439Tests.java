@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Task439Tests {
-
     @Test
     public void findLastYear() {
         Event[] events = new Event[] {
@@ -19,6 +18,7 @@ class Task439Tests {
         Event actual = Task439.findLast(events);
         Assertions.assertSame(expected, actual);
     }
+
     @Test
     public void findLastMonth() {
         Event[] events = new Event[] {
@@ -30,6 +30,7 @@ class Task439Tests {
         Event actual = Task439.findLast(events);
         Assertions.assertSame(expected, actual);
     }
+
     @Test
     public void findLastDay() {
         Event[] events = new Event[] {
@@ -41,6 +42,7 @@ class Task439Tests {
         Event actual = Task439.findLast(events);
         Assertions.assertSame(expected, actual);
     }
+
     @Test
     public void findLastSameDay() {
         Event[] events = new Event[]{
@@ -52,10 +54,21 @@ class Task439Tests {
         Event actual = Task439.findLast(events);
         Assertions.assertSame(expected, actual);
     }
+
     @Test
     public void findLastEmpty() {
         Event[] events = new Event[] {};
         Event actual = Task439.findLast(events);
         Assertions.assertNull(actual);
+    }
+
+    @Test
+    public void findLastOne() {
+        Event[] events = new Event[] {
+                new Event(1991, 9, 8, "this")
+        };
+        Event expected = events[0];
+        Event actual = Task439.findLast(events);
+        Assertions.assertSame(expected, actual);
     }
 }

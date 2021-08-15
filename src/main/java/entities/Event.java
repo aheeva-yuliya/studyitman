@@ -12,7 +12,4 @@ public class Event {
         this.day = day;
         this.name = name;
     }
-    public Event () {
-
-    }
 }

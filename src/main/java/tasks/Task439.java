@@ -7,8 +7,8 @@ public class Task439 {
         if (events.length == 0) {
             return null;
         }
-        Event last = new Event();
-        for (int i = 0; i < events.length; i++) {
+        Event last = events[0];
+        for (int i = 1; i < events.length; i++) {
             if (events[i].year > last.year) {
                 last = events[i];
             } else if (events[i].year == last.year) {
