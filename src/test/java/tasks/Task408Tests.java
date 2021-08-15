@@ -67,14 +67,14 @@ class Task408Tests {
     }
 
     @Test
-    public void findLastEmpty() {
+    public void sortEventsEmpty() {
         Event[] events = new Event[] {};
         Event[] actual = Task408.sortEvents(events);
-        Assertions.assertNull(actual);
+        Assertions.assertNotNull(actual);
     }
 
     @Test
-    public void findLastOne() {
+    public void sortEventsOne() {
         Event[] events = new Event[] {
             new Event(1991, 9, 8, "this")
         };
@@ -82,5 +82,12 @@ class Task408Tests {
         expected[0] = events[0];
         Event[] actual = Task408.sortEvents(events);
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void sortEventsNull() {
+        Event[] events = new Event[3];
+        Event[] actual = Task408.sortEvents(events);
+        Assertions.assertNotNull(actual);
     }
 }
