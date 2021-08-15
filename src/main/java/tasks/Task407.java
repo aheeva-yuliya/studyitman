@@ -1,7 +1,7 @@
 package tasks;
 
 public class Task407 {
-    public static int[] findSum(int[][] matrix) {
+    static int[] findSum(int[][] matrix) {
         int[] sum = new int[matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -32,7 +32,7 @@ public class Task407 {
         }
     }
 
-    public static int[][] sortMatrixRowsDescReturn(int[][] matrix) {
+    static int[][] sortMatrixRowsDescReturn(int[][] matrix) {
         int[] sum = new int[matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {

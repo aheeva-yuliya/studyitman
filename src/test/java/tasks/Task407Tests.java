@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Task407Tests {
     @Test
-    public void findSumNxN() {
+     void findSumNxN() {
         int[][] matrix = new int[][] {
                 {1, 2 ,3},
                 {4, 5, 6},
