@@ -3,7 +3,7 @@ package tasks;
 import java.util.ArrayList;
 
 public class Task432 {
-    public static long[] calcprimeNumbers(long x) {
+    public static long[] calcPrimeNumbers(long x) {
         long[] countDivs = new long[10];
         if (x == 1) {
             countDivs = new long[] {1};
