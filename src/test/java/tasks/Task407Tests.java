@@ -7,30 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Task407Tests {
     @Test
-     void findSumNxN() {
-        int[][] matrix = new int[][] {
-                {1, 2 ,3},
-                {4, 5, 6},
-                {7, 8, 9}
-        };
-        int[] expected = new int[] {6, 15, 24};
-        int[] actual = Task407.findSum(matrix);
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void findSumNxM() {
-        int[][] matrix = new int[][] {
-                {1, 2 ,3},
-                {4, 5,},
-                {7, 8, 9}
-        };
-        int[] expected = new int[] {6, 9, 24};
-        int[] actual = Task407.findSum(matrix);
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
     public void sortMatrixRowsDescReturnNxN() {
         int[][] matrix = new int[][] {
                 {1, 2, 3, 3},
@@ -42,8 +18,8 @@ class Task407Tests {
                 {7, 1, 1, 1},
                 {1, 2, 3, 3}
         };
-        int[][] actual = Task407.sortMatrixRowsDescReturn(matrix);
-        Assertions.assertArrayEquals(expected, actual);
+        Task407.sortMatrixRowsDesc(matrix);
+        Assertions.assertArrayEquals(expected, matrix);
     }
 
     @Test
@@ -58,8 +34,8 @@ class Task407Tests {
                 {7, 1, 1, 1},
                 {1, 2, 3}
         };
-        int[][] actual = Task407.sortMatrixRowsDescReturn(matrix);
-        Assertions.assertArrayEquals(expected, actual);
+        Task407.sortMatrixRowsDesc(matrix);
+        Assertions.assertArrayEquals(expected, matrix);
     }
 
     @Test
@@ -74,8 +50,8 @@ class Task407Tests {
                 {7, 1, 5, 4}, // 17
                 {1, 2, 3, 3}
         };
-        int[][] actual = Task407.sortMatrixRowsDescReturn(matrix);
-        Assertions.assertArrayEquals(expected, actual);
+        Task407.sortMatrixRowsDesc(matrix);
+        Assertions.assertArrayEquals(expected, matrix);
     }
 
     @Test
@@ -86,7 +62,7 @@ class Task407Tests {
         int[][] expected = new int[][] {
                 {1}
         };
-        int[][] actual = Task407.sortMatrixRowsDescReturn(matrix);
-        Assertions.assertArrayEquals(expected, actual);
+        Task407.sortMatrixRowsDesc(matrix);
+        Assertions.assertArrayEquals(expected, matrix);
     }
 }
