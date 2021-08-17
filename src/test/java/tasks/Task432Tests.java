@@ -24,7 +24,7 @@ class Task432Tests {
     @Test
     public void calcprimeNumbers1() {
         long x = 1;
-        long[] expected = null;
+        long[] expected = new long[0];
         long[] actual = Task432.calcPrimeNumbers(x);
         Assertions.assertArrayEquals(expected, actual);
     }

@@ -6,7 +6,7 @@ public class Task432 {
     public static long[] calcPrimeNumbers(long x) {
         long[] countDivs = new long[10];
         if (x == 1) {
-            countDivs = null;
+            countDivs = new long[0];
             return countDivs;
         }
         int count = 0;
