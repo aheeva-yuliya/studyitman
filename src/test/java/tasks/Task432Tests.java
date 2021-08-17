@@ -77,16 +77,17 @@ class Task432Tests {
         long[] actual = Task432.calcPrimeNumbers(x);
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
     public void calcprimeNumberLongnotPrime3() {
-        long x = 99999999999999L;
-        long[] expected = new long[] {3, 11, 239, 4649, 909091};
+        long x = 68532987640817L;
+        long[] expected = new long[] {7, 29, 92623, 520699};
         long[] actual = Task432.calcPrimeNumbers(x);
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
-    public void calcprimeNumberLongnotPrime4() {
-        long x = 68532987640817L;
-        long[] expected = new long[] {7, 29, 92623, 520699};
+    public void calcprimeNumberlong_999999797() {
+        long x = 999999797L;
+        long[] expected = new long[] {999999797};
         long[] actual = Task432.calcPrimeNumbers(x);
         Assertions.assertArrayEquals(expected, actual);
     }

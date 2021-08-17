@@ -9,6 +9,16 @@ public class Task432 {
             countDivs = new long[0];
             return countDivs;
         }
+        boolean isPrime = true;
+        for (long i = 2; i < 100; i++) {
+            if (x % i == 0) {
+                isPrime = false;
+            }
+        }
+        if (isPrime) {
+            countDivs = new long[] {x};
+            return countDivs;
+        }
         int count = 0;
         for(long i = 2; i <= x; i++) {
             if (x % i == 0) {
