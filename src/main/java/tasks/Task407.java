@@ -1,7 +1,17 @@
 package tasks;
 
+/**
+ * Task407
+ */
 public class Task407 {
-
+    /**
+     * Sorts the rows in descending order depending on the sum of rows elements.
+     *
+     * @cpu O(n^2)
+     * @ram O(n)
+     *
+     * @param matrix int[][]
+     */
     public static void sortMatrixRowsDesc(int[][] matrix) {
         int[] sum = new int[matrix.length];
         for (int i = 0; i < matrix.length; i++) {

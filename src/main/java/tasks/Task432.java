@@ -1,8 +1,18 @@
 package tasks;
 
-import java.util.ArrayList;
-
+/**
+ * Task432
+ */
 public class Task432 {
+    /**
+     * Calcs all unique prime divisors.
+     *
+     * @cpu O(nlogn)
+     * @ram O(1)
+     *
+     * @param x long argument
+     * @return an array containing factors in ascending order.
+     */
     public static long[] calcPrimeNumbers(long x) {
         long[] countDivs = new long[10];
         if (x == 1) {

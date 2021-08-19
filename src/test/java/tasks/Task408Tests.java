@@ -18,8 +18,8 @@ class Task408Tests {
         expected[0] = events[0];
         expected[1] = events[1];
         expected[2] = events[2];
-        Event[] actual = Task408.sortEvents(events);
-        Assertions.assertArrayEquals(expected, actual);
+        Task408.sort(events);
+        Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
@@ -33,8 +33,8 @@ class Task408Tests {
         expected[0] = events[1];
         expected[1] = events[2];
         expected[2] = events[0];
-        Event[] actual = Task408.sortEvents(events);
-        Assertions.assertArrayEquals(expected, actual);
+        Task408.sort(events);
+        Assertions.assertArrayEquals(expected, events);
     }
     @Test
     public void sortEventsDay() {
@@ -47,8 +47,8 @@ class Task408Tests {
         expected[0] = events[0];
         expected[1] = events[2];
         expected[2] = events[1];
-        Event[] actual = Task408.sortEvents(events);
-        Assertions.assertArrayEquals(expected, actual);
+        Task408.sort(events);
+        Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
@@ -62,15 +62,15 @@ class Task408Tests {
         expected[0] = events[0];
         expected[1] = events[2];
         expected[2] = events[1];
-        Event[] actual = Task408.sortEvents(events);
-        Assertions.assertArrayEquals(expected, actual);
+        Task408.sort(events);
+        Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
     public void sortEventsEmpty() {
         Event[] events = new Event[] {};
-        Event[] actual = Task408.sortEvents(events);
-        Assertions.assertNotNull(actual);
+        Task408.sort(events);
+        Assertions.assertNotNull(events);
     }
 
     @Test
@@ -80,14 +80,14 @@ class Task408Tests {
         };
         Event[] expected = new Event[events.length];
         expected[0] = events[0];
-        Event[] actual = Task408.sortEvents(events);
-        Assertions.assertArrayEquals(expected, actual);
+        Task408.sort(events);
+        Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
     public void sortEventsNull() {
         Event[] events = new Event[3];
-        Event[] actual = Task408.sortEvents(events);
-        Assertions.assertNotNull(actual);
+        Task408.sort(events);
+        Assertions.assertNotNull(events);
     }
 }
