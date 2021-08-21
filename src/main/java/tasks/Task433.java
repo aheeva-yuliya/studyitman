@@ -7,7 +7,7 @@ public class Task433 {
     /**
      * Finds greatest common divisor.
      *
-     * @cpu O(logn)
+     * @cpu O(log(n))
      * @ram O(1)
      *
      * @param a argument

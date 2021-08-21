@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Task407Tests {
+
     @Test
     public void sortMatrixRowsDescReturnNxN() {
         int[][] matrix = new int[][] {

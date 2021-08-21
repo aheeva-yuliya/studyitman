@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Task408Tests {
+
     @Test
     public void sortEventsYear() {
         Event[] events = new Event[] {
@@ -36,6 +37,7 @@ class Task408Tests {
         Task408.sort(events);
         Assertions.assertArrayEquals(expected, events);
     }
+
     @Test
     public void sortEventsDay() {
         Event[] events = new Event[] {

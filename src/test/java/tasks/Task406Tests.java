@@ -10,12 +10,14 @@ public class Task406Tests {
         int actual = Task406.findSecondMax(a);
         Assertions.assertEquals(10, actual);
     }
+
     @Test
     public void findSecondMaxWhileSome() {
         int[] a = new int[] {1, 4, 10, 8, 5, 10, 20, 6, 9};
         int actual = Task406.findSecondMax(a);
         Assertions.assertEquals(10, actual);
     }
+
     @Test
     public void findSecondMaxofTwo() {
         int[] a = new int[] {10, 10};

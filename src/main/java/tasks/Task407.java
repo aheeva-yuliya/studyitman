@@ -7,7 +7,7 @@ public class Task407 {
     /**
      * Sorts the rows in descending order depending on the sum of rows elements.
      *
-     * @cpu O(n^2)
+     * @cpu O(n^2 + n*m)
      * @ram O(n)
      *
      * @param matrix int[][]

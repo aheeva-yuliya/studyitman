@@ -16,6 +16,7 @@ class Task433Tests {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void gcd_975_10875() {
         long a = 975;
@@ -25,6 +26,7 @@ class Task433Tests {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void gcd_975986433786_10875() {
         long a = 975986433786L;
@@ -34,6 +36,7 @@ class Task433Tests {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void gcd_999999797_108758765342() {
         long a = 999999797L;
