@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class Task406Tests {
+
     @Test
     public void findSecondMaxAtMinIndex() {
         int[] a = new int[] {10, 3, 7, 1, 20, 4, 2, 7, 5};

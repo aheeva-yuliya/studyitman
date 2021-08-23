@@ -20,7 +20,6 @@ public class Task432 {
             return countDivs;
         }
         int count = 0;
-        long inX = x;
         for(long i = 2; i * i <= x; i++) {
             if (x % i == 0) {
                 countDivs[count] = i;
@@ -30,7 +29,7 @@ public class Task432 {
                 } while(x % i == 0);
             }
         }
-        if (count >= 0 && inX % x == 0 && x != 1) {
+        if (x != 1) {
             countDivs[count] = x;
             count++;
         }

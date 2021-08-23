@@ -87,9 +87,30 @@ class Task408Tests {
     }
 
     @Test
-    public void sortEventsNull() {
-        Event[] events = new Event[3];
+    public void sortEvents1_10_3__2020_10_2() {
+        Event[] events = new Event[] {
+                new Event(1, 10, 3, "0"),
+                new Event(2020, 10, 2, "1")
+        };
+        Event[] expected = new Event[events.length];
+        expected[0] = events[0];
+        expected[1] = events[1];
         Task408.sort(events);
-        Assertions.assertNotNull(events);
+        Assertions.assertArrayEquals(expected, events);
+    }
+
+    @Test
+    public void sortEvents1_10_3__2020_10_2__1_11_2() {
+        Event[] events = new Event[] {
+                new Event(1, 10, 3, "0"),
+                new Event(2020, 10, 2, "1"),
+                new Event (1, 11, 2, "2")
+        };
+        Event[] expected = new Event[events.length];
+        expected[0] = events[0];
+        expected[1] = events[2];
+        expected[2] = events[1];
+        Task408.sort(events);
+        Assertions.assertArrayEquals(expected, events);
     }
 }
