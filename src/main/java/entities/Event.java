@@ -43,7 +43,7 @@ public class Event {
      */
     public boolean equals(Event that) {
         if (that != null && this.year == that.year && this.month == that.month
-                && this.day == that.day && this.name.equals(that.name)) {
+                && this.day == that.day && this.name == that.name) {
             return true;
         }
         return false;

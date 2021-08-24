@@ -27,26 +27,37 @@ class EventTests {
     public void testEqualsFalse() {
         Event a = new Event(1991, 9, 8, "my birthday");
         Event b = new Event(1992, 2, 20, "igor's birthday");
-        boolean expected = false;
-        boolean actual = a.equals(b);
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertFalse(a.equals(b));
     }
 
     @Test
     public void testEqualsTrue() {
         Event a = new Event(1991, 9, 8, "my birthday");
         Event b = new Event(1991, 9, 8, "my birthday");
-        boolean expected = true;
-        boolean actual = a.equals(b);
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertTrue(a.equals(b));
     }
 
     @Test
     public void testEqualsNull() {
         Event a = new Event (2022, 2, 28, "A");
         Event b = null;
-        boolean expected = false;
-        boolean actual = a.equals(b);
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertFalse(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsStringNull() {
+        Event a = new Event (2024, 2, 28, "");
+        a.name = null;
+        Event b = new Event (2024, 2, 28, "");
+        b.name = null;
+        Assertions.assertTrue(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsStringNullandNotNull() {
+        Event a = new Event(2024, 2, 28, "");
+        a.name = null;
+        Event b = new Event(2024, 2, 28, "interesting");
+        Assertions.assertFalse(a.equals(b));
     }
 }
