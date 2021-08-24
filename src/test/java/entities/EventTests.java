@@ -40,4 +40,13 @@ class EventTests {
         boolean actual = a.equals(b);
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testEqualsNull() {
+        Event a = new Event (2022, 2, 28, "A");
+        Event b = null;
+        boolean expected = false;
+        boolean actual = a.equals(b);
+        Assertions.assertEquals(expected, actual);
+    }
 }
