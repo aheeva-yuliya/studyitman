@@ -21,4 +21,15 @@ public class Event {
         this.day = day;
         this.name = name;
     }
+    /**
+     * Returns a string with information about the fields of the object.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return a string with information.
+     */
+    public String toString() {
+        return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "'}";
+    }
 }
