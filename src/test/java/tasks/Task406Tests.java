@@ -20,7 +20,7 @@ public class Task406Tests {
     }
 
     @Test
-    public void findSecondMaxofTwo() {
+    public void findSecondMaxOfTwo() {
         int[] a = new int[] {10, 10};
         int actual = Task406.findSecondMax(a);
         Assertions.assertEquals(10, actual);

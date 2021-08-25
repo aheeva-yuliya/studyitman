@@ -60,4 +60,25 @@ class EventTests {
         Event b = new Event(2024, 2, 28, "interesting");
         Assertions.assertFalse(a.equals(b));
     }
+
+    @Test
+    public void compareToIfBefore() {
+        Event a = new Event(1991, 9, 8, "a");
+        Event b = new Event(1992, 2, 20, "b");
+        Assertions.assertEquals(-1, a.compareTo(b));
+    }
+
+    @Test
+    public void compareToIfTheSame() {
+        Event a = new Event(1991, 9, 8, "a");
+        Event b = new Event(1991, 9, 8, "b");
+        Assertions.assertEquals(0, a.compareTo(b));
+    }
+
+    @Test
+    public void compareToIfAfter() {
+        Event a = new Event(1991, 9, 8, "a");
+        Event b = new Event(1992, 2, 20, "b");
+        Assertions.assertEquals(1, b.compareTo(a));
+    }
 }

@@ -48,4 +48,24 @@ public class Event {
         }
         return false;
     }
+
+    /**
+     * Compares two Event objects.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param that Event object
+     * @return int 1 if the current object happened later than the param one
+     *         int 0 if the current object happened on the same date
+     *         int -1 if the current object happened before the param one.
+     */
+    public int compareTo(Event that) {
+        if (this.year > that.year || this.year == that.year && this.month > that.month
+                || this.year == that.year && this.month == that.month && this.day > that.day) {
+            return 1;
+        } else if (this.year == that.year && this.month == that.month && this.day == that.day) {
+            return 0;
+        } return -1;
+    }
 }

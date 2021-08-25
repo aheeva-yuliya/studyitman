@@ -21,9 +21,8 @@ public class Task439 {
         }
         Event last = events[0];
         for (int i = 1; i < events.length; i++) {
-            if (events[i].year > last.year
-                    || events[i].year == last.year && events[i].month > last.month
-                    || events[i].year == last.year && events[i].month == last.month && events[i].day >= last.day) {
+            int compare = events[i].compareTo(last);
+            if (compare >= 0) {
                 last = events[i];
             }
         }
