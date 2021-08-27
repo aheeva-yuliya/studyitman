@@ -42,10 +42,8 @@ public class Event {
      * @return boolean true if equals and false if doesn't.
      */
     public boolean equals(Event that) {
-        if (that != null && year == that.year && month == that.month && day == that.day && name == that.name) {
-            return true;
-        }
-        return false;
+        return that != null && year == that.year && month == that.month && day == that.day
+                && (name != null && name.equals(that.name) || name == null && that.name == null);
     }
     /**
      * Compares two Event objects.

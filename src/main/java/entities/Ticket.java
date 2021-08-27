@@ -36,9 +36,7 @@ public class Ticket {
      * @return boolean true if equals and false if doesn't.
      */
     public boolean equals(Ticket that) {
-        if (that != null && number == that.number && place == that.place) {
-            return true;
-        }
-        return false;
+        return that != null && number == that.number
+                && (place != null && place.equals(that.place) || place == null && that.place == null);
     }
 }
