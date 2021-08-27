@@ -33,6 +33,7 @@ public class QueueManagementSystemUtils {
         if (systems.length == 0) {
             return 0;
         }
-        return calcTotalVisits(systems) / systems.length;
+        double length = systems.length;
+        return calcTotalVisits(systems) / length;
     }
 }

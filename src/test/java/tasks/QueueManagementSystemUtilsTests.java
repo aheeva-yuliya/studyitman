@@ -58,4 +58,20 @@ class QueueManagementSystemUtilsTests {
         QueueManagementSystem[] ab = new QueueManagementSystem[] {a, b};
         Assertions.assertEquals(3, QueueManagementSystemUtils.calcAverageVisits(ab));
     }
+
+    @Test
+    public void calcAverageVisitsSevenTicketsOfThreeQueue() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.getNextTicket();
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        b.getNextTicket();
+        b.getNextTicket();
+        b.getNextTicket();
+        b.getNextTicket();
+        QueueManagementSystem c = new QueueManagementSystem("c");
+        c.getNextTicket();
+        c.getNextTicket();
+        QueueManagementSystem[] abc = new QueueManagementSystem[] {a, b, c};
+        Assertions.assertEquals(2.3333333333333335, QueueManagementSystemUtils.calcAverageVisits(abc));
+    }
 }
