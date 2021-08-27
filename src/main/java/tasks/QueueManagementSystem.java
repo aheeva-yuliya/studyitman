@@ -6,6 +6,7 @@ import entities.Ticket;
  */
 public class QueueManagementSystem {
     public String place;
+    public int currentNumber;
     public int total;
     /**
      * QueueManagementSystem
