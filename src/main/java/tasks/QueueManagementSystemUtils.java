@@ -39,19 +39,23 @@ public class QueueManagementSystemUtils {
     /**
      * Calculates the median of the number of issued tickets.
      *
-     * @cpu O(n^2)
-     * @ram O(1)
+     * @cpu O(n^2), n = systems.length
+     * @ram O(n)
      *
      * @param systems QueueManagementSystem[]
      * @return the median of the number of tickets issued from all queuing systems.
      */
     public static double calcMedianVisits(QueueManagementSystem[] systems) {
+        double[] actual = new double[systems.length];
+        for (int i = 0; i < systems.length; i++) {
+            actual[i] = systems[i].total;
+        }
         for (int n = systems.length; n > 1; n--) {
             for(int i = 1; i < n; i++) {
-                if(systems[i -1].total > systems[i].total) {
-                    int t = systems[i - 1].total;
-                    systems[i - 1].total = systems[i].total;
-                    systems[i].total = t;
+                if(actual[i -1] > actual[i]) {
+                    double t = actual[i - 1];
+                    actual[i - 1] = actual[i];
+                    actual[i] = t;
                 }
             }
         }
@@ -59,11 +63,11 @@ public class QueueManagementSystemUtils {
             return 0;
         }
         if (systems.length == 1) {
-            return systems[0].total * 1.0;
+            return systems[0].total;
         }
         if (systems.length % 2 == 0) {
-            return (systems[systems.length / 2 - 1].total + systems[systems.length / 2].total) / 2.0;
+            return (actual[systems.length / 2 - 1] + actual[systems.length / 2]) / 2;
         }
-        return systems[systems.length / 2].total * 1.0;
+        return actual[systems.length / 2];
     }
 }
