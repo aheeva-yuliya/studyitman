@@ -24,8 +24,8 @@ public class QueueManagementSystem {
      * @return the next ticket.
      */
     public Ticket getNextTicket() {
-        getTotalTickets();
-        return new Ticket(total, place);
+        currentNumber = getTotalTickets();
+        return new Ticket(currentNumber, place);
     }
     /**
      * Finds the total number of issued tickets.
@@ -36,6 +36,7 @@ public class QueueManagementSystem {
      * @return the number of issued tickets for the current queue.
      */
     public int getTotalTickets() {
-        return total++;
+        total++;
+        return total;
     }
 }

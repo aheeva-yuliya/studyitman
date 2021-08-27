@@ -39,17 +39,40 @@ class QueueManagementSystemTests {
     }
 
     @Test
+    public void getNextTicketThreeTicketsFromBank() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        Ticket first = a.getNextTicket();
+        Ticket second = a.getNextTicket();
+        Ticket third = a.getNextTicket();
+        Ticket expectedFirst = new Ticket(1, "a");
+        Ticket expectedSecond = new Ticket(2, "a");
+        Ticket expectedThird = new Ticket(3, "a");
+        Assertions.assertTrue(expectedFirst.equals(first));
+        Assertions.assertTrue(expectedSecond.equals(second));
+        Assertions.assertTrue(expectedThird.equals(third));
+    }
+
+    @Test
     public void getTotalTicketsOne() {
         QueueManagementSystem a = new QueueManagementSystem("a");
-        a.getTotalTickets();
+        a.getNextTicket();
         Assertions.assertEquals(1, a.total);
     }
 
     @Test
     public void getTotalTicketsTwo() {
         QueueManagementSystem a = new QueueManagementSystem("a");
-        a.getTotalTickets();
-        a.getTotalTickets();
+        a.getNextTicket();
+        a.getNextTicket();
         Assertions.assertEquals(2, a.total);
+    }
+
+    @Test
+    public void getTotalTicketsThree() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.getNextTicket();
+        a.getNextTicket();
+        a.getNextTicket();
+        Assertions.assertEquals(3, a.total);
     }
 }
