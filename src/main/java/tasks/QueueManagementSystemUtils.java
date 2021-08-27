@@ -20,4 +20,19 @@ public class QueueManagementSystemUtils {
         }
         return sum;
     }
+    /**
+     * Calculates the average number of tickets issued from all queuing systems.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param systems QueueManagementSystem[]
+     * @return the average number of tickets issued from all queuing systems.
+     */
+    public static double calcAverageVisits(QueueManagementSystem[] systems) {
+        if (systems.length == 0) {
+            return 0;
+        }
+        return calcTotalVisits(systems) / systems.length;
+    }
 }
