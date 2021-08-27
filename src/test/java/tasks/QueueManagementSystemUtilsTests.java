@@ -15,18 +15,21 @@ class QueueManagementSystemUtilsTests {
 
     @Test
     public void calcTotalVisitsIfOne() {
-        QueueManagementSystem[] a = new QueueManagementSystem[] {
-                new QueueManagementSystem("u")
-        };
-        Assertions.assertEquals(1, QueueManagementSystemUtils.calcTotalVisits(a));
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.getNextTicket();
+        QueueManagementSystem[] aa = new QueueManagementSystem[] {a};
+        Assertions.assertEquals(1, QueueManagementSystemUtils.calcTotalVisits(aa));
     }
 
     @Test
-    public void calcTotalVisitsIfTwo() {
-        QueueManagementSystem[] a = new QueueManagementSystem[] {
-                new QueueManagementSystem("u"),
-                new QueueManagementSystem("z")
-        };
-        Assertions.assertEquals(2, QueueManagementSystemUtils.calcTotalVisits(a));
+    public void calcTotalVisitsTwoTicketsOfTwoQueue() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.getNextTicket();
+        a.getNextTicket();
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        b.getNextTicket();
+        b.getNextTicket();
+        QueueManagementSystem[] ab = new QueueManagementSystem[] {a, b};
+        Assertions.assertEquals(4, QueueManagementSystemUtils.calcTotalVisits(ab));
     }
 }
