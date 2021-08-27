@@ -56,7 +56,7 @@ class QueueManagementSystemTests {
     public void getTotalTicketsOne() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
-        Assertions.assertEquals(1, a.total);
+        Assertions.assertEquals(1, a.getTotalTickets());
     }
 
     @Test
@@ -64,7 +64,7 @@ class QueueManagementSystemTests {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
         a.getNextTicket();
-        Assertions.assertEquals(2, a.total);
+        Assertions.assertEquals(2, a.getTotalTickets());
     }
 
     @Test
@@ -73,6 +73,6 @@ class QueueManagementSystemTests {
         a.getNextTicket();
         a.getNextTicket();
         a.getNextTicket();
-        Assertions.assertEquals(3, a.total);
+        Assertions.assertEquals(3, a.getTotalTickets());
     }
 }
