@@ -16,7 +16,7 @@ public class QueueManagementSystemUtils {
     public static long calcTotalVisits(QueueManagementSystem[] systems) {
         long sum = 0;
         for (int i = 0; i < systems.length; i++) {
-            sum = sum + systems[i].total;
+            sum = sum + systems[i].getTotalTickets();
         }
         return sum;
     }
@@ -48,7 +48,7 @@ public class QueueManagementSystemUtils {
     public static double calcMedianVisits(QueueManagementSystem[] systems) {
         double[] actual = new double[systems.length];
         for (int i = 0; i < systems.length; i++) {
-            actual[i] = systems[i].total;
+            actual[i] = systems[i].getTotalTickets();
         }
         for (int n = systems.length; n > 1; n--) {
             for(int i = 1; i < n; i++) {
@@ -63,7 +63,7 @@ public class QueueManagementSystemUtils {
             return 0;
         }
         if (systems.length == 1) {
-            return systems[0].total;
+            return actual[0];
         }
         if (systems.length % 2 == 0) {
             return (actual[systems.length / 2 - 1] + actual[systems.length / 2]) / 2;
