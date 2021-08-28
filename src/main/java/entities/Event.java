@@ -4,10 +4,10 @@ package entities;
  * Event
  */
 public class Event {
-    public int year;
-    public int month;
-    public int day;
-    public String name;
+    private int year;
+    private int month;
+    private int day;
+    private String name;
     /**
      * Event
      * @param year int argument
@@ -20,6 +20,18 @@ public class Event {
         this.month = month;
         this.day = day;
         this.name = name;
+    }
+    public int getYear() {
+        return year;
+    }
+    public int getMonth() {
+        return month;
+    }
+    public int getDay() {
+        return day;
+    }
+    public String getName() {
+        return name;
     }
     /**
      * Returns a string with information about the fields of the object.

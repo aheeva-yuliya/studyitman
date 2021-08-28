@@ -4,8 +4,8 @@ package entities;
  * Ticket
  */
 public class Ticket {
-    public int number;
-    public String place;
+    private int number;
+    private String place;
     /**
      * Ticket
      * @param number int argument
@@ -14,6 +14,12 @@ public class Ticket {
     public Ticket(int number, String place) {
         this.number = number;
         this.place = place;
+    }
+    public int getNumber() {
+        return number;
+    }
+    public String getPlace() {
+        return place;
     }
     /**
      * Returns a string with information about the fields of the object.

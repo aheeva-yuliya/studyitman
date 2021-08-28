@@ -46,10 +46,8 @@ class TicketTests {
 
     @Test
     public void testEqualsStringNull() {
-        Ticket a = new Ticket (2024, "");
-        a.place = null;
-        Ticket b = new Ticket (2024, "");
-        b.place = null;
+        Ticket a = new Ticket (2024, null);
+        Ticket b = new Ticket (2024, null);
         Assertions.assertTrue(a.equals(b));
     }
 }

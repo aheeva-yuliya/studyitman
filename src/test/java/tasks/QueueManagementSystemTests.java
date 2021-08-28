@@ -20,9 +20,9 @@ class QueueManagementSystemTests {
     public void getNextTicketTwoTickets() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
-        a.place = "b";
-        Ticket expected = new Ticket(2, "b");
-        Ticket actual = a.getNextTicket();
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        Ticket expected = new Ticket(1, "b");
+        Ticket actual = b.getNextTicket();
         Assertions.assertTrue(expected.equals(actual));
     }
 
@@ -30,11 +30,14 @@ class QueueManagementSystemTests {
     public void getNextTicketThreeTickets() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
-        a.place = "b";
-        a.getNextTicket();
-        a.place = "c";
-        Ticket actual = a.getNextTicket();
-        Ticket expected = new Ticket(3, "c");
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        b.getNextTicket();
+        QueueManagementSystem c = new QueueManagementSystem("c");
+        c.getNextTicket();
+        c.getNextTicket();
+        c.getNextTicket();
+        Ticket actual = c.getNextTicket();
+        Ticket expected = new Ticket(4, "c");
         Assertions.assertTrue(expected.equals(actual));
     }
 
@@ -63,16 +66,22 @@ class QueueManagementSystemTests {
     public void getTotalTicketsTwo() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
-        a.getNextTicket();
-        Assertions.assertEquals(2, a.getTotalTickets());
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        b.getNextTicket();
+        b.getNextTicket();
+        Assertions.assertEquals(1, a.getTotalTickets());
+        Assertions.assertEquals(2, b.getTotalTickets());
     }
 
     @Test
     public void getTotalTicketsThree() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        b.getNextTicket();
         a.getNextTicket();
         a.getNextTicket();
         Assertions.assertEquals(3, a.getTotalTickets());
+        Assertions.assertEquals(1, b.getTotalTickets());
     }
 }

@@ -46,17 +46,14 @@ class EventTests {
 
     @Test
     public void testEqualsStringNull() {
-        Event a = new Event (2024, 2, 28, "");
-        a.name = null;
-        Event b = new Event (2024, 2, 28, "");
-        b.name = null;
+        Event a = new Event (2024, 2, 28, null );
+        Event b = new Event (2024, 2, 28, null);
         Assertions.assertTrue(a.equals(b));
     }
 
     @Test
     public void testEqualsStringNullAndNotNull() {
-        Event a = new Event(2024, 2, 28, "");
-        a.name = null;
+        Event a = new Event(2024, 2, 28, null);
         Event b = new Event(2024, 2, 28, "interesting");
         Assertions.assertFalse(a.equals(b));
     }
