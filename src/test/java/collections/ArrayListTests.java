@@ -130,4 +130,41 @@ class ArrayListTests {
         Assertions.assertEquals(1, c);
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void testEqualsIfTrue() {
+        ArrayList a = new ArrayList(3);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        ArrayList b = new ArrayList(3);
+        b.add(3);
+        b.add(2);
+        b.add(3);
+        b.set(0, 1);
+        Assertions.assertTrue(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsIfFalse() {
+        ArrayList a = new ArrayList(3);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        ArrayList b = new ArrayList(3);
+        b.add(3);
+        b.add(2);
+        b.add(3);
+        Assertions.assertFalse(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsIfThatIsNull() {
+        ArrayList a = new ArrayList(3);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        ArrayList b = null;
+        Assertions.assertFalse(a.equals(b));
+    }
 }

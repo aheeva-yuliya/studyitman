@@ -45,13 +45,13 @@ public class Event {
         return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "'}";
     }
     /**
-     * Compares all fields of the two objects.
+     * Compares all instance variables of two objects.
      *
      * @cpu O(1)
      * @ram O(1)
      *
      * @param that Event object
-     * @return boolean true if equals and false if doesn't.
+     * @return boolean true if objects are equal and false if aren't.
      */
     public boolean equals(Event that) {
         return that != null && year == that.year && month == that.month && day == that.day

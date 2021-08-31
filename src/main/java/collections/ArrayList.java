@@ -98,4 +98,24 @@ public class ArrayList {
         size--;
         return value;
     }
+    /**
+     * Compares two objects.
+     *
+     * @cpu O(n), n = size
+     * @ram O(1)
+     *
+     * @param that an object argument
+     * @return true if the objects are equal and false if aren't.
+     */
+    public boolean equals(ArrayList that) {
+        if (that == null || size != that.size) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (array[i] != that.array[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

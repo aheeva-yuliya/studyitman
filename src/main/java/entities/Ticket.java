@@ -33,13 +33,13 @@ public class Ticket {
         return "Ticket{number=" + number + ", place='" + place + "'}";
     }
     /**
-     * Compares all fields of the two objects.
+     * Compares all instance variables of two objects.
      *
      * @cpu O(1)
      * @ram O(1)
      *
      * @param that Event object
-     * @return boolean true if equals and false if doesn't.
+     * @return boolean true if two objects are equal and false if aren't.
      */
     public boolean equals(Ticket that) {
         return that != null && number == that.number
