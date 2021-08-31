@@ -118,4 +118,21 @@ public class ArrayList {
         }
         return true;
     }
+    /**
+     * Sorts all the elements in ArrayList in ascending order.
+     *
+     * @cpu O(n^2)
+     * @ram O(1)
+     */
+    public void sort() {
+        for (int n = size; n > 1; n--) {
+            for (int i = 1; i < n; i++) {
+                if (array[i - 1] > array[i]) {
+                    int t = array[i - 1];
+                    array[i - 1] = array[i];
+                    array[i] = t;
+                }
+            }
+        }
+    }
 }

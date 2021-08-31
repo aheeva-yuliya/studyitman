@@ -167,4 +167,30 @@ class ArrayListTests {
         ArrayList b = null;
         Assertions.assertFalse(a.equals(b));
     }
+
+    @Test
+    public void sortFiveElements() {
+        ArrayList a = new ArrayList(3);
+        a.add(8);
+        a.add(3);
+        a.add(6);
+        a.add(1);
+        a.add(2);
+        a.sort();
+        int[] expected = new int[] {1, 2, 3, 6, 8};
+        int[] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void sortElementsIfSame() {
+        ArrayList a = new ArrayList(3);
+        a.add(8);
+        a.add(8);
+        a.add(8);
+        a.sort();
+        int[] expected = new int[] {8, 8, 8};
+        int[] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
