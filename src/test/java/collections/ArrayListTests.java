@@ -13,8 +13,8 @@ class ArrayListTests {
         a.set(3, 10);
         a.set(0, 10);
         int[] expected = new int[] {10, 0, 0, 10, 0};
-        int[] actual = new int[a.size()];
-        for (int i = 0; i < a.size(); i++) {
+        int[] actual = new int[5];
+        for (int i = 0; i < 5; i++) {
             actual[i] = a.get(i);
         }
         Assertions.assertArrayEquals(expected, actual);
@@ -28,8 +28,8 @@ class ArrayListTests {
         a.set(2, 3);
         a.set(0, 3);
         int[] expected = new int[] {3, 2, 3};
-        int[] actual = new int[a.size()];
-        for (int i = 0; i < a.size(); i++) {
+        int[] actual = new int[3];
+        for (int i = 0; i < 3; i++) {
             actual[i] = a.get(i);
         }
         Assertions.assertArrayEquals(expected, actual);
