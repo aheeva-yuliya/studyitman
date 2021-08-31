@@ -71,4 +71,17 @@ class ArrayListTests {
         }
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void toArray() {
+        ArrayList a = new ArrayList(5);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        a.add(4);
+        a.add(5);
+        int[] expected = new int[] {1, 2, 3, 4, 5};
+        int[] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }

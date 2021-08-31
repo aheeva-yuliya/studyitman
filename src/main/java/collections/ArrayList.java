@@ -6,14 +6,12 @@ package collections;
 public class ArrayList {
     private int[] array;
     private int size;
-    private int capacity;
     /**
      * ArrayList
      * @param capacity int argument
      */
     public ArrayList(int capacity) {
         array = new int[capacity];
-        this.capacity = capacity;
     }
     /**
      * Sets the value equals to @param element to the index of the array equals to the @param index.
@@ -45,21 +43,18 @@ public class ArrayList {
      * int[] and a new instance variable "array" and copies all the elements
      * if the instance variables "size" and "capacity" are equal.
      *
-     * @cpu O(n), n = instance variable "size"
-     * @ram O(n), n = instance variable "size"
+     * @cpu O(n), n = array.length
+     * @ram O(n), n = array.length
      *
      * @param element int argument
      */
     public void add(int element) {
-        if (size == capacity) {
-            int[] temp = new int[size];
+        if (size == array.length) {
+            int[] temp = new int[size * 2];
             System.arraycopy(array, 0, temp, 0, size);
-            capacity *= 2;
-            array = new ArrayList(capacity).array;
-            System.arraycopy(temp, 0, array, 0, size);
+            array = temp;
         }
-        array[size] = element;
-        size++;
+        array[size++] = element;
     }
     /**
      * Gets the value equals to the logical array length.
@@ -71,5 +66,19 @@ public class ArrayList {
      */
     public int size() {
         return size;
+    }
+
+    /**
+     * Creates a new int[] and copies all elements from the instance variable "array".
+     *
+     * @cpu O(n), n = array.length
+     * @ram O(n), n = array.length
+     *
+     * @return int[] with all copied elements.
+     */
+    public int[] toArray() {
+        int[] data = new int[array.length];
+        System.arraycopy(array, 0, data, 0, array.length);
+        return data;
     }
 }
