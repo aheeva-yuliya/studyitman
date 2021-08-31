@@ -38,7 +38,7 @@ class ArrayListTests {
     @Test
     public void size() {
         ArrayList a = new ArrayList(5);
-        Assertions.assertEquals(5, a.size());
+        Assertions.assertEquals(0, a.size());
     }
 
     @Test

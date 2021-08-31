@@ -70,9 +70,6 @@ public class ArrayList {
      * @return the value equals to the logical array length.
      */
     public int size() {
-        if (size == 0) {
-            return capacity;
-        }
         return size;
     }
 }
