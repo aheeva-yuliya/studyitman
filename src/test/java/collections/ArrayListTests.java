@@ -97,4 +97,37 @@ class ArrayListTests {
         int[] actual = a.toArray();
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void removeOneElement() {
+        ArrayList a = new ArrayList(4);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        a.add(4);
+        int b = a.remove(1);
+        int[] expected = new int[] {1, 3, 4};
+        int[] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertEquals(2, b);
+    }
+
+    @Test
+    public void removeTwoElements() {
+        ArrayList a = new ArrayList(4);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        a.add(4);
+        int b = a.remove(1);
+        int[] expected = new int[] {1, 3, 4};
+        int[] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertEquals(2, b);
+        int c = a.remove(0);
+        expected = new int[] {3, 4};
+        actual = a.toArray();
+        Assertions.assertEquals(1, c);
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }

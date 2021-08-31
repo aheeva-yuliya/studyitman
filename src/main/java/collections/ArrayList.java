@@ -43,8 +43,8 @@ public class ArrayList {
      * int[] and a new instance variable "array" and copies all the elements
      * if the instance variables "size" and "capacity" are equal.
      *
-     * @cpu O(n), n = array.length
-     * @ram O(n), n = array.length
+     * @cpu O(n), n = size
+     * @ram O(n), n = size
      *
      * @param element int argument
      */
@@ -67,12 +67,11 @@ public class ArrayList {
     public int size() {
         return size;
     }
-
     /**
      * Creates a new int[] and copies all elements from the instance variable "array".
      *
-     * @cpu O(n), n = array.length
-     * @ram O(n), n = array.length
+     * @cpu O(n), n = size
+     * @ram O(n), n = size
      *
      * @return int[] with all copied elements.
      */
@@ -80,5 +79,23 @@ public class ArrayList {
         int[] data = new int[size];
         System.arraycopy(array, 0, data, 0, size);
         return data;
+    }
+    /**
+     * Removes the element at the position @param index.
+     *
+     * @cpu O(n)
+     * @ram O(n)
+     *
+     * @param index int argument
+     * @return the deleted element.
+     */
+    public int remove(int index){
+        int value = array[index];
+        int[] temp = new int[size - 1];
+        System.arraycopy(array, 0, temp, 0, index);
+        System.arraycopy(array, index + 1, temp, index,size - index - 1);
+        array = temp;
+        size--;
+        return value;
     }
 }
