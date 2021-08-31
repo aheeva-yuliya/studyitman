@@ -77,8 +77,8 @@ public class ArrayList {
      * @return int[] with all copied elements.
      */
     public int[] toArray() {
-        int[] data = new int[array.length];
-        System.arraycopy(array, 0, data, 0, array.length);
+        int[] data = new int[size];
+        System.arraycopy(array, 0, data, 0, size);
         return data;
     }
 }

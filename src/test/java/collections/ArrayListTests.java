@@ -73,7 +73,7 @@ class ArrayListTests {
     }
 
     @Test
-    public void toArray() {
+    public void toArraySetAllElements() {
         ArrayList a = new ArrayList(5);
         a.add(1);
         a.add(2);
@@ -81,6 +81,19 @@ class ArrayListTests {
         a.add(4);
         a.add(5);
         int[] expected = new int[] {1, 2, 3, 4, 5};
+        int[] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void toArrayWhenCapacityChanges() {
+        ArrayList a = new ArrayList(1);
+        a.add(10);
+        a.add(20);
+        a.add(30);
+        a.add(40);
+        a.add(50);
+        int[] expected = new int[] {10, 20, 30, 40, 50};
         int[] actual = a.toArray();
         Assertions.assertArrayEquals(expected, actual);
     }
