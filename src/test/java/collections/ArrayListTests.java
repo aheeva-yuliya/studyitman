@@ -193,4 +193,13 @@ class ArrayListTests {
         int[] actual = a.toArray();
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void createAnObject() {
+        ArrayList first = new ArrayList();
+        first.set(0, 10);
+        first.set(1, 20);
+        ArrayList second = new ArrayList(first);
+        Assertions.assertTrue(first.equals(second));
+    }
 }

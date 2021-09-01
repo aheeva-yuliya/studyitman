@@ -7,11 +7,25 @@ public class ArrayList {
     private int[] array;
     private int size;
     /**
+     *ArrayList
+     */
+    public ArrayList() {
+        array = new int[16];
+    }
+    /**
      * ArrayList
      * @param capacity int argument
      */
     public ArrayList(int capacity) {
         array = new int[capacity];
+    }
+    /**
+     * ArrayList
+     * @param that a class object
+     */
+    public ArrayList (ArrayList that) {
+        array = that.array;
+        size = that.size;
     }
     /**
      * Sets the value equals to @param element to the index of the array equals to the @param index.
@@ -43,8 +57,8 @@ public class ArrayList {
      * int[] and a new instance variable "array" and copies all the elements
      * if the instance variables "size" and "capacity" are equal.
      *
-     * @cpu O(n), n = size
-     * @ram O(n), n = size
+     * @cpu O(n), n = instance variable "size"
+     * @ram O(n), n = instance variable "size"
      *
      * @param element int argument
      */
@@ -70,8 +84,8 @@ public class ArrayList {
     /**
      * Creates a new int[] and copies all elements from the instance variable "array".
      *
-     * @cpu O(n), n = size
-     * @ram O(n), n = size
+     * @cpu O(n), n = instance variable "size"
+     * @ram O(n), n = instance variable "size"
      *
      * @return int[] with all copied elements.
      */
@@ -83,8 +97,8 @@ public class ArrayList {
     /**
      * Removes the element at the position @param index.
      *
-     * @cpu O(n)
-     * @ram O(n)
+     * @cpu O(n), n = instance variable "size"
+     * @ram O(n), n = instance variable "size"
      *
      * @param index int argument
      * @return the deleted element.
@@ -101,7 +115,7 @@ public class ArrayList {
     /**
      * Compares two objects.
      *
-     * @cpu O(n), n = size
+     * @cpu O(n), n = instance variable "size"
      * @ram O(1)
      *
      * @param that an object argument
@@ -121,7 +135,7 @@ public class ArrayList {
     /**
      * Sorts all the elements in ArrayList in ascending order.
      *
-     * @cpu O(n^2)
+     * @cpu O(n^2), n = instance variable "size"
      * @ram O(1)
      */
     public void sort() {
