@@ -159,6 +159,13 @@ class ArrayListTests {
     }
 
     @Test
+    public void testEqualsDifferentCapacity() {
+        ArrayList a = new ArrayList(1);
+        ArrayList b = new ArrayList(2);
+        Assertions.assertTrue(a.equals(b));
+    }
+
+    @Test
     public void testEqualsIfThatIsNull() {
         ArrayList a = new ArrayList(3);
         a.add(1);

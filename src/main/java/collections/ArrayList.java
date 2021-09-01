@@ -123,7 +123,7 @@ public class ArrayList {
      * @return true if the objects are equal and false if aren't.
      */
     public boolean equals(ArrayList that) {
-        if (that == null || array.length != that.array.length) {
+        if (that == null || size != that.size) {
             return false;
         }
         for (int i = 0; i < array.length; i++) {
