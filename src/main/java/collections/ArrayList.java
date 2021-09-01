@@ -162,9 +162,7 @@ public class ArrayList {
     public static ArrayList of(int... elements) {
         ArrayList arrayList = new ArrayList(elements.length);
         arrayList.size = elements.length;
-        int[] that = new int[elements.length];
-        System.arraycopy(elements, 0, that, 0, elements.length);
-        arrayList.array = that;
+        System.arraycopy(elements, 0, arrayList.array, 0, elements.length);
         return arrayList;
     }
 }
