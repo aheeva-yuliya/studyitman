@@ -126,7 +126,7 @@ public class ArrayList {
         if (that == null || size != that.size) {
             return false;
         }
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (array[i] != that.array[i]) {
                 return false;
             }

@@ -213,11 +213,10 @@ class ArrayListTests {
     @Test
     public void createAnObjectWithConstructor() {
         ArrayList first = new ArrayList();
-        first.set(0, 10);
-        first.set(1, 20);
-        first.set(2, 30);
-        first.set(3, 40);
-        first.set(4, 50);
+        first.add(20);
+        first.add(30);
+        first.add(40);
+        first.add(50);
         ArrayList second = new ArrayList(first);
         second.set(0, -10);
         Assertions.assertFalse(first.equals(second));
@@ -248,5 +247,32 @@ class ArrayListTests {
         int [] actual = a.toArray();
         Assertions.assertArrayEquals(expected, actual);
         Assertions.assertEquals(3, a.size());
+    }
+
+    @Test
+    public void ofCreateOfAndEqualsCheck() {
+        ArrayList a  = ArrayList.of(-1, 1, 5);
+        ArrayList b = ArrayList.of(-1, 1, 5);
+        Assertions.assertTrue(a.equals(b));
+    }
+
+    @Test
+    public void ofCreateOfAndEqualsCheckFromAdd() {
+        ArrayList a  = ArrayList.of(-1, 1, 5);
+        ArrayList b = new ArrayList(5);
+        b.add(-1);
+        b.add(1);
+        b.add(5);
+        Assertions.assertTrue(a.equals(b));
+    }
+
+    @Test
+    public void ofCreateOfAndEqualsFromAdd() {
+        ArrayList a  = ArrayList.of(-1, 1, 5);
+        ArrayList b = new ArrayList(5);
+        b.add(-1);
+        b.add(1);
+        b.add(5);
+        Assertions.assertTrue(b.equals(a));
     }
 }
