@@ -24,8 +24,9 @@ public class ArrayList {
      * @param that a class object
      */
     public ArrayList (ArrayList that) {
-        array = that.array;
         size = that.size;
+        array = new int[that.array.length];
+        System.arraycopy(that.array, 0, array, 0, that.array.length);
     }
     /**
      * Sets the value equals to @param element to the index of the array equals to the @param index.
@@ -122,10 +123,10 @@ public class ArrayList {
      * @return true if the objects are equal and false if aren't.
      */
     public boolean equals(ArrayList that) {
-        if (that == null || size != that.size) {
+        if (that == null || array.length != that.array.length) {
             return false;
         }
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (array[i] != that.array[i]) {
                 return false;
             }

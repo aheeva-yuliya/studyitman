@@ -202,4 +202,17 @@ class ArrayListTests {
         ArrayList second = new ArrayList(first);
         Assertions.assertTrue(first.equals(second));
     }
+
+    @Test
+    public void createAnObjectWithConstructor() {
+        ArrayList first = new ArrayList();
+        first.set(0, 10);
+        first.set(1, 20);
+        first.set(2, 30);
+        first.set(3, 40);
+        first.set(4, 50);
+        ArrayList second = new ArrayList(first);
+        second.set(0, -10);
+        Assertions.assertFalse(first.equals(second));
+    }
 }
