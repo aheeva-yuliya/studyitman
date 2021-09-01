@@ -153,7 +153,7 @@ public class ArrayList {
     /**
      * Creates a new object of the class depending on the @param argument.
      *
-     * @cpu O(1)
+     * @cpu O(n), n = elements.length
      * @ram O(n), n = elements.length
      *
      * @param elements variable arguments list
@@ -162,7 +162,9 @@ public class ArrayList {
     public static ArrayList of(int... elements) {
         ArrayList arrayList = new ArrayList(elements.length);
         arrayList.size = elements.length;
-        arrayList.array = elements;
+        int[] that = new int[elements.length];
+        System.arraycopy(elements, 0, that, 0, elements.length);
+        arrayList.array = that;
         return arrayList;
     }
 }

@@ -225,20 +225,11 @@ class ArrayListTests {
 
     @Test
     public void ofCreateOfElements() {
-        ArrayList a = ArrayList.of(1, 2, 3);
-        int [] expected = new int[] {1, 2, 3};
-        int [] actual = a.toArray();
-        Assertions.assertArrayEquals(expected, actual);
-        Assertions.assertEquals(3, a.size());
-    }
-
-    @Test
-    public void ofCreateOfIntArray() {
-        ArrayList a = ArrayList.of(new int[] {1, 2, 3});
-        int [] expected = new int[] {1, 2, 3};
-        int [] actual = a.toArray();
-        Assertions.assertArrayEquals(expected, actual);
-        Assertions.assertEquals(3, a.size());
+        int[] a = new int[] {-1, 1, 5};
+        ArrayList actual = ArrayList.of(a);
+        a[1] = 0;
+        int[] expected = new int[] {-1, 1, 5};
+        Assertions.assertArrayEquals(expected, actual.toArray());
     }
 
     @Test
@@ -248,5 +239,14 @@ class ArrayListTests {
         int [] actual = a.toArray();
         Assertions.assertArrayEquals(expected, actual);
         Assertions.assertEquals(0, a.size());
+    }
+
+    @Test
+    public void ofCreateOfThreeElements() {
+        ArrayList a = ArrayList.of(-1, 1, 5);
+        int [] expected = new int[] {-1, 1, 5};
+        int [] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertEquals(3, a.size());
     }
 }
