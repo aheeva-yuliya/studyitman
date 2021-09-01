@@ -150,4 +150,19 @@ public class ArrayList {
             }
         }
     }
+    /**
+     * Creates a new object of the class depending on the @param argument.
+     *
+     * @cpu O(1)
+     * @ram O(n), n = elements.length
+     *
+     * @param elements variable arguments list
+     * @return an object of the class.
+     */
+    public static ArrayList of(int... elements) {
+        ArrayList arrayList = new ArrayList(elements.length);
+        arrayList.size = elements.length;
+        arrayList.array = elements;
+        return arrayList;
+    }
 }

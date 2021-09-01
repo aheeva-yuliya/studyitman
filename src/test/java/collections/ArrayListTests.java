@@ -222,4 +222,31 @@ class ArrayListTests {
         second.set(0, -10);
         Assertions.assertFalse(first.equals(second));
     }
+
+    @Test
+    public void ofCreateOfElements() {
+        ArrayList a = ArrayList.of(1, 2, 3);
+        int [] expected = new int[] {1, 2, 3};
+        int [] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertEquals(3, a.size());
+    }
+
+    @Test
+    public void ofCreateOfIntArray() {
+        ArrayList a = ArrayList.of(new int[] {1, 2, 3});
+        int [] expected = new int[] {1, 2, 3};
+        int [] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertEquals(3, a.size());
+    }
+
+    @Test
+    public void ofCreateOfNil() {
+        ArrayList a = ArrayList.of();
+        int [] expected = new int[] {};
+        int [] actual = a.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertEquals(0, a.size());
+    }
 }
