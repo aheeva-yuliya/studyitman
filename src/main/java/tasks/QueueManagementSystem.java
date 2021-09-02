@@ -8,7 +8,7 @@ import entities.Ticket;
 public class QueueManagementSystem {
     private String place;
     private int total;
-    private ArrayList visits = new ArrayList(1);
+    private ArrayList visits = ArrayList.of(0);
     private int byDay;
     /**
      * QueueManagementSystem
@@ -48,7 +48,8 @@ public class QueueManagementSystem {
      * @ram O(1)
      */
     public void toNextWorkDay() {
-        visits.add(byDay);
+        visits.set(visits.size() - 1, byDay);
+        visits.add(0);
         byDay = 0;
     }
     /**
@@ -60,7 +61,6 @@ public class QueueManagementSystem {
      * @return a new object of the ArrayList class.
      */
     public ArrayList getVisitsByDay() {
-        visits.add(0);
-        return new ArrayList(visits);
+        return ArrayList.of(visits.toArray());
     }
 }
