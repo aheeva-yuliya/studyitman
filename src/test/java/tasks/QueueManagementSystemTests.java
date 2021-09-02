@@ -98,13 +98,22 @@ class QueueManagementSystemTests {
     }
 
     @Test
+    public void toNextWorkDayWithoutTickets() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.toNextWorkDay();
+        a.toNextWorkDay();
+        ArrayList expected = ArrayList.of(0, 0, 0);
+        ArrayList actual = a.getVisitsByDay();
+        Assertions.assertTrue(expected.equals(actual));
+    }
+
+    @Test
     public void getVisitsByDay() {
         QueueManagementSystem a = new QueueManagementSystem("Bank");
         a.getNextTicket();
         a.getNextTicket();
         a.toNextWorkDay();
         a.getNextTicket();
-        a.toNextWorkDay();
         a.toNextWorkDay();
         ArrayList expected = ArrayList.of(2, 1, 0);
         ArrayList actual = a.getVisitsByDay();
@@ -128,10 +137,10 @@ class QueueManagementSystemTests {
         a.getNextTicket();
         a.getNextTicket();
         a.toNextWorkDay();
-        ArrayList aExpected = ArrayList.of(2, 1, 0, 2);
+        ArrayList aExpected = ArrayList.of(2, 1, 0, 2, 0);
         ArrayList aActual = a.getVisitsByDay();
         Assertions.assertTrue(aExpected.equals(aActual));
-        ArrayList bExpected = ArrayList.of(2);
+        ArrayList bExpected = ArrayList.of(2, 0);
         ArrayList bActual = b.getVisitsByDay();
         Assertions.assertTrue(bExpected.equals(bActual));
         Assertions.assertEquals(5, a.getTotalTickets());
@@ -147,5 +156,19 @@ class QueueManagementSystemTests {
         system.getNextTicket();
         system.toNextWorkDay();
         Assertions.assertEquals(3, system.getTotalTickets());
+    }
+
+    @Test
+    public void getTotalTicketsAfterThreeDays() {
+        QueueManagementSystem system = new QueueManagementSystem("bank");
+        system.getNextTicket();
+        system.getNextTicket();
+        system.toNextWorkDay();
+        system.getNextTicket();
+        system.toNextWorkDay();
+        ArrayList expected = ArrayList.of(2, 1, 0);
+        ArrayList actual = system.getVisitsByDay();
+        Assertions.assertEquals(3, system.getTotalTickets());
+        Assertions.assertTrue(expected.equals(actual));
     }
 }

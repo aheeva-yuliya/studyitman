@@ -60,6 +60,7 @@ public class QueueManagementSystem {
      * @return a new object of the ArrayList class.
      */
     public ArrayList getVisitsByDay() {
+        visits.add(0);
         return new ArrayList(visits);
     }
 }
