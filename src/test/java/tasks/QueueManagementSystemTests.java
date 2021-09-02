@@ -1,5 +1,6 @@
 package tasks;
 
+import collections.ArrayList;
 import entities.Ticket;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -83,5 +84,57 @@ class QueueManagementSystemTests {
         a.getNextTicket();
         Assertions.assertEquals(3, a.getTotalTickets());
         Assertions.assertEquals(1, b.getTotalTickets());
+    }
+
+    @Test
+    public void toNextWorkDay() {
+        QueueManagementSystem a = new QueueManagementSystem("Bank");
+        a.getNextTicket();
+        a.getNextTicket();
+        Assertions.assertEquals(2, a.getTotalTickets());
+        a.toNextWorkDay();
+        Assertions.assertEquals(0, a.getTotalTickets());
+        a.getNextTicket();
+        Assertions.assertEquals(1, a.getTotalTickets());
+        a.toNextWorkDay();
+        Assertions.assertEquals(0, a.getTotalTickets());
+    }
+
+    @Test
+    public void getVisitsByDay() {
+        QueueManagementSystem a = new QueueManagementSystem("Bank");
+        a.getNextTicket();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.toNextWorkDay();
+        ArrayList expected = ArrayList.of(2, 1, 0);
+        ArrayList actual = a.getVisitsByDay();
+        Assertions.assertTrue(expected.equals(actual));
+    }
+
+    @Test
+    public void getVisitsByDayFromTwoQueue() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.getNextTicket();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.toNextWorkDay();
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        b.getNextTicket();
+        b.getNextTicket();
+        b.toNextWorkDay();
+        a.getNextTicket();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        ArrayList aExpected = ArrayList.of(2, 1, 0, 2);
+        ArrayList aActual = a.getVisitsByDay();
+        Assertions.assertTrue(aExpected.equals(aActual));
+        ArrayList bExpected = ArrayList.of(2);
+        ArrayList bActual = b.getVisitsByDay();
+        Assertions.assertTrue(bExpected.equals(bActual));
     }
 }

@@ -1,5 +1,6 @@
 package tasks;
 
+import collections.ArrayList;
 import entities.Ticket;
 /**
  * QueueManagementSystem.
@@ -7,6 +8,7 @@ import entities.Ticket;
 public class QueueManagementSystem {
     private String place;
     private int total;
+    private ArrayList visits = new ArrayList(1);
     /**
      * QueueManagementSystem
      * @param place a String argument
@@ -36,5 +38,26 @@ public class QueueManagementSystem {
      */
     public int getTotalTickets() {
         return total;
+    }
+    /**
+     * Starts a new day.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     */
+    public void toNextWorkDay() {
+        visits.add(total);
+        total = 0;
+    }
+    /**
+     * Creates an attendance list by day.
+     *
+     * @cpu O(1)
+     * @ram O(n), n = days of attendance
+     *
+     * @return a new object of the ArrayList class.
+     */
+    public ArrayList getVisitsByDay() {
+        return new ArrayList(visits);
     }
 }
