@@ -9,6 +9,7 @@ public class QueueManagementSystem {
     private String place;
     private int total;
     private ArrayList visits = new ArrayList(1);
+    private int byDay;
     /**
      * QueueManagementSystem
      * @param place a String argument
@@ -26,6 +27,7 @@ public class QueueManagementSystem {
      */
     public Ticket getNextTicket() {
         total++;
+        byDay++;
         return new Ticket(total, place);
     }
     /**
@@ -46,8 +48,8 @@ public class QueueManagementSystem {
      * @ram O(1)
      */
     public void toNextWorkDay() {
-        visits.add(total);
-        total = 0;
+        visits.add(byDay);
+        byDay = 0;
     }
     /**
      * Creates an attendance list by day.

@@ -91,13 +91,12 @@ class QueueManagementSystemTests {
         QueueManagementSystem a = new QueueManagementSystem("Bank");
         a.getNextTicket();
         a.getNextTicket();
-        Assertions.assertEquals(2, a.getTotalTickets());
         a.toNextWorkDay();
-        Assertions.assertEquals(0, a.getTotalTickets());
         a.getNextTicket();
-        Assertions.assertEquals(1, a.getTotalTickets());
         a.toNextWorkDay();
-        Assertions.assertEquals(0, a.getTotalTickets());
+        ArrayList expected = ArrayList.of(2, 1);
+        ArrayList actual = a.getVisitsByDay();
+        Assertions.assertTrue(actual.equals(expected));
     }
 
     @Test
@@ -112,6 +111,7 @@ class QueueManagementSystemTests {
         ArrayList expected = ArrayList.of(2, 1, 0);
         ArrayList actual = a.getVisitsByDay();
         Assertions.assertTrue(expected.equals(actual));
+        Assertions.assertEquals(3, a.getTotalTickets());
     }
 
     @Test
@@ -136,5 +136,18 @@ class QueueManagementSystemTests {
         ArrayList bExpected = ArrayList.of(2);
         ArrayList bActual = b.getVisitsByDay();
         Assertions.assertTrue(bExpected.equals(bActual));
+        Assertions.assertEquals(5, a.getTotalTickets());
+        Assertions.assertEquals(2, b.getTotalTickets());
+    }
+
+    @Test
+    public void getTotalTicketsAfterTwoDays() {
+        QueueManagementSystem system = new QueueManagementSystem("bank");
+        system.getNextTicket();
+        system.getNextTicket();
+        system.toNextWorkDay();
+        system.getNextTicket();
+        system.toNextWorkDay();
+        Assertions.assertEquals(3, system.getTotalTickets());
     }
 }
