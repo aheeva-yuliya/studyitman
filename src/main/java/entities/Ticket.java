@@ -15,9 +15,25 @@ public class Ticket {
         this.number = number;
         this.place = place;
     }
+    /**
+     * Gets the value of the instance variable "number".
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "number".
+     */
     public int getNumber() {
         return number;
     }
+    /**
+     * Gets the value of the instance variable "place".
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "place".
+     */
     public String getPlace() {
         return place;
     }

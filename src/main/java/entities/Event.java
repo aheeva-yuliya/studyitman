@@ -21,20 +21,52 @@ public class Event {
         this.day = day;
         this.name = name;
     }
+    /**
+     * Gets the value of the instance variable "year"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "year"
+     */
     public int getYear() {
         return year;
     }
+    /**
+     * Gets the value of the instance variable "month"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "month"
+     */
     public int getMonth() {
         return month;
     }
+    /**
+     * Gets the value of the instance variable "day"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "day"
+     */
     public int getDay() {
         return day;
     }
+    /**
+     * Gets the value of the instance variable "name"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "name"
+     */
     public String getName() {
         return name;
     }
     /**
-     * Returns a string with information about the fields of the object.
+     * Returns a string with information about the instance variables of the object.
      *
      * @cpu O(1)
      * @ram O(1)
