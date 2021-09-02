@@ -88,15 +88,13 @@ class QueueManagementSystemTests {
 
     @Test
     public void toNextWorkDay() {
-        QueueManagementSystem a = new QueueManagementSystem("Bank");
+        QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
         a.getNextTicket();
         a.toNextWorkDay();
-        a.getNextTicket();
-        a.toNextWorkDay();
-        ArrayList expected = ArrayList.of(2, 1);
-        ArrayList actual = a.getVisitsByDay();
-        Assertions.assertTrue(actual.equals(expected));
+        Ticket actual = a.getNextTicket();
+        Ticket expected = new Ticket(1, "a");
+        Assertions.assertTrue(expected.equals(actual));
     }
 
     @Test

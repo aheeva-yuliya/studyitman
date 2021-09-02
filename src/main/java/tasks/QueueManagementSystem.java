@@ -28,7 +28,7 @@ public class QueueManagementSystem {
     public Ticket getNextTicket() {
         total++;
         byDay++;
-        return new Ticket(total, place);
+        return new Ticket(byDay, place);
     }
     /**
      * Finds the total number of issued tickets.
