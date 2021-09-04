@@ -153,7 +153,7 @@ public class QueueManagementSystemUtils {
      */
     public static Statistic[] calcStatisticByDays(QueueManagementSystem[] systems) {
         if (systems.length == 0) {
-            return null;
+            return new Statistic[0];
         }
         ArrayList[] arrays = new ArrayList[systems.length];
         int maxSize = 0;

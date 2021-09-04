@@ -189,4 +189,9 @@ class QueueManagementSystemUtilsTests {
         Assertions.assertEquals(expected2, actual2);
     }
 
+    @Test
+    public void calcStatisticByDaysIfNil() {
+        QueueManagementSystem[] a = new QueueManagementSystem[0];
+        Assertions.assertNotNull(QueueManagementSystemUtils.calcStatisticByDays(a));
+    }
 }
