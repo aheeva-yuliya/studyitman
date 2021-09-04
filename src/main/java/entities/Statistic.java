@@ -9,6 +9,7 @@ public class Statistic {
     private long count;
     private double average;
     private double median;
+
     /**
      * Statistic
      * @param min int argument
@@ -24,6 +25,7 @@ public class Statistic {
         this.average = average;
         this.median = median;
     }
+
     /**
      * Gets the value of the instance variable "min".
      *
@@ -35,6 +37,7 @@ public class Statistic {
     public int getMin() {
         return min;
     }
+
     /**
      * Gets the value of the instance variable "max".
      *
@@ -46,6 +49,7 @@ public class Statistic {
     public int getMax() {
         return max;
     }
+
     /**
      * Gets the value of the instance variable "count".
      *
@@ -57,6 +61,7 @@ public class Statistic {
     public long getCount() {
         return count;
     }
+
     /**
      * Gets the value of the instance variable "average".
      *
@@ -68,6 +73,7 @@ public class Statistic {
     public double getAverage() {
         return average;
     }
+
     /**
      * Gets the value of the instance variable "median".
      *
@@ -79,6 +85,7 @@ public class Statistic {
     public double getMedian() {
         return median;
     }
+
     /**
      * Returns a string with information about the instance variables of the object.
      *
@@ -91,6 +98,7 @@ public class Statistic {
         return "Statistic{min=" + min + ", max=" + max +", count=" + count
                 + ", average=" + average + ", median=" + median + "}";
     }
+
     /**
      * Compares all instance variables of two objects.
      *

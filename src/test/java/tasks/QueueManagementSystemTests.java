@@ -122,6 +122,18 @@ class QueueManagementSystemTests {
     }
 
     @Test
+    public void getVisitsByDayThisDay() {
+        QueueManagementSystem a = new QueueManagementSystem("Bank");
+        a.getNextTicket();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.getNextTicket();
+        ArrayList expected = ArrayList.of(2, 1);
+        ArrayList actual = a.getVisitsByDay();
+        Assertions.assertTrue(expected.equals(actual));
+    }
+
+    @Test
     public void getVisitsByDayFromTwoQueue() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();

@@ -6,12 +6,14 @@ package collections;
 public class ArrayList {
     private int[] array;
     private int size;
+
     /**
      *ArrayList
      */
     public ArrayList() {
         array = new int[16];
     }
+
     /**
      * ArrayList
      * @param capacity int argument
@@ -19,6 +21,7 @@ public class ArrayList {
     public ArrayList(int capacity) {
         array = new int[capacity];
     }
+
     /**
      * ArrayList
      * @param that a class object
@@ -28,6 +31,7 @@ public class ArrayList {
         array = new int[that.array.length];
         System.arraycopy(that.array, 0, array, 0, that.array.length);
     }
+
     /**
      * Sets the value equals to @param element to the index of the array equals to the @param index.
      *
@@ -40,6 +44,7 @@ public class ArrayList {
     public void set(int index, int element) {
         array[index] = element;
     }
+
     /**
      * Gets the value of an array element from the index which equals to @param index.
      *
@@ -71,6 +76,7 @@ public class ArrayList {
         }
         array[size++] = element;
     }
+
     /**
      * Gets the value equals to the logical array length.
      *
@@ -82,6 +88,7 @@ public class ArrayList {
     public int size() {
         return size;
     }
+
     /**
      * Creates a new int[] and copies all elements from the instance variable "array".
      *
@@ -95,6 +102,7 @@ public class ArrayList {
         System.arraycopy(array, 0, data, 0, size);
         return data;
     }
+
     /**
      * Removes the element at the position @param index.
      *
@@ -113,6 +121,7 @@ public class ArrayList {
         size--;
         return value;
     }
+
     /**
      * Compares two objects.
      *
@@ -133,6 +142,7 @@ public class ArrayList {
         }
         return true;
     }
+
     /**
      * Sorts all the elements in ArrayList in ascending order.
      *
@@ -150,6 +160,7 @@ public class ArrayList {
             }
         }
     }
+
     /**
      * Creates a new object of the class depending on the @param argument.
      *

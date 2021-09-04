@@ -10,6 +10,7 @@ public class QueueManagementSystem {
     private int total;
     private ArrayList visits = ArrayList.of(0);
     private int byDay;
+
     /**
      * QueueManagementSystem
      * @param place a String argument
@@ -17,6 +18,7 @@ public class QueueManagementSystem {
     public QueueManagementSystem(String place) {
         this.place = place;
     }
+
     /**
      * Creates the next ticket.
      *
@@ -30,6 +32,7 @@ public class QueueManagementSystem {
         byDay++;
         return new Ticket(byDay, place);
     }
+
     /**
      * Finds the total number of issued tickets.
      *
@@ -41,6 +44,7 @@ public class QueueManagementSystem {
     public int getTotalTickets() {
         return total;
     }
+
     /**
      * Starts a new day.
      *
@@ -52,6 +56,7 @@ public class QueueManagementSystem {
         visits.add(0);
         byDay = 0;
     }
+
     /**
      * Creates an attendance list by day.
      *
@@ -61,6 +66,7 @@ public class QueueManagementSystem {
      * @return a new object of the ArrayList class.
      */
     public ArrayList getVisitsByDay() {
+        visits.set(visits.size() - 1, byDay);
         return ArrayList.of(visits.toArray());
     }
 }

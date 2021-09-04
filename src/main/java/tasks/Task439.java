@@ -6,6 +6,7 @@ import entities.Event;
  * Task439
  */
 public class Task439 {
+
     /**
      * Finds the latest event.
      *

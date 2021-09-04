@@ -8,6 +8,7 @@ public class Event {
     private int month;
     private int day;
     private String name;
+
     /**
      * Event
      * @param year int argument
@@ -21,6 +22,7 @@ public class Event {
         this.day = day;
         this.name = name;
     }
+
     /**
      * Gets the value of the instance variable "year"
      *
@@ -32,6 +34,7 @@ public class Event {
     public int getYear() {
         return year;
     }
+
     /**
      * Gets the value of the instance variable "month"
      *
@@ -43,6 +46,7 @@ public class Event {
     public int getMonth() {
         return month;
     }
+
     /**
      * Gets the value of the instance variable "day"
      *
@@ -54,6 +58,7 @@ public class Event {
     public int getDay() {
         return day;
     }
+
     /**
      * Gets the value of the instance variable "name"
      *
@@ -65,6 +70,7 @@ public class Event {
     public String getName() {
         return name;
     }
+
     /**
      * Returns a string with information about the instance variables of the object.
      *
@@ -76,6 +82,7 @@ public class Event {
     public String toString() {
         return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "'}";
     }
+
     /**
      * Compares all instance variables of two objects.
      *
@@ -89,6 +96,7 @@ public class Event {
         return that != null && year == that.year && month == that.month && day == that.day
                 && (name != null && name.equals(that.name) || name == null && that.name == null);
     }
+
     /**
      * Compares two Event objects.
      *

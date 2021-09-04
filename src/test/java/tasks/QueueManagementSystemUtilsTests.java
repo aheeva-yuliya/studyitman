@@ -1,5 +1,6 @@
 package tasks;
 
+import entities.Statistic;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -123,5 +124,44 @@ class QueueManagementSystemUtilsTests {
         d.getNextTicket();
         QueueManagementSystem[] abcd = new QueueManagementSystem[] {a, b, c, d};
         Assertions.assertEquals(2.5, QueueManagementSystemUtils.calcMedianVisits(abcd));
+    }
+
+    @Test
+    public void calcStatisticByDays() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.getNextTicket();
+        a.getNextTicket();
+        a.getNextTicket();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.getNextTicket();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.getNextTicket();
+        QueueManagementSystem b = new QueueManagementSystem("b");
+        b.getNextTicket();
+        b.getNextTicket();
+        QueueManagementSystem c = new QueueManagementSystem("c");
+        c.getNextTicket();
+        c.toNextWorkDay();
+        c.getNextTicket();
+        c.getNextTicket();
+        QueueManagementSystem d = new QueueManagementSystem("d");
+        d.getNextTicket();
+        d.getNextTicket();
+        d.toNextWorkDay();
+        d.getNextTicket();
+        d.getNextTicket();
+        QueueManagementSystem[] fromABCD = new QueueManagementSystem[] {a, b, c, d};
+        Statistic[] statistics = QueueManagementSystemUtils.calcStatisticByDays(fromABCD);
+        String expected0 = "Statistic{min=4, max=4, count=4, average=4.0, median=4.0}";
+        String actual0 = statistics[0].toString();
+        String expected1 = "Statistic{min=1, max=2, count=5, average=1.6666666666666667, median=2.0}";
+        String actual1 = statistics[1].toString();
+        String expected2 = "Statistic{min=1, max=2, count=7, average=1.75, median=2.0}";
+        String actual2 = statistics[2].toString();
+        Assertions.assertEquals(expected0, actual0);
+        Assertions.assertEquals(expected1, actual1);
+        Assertions.assertEquals(expected2, actual2);
     }
 }

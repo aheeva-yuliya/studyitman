@@ -6,6 +6,7 @@ import entities.Event;
  * Task408
  */
 public class Task408 {
+
     /**
      * Sorts by ascending date
      *

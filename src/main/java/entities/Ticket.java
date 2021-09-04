@@ -6,6 +6,7 @@ package entities;
 public class Ticket {
     private int number;
     private String place;
+
     /**
      * Ticket
      * @param number int argument
@@ -15,6 +16,7 @@ public class Ticket {
         this.number = number;
         this.place = place;
     }
+
     /**
      * Gets the value of the instance variable "number".
      *
@@ -26,6 +28,7 @@ public class Ticket {
     public int getNumber() {
         return number;
     }
+
     /**
      * Gets the value of the instance variable "place".
      *
@@ -37,6 +40,7 @@ public class Ticket {
     public String getPlace() {
         return place;
     }
+
     /**
      * Returns a string with information about the fields of the object.
      *
@@ -48,6 +52,7 @@ public class Ticket {
     public String toString() {
         return "Ticket{number=" + number + ", place='" + place + "'}";
     }
+
     /**
      * Compares all instance variables of two objects.
      *

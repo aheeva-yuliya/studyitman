@@ -4,6 +4,7 @@ package tasks;
  * Task406
  */
 public class Task406 {
+
     /**
      * Finds the second max value of the array.
      *
