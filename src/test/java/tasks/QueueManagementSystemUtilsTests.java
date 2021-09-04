@@ -127,7 +127,7 @@ class QueueManagementSystemUtilsTests {
     }
 
     @Test
-    public void calcStatisticByDays() {
+    public void calcStatisticByDaysFourQueues() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
         a.getNextTicket();
@@ -164,4 +164,29 @@ class QueueManagementSystemUtilsTests {
         Assertions.assertEquals(expected1, actual1);
         Assertions.assertEquals(expected2, actual2);
     }
+
+    @Test
+    public void calcStatisticByDaysOneQueue() {
+        QueueManagementSystem a = new QueueManagementSystem("a");
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.getNextTicket();
+        a.getNextTicket();
+        a.toNextWorkDay();
+        a.getNextTicket();
+        a.getNextTicket();
+        a.getNextTicket();
+        QueueManagementSystem[] fromA = new QueueManagementSystem[] {a};
+        Statistic[] statistics = QueueManagementSystemUtils.calcStatisticByDays(fromA);
+        String expected0 = "Statistic{min=1, max=1, count=1, average=1.0, median=1.0}";
+        String actual0 = statistics[0].toString();
+        String expected1 = "Statistic{min=2, max=2, count=2, average=2.0, median=2.0}";
+        String actual1 = statistics[1].toString();
+        String expected2 = "Statistic{min=3, max=3, count=3, average=3.0, median=3.0}";
+        String actual2 = statistics[2].toString();
+        Assertions.assertEquals(expected0, actual0);
+        Assertions.assertEquals(expected1, actual1);
+        Assertions.assertEquals(expected2, actual2);
+    }
+
 }
