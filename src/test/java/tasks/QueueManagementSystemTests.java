@@ -78,23 +78,12 @@ class QueueManagementSystemTests {
     public void getTotalTicketsThree() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();
+        a.getNextTicket();
+        a.getNextTicket();
         QueueManagementSystem b = new QueueManagementSystem("b");
         b.getNextTicket();
-        a.getNextTicket();
-        a.getNextTicket();
         Assertions.assertEquals(3, a.getTotalTickets());
         Assertions.assertEquals(1, b.getTotalTickets());
-    }
-
-    @Test
-    public void toNextWorkDay() {
-        QueueManagementSystem a = new QueueManagementSystem("a");
-        a.getNextTicket();
-        a.getNextTicket();
-        a.toNextWorkDay();
-        Ticket actual = a.getNextTicket();
-        Ticket expected = new Ticket(1, "a");
-        Assertions.assertTrue(expected.equals(actual));
     }
 
     @Test

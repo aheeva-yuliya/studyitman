@@ -9,6 +9,9 @@ public class ArrayList {
 
     /**
      *ArrayList
+     *
+     * @cpu O(1)
+     * @ram O(1)
      */
     public ArrayList() {
         array = new int[16];
@@ -16,6 +19,10 @@ public class ArrayList {
 
     /**
      * ArrayList
+     *
+     * @cpu O(1)
+     * @ram O(n), n = @param capacity
+     *
      * @param capacity int argument
      */
     public ArrayList(int capacity) {
@@ -24,6 +31,10 @@ public class ArrayList {
 
     /**
      * ArrayList
+     *
+     * @cpu O(1)
+     * @ram O(n), n = @param that array.length
+     *
      * @param that a class object
      */
     public ArrayList (ArrayList that) {
@@ -33,7 +44,7 @@ public class ArrayList {
     }
 
     /**
-     * Sets the value equals to @param element to the index of the array equals to the @param index.
+     * Sets the value equals to the @param element to the index of the array equals to the @param index.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -61,9 +72,9 @@ public class ArrayList {
     /**
      * Adds the value of the @param element to the end of the existing array. Creates a new temporary
      * int[] and a new instance variable "array" and copies all the elements
-     * if the instance variables "size" and "capacity" are equal.
+     * if the instance variables "size" and "array".length are equal.
      *
-     * @cpu O(n), n = instance variable "size"
+     * @cpu O(1)
      * @ram O(n), n = instance variable "size"
      *
      * @param element int argument
@@ -92,7 +103,7 @@ public class ArrayList {
     /**
      * Creates a new int[] and copies all elements from the instance variable "array".
      *
-     * @cpu O(n), n = instance variable "size"
+     * @cpu O(1)
      * @ram O(n), n = instance variable "size"
      *
      * @return int[] with all copied elements.
@@ -106,7 +117,7 @@ public class ArrayList {
     /**
      * Removes the element at the position @param index.
      *
-     * @cpu O(n), n = instance variable "size"
+     * @cpu O(1)
      * @ram O(n), n = instance variable "size"
      *
      * @param index int argument
@@ -164,7 +175,7 @@ public class ArrayList {
     /**
      * Creates a new object of the class depending on the @param argument.
      *
-     * @cpu O(n), n = elements.length
+     * @cpu O(1)
      * @ram O(n), n = elements.length
      *
      * @param elements variable arguments list

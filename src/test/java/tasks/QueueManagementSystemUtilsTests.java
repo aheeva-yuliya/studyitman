@@ -13,14 +13,6 @@ class QueueManagementSystemUtilsTests {
     }
 
     @Test
-    public void calcTotalVisitsIfOne() {
-        QueueManagementSystem a = new QueueManagementSystem("a");
-        a.getNextTicket();
-        QueueManagementSystem[] actual = new QueueManagementSystem[] {a};
-        Assertions.assertEquals(1, QueueManagementSystemUtils.calcTotalVisits(actual));
-    }
-
-    @Test
     public void calcTotalVisitsTwoTicketsOfTwoQueue() {
         QueueManagementSystem a = new QueueManagementSystem("a");
         a.getNextTicket();

@@ -3,7 +3,6 @@ package tasks;
 import collections.ArrayList;
 import entities.Statistic;
 
-import java.lang.reflect.Array;
 
 /**
  * QueueManagementSystemUtils.
@@ -21,8 +20,8 @@ public class QueueManagementSystemUtils {
      */
     public static long calcTotalVisits(QueueManagementSystem[] systems) {
         long sum = 0;
-        for (int i = 0; i < systems.length; i++) {
-            sum = sum + systems[i].getTotalTickets();
+        for (QueueManagementSystem system : systems) {
+            sum += system.getTotalTickets();
         }
         return sum;
     }
@@ -82,9 +81,9 @@ public class QueueManagementSystemUtils {
     private static int findMin(ArrayList min) {
         int[] ints = min.toArray();
         int minimum = Integer.MAX_VALUE;
-        for (int i = 0; i < ints.length; i++) {
-            if (minimum > ints[i]) {
-                minimum = ints[i];
+        for (int anInt : ints) {
+            if (minimum > anInt) {
+                minimum = anInt;
             }
         }
         return minimum;
@@ -93,9 +92,9 @@ public class QueueManagementSystemUtils {
     private static int findMax(ArrayList max) {
         int[] ints = max.toArray();
         int maximum = Integer.MIN_VALUE;
-        for (int i = 0; i < ints.length; i++) {
-            if (maximum < ints[i]) {
-                   maximum = ints[i];
+        for (int anInt : ints) {
+            if (maximum < anInt) {
+                maximum = anInt;
             }
         }
         return maximum;
@@ -104,8 +103,8 @@ public class QueueManagementSystemUtils {
     private static long calcCount(ArrayList counts) {
         int[] ints = counts.toArray();
         long count = 0;
-        for (int i = 0; i < ints.length; i++) {
-            count += ints[i];
+        for (int anInt : ints) {
+            count += anInt;
         }
         return count;
     }
@@ -113,8 +112,8 @@ public class QueueManagementSystemUtils {
     private static double calcAverageByDay(ArrayList avg) {
         int[] ints = avg.toArray();
         double average = 0;
-        for (int i = 0; i < ints.length; i++) {
-            average += ints[i];
+        for (int anInt : ints) {
+            average += anInt;
         }
         return average / ints.length;
     }
@@ -145,7 +144,7 @@ public class QueueManagementSystemUtils {
     /**
      * Calculates statistic by day.
      *
-     * @cpu O(n * m), n = systems.length m = number of visits by day
+     * @cpu O(n * m), n = systems.length m = number of days
      * @ram O(n), n = systems.length
      *
      * @param systems QueueManagementSystem[]
