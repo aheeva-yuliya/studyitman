@@ -103,4 +103,19 @@ public class MyString {
     public boolean equals(MyString that) {
         return that != null && string.equals(that.string);
     }
+
+    /**
+     * Creates a new object using string concatenation.
+     *
+     * @cpu O(1)
+     * @ram O(n), n = c.length
+     *
+     * @param a an object of MyString
+     * @param b an object of MyString
+     * @return a new object of MyString.
+     */
+    public static MyString plus(MyString a, MyString b) {
+        String c = a.toString() + b.toString();
+        return new MyString(c.toCharArray());
+    }
 }

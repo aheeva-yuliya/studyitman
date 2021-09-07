@@ -73,4 +73,13 @@ class MyStringTests {
         MyString b = new MyString(new char[] {'A'});
         Assertions.assertFalse(a.equals(b));
     }
+
+    @Test
+    public void plusEquals() {
+        MyString a = new MyString(new char[] {'a', 'b', 'c'});
+        MyString b = new MyString(new char[] {'d', 'e', 'f','g'});
+        MyString expected = new MyString(new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g'});
+        MyString actual = MyString.plus(a,b);
+        Assertions.assertTrue(expected.equals(actual));
+    }
 }
