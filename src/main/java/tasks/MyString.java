@@ -53,24 +53,42 @@ public class MyString {
     }
 
     /**
-     * Compares the length of two strings.
+     * Compares two strings lexicographically.
      *
-     * @cpu O(1)
-     * @ram O(1)
+     * @cpu O(n), n = thisChars.length
+     * @ram O(n), thisChars.length / thatChars.length
      *
      * @param that a String argument of MyString.
-     * @return -1 if the length of this.string < the length of that.string,
-     *          0 if the lengths are equal,
-     *          1 if the length of this.string > the length of that.string.
+     * @return -1 if string lexicographically less than that.string,
+     *          0 if the strings are equal,
+     *          1 if string is greater than that.string.
      */
     public int compareTo(MyString that) {
-        if (string.length() < that.length()) {
+        char[] thisChars = string.toCharArray();
+        char[] thatChars = that.string.toCharArray();
+        int length = 0;
+        if (thisChars.length <= thatChars.length) {
+            length = thisChars.length;
+        } else {
+            length = thatChars.length;
+        }
+        if (thisChars.length == 0 && thatChars.length > 0) {
             return -1;
         }
-        if (string.length() == that.length()) {
-            return 0;
+        if (thatChars.length == 0 && thisChars.length > 0) {
+            return 1;
         }
-        return 1;
+        for (int i = 0; i < length; i++) {
+            if ((int) thisChars[i] < (int) thatChars[i]
+                    || (int) thisChars[i] == (int) thatChars[i] && thisChars.length < thatChars.length) {
+                return -1;
+            }
+            if ((int) thisChars[i] > (int) thatChars[i]
+                    || (int) thisChars[i] == (int) thatChars[i] && thisChars.length > thatChars.length) {
+                return 1;
+            }
+        }
+        return 0;
     }
 
     /**

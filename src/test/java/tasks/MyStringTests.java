@@ -26,10 +26,10 @@ class MyStringTests {
     }
 
     @Test
-    public void compareToIfSameLength() {
+    public void compareToIfLess() {
         MyString a = new MyString(new char[] {'a', 'b', 'c'});
-        MyString d = new MyString(new char[] {'d', 'e', 'f'});
-        Assertions.assertEquals(0, d.compareTo(a));
+        MyString d = new MyString(new char[] {'d', 'e', 'f','g'});
+        Assertions.assertEquals(-1, a.compareTo(d));
     }
 
     @Test
