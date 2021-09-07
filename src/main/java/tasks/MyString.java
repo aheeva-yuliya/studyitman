@@ -51,4 +51,38 @@ public class MyString {
         char[] chars = string.toCharArray();
         return chars[index];
     }
+
+    /**
+     * Compares the length of two strings.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param that a String argument of MyString.
+     * @return -1 if the length of this.string < the length of that.string,
+     *          0 if the lengths are equal,
+     *          1 if the length of this.string > the length of that.string.
+     */
+    public int compareTo(MyString that) {
+        if (string.length() < that.length()) {
+            return -1;
+        }
+        if (string.length() == that.length()) {
+            return 0;
+        }
+        return 1;
+    }
+
+    /**
+     * Compares this string to the specified object.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param that a String argument of the MyString class.
+     * @return true if the given object represents a String equivalent to this string, false otherwise.
+     */
+    public boolean equals(MyString that) {
+        return that != null && string.equals(that.string);
+    }
 }

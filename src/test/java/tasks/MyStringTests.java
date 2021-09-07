@@ -24,4 +24,53 @@ class MyStringTests {
         MyString string = new MyString(new char[]{'c', 'o', 'u', '-', 'c', 'o', 'u'});
         Assertions.assertEquals('u', string.charAt(2));
     }
+
+    @Test
+    public void compareToIfSameLength() {
+        MyString a = new MyString(new char[] {'a', 'b', 'c'});
+        MyString d = new MyString(new char[] {'d', 'e', 'f'});
+        Assertions.assertEquals(0, d.compareTo(a));
+    }
+
+    @Test
+    public void compareToIfNil() {
+        MyString a = new MyString(new char[] {});
+        MyString b = new MyString(new char[] {});
+        Assertions.assertEquals(0, a.compareTo(b));
+    }
+
+    @Test
+    public void compareToIfNotTheSame() {
+        MyString a = new MyString(new char[] {'a'});
+        MyString b = new MyString(new char[] {});
+        Assertions.assertEquals(1, a.compareTo(b));
+    }
+
+    @Test
+    public void compareToIfThisIsLess() {
+        MyString a = new MyString(new char[] {'a'});
+        MyString b = new MyString(new char[] {'a', 'b'});
+        Assertions.assertEquals(-1, a.compareTo(b));
+    }
+
+    @Test
+    public void testEqualsIfNull() {
+        MyString a = new MyString(new char[] {'a'});
+        MyString b = null;
+        Assertions.assertFalse(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsIfSame() {
+        MyString a = new MyString(new char[] {'a'});
+        MyString b = new MyString(new char[] {'a'});
+        Assertions.assertTrue(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsIfNotTheSame() {
+        MyString a = new MyString(new char[] {'a'});
+        MyString b = new MyString(new char[] {'A'});
+        Assertions.assertFalse(a.equals(b));
+    }
 }
