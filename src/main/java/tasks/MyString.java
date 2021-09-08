@@ -1,17 +1,18 @@
 package tasks;
 
+
 /**
  * MyString
  */
 public class MyString {
-    private String string;
+    private final char[] data;
 
     /**
      * MyString
      * @param chars char[]
      */
     public MyString(char[] chars) {
-        string = new String(chars);
+        data = chars;
     }
 
     /**
@@ -23,7 +24,7 @@ public class MyString {
      * @return a String argument.
      */
     public String toString() {
-        return string;
+        return new String(data);
     }
 
     /**
@@ -35,28 +36,27 @@ public class MyString {
      * @return the length of the sequence of characters represented by this object.
      */
     public int length() {
-        return string.length();
+        return data.length;
     }
 
     /**
      * Converts the string to a new character array and gets a char at the @param index position.
      *
      * @cpu O(1)
-     * @ram O(n), n = chars.length
+     * @ram O(1)
      *
      * @param index int argument
      * @return a char at the @param index.
      */
     public char charAt(int index) {
-        char[] chars = string.toCharArray();
-        return chars[index];
+        return data[index];
     }
 
     /**
      * Compares two strings lexicographically.
      *
-     * @cpu O(n), n = thisChars.length
-     * @ram O(n), thisChars.length / thatChars.length
+     * @cpu O(n), data.length / that.data.length
+     * @ram O(1)
      *
      * @param that a String argument of MyString.
      * @return -1 if string lexicographically less than that.string,
@@ -64,27 +64,25 @@ public class MyString {
      *          1 if string is greater than that.string.
      */
     public int compareTo(MyString that) {
-        char[] thisChars = string.toCharArray();
-        char[] thatChars = that.string.toCharArray();
         int length = 0;
-        if (thisChars.length <= thatChars.length) {
-            length = thisChars.length;
+        if (this.data.length <= that.data.length) {
+            length = this.data.length;
         } else {
-            length = thatChars.length;
+            length = that.data.length;
         }
-        if (thisChars.length == 0 && thatChars.length > 0) {
+        if (this.data.length == 0 && that.data.length > 0) {
             return -1;
         }
-        if (thatChars.length == 0 && thisChars.length > 0) {
+        if (that.data.length == 0 && this.data.length > 0) {
             return 1;
         }
         for (int i = 0; i < length; i++) {
-            if ((int) thisChars[i] < (int) thatChars[i]
-                    || (int) thisChars[i] == (int) thatChars[i] && thisChars.length < thatChars.length) {
+            if ((int) this.data[i] < (int) that.data[i]
+                    || (int) this.data[i] == (int) that.data[i] && this.data.length < that.data.length) {
                 return -1;
             }
-            if ((int) thisChars[i] > (int) thatChars[i]
-                    || (int) thisChars[i] == (int) thatChars[i] && thisChars.length > thatChars.length) {
+            if ((int) this.data[i] > (int) that.data[i]
+                    || (int) this.data[i] == (int) that.data[i] && this.data.length > that.data.length) {
                 return 1;
             }
         }
@@ -92,30 +90,37 @@ public class MyString {
     }
 
     /**
-     * Compares this string to the specified object.
+     * Compares this object to the specified object.
      *
      * @cpu O(1)
-     * @ram O(1)
+     * @ram O(n) data.length / that.data.length
      *
      * @param that a String argument of the MyString class.
      * @return true if the given object represents a String equivalent to this string, false otherwise.
      */
     public boolean equals(MyString that) {
-        return that != null && string.equals(that.string);
+        if (data.length == that.data.length) {
+            for (int i = 0; i < data.length; i++) {
+                return (int) data[i] == (int) that.data[i];
+            }
+        }
+        return false;
     }
 
     /**
      * Creates a new object using string concatenation.
      *
-     * @cpu O(1)
-     * @ram O(n), n = c.length
+     * @cpu O(n + m), n = a.data.length m = b.data.length
+     * @ram O(n + m), n = a.data.length m = b.data.length
      *
      * @param a an object of MyString
      * @param b an object of MyString
      * @return a new object of MyString.
      */
     public static MyString plus(MyString a, MyString b) {
-        String c = a.toString() + b.toString();
-        return new MyString(c.toCharArray());
+        char[] result = new char[a.data.length + b.data.length];
+        System.arraycopy(a.data, 0, result, 0, a.data.length);
+        System.arraycopy(b.data, 0, result, a.data.length, b.data.length);
+        return new MyString(result);
     }
 }

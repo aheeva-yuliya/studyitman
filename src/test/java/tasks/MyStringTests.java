@@ -54,10 +54,17 @@ class MyStringTests {
     }
 
     @Test
-    public void testEqualsIfNull() {
+    public void testEqualsIfNot() {
         MyString a = new MyString(new char[] {'a'});
-        MyString b = null;
+        MyString b = new MyString(new char[]{});
         Assertions.assertFalse(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsIfTrue() {
+        MyString a = new MyString(new char[] {'a', 'b'});
+        MyString b = new MyString(new char[]{'a', 'b'});
+        Assertions.assertTrue(a.equals(b));
     }
 
     @Test

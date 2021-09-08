@@ -32,7 +32,7 @@ public class ArrayList {
     /**
      * ArrayList
      *
-     * @cpu O(1)
+     * @cpu O(n), n = @param that array.length
      * @ram O(n), n = @param that array.length
      *
      * @param that a class object
@@ -74,7 +74,7 @@ public class ArrayList {
      * int[] and a new instance variable "array" and copies all the elements
      * if the instance variables "size" and "array".length are equal.
      *
-     * @cpu O(1)
+     * @cpu O(n), n = instance variable "size"
      * @ram O(n), n = instance variable "size"
      *
      * @param element int argument
@@ -103,7 +103,7 @@ public class ArrayList {
     /**
      * Creates a new int[] and copies all elements from the instance variable "array".
      *
-     * @cpu O(1)
+     * @cpu O(n), n = instance variable "size"
      * @ram O(n), n = instance variable "size"
      *
      * @return int[] with all copied elements.
@@ -117,7 +117,7 @@ public class ArrayList {
     /**
      * Removes the element at the position @param index.
      *
-     * @cpu O(1)
+     * @cpu O(n), n = instance variable "size"
      * @ram O(n), n = instance variable "size"
      *
      * @param index int argument
@@ -175,7 +175,7 @@ public class ArrayList {
     /**
      * Creates a new object of the class depending on the @param argument.
      *
-     * @cpu O(1)
+     * @cpu O(n), n = elements.length
      * @ram O(n), n = elements.length
      *
      * @param elements variable arguments list
