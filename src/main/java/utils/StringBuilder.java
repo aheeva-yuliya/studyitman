@@ -49,7 +49,11 @@ public class StringBuilder {
         char[] chars = new char[size];
         System.arraycopy(data, 0, chars, 0, size);
         MyString a = new MyString(chars);
-        chars = s.toCharArray();
+        if (s == null) {
+            chars = new char[]{};
+        } else {
+            chars = s.toCharArray();
+        }
         MyString b = new MyString(chars);
         data = MyString.plus(a,b).toString().toCharArray();
         size = data.length;

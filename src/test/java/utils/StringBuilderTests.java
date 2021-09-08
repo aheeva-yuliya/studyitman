@@ -22,6 +22,14 @@ class StringBuilderTests {
     }
 
     @Test
+    public void appendStringIsNull() {
+        StringBuilder stringBuilder = new StringBuilder(1);
+        stringBuilder.append(null);
+        Assertions.assertNotNull(stringBuilder.toString());
+    }
+
+
+    @Test
     public void appendStringTwoStrings() {
         StringBuilder stringBuilder = new StringBuilder(1);
         stringBuilder.append("first word");
