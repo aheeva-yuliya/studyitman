@@ -96,6 +96,12 @@ class MyStringTests {
     }
 
     @Test
+    public void testEqualsIfNull() {
+        MyString a = new MyString(new char[] {'a'});
+        Assertions.assertFalse(a.equals(null));
+    }
+
+    @Test
     public void plusEquals() {
         MyString a = new MyString(new char[] {'a', 'b', 'c'});
         MyString b = new MyString(new char[] {'d', 'e', 'f','g'});

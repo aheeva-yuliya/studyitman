@@ -99,7 +99,7 @@ public class MyString {
      * @return true if the given object represents a String equivalent to this string, false otherwise.
      */
     public boolean equals(MyString that) {
-        if (data.length == that.data.length) {
+        if (that != null && data.length == that.data.length) {
             for (int i = 0; i < data.length; i++) {
                 if ((int) data[i] != (int) that.data[i]) {
                     return false;
