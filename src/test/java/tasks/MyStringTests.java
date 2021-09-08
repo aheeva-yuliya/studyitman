@@ -68,6 +68,20 @@ class MyStringTests {
     }
 
     @Test
+    public void testEqualsIfContainsSame() {
+        MyString a = new MyString(new char[] {'t', 'e', 's', 't', '2'});
+        MyString b = new MyString(new char[]{'t', 'e', 's', 't', '1'});
+        Assertions.assertFalse(a.equals(b));
+    }
+
+    @Test
+    public void testEqualsIfContainsSameAll() {
+        MyString a = new MyString(new char[] {'t', 'e', 's', 't', '2'});
+        MyString b = new MyString(new char[]{'t', 'e', 's', 't', '2'});
+        Assertions.assertTrue(a.equals(b));
+    }
+
+    @Test
     public void testEqualsIfSame() {
         MyString a = new MyString(new char[] {'a'});
         MyString b = new MyString(new char[] {'a'});

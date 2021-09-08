@@ -101,8 +101,11 @@ public class MyString {
     public boolean equals(MyString that) {
         if (data.length == that.data.length) {
             for (int i = 0; i < data.length; i++) {
-                return (int) data[i] == (int) that.data[i];
+                if ((int) data[i] != (int) that.data[i]) {
+                    return false;
+                }
             }
+            return true;
         }
         return false;
     }
