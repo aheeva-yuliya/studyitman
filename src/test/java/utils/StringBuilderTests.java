@@ -25,7 +25,7 @@ class StringBuilderTests {
     public void appendStringIsNull() {
         StringBuilder stringBuilder = new StringBuilder(1);
         stringBuilder.append(null);
-        Assertions.assertNotNull(stringBuilder.toString());
+        Assertions.assertEquals(stringBuilder.toString(), "null");
     }
 
 

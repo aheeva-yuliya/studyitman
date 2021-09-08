@@ -46,12 +46,12 @@ public class StringBuilder {
      * @return a reference to the current StringBuilder.
      */
     public StringBuilder append(String s) {
-        if (s == null) {
-            return this;
-        }
         char[] chars = new char[size];
         System.arraycopy(data, 0, chars, 0, size);
         MyString a = new MyString(chars);
+        if (s == null) {
+            s = "null";
+        }
         chars = s.toCharArray();
         MyString b = new MyString(chars);
         data = MyString.plus(a,b).toString().toCharArray();
