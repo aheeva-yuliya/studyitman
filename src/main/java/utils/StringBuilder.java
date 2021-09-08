@@ -46,17 +46,21 @@ public class StringBuilder {
      * @return a reference to the current StringBuilder.
      */
     public StringBuilder append(String s) {
-        char[] chars = new char[size];
-        System.arraycopy(data, 0, chars, 0, size);
-        MyString a = new MyString(chars);
         if (s == null) {
             s = "null";
         }
-        chars = s.toCharArray();
-        MyString b = new MyString(chars);
-        data = MyString.plus(a,b).toString().toCharArray();
-        size = data.length;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (size == data.length) {
+                char[] temp = new char[size * 2];
+                System.arraycopy(data, 0, temp, 0, size);
+                data = temp;
+            }
+            data[size++] = chars[i];
+
+        }
         return this;
+
     }
 
     /**
@@ -129,7 +133,9 @@ public class StringBuilder {
      * @return a new String from the sequence of characters currently contained in the character array argument.
      */
     public String toString() {
-        return new String(data);
+        char[] chars = new char[size];
+        System.arraycopy(data, 0, chars, 0, size );
+        return new String(chars);
     }
 
 }
