@@ -39,8 +39,8 @@ public class StringBuilder {
     /**
      * Appends the characters from the @param String to the current StringBuilder.
      *
-     * @cpu O(n), n = chars.length задать этот вопрос
-     * @ram O(n), n = chars.length
+     * @cpu O(n), n = size
+     * @ram O(m), m = s.length
      *
      * @param s String argument
      * @return a reference to the current StringBuilder.
@@ -127,8 +127,8 @@ public class StringBuilder {
     /**
      * Creates a new String from the sequence of characters currently contained in the character array argument.
      *
-     * @cpu O(1)
-     * @ram O(n) n = data.length
+     * @cpu O(n), n = size
+     * @ram O(n) n = size
      *
      * @return a new String from the sequence of characters currently contained in the character array argument.
      */
