@@ -1,5 +1,7 @@
 package utils;
 
+import tasks.MyString;
+
 /**
  * StringBuilder
  */
@@ -37,17 +39,20 @@ public class StringBuilder {
     /**
      * Appends the characters from the @param String to the current StringBuilder.
      *
-     * @cpu O(n), n = chars.length
+     * @cpu O(n), n = chars.length задать этот вопрос
      * @ram O(n), n = chars.length
      *
      * @param s String argument
      * @return a reference to the current StringBuilder.
      */
     public StringBuilder append(String s) {
-        char[] chars = s.toCharArray();
-        size = chars.length;
-        data = new char[chars.length];
-        System.arraycopy(chars, 0, data, 0, chars.length);
+        char[] chars = new char[size];
+        System.arraycopy(data, 0, chars, 0, size);
+        MyString a = new MyString(chars);
+        chars = s.toCharArray();
+        MyString b = new MyString(chars);
+        data = MyString.plus(a,b).toString().toCharArray();
+        size = data.length;
         return this;
     }
 

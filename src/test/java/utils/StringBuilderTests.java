@@ -22,6 +22,15 @@ class StringBuilderTests {
     }
 
     @Test
+    public void appendStringTwoStrings() {
+        StringBuilder stringBuilder = new StringBuilder(1);
+        stringBuilder.append("first word");
+        stringBuilder.append(", ");
+        stringBuilder.append("second word");
+        Assertions.assertEquals(stringBuilder.toString(), "first word, second word");
+    }
+
+    @Test
     public void appendBoolean() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(false);
@@ -47,6 +56,20 @@ class StringBuilderTests {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(3650078654L);
         assertEquals(stringBuilder.toString(), "3650078654");
+    }
+
+    @Test
+    public void appendStringDifferentTypes() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("types: ");
+        stringBuilder.append(false);
+        stringBuilder.append(", ");
+        stringBuilder.append(1);
+        stringBuilder.append(", ");
+        stringBuilder.append(2.6789);
+        stringBuilder.append(", ");
+        stringBuilder.append(10000000000L);
+        Assertions.assertEquals(stringBuilder.toString(), "types: false, 1, 2.6789, 10000000000");
     }
 
     @Test
