@@ -74,7 +74,7 @@ public class ArrayList {
      * int[] and a new instance variable "array" and copies all the elements
      * if the instance variables "size" and "array".length are equal.
      *
-     * @cpu O(n), n = instance variable "size"
+     * @cpu O(1)
      * @ram O(n), n = instance variable "size"
      *
      * @param element int argument

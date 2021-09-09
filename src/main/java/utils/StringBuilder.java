@@ -39,7 +39,7 @@ public class StringBuilder {
     /**
      * Appends the characters from the @param String to the current StringBuilder.
      *
-     * @cpu O(n), n = size
+     * @cpu O(m), m = s.length
      * @ram O(m), m = s.length
      *
      * @param s String argument
