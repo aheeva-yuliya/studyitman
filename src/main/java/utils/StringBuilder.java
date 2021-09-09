@@ -1,7 +1,5 @@
 package utils;
 
-import tasks.MyString;
-
 /**
  * StringBuilder
  */
@@ -50,13 +48,13 @@ public class StringBuilder {
             s = "null";
         }
         char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
+        for (char aChar : chars) {
             if (size == data.length) {
                 char[] temp = new char[size * 2];
                 System.arraycopy(data, 0, temp, 0, size);
                 data = temp;
             }
-            data[size++] = chars[i];
+            data[size++] = aChar;
 
         }
         return this;

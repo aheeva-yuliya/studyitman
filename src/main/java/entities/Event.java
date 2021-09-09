@@ -4,10 +4,10 @@ package entities;
  * Event
  */
 public class Event {
-    private int year;
-    private int month;
-    private int day;
-    private String name;
+    private final int year;
+    private final int month;
+    private final int day;
+    private final String name;
 
     /**
      * Event

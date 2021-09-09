@@ -41,28 +41,28 @@ class StringBuilderTests {
     @Test
     public void appendBoolean() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(false);
+        Assertions.assertSame(stringBuilder, stringBuilder.append(false));
         assertEquals(stringBuilder.toString(), "false");
     }
 
     @Test
     public void appendInt() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(365);
+        Assertions.assertSame(stringBuilder,stringBuilder.append(365));
         assertEquals(stringBuilder.toString(), "365");
     }
 
     @Test
     public void appendDouble() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(3.65);
+        Assertions.assertSame(stringBuilder,stringBuilder.append(3.65));
         assertEquals(stringBuilder.toString(), "3.65");
     }
 
     @Test
     public void appendLong() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(3650078654L);
+        Assertions.assertSame(stringBuilder,stringBuilder.append(3650078654L));
         assertEquals(stringBuilder.toString(), "3650078654");
     }
 

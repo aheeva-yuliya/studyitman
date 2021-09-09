@@ -4,11 +4,11 @@ package entities;
  * Statistic
  */
 public class Statistic {
-    private int min;
-    private int max;
-    private long count;
-    private double average;
-    private double median;
+    private final int min;
+    private final int max;
+    private final long count;
+    private final double average;
+    private final double median;
 
     /**
      * Statistic

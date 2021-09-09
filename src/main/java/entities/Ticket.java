@@ -4,8 +4,8 @@ package entities;
  * Ticket
  */
 public class Ticket {
-    private int number;
-    private String place;
+    private final int number;
+    private final String place;
 
     /**
      * Ticket

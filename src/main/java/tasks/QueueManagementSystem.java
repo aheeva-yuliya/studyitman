@@ -2,13 +2,14 @@ package tasks;
 
 import collections.ArrayList;
 import entities.Ticket;
+
 /**
  * QueueManagementSystem.
  */
 public class QueueManagementSystem {
-    private String place;
+    private final String place;
     private int total;
-    private ArrayList visits = ArrayList.of(0);
+    private final ArrayList visits = ArrayList.of(0);
     private int byDay;
 
     /**

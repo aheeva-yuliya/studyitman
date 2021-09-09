@@ -64,7 +64,7 @@ public class MyString {
      *          1 if string is greater than that.string.
      */
     public int compareTo(MyString that) {
-        int length = 0;
+        int length;
         if (this.data.length <= that.data.length) {
             length = this.data.length;
         } else {
