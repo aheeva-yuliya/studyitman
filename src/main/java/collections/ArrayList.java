@@ -1,5 +1,7 @@
 package collections;
 
+import utils.StringBuilder;
+
 /**
  * ArrayList
  */
@@ -186,5 +188,27 @@ public class ArrayList {
         arrayList.size = elements.length;
         System.arraycopy(elements, 0, arrayList.array, 0, elements.length);
         return arrayList;
+    }
+
+    /**
+     * Returns a String object representing the specified int[] from the instance variable array of ArrayList.
+     *
+     * @cpu O(n * m), n = "size" and m = s.length from StringBuilder
+     * @ram O(m), m = the resulting String from StringBuilder
+     *
+     * @return a String object.
+     */
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for (int i = 0; i < size - 1; i++) {
+            stringBuilder.append(array[i]);
+            stringBuilder.append(", ");
+        }
+        if (size - 1 >= 0) {
+            stringBuilder.append(array[size - 1]);
+        }
+        stringBuilder.append("]");
+        return stringBuilder.toString();
     }
 }

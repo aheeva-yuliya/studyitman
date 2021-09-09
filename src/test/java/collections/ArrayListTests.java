@@ -230,4 +230,22 @@ class ArrayListTests {
         b.add(5);
         Assertions.assertTrue(b.equals(a));
     }
+
+    @Test
+    public void testToStringFromStringBuilder() {
+        ArrayList a = ArrayList.of(8, 9, 7, 6, 2, 3, 5, 4);
+        Assertions.assertEquals("[8, 9, 7, 6, 2, 3, 5, 4]", a.toString());
+    }
+
+    @Test
+    public void testToStringFromStringBuilderWithEmpyArray() {
+        ArrayList a = ArrayList.of();
+        Assertions.assertEquals("[]", a.toString());
+    }
+
+    @Test
+    public void testToStringFromStringBuilderWithArrayOfOneElement() {
+        ArrayList a = ArrayList.of(1);
+        Assertions.assertEquals("[1]", a.toString());
+    }
 }
