@@ -10,7 +10,7 @@ public class ArrayList {
     private int size;
 
     /**
-     *ArrayList
+     * Creates an object of ArrayList with the length of int[] array equals 16.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -20,7 +20,7 @@ public class ArrayList {
     }
 
     /**
-     * ArrayList
+     * Creates an object of ArrayList with the length of int[] array equals to @param capacity.
      *
      * @cpu O(1)
      * @ram O(n), n = @param capacity

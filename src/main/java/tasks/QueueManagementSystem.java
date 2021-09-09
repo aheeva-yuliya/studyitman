@@ -13,7 +13,7 @@ public class QueueManagementSystem {
     private int byDay;
 
     /**
-     * QueueManagementSystem
+     * Creates an object of QueueManagementSystem
      * @param place a String argument
      */
     public QueueManagementSystem(String place) {

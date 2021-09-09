@@ -8,7 +8,10 @@ public class StringBuilder {
     private int size;
 
     /**
-     * StringBuilder default constructor
+     * Creates an object of StringBuilder with the length of char[] data equals 16.
+     *
+     * @cpu O(1)
+     * @ram O(1)
      */
     public StringBuilder() {
         data = new char[16];
@@ -16,6 +19,10 @@ public class StringBuilder {
 
     /**
      * The constructor creates an object with a data field length equals to the @param capacity
+     *
+     * @cpu O(1)
+     * @ram O(n), n = capacity
+     *
      * @param capacity int argument
      */
     public StringBuilder(int capacity) {

@@ -8,7 +8,7 @@ public class MyString {
     private final char[] data;
 
     /**
-     * MyString
+     * MyString constructor
      * @param chars char[]
      */
     public MyString(char[] chars) {
