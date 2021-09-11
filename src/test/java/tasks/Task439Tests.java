@@ -74,7 +74,7 @@ class Task439Tests {
     }
 
     @Test
-    public void findLast1_10_3__2020_10_2() {
+    public void findLastOfTwo() {
         Event[] events = new Event[] {
                 new Event(1, 10, 3, "0"),
                 new Event(2020, 10, 2, "1")

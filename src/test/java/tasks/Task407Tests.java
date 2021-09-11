@@ -47,8 +47,8 @@ class Task407Tests {
                 {7, 1, 5, 4}
         };
         int[][] expected = new int[][] {
-                {4, 5, 6, 2}, // 17
-                {7, 1, 5, 4}, // 17
+                {4, 5, 6, 2},
+                {7, 1, 5, 4},
                 {1, 2, 3, 3}
         };
         Task407.sortMatrixRowsDesc(matrix);

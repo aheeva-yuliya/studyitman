@@ -4,6 +4,7 @@ package tasks;
  * Task407
  */
 public class Task407 {
+
     /**
      * Sorts the rows in descending order depending on the sum of rows elements.
      *

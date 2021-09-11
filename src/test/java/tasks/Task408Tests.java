@@ -87,7 +87,7 @@ class Task408Tests {
     }
 
     @Test
-    public void sortEvents1_10_3__2020_10_2() {
+    public void sortEventsOfTwo() {
         Event[] events = new Event[] {
                 new Event(1, 10, 3, "0"),
                 new Event(2020, 10, 2, "1")
@@ -100,7 +100,7 @@ class Task408Tests {
     }
 
     @Test
-    public void sortEvents1_10_3__2020_10_2__1_11_2() {
+    public void sortEventsOfThree() {
         Event[] events = new Event[] {
                 new Event(1, 10, 3, "0"),
                 new Event(2020, 10, 2, "1"),

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Task433Tests {
 
     @Test
-    public void gcd_36_64() {
+    public void gcdHaveMaxDiv() {
         long a = 36;
         long b = 64;
         long expected = 4;
@@ -18,7 +18,7 @@ class Task433Tests {
     }
 
     @Test
-    public void gcd_975_10875() {
+    public void gcdHaveMaxDivAnother() {
         long a = 975;
         long b = 10875;
         long expected = 75;
@@ -28,7 +28,7 @@ class Task433Tests {
     }
 
     @Test
-    public void gcd_975986433786_10875() {
+    public void gcdHaveOnlyOneDiv() {
         long a = 975986433786L;
         long b = 108758765342L;
         long expected = 2;
@@ -38,7 +38,7 @@ class Task433Tests {
     }
 
     @Test
-    public void gcd_999999797_108758765342() {
+    public void gcdHaveOneAsADiv() {
         long a = 999999797L;
         long b = 108758765342L;
         long expected = 1;

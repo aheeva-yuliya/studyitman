@@ -4,8 +4,9 @@ package tasks;
  * Task432
  */
 public class Task432 {
+
     /**
-     * Calcs all unique prime divisors.
+     * Calculates all unique prime divisors.
      *
      * @cpu O(sqrt(n))
      * @ram O(1)
