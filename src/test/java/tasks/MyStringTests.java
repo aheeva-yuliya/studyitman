@@ -109,4 +109,12 @@ class MyStringTests {
         MyString actual = MyString.plus(a,b);
         Assertions.assertTrue(expected.equals(actual));
     }
+
+    @Test
+    public void myStringChangeAnElement() {
+        char[] chars = new char[] {'a', 'b', 'c'};
+        MyString a = new MyString(chars);
+        chars[0] = 'd';
+        Assertions.assertEquals("abc", a.toString());
+    }
 }

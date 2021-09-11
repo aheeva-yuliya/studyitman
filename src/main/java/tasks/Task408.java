@@ -19,7 +19,7 @@ public class Task408 {
         for (int n = events.length; n > 1; n--) {
             for (int i = 1; i < n; i++) {
                 int compare = events[i - 1].compareTo(events[i]);
-                if (compare == 1) {
+                if (compare > 0) {
                     Event temp = events[i - 1];
                     events[i - 1] = events[i];
                     events[i] = temp;

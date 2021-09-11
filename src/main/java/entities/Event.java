@@ -104,9 +104,9 @@ public class Event {
      * @ram O(1)
      *
      * @param that Event object
-     * @return int 1 if the current object happened later than the param one
+     * @return a positive if the current object happened later than the param one
      *         int 0 if the current object happened on the same date
-     *         int -1 if the current object happened before the param one.
+     *         a negative number if the current object happened before the param one.
      */
     public int compareTo(Event that) {
         if (this.year > that.year || this.year == that.year && this.month > that.month

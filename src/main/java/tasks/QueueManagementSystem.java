@@ -14,6 +14,10 @@ public class QueueManagementSystem {
 
     /**
      * Creates an object of QueueManagementSystem
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
      * @param place a String argument
      */
     public QueueManagementSystem(String place) {
@@ -62,12 +66,12 @@ public class QueueManagementSystem {
      * Creates an attendance list by day.
      *
      * @cpu O(1)
-     * @ram O(n), n = days of attendance
+     * @ram O(n), n = the length of instance variable visits
      *
      * @return a new object of the ArrayList class.
      */
     public ArrayList getVisitsByDay() {
         visits.set(visits.size() - 1, byDay);
-        return ArrayList.of(visits.toArray());
+        return new ArrayList(visits);
     }
 }

@@ -20,10 +20,10 @@ public class ArrayList {
     }
 
     /**
-     * Creates an object of ArrayList with the length of int[] array equals to @param capacity.
+     * Creates an object of ArrayList with the length of int[] array equals to the parameter capacity.
      *
      * @cpu O(1)
-     * @ram O(n), n = @param capacity
+     * @ram O(n), n = parameter capacity
      *
      * @param capacity int argument
      */
@@ -34,8 +34,8 @@ public class ArrayList {
     /**
      * ArrayList
      *
-     * @cpu O(n), n = @param that array.length
-     * @ram O(n), n = @param that array.length
+     * @cpu O(n), n = parameter that array.length
+     * @ram O(n), n = parameter that array.length
      *
      * @param that a class object
      */
@@ -46,7 +46,7 @@ public class ArrayList {
     }
 
     /**
-     * Sets the value equals to the @param element to the index of the array equals to the @param index.
+     * Sets the value equals to the parameter element to the index of the array equals to the parameter index.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -59,7 +59,7 @@ public class ArrayList {
     }
 
     /**
-     * Gets the value of an array element from the index which equals to @param index.
+     * Gets the value of an array element from the index which equals to parameter index.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -72,12 +72,12 @@ public class ArrayList {
     }
 
     /**
-     * Adds the value of the @param element to the end of the existing array. Creates a new temporary
+     * Adds the value of the parameter element to the end of the existing array. Creates a new temporary
      * int[] and a new instance variable "array" and copies all the elements
      * if the instance variables "size" and "array".length are equal.
      *
      * @cpu O(1)
-     * @ram O(n), n = instance variable "size"
+     * @ram O(1)
      *
      * @param element int argument
      */
@@ -117,26 +117,23 @@ public class ArrayList {
     }
 
     /**
-     * Removes the element at the position @param index.
+     * Removes the element at the position of parameter index.
      *
      * @cpu O(n), n = instance variable "size"
-     * @ram O(n), n = instance variable "size"
+     * @ram O(1)
      *
      * @param index int argument
      * @return the deleted element.
      */
     public int remove(int index){
         int value = array[index];
-        int[] temp = new int[size - 1];
-        System.arraycopy(array, 0, temp, 0, index);
-        System.arraycopy(array, index + 1, temp, index,size - index - 1);
-        array = temp;
+        System.arraycopy(array, index + 1, array, index,size - index - 1);
         size--;
         return value;
     }
 
     /**
-     * Compares two objects.
+     * Indicates whether some other object is "equal to" this one .
      *
      * @cpu O(n), n = instance variable "size"
      * @ram O(1)
@@ -175,7 +172,7 @@ public class ArrayList {
     }
 
     /**
-     * Creates a new object of the class depending on the @param argument.
+     * Creates a new object of the class depending on the parameter argument.
      *
      * @cpu O(n), n = elements.length
      * @ram O(n), n = elements.length
@@ -193,8 +190,8 @@ public class ArrayList {
     /**
      * Returns a String object representing the specified int[] from the instance variable array of ArrayList.
      *
-     * @cpu O(n * m), n = "size" and m = s.length from StringBuilder
-     * @ram O(m), m = the resulting String from StringBuilder
+     * @cpu O(n), n = size
+     * @ram O(n), n = size
      *
      * @return a String object.
      */

@@ -18,7 +18,7 @@ public class StringBuilder {
     }
 
     /**
-     * The constructor creates an object with a data field length equals to the @param capacity
+     * The constructor creates an object with a data field length equals to the parameter capacity
      *
      * @cpu O(1)
      * @ram O(n), n = capacity
@@ -42,7 +42,7 @@ public class StringBuilder {
     }
 
     /**
-     * Appends the characters from the @param String to the current StringBuilder.
+     * Appends the characters from the parameter String to the current StringBuilder.
      *
      * @cpu O(m), m = s.length
      * @ram O(m), m = s.length
@@ -70,7 +70,7 @@ public class StringBuilder {
 
     /**
      * Creates a String from the specified boolean.
-     * Appends the String representation of the @param x to the current StringBuilder.
+     * Appends the String representation of the parameter x to the current StringBuilder.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -85,7 +85,7 @@ public class StringBuilder {
 
     /**
      * Creates a String from the specified integer.
-     * Appends the String representation of the @param x to the current StringBuilder.
+     * Appends the String representation of the parameter x to the current StringBuilder.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -100,7 +100,7 @@ public class StringBuilder {
 
     /**
      * Creates a String from the specified double argument.
-     * Appends the String representation of the @param x to the current StringBuilder.
+     * Appends the String representation of the parameter x to the current StringBuilder.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -115,7 +115,7 @@ public class StringBuilder {
 
     /**
      * Creates a String from the specified long.
-     * Appends the String representation of the @param x to the current StringBuilder.
+     * Appends the String representation of the parameter x to the current StringBuilder.
      *
      * @cpu O(1)
      * @ram O(1)

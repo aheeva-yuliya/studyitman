@@ -8,18 +8,23 @@ public class MyString {
     private final char[] data;
 
     /**
-     * MyString constructor
+     * Creates an object of MyString by coping all elements from the parameter chars.
+     *
+     * @cpu O(n), n = chars.length
+     * @ram O(n), n = chars.length
+     *
      * @param chars char[]
      */
     public MyString(char[] chars) {
-        data = chars;
+        data = new char[chars.length];
+        System.arraycopy(chars, 0, data, 0, chars.length);
     }
 
     /**
      * Gets an instance variable String from the field of the class.
      *
-     * @cpu O(1)
-     * @ram O(1)
+     * @cpu O(n), n = data.length
+     * @ram O(n), n = data.length
      *
      * @return a String argument.
      */
@@ -40,7 +45,7 @@ public class MyString {
     }
 
     /**
-     * Converts the string to a new character array and gets a char at the @param index position.
+     * Converts the string to a new character array and gets a char at the parameter index position.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -55,13 +60,13 @@ public class MyString {
     /**
      * Compares two strings lexicographically.
      *
-     * @cpu O(n), data.length / that.data.length
+     * @cpu O(n), n = the smallest of two lengths
      * @ram O(1)
      *
      * @param that a String argument of MyString.
-     * @return -1 if string lexicographically less than that.string,
-     *          0 if the strings are equal,
-     *          1 if string is greater than that.string.
+     * @return a negative number if string lexicographically less than that.string,
+     *         0 if the strings are equal,
+     *         a positive number if string is greater than that.string.
      */
     public int compareTo(MyString that) {
         int length;
@@ -92,8 +97,8 @@ public class MyString {
     /**
      * Compares this object to the specified object.
      *
-     * @cpu O(1)
-     * @ram O(n) data.length / that.data.length
+     * @cpu O(n), n = data.length
+     * @ram O(1)
      *
      * @param that a String argument of the MyString class.
      * @return true if the given object represents a String equivalent to this string, false otherwise.

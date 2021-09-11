@@ -19,7 +19,7 @@ class ArrayListTests {
     }
 
     @Test
-    public void getAllElements() {
+    public void getAnElementFromTheFirstIndex() {
         ArrayList a = new ArrayList(3);
         a.add(5);
         a.add(10);
@@ -65,7 +65,7 @@ class ArrayListTests {
     }
 
     @Test
-    public void removeOneElement() {
+    public void removeFromTheFirstIndex() {
         ArrayList a = new ArrayList(4);
         a.add(1);
         a.add(2);
@@ -78,7 +78,20 @@ class ArrayListTests {
     }
 
     @Test
-    public void removeTwoElements() {
+    public void removeFromLastIndex() {
+        ArrayList a = new ArrayList(4);
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        a.add(4);
+        int b = a.remove(3);
+        int[] expected = new int[] {1, 2, 3};
+        Assertions.assertArrayEquals(expected, a.toArray());
+        Assertions.assertEquals(4, b);
+    }
+
+    @Test
+    public void removeFromTheFirstAndZeroIndexes() {
         ArrayList a = new ArrayList(4);
         a.add(1);
         a.add(2);

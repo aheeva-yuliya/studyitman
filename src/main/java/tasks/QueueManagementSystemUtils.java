@@ -29,7 +29,7 @@ public class QueueManagementSystemUtils {
     /**
      * Calculates the average number of tickets issued from all queuing systems.
      *
-     * @cpu O(1)
+     * @cpu O(n), n = systems.length
      * @ram O(1)
      *
      * @param systems QueueManagementSystem[]
@@ -142,10 +142,11 @@ public class QueueManagementSystemUtils {
     }
 
     /**
-     * Calculates statistic by day.
+     * Calculates statistics by days.
      *
-     * @cpu O(n * m), n = systems.length m = number of days
-     * @ram O(n), n = systems.length
+     * @cpu O(m * n^2), n = number of systems and m = number of days
+     *                  (min, max, count, average - O(n); median - O(n^2); for line183 - O(m))
+     * @ram O(n * m), n = systems.length m = number of days
      *
      * @param systems QueueManagementSystem[]
      * @return Statistic[] with information by day.
@@ -185,7 +186,7 @@ public class QueueManagementSystemUtils {
             long count = calcCount(forStatistics[i]);
             double average = calcAverageByDay(forStatistics[i]);
             double median = calcMedianByDay(forStatistics[i]);
-            statistics[i] = new Statistic(min,max,count,average,median);
+            statistics[i] = new Statistic(min, max, count, average, median);
         }
         return statistics;
     }
