@@ -1,15 +1,13 @@
-package tasks;
+package utils;
 
 import entities.Event;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class Task408Tests {
+class ArrayUtilsTests {
 
     @Test
-    public void sortEventsYear() {
+    public void bubbleSortEventsYear() {
         Event[] events = new Event[] {
             new Event(1991, 9, 8, "0"),
             new Event(1992, 2, 20, "1"),
@@ -19,12 +17,12 @@ class Task408Tests {
         expected[0] = events[0];
         expected[1] = events[1];
         expected[2] = events[2];
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
-    public void sortEventsMonth() {
+    public void bubbleSortEventsMonth() {
         Event[] events = new Event[] {
             new Event(1991, 9, 8, "0"),
             new Event(1991, 2, 20, "1"),
@@ -34,12 +32,12 @@ class Task408Tests {
         expected[0] = events[1];
         expected[1] = events[2];
         expected[2] = events[0];
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
-    public void sortEventsDay() {
+    public void bubbleSortEventsDay() {
         Event[] events = new Event[] {
                 new Event(1991, 9, 8, "0"),
                 new Event(1991, 9, 20, "1"),
@@ -49,12 +47,12 @@ class Task408Tests {
         expected[0] = events[0];
         expected[1] = events[2];
         expected[2] = events[1];
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
-    public void sortEventsSameDay() {
+    public void bubbleSortEventsSameDay() {
         Event[] events = new Event[] {
                 new Event(1991, 9, 8, "0"),
                 new Event(1991, 9, 20, "1"),
@@ -64,30 +62,30 @@ class Task408Tests {
         expected[0] = events[0];
         expected[1] = events[2];
         expected[2] = events[1];
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
-    public void sortEventsEmpty() {
+    public void bubbleSortEventsEmpty() {
         Event[] events = new Event[] {};
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertNotNull(events);
     }
 
     @Test
-    public void sortEventsOne() {
+    public void bubbleSortEventsOne() {
         Event[] events = new Event[] {
             new Event(1991, 9, 8, "this")
         };
         Event[] expected = new Event[events.length];
         expected[0] = events[0];
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
-    public void sortEventsOfTwo() {
+    public void bubbleSortEventsOfTwo() {
         Event[] events = new Event[] {
                 new Event(1, 10, 3, "0"),
                 new Event(2020, 10, 2, "1")
@@ -95,12 +93,12 @@ class Task408Tests {
         Event[] expected = new Event[events.length];
         expected[0] = events[0];
         expected[1] = events[1];
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
 
     @Test
-    public void sortEventsOfThree() {
+    public void bubbleSortEventsOfThree() {
         Event[] events = new Event[] {
                 new Event(1, 10, 3, "0"),
                 new Event(2020, 10, 2, "1"),
@@ -110,7 +108,7 @@ class Task408Tests {
         expected[0] = events[0];
         expected[1] = events[2];
         expected[2] = events[1];
-        Task408.sort(events);
+        ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
 }
