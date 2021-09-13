@@ -15,7 +15,10 @@ public class CountingSortTask {
      * @return an array containing at position "i" the number of elements equal to "i" in the original array.
      */
     public static int[] count(int[] array) {
-        int max = 0;
+        if(array.length == 0) {
+            return new int[]{};
+        }
+        int max = Integer.MIN_VALUE;
         for (int j : array) {
             if (j > max) {
                 max = j;
