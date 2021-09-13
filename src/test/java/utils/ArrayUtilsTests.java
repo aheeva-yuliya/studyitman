@@ -111,4 +111,18 @@ class ArrayUtilsTests {
         ArrayUtils.bubbleSort(events);
         Assertions.assertArrayEquals(expected, events);
     }
+
+    @Test
+    public void bubbleSortSomeSameElements() {
+        int[] a = new int[] {9, 8, 3, 3, 5, 7};
+        int[] expected = new int[a.length];
+        expected[0] = a[2];
+        expected[1] = a[3];
+        expected[2] = a[4];
+        expected[3] = a[5];
+        expected[4] = a[1];
+        expected[5] = a[0];
+        ArrayUtils.bubbleSort(a);
+        Assertions.assertArrayEquals(expected, a);
+    }
 }
