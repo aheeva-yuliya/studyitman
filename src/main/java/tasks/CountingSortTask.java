@@ -50,8 +50,10 @@ public class CountingSortTask {
      * @cpu O(n^2), n = array.length
      *              for line 58 O(n) * for line 59 array[i] = maximum array.length - 1 - O(n)
      *              add line 62 O(1)
-     *              toArray line 66  O(n)
-     * @ram O(n), n = array.length - 1
+     *              toArray line 66  O(n^2)
+     * @ram O(n^2)  Each element could be (array.length - 1) times.
+     *              arrayList line 61  maximum ≈ O(n^2)
+     *              toArray line 68 O(n^2) maximum array.length * array.length - 1.
      *
      * @param array int[]
      * @return int[] with numbers in ascending order
@@ -64,5 +66,15 @@ public class CountingSortTask {
             }
         }
         return arrayList.toArray();
+    }
+
+    /**
+     * вопрос по реализации всех методов
+     * @param array int[]
+     */
+    public static void sort(int[] array) {
+        int[] ints = count(array);
+        ints = restore(ints);
+        System.arraycopy(ints, 0, array, 0, array.length);
     }
 }
