@@ -8,7 +8,7 @@ import entities.Event;
 public class ArrayUtils {
 
     /**
-     * Sorts by ascending date
+     * Sorts the objects of the parameter events by ascending date.
      *
      * @cpu O(n^2)
      * @ram O(1)
@@ -29,7 +29,7 @@ public class ArrayUtils {
     }
 
     /**
-     * Sorts the elements of the parameter int[] array in ascending order
+     * Sorts the elements of the parameter int[] array in ascending order.
      *
      * @cpu O(n^2)
      * @ram O(1)
@@ -44,6 +44,32 @@ public class ArrayUtils {
                     array[i - 1] = array[i];
                     array[i] = t;
                 }
+            }
+        }
+    }
+
+    /**
+     * Sorts the elements of the parameter int[] array in ascending order.
+     *
+     * @cpu O(n + m), n = array.length, m = max(array)
+     * @ram O(m)
+     *
+     * @param array int[]
+     */
+    public static void countingSort(int[] array) {
+        int max = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            }
+        }
+        int[] cnt = new int[max + 1];
+        for (int i = 0; i < array.length; i++) {
+            cnt[array[i]]++;
+        }
+        for (int i = 0, j = 0; i < cnt.length; i++) {
+            for (int k = cnt[i]; k > 0; k--) {
+                array[j++] = i;
             }
         }
     }

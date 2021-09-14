@@ -115,14 +115,16 @@ class ArrayUtilsTests {
     @Test
     public void bubbleSortSomeSameElements() {
         int[] a = new int[] {9, 8, 3, 3, 5, 7};
-        int[] expected = new int[a.length];
-        expected[0] = a[2];
-        expected[1] = a[3];
-        expected[2] = a[4];
-        expected[3] = a[5];
-        expected[4] = a[1];
-        expected[5] = a[0];
+        int[] expected = new int[] {3, 3, 5, 7, 8, 9};
         ArrayUtils.bubbleSort(a);
+        Assertions.assertArrayEquals(expected, a);
+    }
+
+    @Test
+    public void countingSort() {
+        int[] a = new int[] {9, 3, 7, 3, 2, 8, 1, 6, 6, 3};
+        int[] expected = new int[] {1, 2, 3, 3, 3, 6, 6, 7, 8, 9};
+        ArrayUtils.countingSort(a);
         Assertions.assertArrayEquals(expected, a);
     }
 }
