@@ -121,9 +121,24 @@ class ArrayUtilsTests {
     }
 
     @Test
+    public void countingSortIfZeroElements() {
+        int[] a = new int[] {};
+        ArrayUtils.countingSort(a);
+        Assertions.assertNotNull(a);
+    }
+
+    @Test
     public void countingSort() {
         int[] a = new int[] {9, 3, 7, 3, 2, 8, 1, 6, 6, 3};
         int[] expected = new int[] {1, 2, 3, 3, 3, 6, 6, 7, 8, 9};
+        ArrayUtils.countingSort(a);
+        Assertions.assertArrayEquals(expected, a);
+    }
+
+    @Test
+    public void countSortLongNumbers() {
+        int[] a = new int[] {2147483647, 2146483648, 2147483647, 2147483647, 2147483646};
+        int[] expected = new int[] {2146483648, 2147483646, 2147483647, 2147483647,2147483647};
         ArrayUtils.countingSort(a);
         Assertions.assertArrayEquals(expected, a);
     }

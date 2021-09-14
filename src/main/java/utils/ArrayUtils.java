@@ -1,5 +1,6 @@
 package utils;
 
+import collections.ArrayList;
 import entities.Event;
 
 /**
@@ -10,10 +11,9 @@ public class ArrayUtils {
     /**
      * Sorts the objects of the parameter events by ascending date.
      *
-     * @cpu O(n^2)
-     * @ram O(1)
-     *
      * @param events Event[]
+     * @cpu O(n ^ 2)
+     * @ram O(1)
      */
     public static void bubbleSort(Event[] events) {
         for (int n = events.length; n > 1; n--) {
@@ -31,10 +31,9 @@ public class ArrayUtils {
     /**
      * Sorts the elements of the parameter int[] array in ascending order.
      *
-     * @cpu O(n^2)
-     * @ram O(1)
-     *
      * @param array int[]
+     * @cpu O(n ^ 2)
+     * @ram O(1)
      */
     public static void bubbleSort(int[] array) {
         for (int n = array.length; n > 1; n--) {
@@ -51,26 +50,42 @@ public class ArrayUtils {
     /**
      * Sorts the elements of the parameter int[] array in ascending order.
      *
-     * @cpu O(n + m), n = array.length, m = max(array)
-     * @ram O(m)
-     *
+     * @cpu O()
+     * @ram O()
      * @param array int[]
+     *
      */
     public static void countingSort(int[] array) {
-        int max = 0;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
         for (int i = 0; i < array.length; i++) {
             if (max < array[i]) {
                 max = array[i];
             }
-        }
-        int[] cnt = new int[max + 1];
-        for (int i = 0; i < array.length; i++) {
-            cnt[array[i]]++;
-        }
-        for (int i = 0, j = 0; i < cnt.length; i++) {
-            for (int k = cnt[i]; k > 0; k--) {
-                array[j++] = i;
+            if (min > array[i]) {
+                min = array[i];
             }
         }
+        int minMax = min;
+        int[] cnt = new int[max - min + 1];
+        for (int j = 0; j < cnt.length; j++) {
+            int count = 0;
+            for (int k = 0; k < array.length; k++) {
+                if (array[k] == minMax) {
+                    count++;
+                }
+            }
+            cnt[j] = count;
+            minMax++;
+        }
+        int m = 0;
+        for (int i = 0; i < cnt.length; i++) {
+            for (int j = 0; j < cnt[i]; j++) {
+                array[m] = min;
+                m++;
+            }
+            min++;
+        }
+
     }
 }

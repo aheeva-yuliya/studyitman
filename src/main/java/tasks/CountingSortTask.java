@@ -20,7 +20,7 @@ public class CountingSortTask {
         if(array.length == 0) {
             return new int[]{};
         }
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         for (int j : array) {
             if (j > max) {
                 max = j;
