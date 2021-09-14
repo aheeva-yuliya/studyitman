@@ -26,4 +26,17 @@ class CountingSortTaskTests {
         int[] expected = new int[] {0, 0, 9};
         Assertions.assertArrayEquals(expected, CountingSortTask.count(array));
     }
+
+    @Test
+    public void restoreNormalCase() {
+        int[] array = new int[] {0, 2, 1, 1, 0, 1};
+        int[] expected = new int[] {1, 1, 2, 3, 5};
+        Assertions.assertArrayEquals(expected, CountingSortTask.restore(array));
+    }
+
+    @Test
+    public void restoreIfZeroElements() {
+        int[] array = new int[]{};
+        Assertions.assertNotNull(CountingSortTask.restore(array));
+    }
 }

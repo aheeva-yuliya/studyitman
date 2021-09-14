@@ -1,5 +1,7 @@
 package tasks;
 
+import collections.ArrayList;
+
 /**
  * CountingSortTask
  */
@@ -39,5 +41,28 @@ public class CountingSortTask {
             }
         }
         return count;
+    }
+
+    /**
+     * Returns an array that contains numbers in the range 0 through the parameter array length.
+     * Each number X is contained exactly array[X] times. The numbers in the resulting array are in ascending order.
+     *
+     * @cpu O(n^2), n = array.length
+     *              for line 58 O(n) * for line 59 array[i] = maximum array.length - 1 - O(n)
+     *              add line 62 O(1)
+     *              toArray line 66  O(n)
+     * @ram O(n), n = array.length - 1
+     *
+     * @param array int[]
+     * @return int[] with numbers in ascending order
+     */
+    public static int[] restore(int[] array) {
+        ArrayList arrayList = new ArrayList();
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i]; j++) {
+                arrayList.add(i);
+            }
+        }
+        return arrayList.toArray();
     }
 }
