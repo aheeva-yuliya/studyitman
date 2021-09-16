@@ -1,5 +1,6 @@
 package utils;
 
+import collections.ArrayList;
 import entities.Event;
 
 /**
@@ -76,5 +77,32 @@ public class ArrayUtils {
                 index += 1;
             }
         }
+    }
+
+    public static int[] distinct(int[] array) {
+        ArrayList arrayList = new ArrayList();
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int k : array) {
+            if (max < k) {
+                max = k;
+            }
+            if (min > k) {
+                min = k;
+            }
+        }
+        int[] cnt = new int[max - min + 1];
+        for (int element : array) {
+            cnt[element - min] += 1;
+        }
+        int element;
+        for (int j : array) {
+            element = j;
+            if (cnt[element - min] > 0) {
+                arrayList.add(element);
+                cnt[element - min] = 0;
+            }
+        }
+        return arrayList.toArray();
     }
 }

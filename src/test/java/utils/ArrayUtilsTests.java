@@ -1,5 +1,6 @@
 package utils;
 
+import benchmarks.SortBenchmark;
 import entities.Event;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -141,5 +142,32 @@ class ArrayUtilsTests {
         int[] expected = new int[] {2146483648, 2147483646, 2147483647, 2147483647,2147483647};
         ArrayUtils.countingSort(a);
         Assertions.assertArrayEquals(expected, a);
+    }
+
+    @Test
+    public void distinctNormalCase() {
+        int[] a = new int[] {1, 2, 5, -10, 3, 2, 1, 4};
+        int[] expected = new int[] {1, 2, 5, -10, 3, 4};
+        Assertions.assertArrayEquals(expected, ArrayUtils.distinct(a));
+    }
+
+    @Test
+    public void distinctLongNumbers() {
+        int[] a = new int[] {2147483647, 2146483648, 2147483647, 2147483647, 2147483646};
+        int[] expected = new int[] {2147483647, 2146483648, 2147483646};
+        Assertions.assertArrayEquals(expected, ArrayUtils.distinct(a));
+    }
+
+    @Test
+    public void distinctMaximumElements() {
+        int[] a = SortBenchmark.randomArray(1000000, 1, 2);
+        int[] expected = new int[] {1};
+        Assertions.assertArrayEquals(expected, ArrayUtils.distinct(a));
+    }
+
+    @Test
+    public void distinctIfZeroElements() {
+        int[] a = new int[] {};
+        Assertions.assertNotNull(ArrayUtils.distinct(a));
     }
 }
