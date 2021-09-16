@@ -188,4 +188,39 @@ class ArrayUtilsTests {
         int[] a = new int[] {2, 1, 2, 5, 1, 2, 3, 1, 5};
         Assertions.assertEquals(1, ArrayUtils.mostFrequent(a));
     }
+
+    @Test
+    public void countEqualsNormalCase() {
+        int[] a = new int[] {1, 1, 3, 2, 1};
+        int[] b = new int[] {4, 2, 1, 4, 1, 2};
+        Assertions.assertEquals(3, ArrayUtils.countEquals(a, b));
+    }
+
+    @Test
+    public void countEqualsNormalCaseAnother() {
+        int[] a = new int[] {5, 1, 3, 1, 1, 4, 6, 9, 8};
+        int[] b = new int[] {3, 6, 8, 0, 0, 5, 0, 0, 1, 0, 0, 0, 20};
+        Assertions.assertEquals(5, ArrayUtils.countEquals(a, b));
+    }
+
+    @Test
+    public void countEqualsIfZero() {
+        int[] a = new int[] {1, 1, 3, 2, 1};
+        int[] b = new int[] {5, 7, 9, 18, 54, 9};
+        Assertions.assertEquals(0, ArrayUtils.countEquals(a, b));
+    }
+
+    @Test
+    public void countEqualsIfAll() {
+        int[] a = new int[] {1, 1, 1, 1, 1};
+        int[] b = new int[] {1, 1, 1, 1, 1};
+        Assertions.assertEquals(5, ArrayUtils.countEquals(a, b));
+    }
+
+    @Test
+    public void countEqualsIfNull() {
+        int[] a = new int[] {};
+        int[] b = new int[] {};
+        Assertions.assertEquals(0, ArrayUtils.countEquals(a, b));
+    }
 }

@@ -10,8 +10,8 @@ public class CountingSortTask {
     /**
      * Counts how many times each element occurs in the parameter array.
      *
-     * @cpu O(n * m), n = the maximum value of the parameter array and m = the length of the parameter array
-     * @ram O(n), n = the maximum value of the parameter array
+     * @cpu O(n * m), m = the maximum value of the parameter array and n = the length of the parameter array
+     * @ram O(m), m = the maximum value of the parameter array
      *
      * @param array int[]
      * @return an array containing at position "i" the number of elements equal to "i" in the original array.
