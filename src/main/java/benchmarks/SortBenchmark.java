@@ -63,6 +63,11 @@ public class SortBenchmark {
      * bso2: 0.96s
      * bso3: 225.82s
      * bso4: 236.07s
+     *
+     * сsp1: 0.001s
+     * сsp2: OutOfMemory
+     * сsp3: 0.003s
+     * сsp4: OutOfMemory
      */
     public static void main(String[] args) {
         int[] bsp1 = randomArray(10000, -10000, 10000);
@@ -110,6 +115,30 @@ public class SortBenchmark {
         Event[] bso4 = randomEvents(100000, -1000000, 1000000);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bso4);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+
+        int[] csp1 = randomArray(10000, -10000, 10000);
+        start = System.currentTimeMillis();
+        ArrayUtils.countingSort(csp1);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+
+        int[] csp2 = randomArray(10000, -1000000000, 1000000000);
+        start = System.currentTimeMillis();
+        ArrayUtils.countingSort(csp2);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+
+        int[] csp3 = randomArray(100000, -10000, 10000);
+        start = System.currentTimeMillis();
+        ArrayUtils.countingSort(csp3);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+
+        int[] csp4 = randomArray(100000, -1000000000, 1000000000);
+        start = System.currentTimeMillis();
+        ArrayUtils.countingSort(csp4);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
     }

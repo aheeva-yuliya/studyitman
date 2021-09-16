@@ -1,6 +1,5 @@
 package utils;
 
-import collections.ArrayList;
 import entities.Event;
 
 /**
@@ -50,42 +49,32 @@ public class ArrayUtils {
     /**
      * Sorts the elements of the parameter int[] array in ascending order.
      *
-     * @cpu O()
-     * @ram O()
-     * @param array int[]
+     * @cpu O(n), n = array.length
+     * @ram O(m), m depends on minimum and maximum values of the parameter array
      *
+     * @param array int[]
      */
     public static void countingSort(int[] array) {
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
-        for (int i = 0; i < array.length; i++) {
-            if (max < array[i]) {
-                max = array[i];
+        for (int k : array) {
+            if (max < k) {
+                max = k;
             }
-            if (min > array[i]) {
-                min = array[i];
+            if (min > k) {
+                min = k;
             }
         }
-        int minMax = min;
         int[] cnt = new int[max - min + 1];
-        for (int j = 0; j < cnt.length; j++) {
-            int count = 0;
-            for (int k = 0; k < array.length; k++) {
-                if (array[k] == minMax) {
-                    count++;
-                }
-            }
-            cnt[j] = count;
-            minMax++;
+        for (int element : array) {
+            cnt[element - min] += 1;
         }
-        int m = 0;
+        int index = 0;
         for (int i = 0; i < cnt.length; i++) {
             for (int j = 0; j < cnt[i]; j++) {
-                array[m] = min;
-                m++;
+                array[index] = i + min;
+                index += 1;
             }
-            min++;
         }
-
     }
 }
