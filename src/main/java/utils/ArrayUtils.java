@@ -56,20 +56,10 @@ public class ArrayUtils {
      * @param array int[]
      */
     public static void countingSort(int[] array) {
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        for (int k : array) {
-            if (max < k) {
-                max = k;
-            }
-            if (min > k) {
-                min = k;
-            }
-        }
-        int[] cnt = new int[max - min + 1];
-        for (int element : array) {
-            cnt[element - min] += 1;
-        }
+        int[] minMax = findMinAndMax(array);
+        int min = minMax[0];
+        int max = minMax[1];
+        int[] cnt = count(array, min, max);
         int index = 0;
         for (int i = 0; i < cnt.length; i++) {
             for (int j = 0; j < cnt[i]; j++) {
@@ -79,8 +69,7 @@ public class ArrayUtils {
         }
     }
 
-    public static int[] distinct(int[] array) {
-        ArrayList arrayList = new ArrayList();
+    private static int[] findMinAndMax(int[] array) {
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
         for (int k : array) {
@@ -91,10 +80,32 @@ public class ArrayUtils {
                 min = k;
             }
         }
+        return new int[] {min, max};
+    }
+
+    private static int[] count(int[] array, int min, int max) {
         int[] cnt = new int[max - min + 1];
         for (int element : array) {
             cnt[element - min] += 1;
         }
+        return cnt;
+    }
+
+    /**
+     * Returns an array containing only unique elements of the parameter int[] array.
+     *
+     * @cpu O(n), n = array.length
+     * @ram O(m + n), m depends of the minimum and maximum values of the parameter array - line 108
+     *                n = array.length - size of ArrayList lines 104, 117
+     * @param array int[]
+     * @return an array containing only unique elements
+     */
+    public static int[] distinct(int[] array) {
+        ArrayList arrayList = new ArrayList();
+        int[] minMax = findMinAndMax(array);
+        int min = minMax[0];
+        int max = minMax[1];
+        int[] cnt = count(array, min, max);
         int element;
         for (int j : array) {
             element = j;
@@ -105,4 +116,37 @@ public class ArrayUtils {
         }
         return arrayList.toArray();
     }
+
+    /**
+     * Finds the number that occurs the most times in the parameter array.
+     *
+     * @cpu O(n + m), n = array.length - count line 135
+     *          m depends on the minimum and maximum values of the parameter array - line 138
+     * @ram O(m), m depends on the minimum and maximum values of the parameter array - line 138
+     *
+     * @param array int[]
+     * @return the number that occurs the most times.
+     *         If there are some then returns the minimum number found.
+     */
+    public static int mostFrequent(int[] array) {
+        int[] minMax = findMinAndMax(array);
+        int min = minMax[0];
+        int max = minMax[1];
+        int[] cnt = count(array, min, max);
+        int mostFrequentElement = max;
+        int times = 1;
+        for (int i = 0; i < cnt.length; i++) {
+            if (cnt[i] > times) {
+                times = cnt[i];
+                mostFrequentElement = i + min;
+            } else if (cnt[i] == times) {
+                int secondMost = i + min;
+                if (mostFrequentElement > secondMost) {
+                    mostFrequentElement = secondMost;
+                }
+            }
+        }
+        return mostFrequentElement;
+    }
+
 }

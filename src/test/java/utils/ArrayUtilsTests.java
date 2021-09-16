@@ -170,4 +170,22 @@ class ArrayUtilsTests {
         int[] a = new int[] {};
         Assertions.assertNotNull(ArrayUtils.distinct(a));
     }
+
+    @Test
+    public void mostFrequentFindIfAny() {
+        int[] a = new int[] {2, 1, 2, 5, 1, 2, 3, 1};
+        Assertions.assertEquals(1, ArrayUtils.mostFrequent(a));
+    }
+
+    @Test
+    public void mostFrequentFindIfItsMax() {
+        int[] a = new int[] {2, 1, 2, 5, 1, 2, 3, 1, 5, 5, 5};
+        Assertions.assertEquals(5, ArrayUtils.mostFrequent(a));
+    }
+
+    @Test
+    public void mostFrequentFindIfItsMin() {
+        int[] a = new int[] {2, 1, 2, 5, 1, 2, 3, 1, 5};
+        Assertions.assertEquals(1, ArrayUtils.mostFrequent(a));
+    }
 }
