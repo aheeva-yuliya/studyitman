@@ -223,4 +223,25 @@ class ArrayUtilsTests {
         int[] b = new int[] {};
         Assertions.assertEquals(0, ArrayUtils.countEquals(a, b));
     }
+
+    @Test
+    public void countEqualsBigNumbers() {
+        int[] a = new int[] {-1000000000};
+        int[] b = new int[] {1000000000};
+        Assertions.assertEquals(0, ArrayUtils.countEquals(a, b));
+    }
+
+    @Test
+    public void countEqualsMaximumLengthAndZeroEquality() {
+        int[] a = SortBenchmark.randomArray(1000000, 0, 1000000);
+        int[] b = SortBenchmark.randomArray(1000000, -1000000, 0);
+        Assertions.assertEquals(0, ArrayUtils.countEquals(a, b));
+    }
+
+    @Test
+    public void countEqualsMaximumLength() {
+        int[] a = SortBenchmark.randomArray(1000000, 0, 1000);
+        int[] b = SortBenchmark.randomArray(1000000, 0, 1000);
+        Assertions.assertEquals(1000000, ArrayUtils.countEquals(a, b));
+    }
 }

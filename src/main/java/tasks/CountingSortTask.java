@@ -69,7 +69,11 @@ public class CountingSortTask {
     }
 
     /**
-     * вопрос по реализации всех методов
+     * Sorts the elements of the parameter int[] array in ascending order.
+     *
+     * @cpu O(n^2), n = array.length - line 80 restore
+     * @ram O(n^2), n = array.length - line 80 restore
+     *
      * @param array int[]
      */
     public static void sort(int[] array) {

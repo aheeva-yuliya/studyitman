@@ -50,8 +50,8 @@ public class ArrayUtils {
     /**
      * Sorts the elements of the parameter int[] array in ascending order.
      *
-     * @cpu O(n), n = array.length
-     * @ram O(m), m depends on minimum and maximum values of the parameter array
+     * @cpu O(n + m), n = array.length and m = maximum - minimum values of the parameter array
+     * @ram O(m), m = maximum - minimum values of the parameter array
      *
      * @param array int[]
      */
@@ -86,7 +86,9 @@ public class ArrayUtils {
     private static int[] count(int[] array, int min, int max) {
         int[] cnt = new int[max - min + 1];
         for (int element : array) {
-            cnt[element - min] += 1;
+            if (element <= max && element >= min) {
+                cnt[element - min] += 1;
+            }
         }
         return cnt;
     }
@@ -95,7 +97,7 @@ public class ArrayUtils {
      * Returns an array containing only unique elements of the parameter int[] array.
      *
      * @cpu O(n), n = array.length
-     * @ram O(m + n), m depends of the minimum and maximum values of the parameter array - line 108
+     * @ram O(m + n),  m = maximum - minimum values of the parameter array - line 108
      *                n = array.length - size of ArrayList lines 104, 117
      * @param array int[]
      * @return an array containing only unique elements
@@ -120,9 +122,9 @@ public class ArrayUtils {
     /**
      * Finds the number that occurs the most times in the parameter array.
      *
-     * @cpu O(n), n = array.length - count line 135 - findMinAndMax line 132
-     *          line 138 ?? O(1)
-     * @ram O(m), m depends on the minimum and maximum values of the parameter array - line 138
+     * @cpu O(n + m), n = array.length - count line 135 - findMinAndMax line 132
+     *                line 138  O(m) -  m = maximum - minimum values of the parameter array
+     * @ram O(m),  m = maximum - minimum values of the parameter array - line 135
      *
      * @param array int[]
      * @return the number that occurs the most times.
@@ -153,19 +155,21 @@ public class ArrayUtils {
      * Finds the number of elements that are contained in two arrays at the same time.
      *      Each element is counted once.
      *
-     * @cpu O(n + k), n = a.length k = b.length lines 164-165, lines 168-169
-     *                 line 172 O(1) ?
-     * @ram O(m), m depends on the min and max values of the parameters a and b - lines 169-170
+     * @cpu O(k + l + m), k = a.length, l = b.length, m = the smallest maximum - the greatest minimum
+     * @ram O(m), m = the smallest maximum - the greatest minimum
      *
      * @param a int[]
      * @param b int[]
      * @return the number of elements that are contained in two arrays at the same time.
      */
     public static int countEquals(int[] a, int[] b) {
-        int[] minMaxForA = findMinAndMax(a);
-        int[] minMaxForB = findMinAndMax(b);
-        int min = Math.min(minMaxForA[0], minMaxForB[0]);
-        int max = Math.max(minMaxForA[1], minMaxForB[1]);
+        int[] minMaxA = findMinAndMax(a);
+        int[] minMaxB = findMinAndMax(b);
+        int min = Math.max(minMaxA[0], minMaxB[0]);
+        int max = Math.min(minMaxA[1], minMaxB[1]);
+        if (min > max) {
+            return 0;
+        }
         int[] cntA = count(a, min, max);
         int[] cntB = count(b, min, max);
         int count = 0;

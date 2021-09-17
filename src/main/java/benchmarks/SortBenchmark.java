@@ -2,7 +2,6 @@ package benchmarks;
 
 import entities.Event;
 import utils.ArrayUtils;
-
 import java.util.Random;
 
 /**
