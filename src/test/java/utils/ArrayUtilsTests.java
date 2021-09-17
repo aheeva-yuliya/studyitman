@@ -244,4 +244,44 @@ class ArrayUtilsTests {
         int[] b = SortBenchmark.randomArray(1000000, 0, 1000);
         Assertions.assertEquals(1000000, ArrayUtils.countEquals(a, b));
     }
+
+    @Test
+    public void countingSortForEvents() {
+        Event[] events = new Event[] {
+                new Event(0, 0, 9, "something"),
+                new Event(0, 0, 8, "y"),
+                new Event(0, 0, 9, "l"),
+                new Event(0, 0, 20, "i")
+        };
+        Event[] expected = new Event[] {
+                new Event(0, 0, 8, "y"),
+                new Event(0, 0, 9, "l"),
+                new Event(0, 0, 9, "something"),
+                new Event(0, 0, 20, "i")
+        };
+        ArrayUtils.countingSort(events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertTrue(events[i].equals(expected[i]));
+        }
+    }
+
+    @Test
+    public void countingSortForEventsNormalCase() {
+        Event[] events = new Event[] {
+            new Event(2018, 8, 9, "something"),
+            new Event(1991, 9, 8, "y"),
+            new Event(2018, 8, 9, "l"),
+            new Event(1992, 2, 20, "i"),
+        };
+        Event[] expected = new Event[] {
+                new Event(1991, 9, 8, "y"),
+                new Event(1992, 2, 20, "i"),
+                new Event(2018, 8, 9, "l"),
+                new Event(2018, 8, 9, "something")
+        };
+        ArrayUtils.countingSort(events);
+        for (int i = 0; i < events.length; i++) {
+            Assertions.assertTrue(events[i].equals(expected[i]));
+        }
+    }
 }

@@ -182,4 +182,36 @@ public class ArrayUtils {
         }
         return count;
     }
+
+    /**
+     * Sorts the objects of the parameter events by counting sort.
+     *
+     * @cpu O(n + m), n = events.length
+     *     and m = maximum - minimum of the dates, each date equals to the number of days from the beginning of the era
+     * @ram O(n + m), n = events.length
+     *     and m = maximum - minimum of the dates, each date equals to the number of days from the beginning of the era
+     *
+     *  @param events Event[]
+     */
+    public static void countingSort(Event[] events) {
+        int[] dates = new int[events.length];
+        for (int i = 0; i < events.length; i++) {
+            dates[i] = events[i].getDay() + events[i].getMonth() * 31 + events[i].getYear() * 372;
+        }
+        int[] minMax = findMinAndMax(dates);
+        int min = minMax[0];
+        int max = minMax[1];
+        int[] cnt = count(dates, min, max);
+        for (int i = 1; i < cnt.length; i++) {
+            cnt[i] = cnt[i] + cnt[i - 1];
+        }
+        Event[] sorted = new Event[events.length];
+        int index;
+        for(int i = 0; i < dates.length; i++) {
+            index = cnt[dates[i] - min] - 1;
+            sorted[index] = events[i];
+            cnt[dates[i] - min]--;
+        }
+        System.arraycopy(sorted, 0, events, 0, events.length);
+    }
 }
