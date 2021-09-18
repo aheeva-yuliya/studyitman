@@ -207,7 +207,7 @@ public class ArrayUtils {
         }
         Event[] sorted = new Event[events.length];
         int index;
-        for(int i = 0; i < dates.length; i++) {
+        for(int i = dates.length - 1; i >= 0; i--) {
             index = cnt[dates[i] - min] - 1;
             sorted[index] = events[i];
             cnt[dates[i] - min]--;

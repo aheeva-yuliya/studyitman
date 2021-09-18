@@ -19,7 +19,9 @@ class ArrayUtilsTests {
         expected[1] = events[1];
         expected[2] = events[2];
         ArrayUtils.bubbleSort(events);
-        Assertions.assertArrayEquals(expected, events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertSame(expected[i], events[i]);
+        }
     }
 
     @Test
@@ -34,7 +36,9 @@ class ArrayUtilsTests {
         expected[1] = events[2];
         expected[2] = events[0];
         ArrayUtils.bubbleSort(events);
-        Assertions.assertArrayEquals(expected, events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertSame(expected[i], events[i]);
+        }
     }
 
     @Test
@@ -49,7 +53,9 @@ class ArrayUtilsTests {
         expected[1] = events[2];
         expected[2] = events[1];
         ArrayUtils.bubbleSort(events);
-        Assertions.assertArrayEquals(expected, events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertSame(expected[i], events[i]);
+        }
     }
 
     @Test
@@ -64,7 +70,9 @@ class ArrayUtilsTests {
         expected[1] = events[2];
         expected[2] = events[1];
         ArrayUtils.bubbleSort(events);
-        Assertions.assertArrayEquals(expected, events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertSame(expected[i], events[i]);
+        }
     }
 
     @Test
@@ -82,7 +90,9 @@ class ArrayUtilsTests {
         Event[] expected = new Event[events.length];
         expected[0] = events[0];
         ArrayUtils.bubbleSort(events);
-        Assertions.assertArrayEquals(expected, events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertSame(expected[i], events[i]);
+        }
     }
 
     @Test
@@ -95,7 +105,9 @@ class ArrayUtilsTests {
         expected[0] = events[0];
         expected[1] = events[1];
         ArrayUtils.bubbleSort(events);
-        Assertions.assertArrayEquals(expected, events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertSame(expected[i], events[i]);
+        }
     }
 
     @Test
@@ -110,7 +122,9 @@ class ArrayUtilsTests {
         expected[1] = events[2];
         expected[2] = events[1];
         ArrayUtils.bubbleSort(events);
-        Assertions.assertArrayEquals(expected, events);
+        for(int i = 0; i < events.length; i++) {
+            Assertions.assertSame(expected[i], events[i]);
+        }
     }
 
     @Test
@@ -253,15 +267,14 @@ class ArrayUtilsTests {
                 new Event(0, 0, 9, "l"),
                 new Event(0, 0, 20, "i")
         };
-        Event[] expected = new Event[] {
-                new Event(0, 0, 8, "y"),
-                new Event(0, 0, 9, "l"),
-                new Event(0, 0, 9, "something"),
-                new Event(0, 0, 20, "i")
-        };
+        Event[] expected = new Event[events.length];
+        expected[0] = events[1];
+        expected[1] = events[0];
+        expected[2] = events[2];
+        expected[3] = events[3];
         ArrayUtils.countingSort(events);
         for(int i = 0; i < events.length; i++) {
-            Assertions.assertTrue(events[i].equals(expected[i]));
+            Assertions.assertSame(expected[i], events[i]);
         }
     }
 
@@ -273,12 +286,11 @@ class ArrayUtilsTests {
             new Event(2018, 8, 9, "l"),
             new Event(1992, 2, 20, "i"),
         };
-        Event[] expected = new Event[] {
-                new Event(1991, 9, 8, "y"),
-                new Event(1992, 2, 20, "i"),
-                new Event(2018, 8, 9, "l"),
-                new Event(2018, 8, 9, "something")
-        };
+        Event[] expected = new Event[events.length];
+        expected[0] = events[1];
+        expected[1] = events[3];
+        expected[2] = events[0];
+        expected[3] = events[2];
         ArrayUtils.countingSort(events);
         for (int i = 0; i < events.length; i++) {
             Assertions.assertTrue(events[i].equals(expected[i]));
