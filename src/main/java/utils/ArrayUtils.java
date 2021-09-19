@@ -214,4 +214,30 @@ public class ArrayUtils {
         }
         System.arraycopy(sorted, 0, events, 0, events.length);
     }
+
+    /**
+     * Finds the index of the element of the parameter array equal to the parameter key.
+     *
+     * @cpu O(log(n))
+     * @ram O(1)
+     *
+     * @param array int[]
+     * @param key int argument
+     * @return the index of the element equal to key or -1 if there is no such element.
+     */
+    public static int binarySearch(int[] array, int key) {
+        int l = 0;
+        int r = array.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (key < array[m]) {
+                r = m - 1;
+            } else if (key > array[m]) {
+                l = m + 1;
+            } else {
+                return m;
+            }
+        }
+        return -1;
+    }
 }

@@ -296,4 +296,52 @@ class ArrayUtilsTests {
             Assertions.assertTrue(events[i].equals(expected[i]));
         }
     }
+
+    @Test
+    public void binarySearchAtZeroIndexOddLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80};
+        Assertions.assertEquals(0, ArrayUtils.binarySearch(array, 20));
+    }
+
+    @Test
+    public void binarySearchAtZeroIndexEvenLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90};
+        Assertions.assertEquals(0, ArrayUtils.binarySearch(array, 20));
+    }
+
+    @Test
+    public void binarySearchAtLastIndexOddLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80};
+        Assertions.assertEquals(6, ArrayUtils.binarySearch(array, 80));
+    }
+
+    @Test
+    public void binarySearchAtLastIndexEvenLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90};
+        Assertions.assertEquals(7, ArrayUtils.binarySearch(array, 90));
+    }
+
+    @Test
+    public void binarySearchAtMiddleIndexOddLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80};
+        Assertions.assertEquals(3, ArrayUtils.binarySearch(array, 50));
+    }
+
+    @Test
+    public void binarySearchAtMiddleIndexEvenLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90};
+        Assertions.assertEquals(3, ArrayUtils.binarySearch(array, 50));
+    }
+
+    @Test
+    public void binarySearchFromLeftEvenLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90};
+        Assertions.assertEquals(1, ArrayUtils.binarySearch(array, 30));
+    }
+
+    @Test
+    public void binarySearchFromRightOddLength() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90, 100};
+        Assertions.assertEquals(7, ArrayUtils.binarySearch(array, 90));
+    }
 }
