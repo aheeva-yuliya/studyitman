@@ -344,4 +344,27 @@ class ArrayUtilsTests {
         int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90, 100};
         Assertions.assertEquals(7, ArrayUtils.binarySearch(array, 90));
     }
+
+    @Test
+    public void binarySearchNoElement() {
+        int[] array = new int[] {1, 3, 5, 7};
+        Assertions.assertEquals(0, ArrayUtils.binarySearch(array, 1));
+        Assertions.assertEquals(-1, ArrayUtils.binarySearch(array, 0));
+        Assertions.assertEquals(-2, ArrayUtils.binarySearch(array, 2));
+        Assertions.assertEquals(-4, ArrayUtils.binarySearch(array, 6));
+        Assertions.assertEquals(3, ArrayUtils.binarySearch(array, 7));
+        Assertions.assertEquals(-5, ArrayUtils.binarySearch(array, 8));
+    }
+
+    @Test
+    public void binarySearchFromIndexToIndex() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90, 100};
+        Assertions.assertEquals(4, ArrayUtils.binarySearch(array, 1, 6, 60));
+    }
+
+    @Test
+    public void binarySearchFromIndexToIndexNoElement() {
+        int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90, 100};
+        Assertions.assertEquals(-5, ArrayUtils.binarySearch(array, 1, 6, 55));
+    }
 }

@@ -218,12 +218,14 @@ public class ArrayUtils {
     /**
      * Finds the index of the element of the parameter array equal to the parameter key.
      *
-     * @cpu O(log(n))
+     * @cpu O(log(n)) n = array.length
      * @ram O(1)
      *
      * @param array int[]
      * @param key int argument
-     * @return the index of the element equal to key or -1 if there is no such element.
+     * @return the index of the element equal to key or
+     *          -(insertionPoint + 1) if there is no such element, where insertionPoint equal to
+     *          the index at which the key element can be inserted while keeping the array sorted.
      */
     public static int binarySearch(int[] array, int key) {
         int l = 0;
@@ -238,6 +240,38 @@ public class ArrayUtils {
                 return m;
             }
         }
-        return -1;
+        return -(l + 1);
     }
+
+    /**
+     * Finds the index of the element of the parameter array equal to the parameter key
+     *      from the index equal to the parameter fromIndex to the index equal to the parameter toIndex.
+     *
+     * @cpu O(log(n)) n = array.length
+     * @ram O(1)
+     *
+     * @param array int[]
+     * @param key int argument
+     * @param fromIndex int argument = low bound of the search
+     * @param toIndex int argument = high bound of the search
+     * @return the index of the element equal to key or
+     *          -(insertionPoint + 1) if there is no such element, where insertionPoint equal to
+     *          the index at which the key element can be inserted while keeping the array sorted.
+     */
+    public static int binarySearch(int[] array, int fromIndex, int toIndex, int key) {
+        int l = fromIndex;
+        int r = toIndex;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (key < array[m]) {
+                r = m - 1;
+            } else if (key > array[m]) {
+                l = m + 1;
+            } else {
+                return m;
+            }
+        }
+        return -(l + 1);
+    }
+
 }
