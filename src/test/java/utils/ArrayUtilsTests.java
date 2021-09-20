@@ -373,4 +373,28 @@ class ArrayUtilsTests {
         int[] array = new int[] {4, 10, 11, 11, 12, 12, 15};
         Assertions.assertEquals(-5, ArrayUtils.binarySearch(array, 0, 4, 12));
     }
+
+    @Test
+    public void binarySearchSameElements() {
+        int[] array = new int[] {1, 2, 2, 2, 2, 3};
+        Assertions.assertEquals(1, ArrayUtils.binarySearch(array, 2));
+    }
+
+    @Test
+    public void binarySearchSameElementsAtMinIndex() {
+        int[] array = new int[] {2, 2, 2, 2, 2, 3};
+        Assertions.assertEquals(0, ArrayUtils.binarySearch(array, 2));
+    }
+
+    @Test
+    public void binarySearchSameElementsFindMinIndexInTheEnd() {
+        int[] array = new int[] {2, 2, 2, 2, 3, 3};
+        Assertions.assertEquals(4, ArrayUtils.binarySearch(array, 3));
+    }
+
+    @Test
+    public void binarySearchSameElementsFindMinIndexFromTo() {
+        int[] array = new int[] {2, 2, 2, 2, 3, 3};
+        Assertions.assertEquals(1, ArrayUtils.binarySearch(array, 1, 3, 2));
+    }
 }

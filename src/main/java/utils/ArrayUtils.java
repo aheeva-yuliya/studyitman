@@ -223,7 +223,7 @@ public class ArrayUtils {
      *
      * @param array int[]
      * @param key int argument
-     * @return the index of the element equal to key or
+     * @return the minimum index of the element equal to key or
      *          -(insertionPoint + 1) if there is no such element, where insertionPoint equal to
      *          the index at which the key element can be inserted while keeping the array sorted.
      */
@@ -237,7 +237,10 @@ public class ArrayUtils {
             } else if (key > array[m]) {
                 l = m + 1;
             } else {
-                return m;
+                while(m >= 0 && key == array[m]) {
+                    m--;
+                }
+                return m + 1;
             }
         }
         return -(l + 1);
@@ -254,7 +257,7 @@ public class ArrayUtils {
      * @param key int argument
      * @param fromIndex int argument = low bound of the search
      * @param toIndex int argument = high bound of the search
-     * @return the index of the element equal to key or
+     * @return the minimum index of the element equal to key or
      *          -(insertionPoint + 1) if there is no such element, where insertionPoint equal to
      *          the index at which the key element can be inserted while keeping the array sorted.
      */
@@ -268,7 +271,10 @@ public class ArrayUtils {
             } else if (key > array[m]) {
                 l = m + 1;
             } else {
-                return m;
+                while (m >= fromIndex && key == array[m]) {
+                    m--;
+                }
+                return m + 1;
             }
         }
         return -(l + 1);
