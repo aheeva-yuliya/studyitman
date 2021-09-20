@@ -260,7 +260,7 @@ public class ArrayUtils {
      */
     public static int binarySearch(int[] array, int fromIndex, int toIndex, int key) {
         int l = fromIndex;
-        int r = toIndex;
+        int r = toIndex - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
             if (key < array[m]) {
@@ -273,5 +273,4 @@ public class ArrayUtils {
         }
         return -(l + 1);
     }
-
 }

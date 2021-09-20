@@ -367,4 +367,10 @@ class ArrayUtilsTests {
         int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90, 100};
         Assertions.assertEquals(-5, ArrayUtils.binarySearch(array, 1, 6, 55));
     }
+
+    @Test
+    public void binarySearchFromIndexToIndexLastIndex() {
+        int[] array = new int[] {4, 10, 11, 11, 12, 12, 15};
+        Assertions.assertEquals(-5, ArrayUtils.binarySearch(array, 0, 4, 12));
+    }
 }
