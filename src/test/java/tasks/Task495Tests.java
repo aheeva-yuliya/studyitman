@@ -13,4 +13,15 @@ class Task495Tests {
         Assertions.assertEquals(6, Task495.solveByBinarySearch(a, 4));
     }
 
+    @Test
+    public void solveByBinarySearchIfNull() {
+        int[] a = new int[] {};
+        Assertions.assertEquals(0, Task495.solveByBinarySearch(a, 10));
+    }
+
+    @Test
+    public void solveByTwoPointers() {
+        int[] a = new int[] {1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 6, 6, 7, 8, 9, 9, 10};
+        Assertions.assertEquals(8, Task495.solveByTwoPointers(a, 6));
+    }
 }
