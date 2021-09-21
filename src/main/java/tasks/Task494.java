@@ -10,7 +10,7 @@ public class Task494 {
     /**
      * Counts the number of elements that are in array a equal to b[i].
      *
-     * @cpu O()
+     * @cpu O(m * log(n) * n) n = a.length m = b.length
      * @ram O(m), m = b.length
      *
      * @param a int[]
