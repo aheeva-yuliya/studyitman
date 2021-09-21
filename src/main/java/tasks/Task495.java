@@ -17,6 +17,9 @@ public class Task495 {
      * @return a number of pairs.
      */
     public static long solveByBinarySearch(int[] a, int k) {
+        if (a.length == 0) {
+            return 0;
+        }
         long result = 0;
         int key = a[0];
         key = k - key;

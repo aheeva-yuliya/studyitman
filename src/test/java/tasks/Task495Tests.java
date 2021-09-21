@@ -12,4 +12,5 @@ class Task495Tests {
         int[] a = new int[] {-1, 1, 1, 2, 2, 3, 5, 5, 5, 10};
         Assertions.assertEquals(6, Task495.solveByBinarySearch(a, 4));
     }
+
 }
