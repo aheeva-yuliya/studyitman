@@ -357,6 +357,12 @@ class ArrayUtilsTests {
     }
 
     @Test
+    public void binarySearchNoElementInTheMiddle() {
+        int[] array = new int[] {-1, 1, 1, 2, 3, 5, 5, 5, 10};
+        Assertions.assertEquals(-6, ArrayUtils.binarySearch(array, 4));
+    }
+
+    @Test
     public void binarySearchFromIndexToIndex() {
         int[] array = new int[] {20, 30, 40, 50, 60, 70, 80, 90, 100};
         Assertions.assertEquals(4, ArrayUtils.binarySearch(array, 1, 6, 60));
@@ -384,6 +390,12 @@ class ArrayUtilsTests {
     public void binarySearchSameElementsAtMinIndex() {
         int[] array = new int[] {2, 2, 2, 2, 2, 3};
         Assertions.assertEquals(0, ArrayUtils.binarySearch(array, 2));
+    }
+
+    @Test
+    public void binarySearchSameElementsAtFirstIndex() {
+        int[] array = new int[] {1, 2, 2, 2, 2, 3};
+        Assertions.assertEquals(1, ArrayUtils.binarySearch(array, 2));
     }
 
     @Test

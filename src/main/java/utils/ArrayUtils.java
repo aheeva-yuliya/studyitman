@@ -237,10 +237,11 @@ public class ArrayUtils {
             } else if (key > array[m]) {
                 l = m + 1;
             } else {
-                while(m >= 0 && key == array[m]) {
-                    m--;
+                if (m - 1 >= 0 && array[m - 1] == key) {
+                    r = m - 1;
+                } else {
+                    return m;
                 }
-                return m + 1;
             }
         }
         return -(l + 1);
@@ -271,10 +272,11 @@ public class ArrayUtils {
             } else if (key > array[m]) {
                 l = m + 1;
             } else {
-                while (m >= fromIndex && key == array[m]) {
-                    m--;
+                if (m - 1 >= fromIndex && array[m - 1] == key) {
+                    r = m - 1;
+                } else {
+                    return m;
                 }
-                return m + 1;
             }
         }
         return -(l + 1);
