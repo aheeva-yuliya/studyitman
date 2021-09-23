@@ -10,7 +10,7 @@ public class Task494 {
     /**
      * Counts the number of elements that are in array a equal to b[i].
      *
-     * @cpu O(m * log(n) * n) n = a.length m = b.length
+     * @cpu O(m * log(n) + n) ?? n = a.length m = b.length
      * @ram O(m), m = b.length
      *
      * @param a int[]
@@ -32,6 +32,38 @@ public class Task494 {
                 }
                 result[i] = count;
             }
+        }
+        return result;
+    }
+
+    /**
+     * Counts the number of elements that are in array a equal to b[i].
+     *
+     * @cpu O(m * n) n = a.length m = b.length
+     * @ram O(m), m = b.length
+     *
+     * @param a int[]
+     * @param b int[]
+     * @return an array of length m, where at the i-th position is the number of elements
+     *          that are in the array a equal to b[i].
+     */
+    public static int[] solveByTwoPointers(int[] a, int[] b) {
+        int[] result = new int[b.length];
+        int r = 0;
+        for (int i = 0; i < b.length; i++) {
+            int count = 0;
+            int j = r;
+            while (j < a.length && a[j] < b[i]) {
+                j++;
+            }
+            if (j < a.length && a[j] == b[i]) {
+                r = j;
+                while(j < a.length && a[j] == b[i]) {
+                    count++;
+                    j++;
+                }
+            }
+            result[i] = count;
         }
         return result;
     }
