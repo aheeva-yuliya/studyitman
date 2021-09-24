@@ -419,4 +419,12 @@ class ArrayUtilsTests {
         int[] expected = new int[] {1, 1, 2, 2, 3, 4, 5, 1};
         Assertions.assertArrayEquals(expected,r);
     }
+
+    @Test
+    public void mergeSortNormalCase() {
+        int[] a = new int[] {13, 9, 1, 4, 5, 2, 3, 9, 7, 0, 1};
+        int[] expected = new int[] {0, 1, 1, 2, 3, 4, 5, 7, 9, 9, 13};
+        ArrayUtils.mergeSort(a);
+        Assertions.assertArrayEquals(expected, a);
+    }
 }

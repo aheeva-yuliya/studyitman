@@ -312,4 +312,29 @@ public class ArrayUtils {
             }
         }
     }
+
+    public static void mergeSort(int[] a) {
+        int[] tmp;
+        int[] currentScr = a;
+        int[] t = new int[a.length];
+        int size = 1;
+        while (size < a.length) {
+            for (int i = 0; i < a.length; i += size * 2) {
+                int fromTo = i + size;
+                if (fromTo >= a.length) {
+                    fromTo = a.length - 1;
+                }
+                int to = i + size * 2;
+                if (to >= a.length) {
+                    to = a.length;
+                }
+                merge(currentScr, i, fromTo, currentScr, fromTo, to, t, i);
+            }
+            tmp = currentScr;
+            currentScr = t;
+            t = tmp;
+            size = size * 2;
+        }
+        a = currentScr;
+    }
 }
