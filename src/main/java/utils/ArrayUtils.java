@@ -281,4 +281,35 @@ public class ArrayUtils {
         }
         return -(l + 1);
     }
+
+    /**
+     * Copies values from array a (interval [aFrom, aTo)) and array b (interval [bFrom, bTo))
+     *          into array r (by interval [rFrom, rFrom + aTo - aFrom + bTo - bFrom).
+     *
+     * @cpu O(n) n = rFrom + aTo - aFrom + bTo - bFrom - rFrom
+     * @ram O(1)
+     *
+     * @param a int[] sorted in ascending order from position aFrom to position aTo
+     * @param aFrom int argument
+     * @param aTo int argument
+     * @param b int[] sorted in ascending order from position bFrom to position bTo
+     * @param bFrom int argument
+     * @param bTo int argument
+     * @param r int[]
+     * @param rFrom int argument
+     */
+    public static void merge(int[] a, int aFrom, int aTo, int[] b, int bFrom, int bTo, int[] r, int rFrom) {
+        int indexA = aFrom;
+        int indexB = bFrom;
+        int rTo = rFrom + aTo - aFrom + bTo - bFrom;
+        for (int i = rFrom; i < rTo; i++) {
+            if (indexA < aTo && (indexB >= bTo || a[indexA] < b[indexB])) {
+                r[i] = a[indexA];
+                indexA++;
+            } else {
+                r[i] = b[indexB];
+                indexB++;
+            }
+        }
+    }
 }

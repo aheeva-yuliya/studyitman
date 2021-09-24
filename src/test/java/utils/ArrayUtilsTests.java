@@ -409,4 +409,14 @@ class ArrayUtilsTests {
         int[] array = new int[] {2, 2, 2, 2, 3, 3};
         Assertions.assertEquals(1, ArrayUtils.binarySearch(array, 1, 3, 2));
     }
+
+    @Test
+    public void mergeNormalCase() {
+        int[] a = new int[] {100, 2, 4, 5, -7};
+        int[] b = new int[] {-7, 2, 3};
+        int[] r = new int[] {1, 1, 1, 1, 1, 1, 1, 1};
+        ArrayUtils.merge(a,1,4,b,1,3,r,2);
+        int[] expected = new int[] {1, 1, 2, 2, 3, 4, 5, 1};
+        Assertions.assertArrayEquals(expected,r);
+    }
 }
