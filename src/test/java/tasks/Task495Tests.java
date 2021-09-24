@@ -48,4 +48,10 @@ class Task495Tests {
         int[] a = new int[] {2, 2};
         Assertions.assertEquals(1, Task495.solveByTwoPointers(a, 4));
     }
+
+    @Test
+    public void solveByTwoPointersSameElements() {
+        int[] a = new int[] {-1, 1, 1, 2, 2, 3, 5, 5, 5, 10};
+        Assertions.assertEquals(6, Task495.solveByTwoPointers(a, 4));
+    }
 }
