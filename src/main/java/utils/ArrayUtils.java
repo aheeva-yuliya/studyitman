@@ -335,6 +335,6 @@ public class ArrayUtils {
             t = tmp;
             size = size * 2;
         }
-        a = currentScr;
+        System.arraycopy(currentScr, 0, a, 0, a.length);
     }
 }
