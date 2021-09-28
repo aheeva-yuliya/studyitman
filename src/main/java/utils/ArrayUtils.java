@@ -313,6 +313,14 @@ public class ArrayUtils {
         }
     }
 
+    /**
+     * Sorts the elements of the parameter int[] a in ascending order.
+     *
+     * @cpu O(nlog(n)) n = a.length
+     * @ram O(n), n = a.length
+     *
+     * @param a int[]
+     */
     public static void mergeSort(int[] a) {
         int[] tmp;
         int[] currentScr = a;
@@ -336,5 +344,69 @@ public class ArrayUtils {
             size = size * 2;
         }
         System.arraycopy(currentScr, 0, a, 0, a.length);
+    }
+
+    /**
+     * Copies objects from array a (interval [aFrom, aTo)) and array b (interval [bFrom, bTo))
+     *          into array r (by interval [rFrom, rFrom + aTo - aFrom + bTo - bFrom).
+     *
+     * @cpu O(n) n = rFrom + aTo - aFrom + bTo - bFrom - rFrom
+     * @ram O(1)
+     *
+     * @param a Event[] sorted in ascending order from position aFrom to position aTo
+     * @param aFrom int argument
+     * @param aTo int argument
+     * @param b Event[] sorted in ascending order from position bFrom to position bTo
+     * @param bFrom int argument
+     * @param bTo int argument
+     * @param r Event[]
+     * @param rFrom int argument
+     */
+    public static void merge(Event[] a, int aFrom, int aTo, Event[] b, int bFrom, int bTo, Event[] r, int rFrom) {
+        int indexA = aFrom;
+        int indexB = bFrom;
+        int rTo = rFrom + aTo - aFrom + bTo - bFrom;
+        for (int i = rFrom; i < rTo; i++) {
+            if (indexA < aTo && (indexB >= bTo || a[indexA].compareTo(b[indexB]) <= 0)) {
+                r[i] = a[indexA];
+                indexA++;
+            } else {
+                r[i] = b[indexB];
+                indexB++;
+            }
+        }
+    }
+
+    /**
+     * Sorts the parameter events array by ascending date.
+     *
+     * @cpu O(nlog(n)) n= events.length
+     * @ram O(n) n = events.length
+     *
+     * @param events Event[]
+     */
+    public static void mergeSort(Event[] events) {
+        Event[] tmp;
+        Event[] currentScr = events;
+        Event[] t = new Event[events.length];
+        int size = 1;
+        while (size < events.length) {
+            for (int i = 0; i < events.length; i += size * 2) {
+                int fromTo = i + size;
+                if (fromTo >= events.length) {
+                    fromTo = events.length - 1;
+                }
+                int to = i + size * 2;
+                if (to >= events.length) {
+                    to = events.length;
+                }
+                merge(currentScr, i, fromTo, currentScr, fromTo, to, t, i);
+            }
+            tmp = currentScr;
+            currentScr = t;
+            t = tmp;
+            size = size * 2;
+        }
+        System.arraycopy(currentScr, 0, events, 0, events.length);
     }
 }

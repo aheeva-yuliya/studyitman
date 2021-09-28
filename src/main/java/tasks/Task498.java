@@ -7,8 +7,8 @@ public class Task498 {
     /**
      * Calculates a moving average of every n parameter a array elements.
      *
-     * @cpu O(n * m) n = parameter n and m = a.length
-     * @ram O(m - n) n = parameter n and m = a.length
+     * @cpu O(n) n = a.length
+     * @ram O(n) n = a.length
      *
      * @param a double[]
      * @param n int argument
@@ -19,12 +19,18 @@ public class Task498 {
             return new double[0];
         }
         double[] result = new double[a.length - n + 1];
-        for (int i = 0; i < result.length; i++) {
-            double sum = 0;
-            for (int j = i; j < i + n; j++) {
-                sum += a[j];
+        double sum = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (i + 1 < n) {
+                sum = sum + a[i] / n;
+            } else {
+                if (i + 1 == n) {
+                    sum = sum + a[i] / n;
+                } else {
+                    sum = sum + a[i] / n - a[i - n] / n;
+                }
+                result[i + 1 - n] = sum;
             }
-            result[i] = sum / n;
         }
         return result;
     }

@@ -10,7 +10,7 @@ public class Task494 {
     /**
      * Counts the number of elements that are in array a equal to b[i].
      *
-     * @cpu O(m * log(n) + n) ?? n = a.length m = b.length
+     * @cpu O(m * log(n))  n = a.length m = b.length
      * @ram O(m), m = b.length
      *
      * @param a int[]
@@ -21,16 +21,15 @@ public class Task494 {
     public static int[] solveByBinarySearch(int[] a, int[] b) {
         int[] result = new int[b.length];
         for (int i = 0; i < b.length; i++) {
-            int index = ArrayUtils.binarySearch(a,b[i]);
-            if (index < 0) {
+            int indexMin = ArrayUtils.binarySearch(a,b[i]);
+            if (indexMin < 0) {
                 result[i] = 0;
             } else {
-                int count = 0;
-                while (index < a.length && a[index] == b[i]) {
-                    count++;
-                    index++;
+                int indexMax = ArrayUtils.binarySearch(a,b[i] + 1);
+                if (indexMax < 0) {
+                    indexMax = -indexMax - 1;
                 }
-                result[i] = count;
+                result[i] = indexMax - indexMin;
             }
         }
         return result;
@@ -39,7 +38,7 @@ public class Task494 {
     /**
      * Counts the number of elements that are in array a equal to b[i].
      *
-     * @cpu O(m * n) n = a.length m = b.length
+     * @cpu O(m * ??) n = a.length and m = b.length
      * @ram O(m), m = b.length
      *
      * @param a int[]
@@ -49,19 +48,17 @@ public class Task494 {
      */
     public static int[] solveByTwoPointers(int[] a, int[] b) {
         int[] result = new int[b.length];
-        int r = 0;
+        int point = 0;
         for (int i = 0; i < b.length; i++) {
             int count = 0;
-            int j = r;
-            while (j < a.length && a[j] < b[i]) {
-                j++;
+            if (i > 0 && b[i] == b[i - 1]) {
+                count = result[i - 1];
             }
-            if (j < a.length && a[j] == b[i]) {
-                r = j;
-                while(j < a.length && a[j] == b[i]) {
+            while (point < a.length && a[point] <= b[i]) {
+                if (a[point] == b[i]) {
                     count++;
-                    j++;
                 }
+                point++;
             }
             result[i] = count;
         }

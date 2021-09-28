@@ -8,7 +8,7 @@ public class Task499 {
     /**
      * Finds the number of subarrays in which the sum of elements equals to the parameter k.
      *
-     * @cpu O(n * k), k = parameter k and n = a.length
+     * @cpu O(n), n = a.length
      * @ram O(1)
      *
      * @param a int[]
@@ -17,15 +17,19 @@ public class Task499 {
      */
     public static int solve(int[] a, int k) {
         int result = 0;
-        for (int i = 0; i < a.length; i++) {
-            int r = i;
-            int sum = 0;
-            do {
-                sum += a[r];
+        int l = 0;
+        int r = 0;
+        int sum = 0;
+        while (l < a.length) {
+            if (sum < k && r < a.length) {
+                sum = sum + a[r];
                 r++;
-            } while (sum < k && r < a.length);
-            if (sum == k) {
-                result++;
+            } else {
+                if (sum == k) {
+                    result++;
+                }
+                sum = sum - a[l];
+                l++;
             }
         }
         return result;
