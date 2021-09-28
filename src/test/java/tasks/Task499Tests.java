@@ -36,6 +36,12 @@ class Task499Tests {
     }
 
     @Test
+    public void solveIfNo() {
+        int[] a = new int[] {1, 2, 5, 3, 2, 4, 2, 6};
+        Assertions.assertEquals(0,Task499.solve(a,0));
+    }
+
+    @Test
     public void solveIfSumLessThanAnArgument() {
         int[] a = new int[] {1, 2, 5, 3, 2, 4, 2, 6};
         Assertions.assertEquals(0,Task499.solve(a,100));

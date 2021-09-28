@@ -19,18 +19,18 @@ public class Task499 {
         int result = 0;
         int l = 0;
         int r = 0;
-        int sum = 0;
+        int sum;
         while (l < a.length) {
-            if (sum < k && r < a.length) {
-                sum = sum + a[r];
+            sum = a[l];
+            while (sum < k && r < a.length - 1) {
                 r++;
-            } else {
-                if (sum == k) {
-                    result++;
-                }
-                sum = sum - a[l];
-                l++;
+                sum = sum + a[r];
             }
+            if (sum == k) {
+                result++;
+            }
+            l++;
+            r = l;
         }
         return result;
     }
