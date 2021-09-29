@@ -9,7 +9,7 @@ public class Task495 {
     /**
      * Finds the number of pairs i and j for which i < j and a[i] + a[j] = k.
      *
-     * @cpu O(nlogn) n = a.length
+     * @cpu O(nlog(n)) n = a.length
      * @ram O(1)
      *
      * @param a int[]
@@ -24,16 +24,19 @@ public class Task495 {
         int j = a.length;
         for (int i = 0; i < j; i++) {
             int minIndex = ArrayUtils.binarySearch(a, k - a[i]);
-            if (minIndex > 0) {
-                j = minIndex;
-                int maxIndex = ArrayUtils.binarySearch(a, k - a[i] + 1);
-                if (maxIndex > 0) {
-                    result = result + maxIndex - 1 - minIndex;
+            if (minIndex >= 0) {
+                if (minIndex > i) {
+                    j = minIndex;
                 }
+                int maxIndex = ArrayUtils.binarySearch(a, k - a[i] + 1);
                 if (maxIndex < 0) {
                     maxIndex = -maxIndex - 1;
-                    result = result + maxIndex - minIndex;
                 }
+                if (minIndex <= i) {
+                    minIndex = i + 1;
+                    j = maxIndex;
+                }
+                result = result + maxIndex - minIndex;
             }
         }
         return result;

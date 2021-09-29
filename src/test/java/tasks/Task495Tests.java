@@ -7,8 +7,20 @@ class Task495Tests {
 
     @Test
     public void solveByBinarySearchNormalCase() {
-        int[] a = new int[] {-1, 1, 1, 2, 2, 3, 5, 5, 5, 10};
-        Assertions.assertEquals(6, Task495.solveByBinarySearch(a, 4));
+        int[] a = new int[] {-2, -1, 1, 1, 2, 2, 2, 2, 2, 3, 5, 5, 5, 10};
+        Assertions.assertEquals(15, Task495.solveByBinarySearch(a, 4));
+    }
+
+    @Test
+    public void solveByBinarySearchWithoutInsertionPoint() {
+        int[] a = new int[] {-2, -1, 1, 1, 2, 2, 2, 2, 2, 3, 4, 5, 5, 5, 10};
+        Assertions.assertEquals(15, Task495.solveByBinarySearch(a, 4));
+    }
+
+    @Test
+    public void solveByBinarySearchIfSame() {
+        int[] a = new int[] {2, 2, 2, 2, 2};
+        Assertions.assertEquals(10, Task495.solveByBinarySearch(a, 4));
     }
 
     @Test
