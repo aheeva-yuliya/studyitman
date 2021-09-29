@@ -1,5 +1,6 @@
 package collections;
 
+import utils.ArrayUtils;
 import utils.StringBuilder;
 
 /**
@@ -156,19 +157,32 @@ public class ArrayList {
     /**
      * Sorts all the elements in ArrayList in ascending order.
      *
-     * @cpu O(n^2), n = instance variable "size"
-     * @ram O(1)
+     * @cpu O(nlog(n)), n = instance variable "size"
+     * @ram O(n) n = instance variable "size"
      */
     public void sort() {
-        for (int n = size; n > 1; n--) {
-            for (int i = 1; i < n; i++) {
-                if (array[i - 1] > array[i]) {
-                    int t = array[i - 1];
-                    array[i - 1] = array[i];
-                    array[i] = t;
+        int[] tmp;
+        int[] currentScr = array;
+        int[] t = new int[this.size];
+        int size = 1;
+        while (size < this.size) {
+            for (int i = 0; i < this.size; i += size * 2) {
+                int fromTo = i + size;
+                if (fromTo >= this.size) {
+                    fromTo = this.size - 1;
                 }
+                int to = i + size * 2;
+                if (to >= this.size) {
+                    to = this.size;
+                }
+                ArrayUtils.merge(currentScr, i, fromTo, currentScr, fromTo, to, t, i);
             }
+            tmp = currentScr;
+            currentScr = t;
+            t = tmp;
+            size = size * 2;
         }
+        System.arraycopy(currentScr, 0, array, 0, this.size);
     }
 
     /**
