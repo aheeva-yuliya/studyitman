@@ -54,22 +54,21 @@ public class Task495 {
      */
     public static long solveByTwoPointers(int[] a, int k) {
         long count = 0;
-        int j = a.length - 1;
-        for (int i = 0; i < j; i++) {
-            while (a[i] + a[j] > k) {
-                j--;
+        int r = a.length - 1;
+        for (int i = 0; i < r; i++) {
+            while (i < r && a[i] + a[r] > k) {
+                r--;
             }
-            long pairs = 0;
-            while (i < j && a[i] + a[j] == k) {
-                pairs++;
-                j--;
+            while (i < r && a[i] + a[r] == k && a[i] != a[i + 1]) {
+                count++;
+                r--;
             }
-            long times = 1;
-            while (i < j && a[i + 1] == a[i]) {
-                times++;
-                i++;
+            int j = r;
+            while (i < r && a[i] + a[r] == k && a[i] == a[i + 1]) {
+                count++;
+                r--;
             }
-            count = count + pairs * times;
+            r = j;
         }
         return count;
     }

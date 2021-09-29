@@ -37,8 +37,8 @@ class Task495Tests {
 
     @Test
     public void solveByTwoPointersNormalCase() {
-        int[] a = new int[] {1, 1, 1, 2, 3, 3, 4, 5, 5, 6, 6, 6, 7, 8, 9, 9, 10};
-        Assertions.assertEquals(8, Task495.solveByTwoPointers(a, 6));
+        int[] a = new int[] {-2, -1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 4, 5, 5, 5, 10};
+        Assertions.assertEquals(19, Task495.solveByTwoPointers(a, 4));
     }
 
     @Test
@@ -57,6 +57,12 @@ class Task495Tests {
     public void solveByTwoPointersIfLengthIsTwo() {
         int[] a = new int[] {2, 2};
         Assertions.assertEquals(1, Task495.solveByTwoPointers(a, 4));
+    }
+
+    @Test
+    public void solveByTwoPointersIfSame() {
+        int[] a = new int[] {2, 2, 2, 2, 2};
+        Assertions.assertEquals(10, Task495.solveByTwoPointers(a, 4));
     }
 
     @Test
