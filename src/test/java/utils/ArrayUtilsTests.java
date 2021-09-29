@@ -429,7 +429,7 @@ class ArrayUtilsTests {
     }
 
     @Test
-    public void mergeSortIfNegatives() {
+    public void mergeSort() {
         int[] a = new int[]{2147483647, 0, 1073741823, -1073741824, -2147483648};
         int[] expected = new int[]{-2147483648, -1073741824, 0, 1073741823, 2147483647};
         ArrayUtils.mergeSort(a);
@@ -520,6 +520,45 @@ class ArrayUtilsTests {
         expected[4] = a[5];
         expected[5] = a[0];
         ArrayUtils.mergeSort(a);
+        for (int i = 0; i < a.length; i++) {
+            Assertions.assertSame(expected[i], a[i]);
+        }
+    }
+
+    @Test
+    public void mergeSortFromToNormalCase() {
+        int[] a = new int[]{13, 9, 1, 4, 5, 2, 3, 9, 7, 0, 1};
+        int[] expected = new int[]{13, 9, 1, 2, 3, 4, 5, 9, 7, 0, 1};
+        ArrayUtils.mergeSort(a, 3, 8);
+        Assertions.assertArrayEquals(expected, a);
+    }
+
+    @Test
+    public void mergeSortFromZeroToLast() {
+        int[] a = new int[]{2147483647, 0, 1073741823, -1073741824, -2147483648};
+        int[] expected = new int[]{-2147483648, -1073741824, 0, 1073741823, 2147483647};
+        ArrayUtils.mergeSort(a, 0, 5);
+        Assertions.assertArrayEquals(expected, a);
+    }
+
+    @Test
+    public void mergeSortEventsFromToNormalCase() {
+        Event[] a = new Event[]{
+                new Event(2018, 8, 9, "l"),
+                new Event(1991, 9, 8, "y"),
+                new Event(1992, 2, 20, "i"),
+                new Event(1991, 9, 8, "smth"),
+                new Event(1993, 6, 14, "le"),
+                new Event(2017, 7, 22, "w"),
+        };
+        Event[] expected = new Event[a.length];
+        expected[0] = a[0];
+        expected[1] = a[1];
+        expected[2] = a[3];
+        expected[3] = a[2];
+        expected[4] = a[4];
+        expected[5] = a[5];
+        ArrayUtils.mergeSort(a, 2, 5);
         for (int i = 0; i < a.length; i++) {
             Assertions.assertSame(expected[i], a[i]);
         }
