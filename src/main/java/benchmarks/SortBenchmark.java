@@ -52,121 +52,156 @@ public class SortBenchmark {
         return random;
     }
 
-    /**
-     * bsp1: 0.28s
-     * bsp2: 0.27s
-     * bsp3: 23.59s
-     * bsp4: 23.50s
-     *
-     * bso1: 1.22s
-     * bso2: 0.96s
-     * bso3: 225.82s
-     * bso4: 236.07s
-     *
-     * сsp1: 0.001s
-     * сsp2: OutOfMemory
-     * сsp3: 0.003s
-     * сsp4: OutOfMemory
-     *
-     * сso1: 0.005s
-     * сso2: OutOfMemory
-     * сso3: 0.017s
-     * сso4: OutOfMemory
-     */
+    // bsp1: 0.28s
+    // bsp2: 0.27s
+    // bsp3: 23.59s
+    // bsp4: 23.50s
+    // bso1: 1.22s
+    // bso2: 0.96s
+    // bso3: 225.82s
+    // bso4: 236.07s
+
+    // сsp1: 0.001s
+    // сsp2: OutOfMemory
+    // сsp3: 0.003s
+    // сsp4: OutOfMemory
+    // сso1: 0.005s
+    // сso2: OutOfMemory
+    // сso3: 0.017s
+    // сso4: OutOfMemory
+
+    // msp1: 0.004s
+    // msp2: 0.003s
+    // msp3: 0.021s
+    // msp4: 0.021s
+    // mso1: 0.008s
+    // mso2: 0.007s
+    // mso3: 0.087s
+    // mso4: 0.083s
+
     public static void main(String[] args) {
         int[] bsp1 = randomArray(10000, -10000, 10000);
         long start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bsp1);
         long finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         int[] bsp2 = randomArray(10000, -1000000000, 1000000000);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bsp2);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         int[] bsp3 = randomArray(100000, -10000, 10000);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bsp3);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         int[] bsp4 = randomArray(100000, -1000000000, 1000000000);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bsp4);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] bso1 = randomEvents(10000, 2000, 2021);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bso1);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] bso2 = randomEvents(10000, -1000000, 1000000);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bso2);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] bso3 = randomEvents(100000, 2000, 2021);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bso3);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] bso4 = randomEvents(100000, -1000000, 1000000);
         start = System.currentTimeMillis();
         ArrayUtils.bubbleSort(bso4);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
 
+
         int[] csp1 = randomArray(10000, -10000, 10000);
         start = System.currentTimeMillis();
         ArrayUtils.countingSort(csp1);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         int[] csp2 = randomArray(10000, -1000000000, 1000000000);
         start = System.currentTimeMillis();
         ArrayUtils.countingSort(csp2);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         int[] csp3 = randomArray(100000, -10000, 10000);
         start = System.currentTimeMillis();
         ArrayUtils.countingSort(csp3);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         int[] csp4 = randomArray(100000, -1000000000, 1000000000);
         start = System.currentTimeMillis();
         ArrayUtils.countingSort(csp4);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] cso1 = randomEvents(10000, 2000, 2021);
         start = System.currentTimeMillis();
         ArrayUtils.countingSort(cso1);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] cso2 = randomEvents(10000, -1000000, 1000000);
         start = System.currentTimeMillis();
         ArrayUtils.countingSort(cso2);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] cso3 = randomEvents(100000, 2000, 2021);
         start = System.currentTimeMillis();
-        //ArrayUtils.countingSort(cso3);
+        ArrayUtils.countingSort(cso3);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
-
         Event[] cso4 = randomEvents(100000, -1000000, 1000000);
         start = System.currentTimeMillis();
         ArrayUtils.countingSort(cso4);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+
+
+        int[] msp1 = randomArray(10000, -10000, 10000);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(msp1);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+        int[] msp2 = randomArray(10000, -1000000000, 1000000000);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(msp2);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+        int[] msp3 = randomArray(100000, -10000, 10000);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(msp3);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+        int[] msp4 = randomArray(100000, -1000000000, 1000000000);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(msp4);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+        Event[] mso1 = randomEvents(10000, 2000, 2021);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(mso1);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+        Event[] mso2 = randomEvents(10000, -1000000, 1000000);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(mso2);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+        Event[] mso3 = randomEvents(100000, 2000, 2021);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(mso3);
+        finish = System.currentTimeMillis();
+        System.out.println((finish - start) / 1000.0);
+        Event[] mso4 = randomEvents(100000, -1000000, 1000000);
+        start = System.currentTimeMillis();
+        ArrayUtils.mergeSort(mso4);
         finish = System.currentTimeMillis();
         System.out.println((finish - start) / 1000.0);
 
