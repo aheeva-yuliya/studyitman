@@ -23,7 +23,12 @@ public class Task510 {
         System.arraycopy(array, 0, tmp, 0, array.length);
         ArrayUtils.mergeSort(tmp);
         for (int i = 0; i < tmp.length; i++) {
-            int last = ArrayUtils.binarySearch(tmp, tmp[i] + 1);
+            int last;
+            if (tmp[i] == 2147483647) {
+                last = array.length;
+            } else {
+                last = ArrayUtils.binarySearch(tmp, tmp[i] + 1);
+            }
             if (last < 0) {
                 last = -last - 1;
             }

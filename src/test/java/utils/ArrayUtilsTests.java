@@ -429,7 +429,7 @@ class ArrayUtilsTests {
     }
 
     @Test
-    public void mergeSort() {
+    public void mergeSortMaxInteger() {
         int[] a = new int[]{2147483647, 0, 1073741823, -1073741824, -2147483648};
         int[] expected = new int[]{-2147483648, -1073741824, 0, 1073741823, 2147483647};
         ArrayUtils.mergeSort(a);
