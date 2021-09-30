@@ -23,10 +23,4 @@ class Task510Tests {
         int[] a = new int[] {1, 2};
         Assertions.assertEquals(1, Task510.mostFrequent(a));
     }
-
-    @Test
-    public void mostFrequentWithGreaterLengthSameElement() {
-        int[] a = SortBenchmark.randomArray(100, 1, 2);
-        Assertions.assertEquals(1, Task510.mostFrequent(a));
-    }
 }
