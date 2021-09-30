@@ -173,8 +173,8 @@ class ArrayUtilsTests {
     }
 
     @Test
-    public void distinctMaximumElements() {
-        int[] a = SortBenchmark.randomArray(1000000, 1, 2);
+    public void distinctElements() {
+        int[] a = SortBenchmark.randomArray(100, 1, 2);
         int[] expected = new int[]{1};
         Assertions.assertArrayEquals(expected, ArrayUtils.distinct(a));
     }

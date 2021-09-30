@@ -21,8 +21,8 @@ class StringBuilderBenchmarkTests {
 
     @Test
     public void concatenateUsingStringBuilder() {
-        String actual = StringBuilderBenchmark.concatenateUsingStringBuilder(500000);
-        Assertions.assertEquals(1000000, actual.length());
+        String actual = StringBuilderBenchmark.concatenateUsingStringBuilder(50);
+        Assertions.assertEquals(100, actual.length());
     }
 
     @Test
