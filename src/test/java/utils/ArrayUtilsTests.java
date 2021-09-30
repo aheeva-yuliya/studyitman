@@ -246,17 +246,17 @@ class ArrayUtilsTests {
     }
 
     @Test
-    public void countEqualsMaximumLengthAndZeroEquality() {
-        int[] a = SortBenchmark.randomArray(1000000, 0, 1000000);
-        int[] b = SortBenchmark.randomArray(1000000, -1000000, 0);
+    public void countEqualsZeroEquality() {
+        int[] a = SortBenchmark.randomArray(1000, 0, 1000000);
+        int[] b = SortBenchmark.randomArray(1000, -1000000, 0);
         Assertions.assertEquals(0, ArrayUtils.countEquals(a, b));
     }
 
     @Test
-    public void countEqualsMaximumLength() {
-        int[] a = SortBenchmark.randomArray(1000000, 0, 1000);
-        int[] b = SortBenchmark.randomArray(1000000, 0, 1000);
-        Assertions.assertEquals(1000000, ArrayUtils.countEquals(a, b));
+    public void countEqualsGreaterLength() {
+        int[] a = SortBenchmark.randomArray(1000, 0, 1000);
+        int[] b = SortBenchmark.randomArray(1000, 0, 1000);
+        Assertions.assertEquals(1000, ArrayUtils.countEquals(a, b));
     }
 
     @Test

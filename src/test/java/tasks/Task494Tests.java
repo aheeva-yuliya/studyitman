@@ -23,10 +23,10 @@ class Task494Tests {
     }
 
     @Test
-    public void solveByBinarySearchMaxLength() {
-        int[] a = SortBenchmark.randomArray(1000000, 2, 3);
+    public void solveByBinarySearchGreaterLength() {
+        int[] a = SortBenchmark.randomArray(1000, 2, 3);
         int[] b = new int[] {5, 2, 1, 4, 1};
-        int[] expected = new int[] {0, 1000000, 0, 0, 0};
+        int[] expected = new int[] {0, 1000, 0, 0, 0};
         Assertions.assertArrayEquals(expected, Task494.solveByBinarySearch(a, b));
     }
 
@@ -79,10 +79,10 @@ class Task494Tests {
     }
 
     @Test
-    public void solveByTwoPointersMaxLength() {
-        int[] a = SortBenchmark.randomArray(1000000, 2, 3);
+    public void solveByTwoPointersGreaterLength() {
+        int[] a = SortBenchmark.randomArray(1000, 2, 3);
         int[] b = new int[] {1, 2, 3, 4, 5};
-        int[] expected = new int[] {0, 1000000, 0, 0, 0};
+        int[] expected = new int[] {0, 1000, 0, 0, 0};
         Assertions.assertArrayEquals(expected, Task494.solveByTwoPointers(a, b));
     }
 

@@ -38,9 +38,9 @@ class Task497Tests {
     }
 
     @Test
-    public void mergeIfMaxLength() {
-        int[] a = SortBenchmark.randomArray(1000000, 1, 2);
-        int[] b = SortBenchmark.randomArray(1000000, 2, 3);
+    public void mergeIfGreaterLength() {
+        int[] a = SortBenchmark.randomArray(1000, 1, 2);
+        int[] b = SortBenchmark.randomArray(1000, 2, 3);
         int[] c = Task497.merge(a,b);
         int[] expected = new int[a.length + b.length];
         System.arraycopy(a, 0, expected, 0, a.length);
