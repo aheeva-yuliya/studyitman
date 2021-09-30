@@ -1,9 +1,8 @@
 package tasks;
 
+import benchmarks.SortBenchmark;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class Task510Tests {
 
@@ -22,6 +21,12 @@ class Task510Tests {
     @Test
     public void mostFrequentIfLengthIsTwo() {
         int[] a = new int[] {1, 2};
+        Assertions.assertEquals(1, Task510.mostFrequent(a));
+    }
+
+    @Test
+    public void mostFrequentWithGreaterLengthSameElement() {
+        int[] a = SortBenchmark.randomArray(100, 1, 2);
         Assertions.assertEquals(1, Task510.mostFrequent(a));
     }
 }
