@@ -263,7 +263,7 @@ class ArrayListTests {
     }
 
     @Test
-    public void sortMergeSortNormalCase() {
+    public void sortMergeNormalCase() {
         ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0, 54, 78, 99, 75, 89, 82, -76);
         a.add(7);
         a.add(22);

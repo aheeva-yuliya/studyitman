@@ -161,28 +161,7 @@ public class ArrayList {
      * @ram O(n) n = instance variable "size"
      */
     public void sort() {
-        int[] tmp;
-        int[] currentScr = array;
-        int[] t = new int[this.size];
-        int size = 1;
-        while (size < this.size) {
-            for (int i = 0; i < this.size; i += size * 2) {
-                int fromTo = i + size;
-                if (fromTo >= this.size) {
-                    fromTo = this.size - 1;
-                }
-                int to = i + size * 2;
-                if (to >= this.size) {
-                    to = this.size;
-                }
-                ArrayUtils.merge(currentScr, i, fromTo, currentScr, fromTo, to, t, i);
-            }
-            tmp = currentScr;
-            currentScr = t;
-            t = tmp;
-            size = size * 2;
-        }
-        System.arraycopy(currentScr, 0, array, 0, this.size);
+       ArrayUtils.mergeSort(array, 0, size);
     }
 
     /**
