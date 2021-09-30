@@ -45,7 +45,7 @@ public class Task495 {
     /**
      * Finds the number of pairs i and j for which i < j and a[i] + a[j] = k.
      *
-     * cpu O(n) n = a.length
+     * cpu O(nlog(n)) n = a.length
      * @ram O(1)
      *
      * @param a int[]

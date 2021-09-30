@@ -48,12 +48,8 @@ public class CountingSortTask {
      * Each number X is contained exactly array[X] times. The numbers in the resulting array are in ascending order.
      *
      * @cpu O(n^2), n = array.length
-     *              for line 58 O(n) * for line 59 array[i] = maximum array.length - 1 - O(n)
-     *              add line 62 O(1)
-     *              toArray line 66  O(n^2)
+     *              for line 63 O(n) * for line 64 array[i] = maximum array.length - 1 - O(n)
      * @ram O(n^2)  Each element could be (array.length - 1) times.
-     *              arrayList line 61  maximum ≈ O(n^2)
-     *              toArray line 68 O(n^2) maximum array.length * array.length - 1.
      *
      * @param array int[]
      * @return int[] with numbers in ascending order
@@ -71,8 +67,8 @@ public class CountingSortTask {
     /**
      * Sorts the elements of the parameter int[] array in ascending order.
      *
-     * @cpu O(n^2), n = array.length - line 80 restore
-     * @ram O(n^2), n = array.length - line 80 restore
+     * @cpu O(n^2), n = array.length - line 77 restore
+     * @ram O(n^2), n = array.length - line 77 restore
      *
      * @param array int[]
      */

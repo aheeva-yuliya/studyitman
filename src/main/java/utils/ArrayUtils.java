@@ -97,8 +97,8 @@ public class ArrayUtils {
      * Returns an array containing only unique elements of the parameter int[] array.
      *
      * @cpu O(n), n = array.length
-     * @ram O(m + n),  m = maximum - minimum values of the parameter array - line 108
-     *                n = array.length - size of ArrayList lines 104, 117
+     * @ram O(m + n), m = maximum - minimum values of the parameter array
+     *                n = array.length
      * @param array int[]
      * @return an array containing only unique elements
      */
@@ -122,9 +122,8 @@ public class ArrayUtils {
     /**
      * Finds the number that occurs the most times in the parameter array.
      *
-     * @cpu O(n + m), n = array.length - count line 135 - findMinAndMax line 132
-     *                line 138  O(m) -  m = maximum - minimum values of the parameter array
-     * @ram O(m),  m = maximum - minimum values of the parameter array - line 135
+     * @cpu O(n + m), n = array.length and m = maximum - minimum values of the parameter array
+     * @ram O(m), m = maximum - minimum values of the parameter array
      *
      * @param array int[]
      * @return the number that occurs the most times.
