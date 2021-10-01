@@ -48,7 +48,7 @@ public class CountingSortTask {
      * Each number X is contained exactly array[X] times. The numbers in the resulting array are in ascending order.
      *
      * @cpu O(n^2), n = array.length
-     *              for line 63 O(n) * for line 64 array[i] = maximum array.length - 1 - O(n)
+     *              for O(n) * for array[i] = maximum array.length - 1 - O(n)
      * @ram O(n^2)  Each element could be (array.length - 1) times.
      *
      * @param array int[]
