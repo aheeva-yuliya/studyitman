@@ -45,7 +45,7 @@ public class Task495 {
     /**
      * Finds the number of pairs i and j for which i < j and a[i] + a[j] = k.
      *
-     * cpu O(nlog(n)) n = a.length
+     * cpu O(n) n = a.length
      * @ram O(1)
      *
      * @param a int[]
@@ -54,21 +54,38 @@ public class Task495 {
      */
     public static long solveByTwoPointers(int[] a, int k) {
         long count = 0;
+        int l = 0;
         int r = a.length - 1;
-        for (int i = 0; i < r; i++) {
-            while (i < r && a[i] + a[r] > k) {
+        while (l < r) {
+            while (l < r && a[l] + a[r] > k) {
                 r--;
             }
-            while (i < r && a[i] + a[r] == k && a[i] != a[i + 1]) {
-                count++;
-                r--;
+            while (l < r && a[l] + a[r] < k) {
+                l++;
             }
-            int j = r;
-            while (i < r && a[i] + a[r] == k && a[i] == a[i + 1]) {
-                count++;
-                r--;
+            while (l < r && a[l] + a[r] == k) {
+                int timesR = 1;
+                int timesL = 1;
+                if (a[l] != a[r]) {
+                    while (a[r] == a[r - 1]) {
+                        timesR++;
+                        r--;
+                    }
+                    while (a[l] == a[l + 1]) {
+                        timesL++;
+                        l++;
+                    }
+                    count = count + timesR * timesL;
+                    l++;
+                    r--;
+                }
+                if (a[l] == a[r]) {
+                    while (l < r) {
+                        count = count + r - l;
+                        l++;
+                    }
+                }
             }
-            r = j;
         }
         return count;
     }
