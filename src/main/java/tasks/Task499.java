@@ -18,19 +18,21 @@ public class Task499 {
     public static int solve(int[] a, int k) {
         int result = 0;
         int l = 0;
-        int r = 0;
-        int sum;
+        int r = 1;
+        if (a.length == 0 || k < a[0]) {
+            return result;
+        }
+        int sum = a[0];
         while (l < a.length) {
-            sum = a[l];
-            while (sum < k && r < a.length - 1) {
-                r++;
+            while (sum < k && r < a.length) {
                 sum = sum + a[r];
+                r++;
             }
             if (sum == k) {
                 result++;
             }
+            sum = sum - a[l];
             l++;
-            r = l;
         }
         return result;
     }

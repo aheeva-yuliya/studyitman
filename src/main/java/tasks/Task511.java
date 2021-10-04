@@ -9,7 +9,7 @@ public class Task511 {
     /**
      * Counts the number of elements that are contained simultaneously in two arrays. Each element is counted once.
      *
-     * @cpu O(n * (log(n) + log(m)), n = a.length and m = b.length
+     * @cpu O(nlog(n) + mlog(m)), n = a.length and m = b.length
      * @ram O(n + m), n = a.length and m = b.length
      *
      * @param a int[]
@@ -29,7 +29,7 @@ public class Task511 {
             if (indexMinB >= 0) {
                 int indexMaxA;
                 int indexMaxB;
-                if (tempA[i] == 2147483647) {
+                if (tempA[i] == Integer.MAX_VALUE) {
                     indexMaxA = tempA.length;
                     indexMaxB = tempB.length;
                 } else {

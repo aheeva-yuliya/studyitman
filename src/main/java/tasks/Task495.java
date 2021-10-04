@@ -21,20 +21,19 @@ public class Task495 {
             return 0;
         }
         long result = 0;
-        int j = a.length;
-        for (int i = 0; i < j; i++) {
+        int index = ArrayUtils.binarySearch(a, k - 1);
+        if (index < 0) {
+            index = -index - 1;
+        }
+        for (int i = 0; i < index; i++) {
             int minIndex = ArrayUtils.binarySearch(a, k - a[i]);
             if (minIndex >= 0) {
-                if (minIndex > i) {
-                    j = minIndex;
-                }
                 int maxIndex = ArrayUtils.binarySearch(a, k - a[i] + 1);
                 if (maxIndex < 0) {
                     maxIndex = -maxIndex - 1;
                 }
                 if (minIndex <= i) {
                     minIndex = i + 1;
-                    j = maxIndex;
                 }
                 result = result + maxIndex - minIndex;
             }

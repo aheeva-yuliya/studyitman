@@ -140,11 +140,6 @@ public class ArrayUtils {
             if (cnt[i] > times) {
                 times = cnt[i];
                 mostFrequentElement = i + min;
-            } else if (cnt[i] == times) {
-                int secondMost = i + min;
-                if (mostFrequentElement > secondMost) {
-                    mostFrequentElement = secondMost;
-                }
             }
         }
         return mostFrequentElement;
@@ -227,23 +222,7 @@ public class ArrayUtils {
      *          the index at which the key element can be inserted while keeping the array sorted.
      */
     public static int binarySearch(int[] array, int key) {
-        int l = 0;
-        int r = array.length - 1;
-        while (l <= r) {
-            int m = l + (r - l) / 2;
-            if (key < array[m]) {
-                r = m - 1;
-            } else if (key > array[m]) {
-                l = m + 1;
-            } else {
-                if (m - 1 >= 0 && array[m - 1] == key) {
-                    r = m - 1;
-                } else {
-                    return m;
-                }
-            }
-        }
-        return -(l + 1);
+        return binarySearch(array, 0, array.length, key);
     }
 
     /**
@@ -421,28 +400,7 @@ public class ArrayUtils {
      * @param events Event[]
      */
     public static void mergeSort(Event[] events) {
-        Event[] tmp;
-        Event[] currentScr = events;
-        Event[] t = new Event[events.length];
-        int size = 1;
-        while (size < events.length) {
-            for (int i = 0; i < events.length; i += size * 2) {
-                int fromTo = i + size;
-                if (fromTo >= events.length) {
-                    fromTo = events.length - 1;
-                }
-                int to = i + size * 2;
-                if (to >= events.length) {
-                    to = events.length;
-                }
-                merge(currentScr, i, fromTo, currentScr, fromTo, to, t, i);
-            }
-            tmp = currentScr;
-            currentScr = t;
-            t = tmp;
-            size = size * 2;
-        }
-        System.arraycopy(currentScr, 0, events, 0, events.length);
+        mergeSort(events, 0, events.length);
     }
 
     /**

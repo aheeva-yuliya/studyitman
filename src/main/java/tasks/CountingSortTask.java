@@ -10,7 +10,7 @@ public class CountingSortTask {
     /**
      * Counts how many times each element occurs in the parameter array.
      *
-     * @cpu O(n * m), m = the maximum value of the parameter array and n = the length of the parameter array
+     * @cpu O(n), n = the length of the parameter array
      * @ram O(m), m = the maximum value of the parameter array
      *
      * @param array int[]
@@ -20,36 +20,30 @@ public class CountingSortTask {
         if(array.length == 0) {
             return new int[]{};
         }
+        int max = maxValue(array);
+        int[] result = new int[max + 1];
+        for (int num : array) {
+            result[num]++;
+        }
+        return result;
+    }
+
+    private static int maxValue(int[] array) {
         int max = 0;
         for (int j : array) {
             if (j > max) {
                 max = j;
             }
         }
-        int[] result = new int[max + 1];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = countI(i, array);
-        }
-        return result;
-    }
-
-    private static int countI(int i, int[] array) {
-        int count = 0;
-        for (int k : array) {
-            if (k == i) {
-                count++;
-            }
-        }
-        return count;
+        return max;
     }
 
     /**
      * Returns an array that contains numbers in the range 0 through the parameter array length.
      * Each number X is contained exactly array[X] times. The numbers in the resulting array are in ascending order.
      *
-     * @cpu O(n^2), n = array.length
-     *              for O(n) * for array[i] = maximum array.length - 1 - O(n)
-     * @ram O(n^2)  Each element could be (array.length - 1) times.
+     * @cpu O(n + l), n = array.length and l = the sum of the elements of the array
+     * @ram O(l)  l = the sum of the elements of the array
      *
      * @param array int[]
      * @return int[] with numbers in ascending order
@@ -67,8 +61,8 @@ public class CountingSortTask {
     /**
      * Sorts the elements of the parameter int[] array in ascending order.
      *
-     * @cpu O(n^2), n = array.length - line 77 restore
-     * @ram O(n^2), n = array.length - line 77 restore
+     * @cpu O(n + m), n = array.length and m = the maximum value of the parameter array
+     * @ram O(n + m), n = array.length and m = the maximum value of the parameter array
      *
      * @param array int[]
      */

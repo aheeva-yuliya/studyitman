@@ -24,7 +24,7 @@ public class Task510 {
         ArrayUtils.mergeSort(tmp);
         for (int i = 0; i < tmp.length; i++) {
             int last;
-            if (tmp[i] == 2147483647) {
+            if (tmp[i] == Integer.MAX_VALUE) {
                 last = array.length;
             } else {
                 last = ArrayUtils.binarySearch(tmp, tmp[i] + 1);
