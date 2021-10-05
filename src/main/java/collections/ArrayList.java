@@ -1,5 +1,6 @@
 package collections;
 
+import utils.ArrayUtils;
 import utils.StringBuilder;
 
 /**
@@ -156,19 +157,11 @@ public class ArrayList {
     /**
      * Sorts all the elements in ArrayList in ascending order.
      *
-     * @cpu O(n^2), n = instance variable "size"
-     * @ram O(1)
+     * @cpu O(nlog(n)), n = instance variable "size"
+     * @ram O(n) n = instance variable "size"
      */
     public void sort() {
-        for (int n = size; n > 1; n--) {
-            for (int i = 1; i < n; i++) {
-                if (array[i - 1] > array[i]) {
-                    int t = array[i - 1];
-                    array[i - 1] = array[i];
-                    array[i] = t;
-                }
-            }
-        }
+       ArrayUtils.mergeSort(array, 0, size);
     }
 
     /**

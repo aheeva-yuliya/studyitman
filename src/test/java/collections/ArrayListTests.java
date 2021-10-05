@@ -261,4 +261,14 @@ class ArrayListTests {
         ArrayList a = ArrayList.of(1);
         Assertions.assertEquals("[1]", a.toString());
     }
+
+    @Test
+    public void sortMergeNormalCase() {
+        ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0, 54, 78, 99, 75, 89, 82, -76);
+        a.add(7);
+        a.add(22);
+        a.sort();
+        int[] expected = new int[] {-76, -5, 0, 7, 7, 8, 9, 9, 18, 22, 54, 75, 78, 82, 89, 90, 99};
+        Assertions.assertArrayEquals(expected, a.toArray());
+    }
 }

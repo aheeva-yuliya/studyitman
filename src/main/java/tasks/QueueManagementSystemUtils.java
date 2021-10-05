@@ -2,6 +2,7 @@ package tasks;
 
 import collections.ArrayList;
 import entities.Statistic;
+import utils.ArrayUtils;
 
 
 /**
@@ -46,26 +47,18 @@ public class QueueManagementSystemUtils {
     /**
      * Calculates the median of the number of issued tickets.
      *
-     * @cpu O(n^2), n = systems.length
+     * @cpu O(nlog(n), n = systems.length
      * @ram O(n)
      *
      * @param systems QueueManagementSystem[]
      * @return the median of the number of tickets issued from all queuing systems.
      */
     public static double calcMedianVisits(QueueManagementSystem[] systems) {
-        double[] actual = new double[systems.length];
+        int[] actual = new int[systems.length];
         for (int i = 0; i < systems.length; i++) {
             actual[i] = systems[i].getTotalTickets();
         }
-        for (int n = systems.length; n > 1; n--) {
-            for(int i = 1; i < n; i++) {
-                if(actual[i -1] > actual[i]) {
-                    double t = actual[i - 1];
-                    actual[i - 1] = actual[i];
-                    actual[i] = t;
-                }
-            }
-        }
+        ArrayUtils.mergeSort(actual);
         if (systems.length == 0) {
             return 0;
         }
@@ -73,7 +66,7 @@ public class QueueManagementSystemUtils {
             return actual[0];
         }
         if (systems.length % 2 == 0) {
-            return (actual[systems.length / 2 - 1] + actual[systems.length / 2]) / 2;
+            return (actual[systems.length / 2 - 1] + actual[systems.length / 2]) / 2.0;
         }
         return actual[systems.length / 2];
     }
@@ -120,15 +113,7 @@ public class QueueManagementSystemUtils {
 
     private static double calcMedianByDay(ArrayList med) {
         int[] actual = med.toArray();
-        for (int n = actual.length; n > 1; n--) {
-            for(int i = 1; i < n; i++) {
-                if(actual[i -1] > actual[i]) {
-                    int t = actual[i - 1];
-                    actual[i - 1] = actual[i];
-                    actual[i] = t;
-                }
-            }
-        }
+        ArrayUtils.mergeSort(actual);
         if (actual.length == 0) {
             return 0;
         }
@@ -144,7 +129,7 @@ public class QueueManagementSystemUtils {
     /**
      * Calculates statistics by days.
      *
-     * @cpu O(m * n^2), n = number of systems and m = number of days
+     * @cpu O(m * nlog(n)), n = number of systems and m = number of days
      *                  (min, max, count, average - O(n); median - O(n^2); for line183 - O(m))
      * @ram O(n * m), n = systems.length m = number of days
      *
