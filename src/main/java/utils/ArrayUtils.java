@@ -100,7 +100,7 @@ public class ArrayUtils {
      * @ram O(m + n), m = maximum - minimum values of the parameter array
      *                n = array.length
      * @param array int[]
-     * @return an array containing only unique elements
+     * @return an array containing only unique elements.
      */
     public static int[] distinct(int[] array) {
         ArrayList arrayList = new ArrayList();
