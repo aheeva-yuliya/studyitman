@@ -26,13 +26,6 @@ class StackTests {
     }
 
     @Test
-    public void peekIfEmpty() {
-        Stack stack = new Stack();
-        Assertions.assertEquals(0,stack.peek());
-        Assertions.assertNotNull(stack.toArray());
-    }
-
-    @Test
     public void popNormalCase() {
         Stack stack = new Stack();
         stack.push(7);
@@ -40,13 +33,6 @@ class StackTests {
         Assertions.assertEquals(2,stack.pop());
         int[] expected = new int[] {7};
         Assertions.assertArrayEquals(expected, stack.toArray());
-    }
-
-    @Test
-    public void popIfEmpty() {
-        Stack stack = new Stack();
-        Assertions.assertEquals(0,stack.pop());
-        Assertions.assertNotNull(stack.toArray());
     }
 
     @Test

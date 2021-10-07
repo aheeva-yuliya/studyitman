@@ -27,11 +27,7 @@ public class Stack {
      * @return the value of the top element.
      */
     public int peek() {
-        int value = 0;
-        if (!isEmpty()) {
-            value = arrayList.get(arrayList.size() - 1);
-        }
-        return value;
+        return arrayList.get(arrayList.size() - 1);
     }
 
     /**
@@ -43,11 +39,7 @@ public class Stack {
      * @return the value of the top element of the stack.
      */
     public int pop() {
-        int value = 0;
-        if (! isEmpty()) {
-            value = arrayList.remove(arrayList.size() - 1);
-        }
-        return value;
+        return arrayList.remove(arrayList.size() - 1);
     }
 
     /**
