@@ -20,7 +20,7 @@ class PairTests {
     @Test
     public void testToString() {
         Pair pair = new Pair(4, 6);
-        String expected = "Pair{left=4,right=6}";
+        String expected = "Pair{left=4, right=6}";
         Assertions.assertEquals(expected, pair.toString());
     }
 

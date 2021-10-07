@@ -45,7 +45,7 @@ public class Pair {
      * @return a string with information.
      */
     public String toString() {
-        return "Pair{left=" + left + ",right=" + right + "}";
+        return "Pair{left=" + left + ", right=" + right + "}";
     }
 
     /**
