@@ -10,7 +10,7 @@ public class Task527 {
      * Returns a boolean array of n(the number of vertices) elements. The i-th index of the array is true
      *      if the vertex is reachable from the vertex 0, otherwise false.
      *
-     * @cpu O(n + m) n = number of vertices and m = the number of edges
+     * @cpu O(n + m) n = number of vertices and m = number of edges
      * @ram O(n) n = number of vertices
      *
      * @param adjacencyList pairs for a given grath

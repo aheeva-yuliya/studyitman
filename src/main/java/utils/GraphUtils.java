@@ -11,8 +11,8 @@ public class GraphUtils {
     /**
      * Returns an adjacency list for a given graph.
      *
-     * @cpu (n + m) n = vertices and m = edges.length
-     * @ram (n + m) n = vertices and m = edges.length
+     * @cpu (n + m) n = vertices and m = number of edges
+     * @ram (n + m) n = vertices and m = number of edges
      *
      * @param vertices int argument
      * @param edges Pair[] represents an array of edges in a directed graph
