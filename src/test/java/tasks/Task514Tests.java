@@ -13,10 +13,10 @@ class Task514Tests {
     }
 
     @Test
-    public void solveIfBooksIsEmpty() {
-        int[] books = new int[] {};
-        int[] queue = new int[] {-1, 5, 4, -1, -1};
-        Assertions.assertEquals(0, Task514.solve(books,queue));
+    public void solveIfBooksLengthIsOne() {
+        int[] books = new int[] {1};
+        int[] queue = new int[] {-1, 5, 4, -1};
+        Assertions.assertEquals(5, Task514.solve(books,queue));
     }
 
     @Test
