@@ -23,7 +23,7 @@ public class Cuboid {
      * @return the value equals to the surface area of the cuboid.
      */
     public long calcSurfaceArea() {
-        return 2 * (a * b + b * c + a * c);
+        return (long) 2 * (a * b + b * c + a * c);
     }
 
     /**
@@ -35,6 +35,6 @@ public class Cuboid {
      * @return the value equals to the volume of the cuboid.
      */
     public long calcVolume() {
-        return a * b * c;
+        return (long) a * b * c;
     }
 }
