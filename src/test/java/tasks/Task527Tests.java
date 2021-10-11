@@ -21,20 +21,6 @@ class Task527Tests {
     }
 
     @Test
-    public void findComponentReachableCase() {
-        ArrayList[] adjacencyList = new ArrayList[]{
-                ArrayList.of(1, 5),
-                ArrayList.of(0),
-                ArrayList.of(3),
-                ArrayList.of(2, 4),
-                ArrayList.of(3, 5),
-                ArrayList.of(0, 4)
-        };
-        boolean[] expected = new boolean[] {true, true, true, true, true, true};
-        Assertions.assertArrayEquals(expected,Task527.findComponent(adjacencyList));
-    }
-
-    @Test
     public void findComponentNotReachable() {
         ArrayList[] adjacencyList = new ArrayList[]{
                 ArrayList.of(),
