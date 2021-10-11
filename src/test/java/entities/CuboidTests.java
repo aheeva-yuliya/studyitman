@@ -19,8 +19,8 @@ class CuboidTests {
 
     @Test
     public void calcSurfaceAreaIfLong() {
-        Cuboid cuboid = new Cuboid(10000,20000,30000);
-        Assertions.assertEquals(2200000000L, cuboid.calcSurfaceArea());
+        Cuboid cuboid = new Cuboid(100000,200000,300000);
+        Assertions.assertEquals(220000000000L, cuboid.calcSurfaceArea());
     }
 
     @Test
