@@ -201,7 +201,7 @@ public class ArrayUtils {
         }
         Event[] sorted = new Event[events.length];
         int index;
-        for(int i = dates.length - 1; i >= 0; i--) {
+        for (int i = dates.length - 1; i >= 0; i--) {
             index = cnt[dates[i] - min] - 1;
             sorted[index] = events[i];
             cnt[dates[i] - min]--;
@@ -315,28 +315,29 @@ public class ArrayUtils {
      * @param toIndex int argument
      */
     public static void mergeSort(int[] array, int fromIndex, int toIndex) {
-        int[] tmp;
-        int[] currentScr = array;
-        int[] t = new int[array.length];
+        int length = toIndex - fromIndex;
+        int[] currentScr = new int[length];
+        System.arraycopy(array, fromIndex, currentScr, 0, length);
+        int[] destination = new int[length];
         int size = 1;
-        while (size < toIndex) {
-            for (int i = fromIndex; i < toIndex; i += size * 2) {
+        while (size < length) {
+            for (int i = 0; i < length; i += size * 2) {
                 int fromTo = i + size;
-                if (fromTo >= toIndex) {
-                    fromTo = toIndex - 1;
+                if (fromTo >= length) {
+                    fromTo = length - 1;
                 }
                 int to = i + size * 2;
-                if (to >= toIndex) {
-                    to = toIndex;
+                if (to > length) {
+                    to = length;
                 }
-                merge(currentScr, i, fromTo, currentScr, fromTo, to, t, i);
+                merge(currentScr, i, fromTo, currentScr, fromTo, to, destination, i);
             }
-            tmp = currentScr;
-            currentScr = t;
-            t = tmp;
+            int[] tmp = currentScr;
+            currentScr = destination;
+            destination = tmp;
             size = size * 2;
         }
-        System.arraycopy(currentScr, fromIndex, array, fromIndex, toIndex - fromIndex);
+        System.arraycopy(currentScr, 0, array, fromIndex, length);
     }
 
     /**
@@ -387,35 +388,36 @@ public class ArrayUtils {
      *          from the index equals to the parameter fromIndex including
      *          to the index equals to the parameter toIndex excluding.
      *
-     * @cpu O(nlog(n)) n = array.length
-     * @ram O(n) n = array.length
+     * @cpu O(nlog(n)) n = toIndex - fromIndex
+     * @ram O(n) n = toIndex - fromIndex
      *
      * @param array Event[]
      * @param fromIndex int argument
      * @param toIndex int argument
      */
     public static void mergeSort(Event[] array, int fromIndex, int toIndex) {
-        Event[] tmp;
-        Event[] currentScr = array;
-        Event[] t = new Event[array.length];
+        int length = toIndex - fromIndex;
+        Event[] currentScr = new Event[length];
+        System.arraycopy(array, fromIndex, currentScr, 0, length);
+        Event[] destination = new Event[length];
         int size = 1;
-        while (size < toIndex) {
-            for (int i = fromIndex; i < toIndex; i += size * 2) {
+        while (size < length) {
+            for (int i = 0; i < length; i += size * 2) {
                 int fromTo = i + size;
-                if (fromTo >= toIndex) {
-                    fromTo = toIndex - 1;
+                if (fromTo >= length) {
+                    fromTo = length - 1;
                 }
                 int to = i + size * 2;
-                if (to >= toIndex) {
-                    to = toIndex;
+                if (to > length) {
+                    to = length;
                 }
-                merge(currentScr, i, fromTo, currentScr, fromTo, to, t, i);
+                merge(currentScr, i, fromTo, currentScr, fromTo, to, destination, i);
             }
-            tmp = currentScr;
-            currentScr = t;
-            t = tmp;
+            Event[] tmp = currentScr;
+            currentScr = destination;
+            destination = tmp;
             size = size * 2;
         }
-        System.arraycopy(currentScr, fromIndex, array, fromIndex, toIndex - fromIndex);
+        System.arraycopy(currentScr, 0, array, fromIndex, length);
     }
 }
