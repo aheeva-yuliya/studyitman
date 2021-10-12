@@ -69,12 +69,7 @@ public class MyString {
      *         a positive number if string is greater than that.string.
      */
     public int compareTo(MyString that) {
-        int length;
-        if (this.data.length <= that.data.length) {
-            length = this.data.length;
-        } else {
-            length = that.data.length;
-        }
+        int length = Math.min(this.data.length, that.data.length);
         if (this.data.length == 0 && that.data.length > 0) {
             return -1;
         }
@@ -129,6 +124,22 @@ public class MyString {
         char[] result = new char[a.data.length + b.data.length];
         System.arraycopy(a.data, 0, result, 0, a.data.length);
         System.arraycopy(b.data, 0, result, a.data.length, b.data.length);
+        return new MyString(result);
+    }
+
+    /**
+     * Creates a new object using string concatenation.
+     *
+     * @cpu O(n + m), n = data.length m = that.data.length
+     * @ram O(n + m), n = data.length m = that.data.length
+     *
+     * @param that an object of MyString
+     * @return a new object of MyString.
+     */
+    public MyString plus(MyString that) {
+        char[] result = new char[data.length + that.data.length];
+        System.arraycopy(data, 0, result, 0, data.length);
+        System.arraycopy(that.data, 0, result, data.length, that.data.length);
         return new MyString(result);
     }
 }

@@ -117,4 +117,15 @@ class MyStringTests {
         chars[0] = 'd';
         Assertions.assertEquals("abc", a.toString());
     }
+
+    @Test
+    public void plusConcatenateThat() {
+        char[] a = new char[]{'t', 'h', 'i', 's'};
+        char[] b = new char[]{' ', '+', ' ', 't', 'h', 'a', 't'};
+        MyString first = new MyString(a);
+        MyString second = new MyString(b);
+        MyString actual = first.plus(second);
+        Assertions.assertEquals("this + that", actual.toString());
+
+    }
 }

@@ -4,14 +4,50 @@ package entities;
  * Cuboid
  */
 public class Cuboid {
-    public int a;
-    public int b;
-    public int c;
+    private int a;
+    private int b;
+    private int c;
 
     public Cuboid(int a, int b, int c) {
         this.a = a;
         this.b = b;
         this.c = c;
+    }
+
+    /**
+     * Gets the value of the instance variable "a"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "a"
+     */
+    public int getA() {
+        return a;
+    }
+
+    /**
+     * Gets the value of the instance variable "b"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "b"
+     */
+    public int getB() {
+        return b;
+    }
+
+    /**
+     * Gets the value of the instance variable "c"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "c"
+     */
+    public int getC() {
+        return c;
     }
 
     /**
