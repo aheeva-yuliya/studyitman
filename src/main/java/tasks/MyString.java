@@ -142,4 +142,15 @@ public class MyString {
         System.arraycopy(that.data, 0, result, data.length, that.data.length);
         return new MyString(result);
     }
+
+    public MyString replace(char target, char replacement) {
+        char[] result = new char[data.length];
+        System.arraycopy(data, 0, result, 0, data.length);
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] == target) {
+                result[i] = replacement;
+            }
+        }
+        return new MyString(result);
+    }
 }

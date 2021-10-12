@@ -128,4 +128,13 @@ class MyStringTests {
         Assertions.assertEquals("this + that", actual.toString());
 
     }
+
+    @Test
+    public void replaceAtDifferentIndexes() {
+        char[] a = new char[] {'t', 'h', 'i', 's', ' ', 'i', 's', ' ', 'm', 'y', ' ', 's', 't', 'r', 'i', 'n', 'g'};
+        MyString my = new MyString(a);
+        MyString actual = my.replace('s', '!');
+        String expected = "thi! i! my !tring";
+        Assertions.assertEquals(expected, actual.toString());
+    }
 }
