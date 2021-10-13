@@ -41,7 +41,7 @@ class Task533Tests {
                 new Pair(7, 8),
 
         };
-        Assertions.assertEquals(4,Task533.countComponents(9, pairs));
+        Assertions.assertEquals(2,Task533.countComponents(9, pairs));
     }
     @Test
     public void countComponentsOneLongOneSmallAndSeparateVertices() {
