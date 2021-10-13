@@ -1,6 +1,7 @@
 package tasks;
 
 import collections.ArrayList;
+import collections.Stack;
 import entities.Pair;
 import utils.GraphUtils;
 
@@ -13,7 +14,7 @@ public class Task532 {
      * Finds out whether there is a chain of people through which a man(the parameter from)
      *          knows another(the parameter to).
      *
-     * @cpu O (n + m) n = people m = number of acquaintances
+     * @cpu O (m) m = number of acquaintances
      * @ram O(n + m) n = people m = number of acquaintances
      *
      * @param people int argument
@@ -23,17 +24,23 @@ public class Task532 {
      * @return true if there is a chain otherwise false.
      */
     public static boolean existsChain(int people, Pair[] acquaintances, int from, int to) {
-        ArrayList[] adjacency = GraphUtils.toAdjacencyList(people, acquaintances);
-        boolean[] components = new boolean[adjacency.length];
-        components[from] = true;
-        for (int i = from; i < adjacency.length; i++) {
-            if (components[i]) {
-                int size = adjacency[i].size();
-                for (int j = 0; j < size; j++) {
-                    components[adjacency[i].get(j)] = true;
+        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+        final boolean[] used = new boolean[adjacencyList.length];
+        final Stack stack = new Stack();
+        stack.push(from);
+        while (!stack.isEmpty()) {
+            final int vertex = stack.pop();
+            used[vertex] = true;
+            final ArrayList neighbors = adjacencyList[vertex];
+            for (int i = neighbors.size() - 1; i >= 0; i--) {
+                if (!used[neighbors.get(i)]) {
+                    if (neighbors.get(i) == to) {
+                        return true;
+                    }
+                    stack.push(neighbors.get(i));
                 }
             }
         }
-        return components[to];
+        return false;
     }
 }
