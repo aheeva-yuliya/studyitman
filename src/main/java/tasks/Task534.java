@@ -10,6 +10,17 @@ import utils.GraphUtils;
  */
 public class Task534 {
 
+    /**
+     * Counts the number of vertices in the subtree rooted at X.
+     *
+     * @cpu O(n + m) n = number of vertices, m = number of edges
+     * @ram O(n + m) n = number of vertices, m = number of edges
+     *
+     * @param n number of vertices
+     * @param edges represents connection between vertices
+     * @param x the root in a subtree
+     * @return the number of vertices in the subtree rooted at X.
+     */
     public static int countChildrenInSubtree(int n, Pair[] edges, int x) {
         int children = 0;
         boolean isX = false;

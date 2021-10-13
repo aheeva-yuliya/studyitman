@@ -307,8 +307,8 @@ public class ArrayUtils {
      * Sorts the elements of the parameter int[] array in ascending order
      *          from index of the parameter fromIndex including to the index of the parameter toIndex excluding.
      *
-     * @cpu O(nlog(n)) n = array.length
-     * @ram O(n) n = array.length
+     * @cpu O(nlog(n)) n = toIndex - fromIndex
+     * @ram O(n) n = toIndex - fromIndex
      *
      * @param array int[]
      * @param fromIndex int argument
