@@ -8,8 +8,8 @@ public class Task538 {
     /**
      * Finds the Fn Fibonacci number.
      *
-     * @cpu O()
-     * @ram O()
+     * @cpu O(2^n) the parameter n
+     * @ram O(n) the parameter n
      *
      * @param n int argument
      * @return the Fn Fibonacci number.
