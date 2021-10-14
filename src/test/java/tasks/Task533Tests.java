@@ -15,6 +15,7 @@ class Task533Tests {
                 new Pair(3, 6)
         };
         Assertions.assertEquals(2,Task533.countComponents(6, pairs));
+        Assertions.assertEquals(2,Task533.countComponentsByRecursion(6, pairs));
     }
 
     @Test
@@ -27,6 +28,8 @@ class Task533Tests {
                 new Pair(4, 5)
         };
         Assertions.assertEquals(1,Task533.countComponents(6, pairs));
+        Assertions.assertEquals(1,Task533.countComponentsByRecursion(6, pairs));
+
     }
 
     @Test
@@ -42,6 +45,8 @@ class Task533Tests {
 
         };
         Assertions.assertEquals(2,Task533.countComponents(9, pairs));
+        Assertions.assertEquals(2,Task533.countComponentsByRecursion(9, pairs));
+
     }
     @Test
     public void countComponentsOneLongOneSmallAndSeparateVertices() {
@@ -55,6 +60,6 @@ class Task533Tests {
                 new Pair(8, 9),
         };
         Assertions.assertEquals(5,Task533.countComponents(12, pairs));
+        Assertions.assertEquals(5,Task533.countComponentsByRecursion(12, pairs));
     }
-
 }
