@@ -13,7 +13,7 @@ public class Task527 {
      *      if the vertex is reachable from the vertex 0, otherwise false.
      *
      * @cpu O(n + m) n = number of vertices m = number of edges
-     * @ram O(n) n = number of vertices
+     * @ram O(n + ) n = number of vertices
      *
      * @param adjacencyList pairs for a given grath
      * @return a boolean array of elements.
