@@ -23,8 +23,7 @@ public class Task544 {
         int maxHeight = 0;
         final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(n, edges);
         final boolean[] used = new boolean[adjacencyList.length];
-        final int vertex = 1;
-        return dfs(height, maxHeight, vertex, adjacencyList, used);
+        return dfs(height, maxHeight, 1, adjacencyList, used);
 
     }
 
