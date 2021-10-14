@@ -14,7 +14,7 @@ public class Task532 {
      * Finds out whether there is a chain of people through which a man(the parameter from)
      *          knows another(the parameter to).
      *
-     * @cpu O (m) m = number of acquaintances
+     * @cpu O (n + m) people from to acquaintances
      * @ram O(n + m) n = people m = number of acquaintances
      *
      * @param people int argument
