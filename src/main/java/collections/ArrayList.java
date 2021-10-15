@@ -210,7 +210,8 @@ public class ArrayList {
      *
      */
     public void clear() {
-        for (int i = array.length - 1; i >= 0; i--) {
+        size = array.length;
+        for (int i = size - 1; i >= 0; i--) {
             remove(i);
         }
     }

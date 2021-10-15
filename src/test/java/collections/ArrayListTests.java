@@ -273,8 +273,15 @@ class ArrayListTests {
     }
 
     @Test
-    public void clear() {
+    public void clearElements() {
         ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0);
+        a.clear();
+        Assertions.assertEquals(0, a.size());
+    }
+
+    @Test
+    public void clearEmpty() {
+        ArrayList a = new ArrayList();
         a.clear();
         Assertions.assertEquals(0, a.size());
     }
