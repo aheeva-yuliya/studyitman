@@ -201,4 +201,32 @@ public class ArrayList {
         stringBuilder.append("]");
         return stringBuilder.toString();
     }
+
+    /**
+     * Removes all elements from ArrayList.
+     *
+     * @cpu O(n) n = the length of the instance variable array
+     * @ram O(1)
+     *
+     */
+    public void clear() {
+        for (int i = array.length - 1; i >= 0; i--) {
+            remove(i);
+        }
+    }
+
+    /**
+     * Decreases the capacity of the ArrayList to the current size.
+     *
+     * @cpu O(n) n = the length of the instance variable array
+     * @ram O(1)
+     *
+     */
+    public void trimToSize() {
+        int to = size;
+        size = array.length;
+        for (int i = size - 1; i >= to; i--) {
+            remove(i);
+        }
+    }
 }
