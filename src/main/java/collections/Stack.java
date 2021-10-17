@@ -4,7 +4,7 @@ package collections;
  * Stack
  */
 public class Stack {
-    private ArrayList arrayList = new ArrayList();
+    private final ArrayList arrayList = new ArrayList();
 
     /**
      * Pushes the element to the top of the stack.

@@ -6,6 +6,7 @@ import collections.Stack;
  * Task514
  */
 public class Task514 {
+
     /**
      * Returns the last element of the stack.
      *

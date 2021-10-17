@@ -8,11 +8,12 @@ import utils.GraphUtils;
  * Task544
  */
 public class Task544 {
+
     /**
      * Finds the height of a given tree.
      *
-     * @cpu (n + m)
-     * @ram (n + m)
+     * @cpu (n + m) n = number of vertices, m = number of edges
+     * @ram (n + m) n = number of vertices, m = number of edges
      *
      * @param n int argument represents vertices
      * @param edges represents connection between vertices

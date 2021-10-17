@@ -4,8 +4,8 @@ package entities;
  * Pair
  */
 public class Pair {
-    private int left;
-    private int right;
+    private final int left;
+    private final int right;
 
     public Pair(int left, int right) {
         this.left = left;

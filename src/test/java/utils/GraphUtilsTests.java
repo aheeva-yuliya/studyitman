@@ -72,5 +72,4 @@ class GraphUtilsTests {
             Assertions.assertTrue(expected[i].equals(actual[i]));
         }
     }
-
 }
