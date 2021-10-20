@@ -137,12 +137,20 @@ public class MyString {
      * @return a new object of MyString.
      */
     public MyString plus(MyString that) {
-        char[] result = new char[data.length + that.data.length];
-        System.arraycopy(data, 0, result, 0, data.length);
-        System.arraycopy(that.data, 0, result, data.length, that.data.length);
-        return new MyString(result);
+        return plus(this, that);
     }
 
+    /**
+     * Creates a new string with the all characters of the parameter target
+     *          replaced with the characters of the replacement.
+     *
+     * @cpu O(n) n = data.length
+     * @ram O(n) n = data.length
+     *
+     * @param target char argument
+     * @param replacement char argument
+     * @return a new string with the replaced characters.
+     */
     public MyString replace(char target, char replacement) {
         char[] result = new char[data.length];
         System.arraycopy(data, 0, result, 0, data.length);

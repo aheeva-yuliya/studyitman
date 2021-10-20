@@ -3,6 +3,8 @@ package collections;
 import utils.ArrayUtils;
 import utils.StringBuilder;
 
+import java.util.Arrays;
+
 /**
  * ArrayList
  */
@@ -205,29 +207,24 @@ public class ArrayList {
     /**
      * Removes all elements from ArrayList.
      *
-     * @cpu O(n) n = the length of the instance variable array
+     * @cpu O(1)
      * @ram O(1)
      *
      */
     public void clear() {
-        size = array.length;
-        for (int i = size - 1; i >= 0; i--) {
-            remove(i);
-        }
+        size = 0;
     }
 
     /**
      * Decreases the capacity of the ArrayList to the current size.
      *
-     * @cpu O(n) n = the length of the instance variable array
-     * @ram O(1)
+     * @cpu O(n) n = size
+     * @ram O(n) n = size
      *
      */
     public void trimToSize() {
-        int to = size;
-        size = array.length;
-        for (int i = size - 1; i >= to; i--) {
-            remove(i);
-        }
+        int[] copy = new int[size];
+        System.arraycopy(array, 0, copy, 0, size);
+        array = copy;
     }
 }

@@ -112,8 +112,8 @@ public class StringArrayList {
      */
     public String remove(int index){
         String value = data[index];
-        data[index] = null;
         System.arraycopy(data, index + 1, data, index,size - index - 1);
+        data[size - 1] = null;
         size--;
         return value;
     }
@@ -181,29 +181,27 @@ public class StringArrayList {
     /**
      * Removes all elements from StringArrayList.
      *
-     * @cpu O(n) n = the length of the instance variable data
+     * @cpu O(n) n = size of the data
      * @ram O(1)
      *
      */
     public void clear() {
-        size = data.length;
-        for (int i = size - 1; i >= 0; i--) {
-            remove(i);
+        for (int i = 0; i < size; i++) {
+            data[i] = null;
         }
+        size = 0;
     }
 
     /**
      * Decreases the capacity of the StringArrayList to the current size.
      *
-     * @cpu O(n) n = the length of the instance variable data
-     * @ram O(1)
+     * @cpu O(n) n = size
+     * @ram O(n) n = size
      *
      */
     public void trimToSize() {
-        int to = size;
-        size = data.length;
-        for (int i = size - 1; i >= to; i--) {
-            remove(i);
-        }
+        String[] copy = new String[size];
+        System.arraycopy(data,0,copy,0,size);
+        data = copy;
     }
 }

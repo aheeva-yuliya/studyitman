@@ -11,7 +11,7 @@ public class Task514 {
      * Returns the last element of the stack.
      *
      * @cpu O(n + m) n = books.length and m = queue.length
-     * @ram O(1)
+     * @ram O(n + m) n = books.length and m = queue.length
      *
      * @param books int[] contains positive numbers
      * @param queue nt[] contains positive and negative numbers

@@ -65,22 +65,26 @@ public class Task534 {
      * @return the number of vertices in the subtree rooted at X.
      */
     public static int countChildrenInSubtreeByRecursion(int n, Pair[] edges, int x) {
-        int children = 0;
         final ArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
         final boolean[] used = new boolean[adjacencyList.length];
-        return dfs(children, 1, adjacencyList, used, x, false);
+        return dfs(1, adjacencyList, used, x, false);
     }
 
-    private static int dfs(int children, int vertex, ArrayList[] adjacencyList, boolean[] used, int x, boolean flag) {
-        if (!used[vertex]) {
-            used[vertex] = true;
-            if(vertex == x || flag) {
-                flag = true;
-                children++;
+    private static int dfs(int vertex, ArrayList[] adjacencyList, boolean[] used, int x, boolean flag) {
+        if (vertex == x) {
+            flag = true;
+        }
+        used[vertex] = true;
+        int children = 0;
+        for (int i = 0; i < adjacencyList[vertex].size(); i++) {
+            int neighbor = adjacencyList[vertex].get(i);
+            if (!used[neighbor]) {
+                int grandchildren = dfs(neighbor, adjacencyList, used, x, flag);
+                children = children + grandchildren;
             }
-            for (int i = 0; i < adjacencyList[vertex].size(); i++) {
-                children = dfs(children, adjacencyList[vertex].get(i), adjacencyList, used, x, flag);
-            }
+        }
+        if (flag) {
+            children = children + 1;
         }
         return children;
     }

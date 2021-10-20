@@ -28,9 +28,9 @@ public class Task532 {
         final boolean[] used = new boolean[adjacencyList.length];
         final Stack stack = new Stack();
         stack.push(from);
+        used[from] = true;
         while (!stack.isEmpty()) {
             final int vertex = stack.pop();
-            used[vertex] = true;
             final ArrayList neighbors = adjacencyList[vertex];
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 if (!used[neighbors.get(i)]) {
@@ -38,6 +38,7 @@ public class Task532 {
                         return true;
                     }
                     stack.push(neighbors.get(i));
+                    used[neighbors.get(i)] = true;
                 }
             }
         }

@@ -20,25 +20,18 @@ public class Task544 {
      * @return the height of a given tree.
      */
     public static int findHeight(int n, Pair[] edges) {
-        int height = 0;
-        int maxHeight = 0;
         final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(n, edges);
-        final boolean[] used = new boolean[adjacencyList.length];
-        return dfs(height, maxHeight, 1, adjacencyList, used);
+        return dfs(1, adjacencyList);
 
     }
 
-    private static int dfs(int height, int maxHeight, int vertex, ArrayList[] adjacencyList, boolean[] used) {
-        if(!used[vertex]) {
-            height++;
-            if (height > maxHeight) {
-                maxHeight = height;
-            }
-            for (int i = 0; i < adjacencyList[vertex].size(); i++) {
-                maxHeight = dfs(height, maxHeight, adjacencyList[vertex].get(i), adjacencyList, used);
-
-            }
+    private static int dfs(int vertex, ArrayList[] adjacencyList) {
+        int maxHeight = 0;
+        for (int i = 0; i < adjacencyList[vertex].size(); i++) {
+            int neighbor = adjacencyList[vertex].get(i);
+            int height = dfs(neighbor, adjacencyList);
+            maxHeight = Math.max(height, maxHeight);
         }
-        return maxHeight;
+        return maxHeight + 1;
     }
 }

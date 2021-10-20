@@ -72,6 +72,17 @@ class StringArrayListTests {
     }
 
     @Test
+    public void removeTwoElements() {
+        StringArrayList a = StringArrayList.of("hello", "hi", "bye");
+        String expectedZero = "hello";
+        Assertions.assertEquals(expectedZero,a.remove(0));
+        String expectedLast = "bye";
+        Assertions.assertEquals(expectedLast,a.remove(1));
+        String expectedString = "[hi]";
+        Assertions.assertEquals(expectedString,a.toString());
+    }
+
+    @Test
     public void of() {
         StringArrayList a = StringArrayList.of("hello", "hi", "bye");
         String[] expected = new String[] {"hello", "hi", "bye"};

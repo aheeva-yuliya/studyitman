@@ -21,6 +21,20 @@ class Task527Tests {
     }
 
     @Test
+    public void findComponentAllConnected() {
+        ArrayList[] adjacencyList = new ArrayList[]{
+                ArrayList.of(1, 2, 3, 4, 5),
+                ArrayList.of(0, 2, 3, 4, 5),
+                ArrayList.of(0, 1, 3, 4, 5),
+                ArrayList.of(0, 2, 1, 4, 5),
+                ArrayList.of(0, 1, 2, 3, 5),
+                ArrayList.of(0, 1, 2, 3, 4),
+        };
+        boolean[] expected = new boolean[] {true, true, true, true, true, true};
+        Assertions.assertArrayEquals(expected,Task527.findComponent(adjacencyList));
+    }
+
+    @Test
     public void findComponentReachableCase() {
         ArrayList[] adjacencyList = new ArrayList[]{
                 ArrayList.of(1),
