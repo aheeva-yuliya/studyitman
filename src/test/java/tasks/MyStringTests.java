@@ -117,4 +117,24 @@ class MyStringTests {
         chars[0] = 'd';
         Assertions.assertEquals("abc", a.toString());
     }
+
+    @Test
+    public void plusConcatenateThat() {
+        char[] a = new char[]{'t', 'h', 'i', 's'};
+        char[] b = new char[]{' ', '+', ' ', 't', 'h', 'a', 't'};
+        MyString first = new MyString(a);
+        MyString second = new MyString(b);
+        MyString actual = first.plus(second);
+        Assertions.assertEquals("this + that", actual.toString());
+
+    }
+
+    @Test
+    public void replaceAtDifferentIndexes() {
+        char[] a = new char[] {'t', 'h', 'i', 's', ' ', 'i', 's', ' ', 'm', 'y', ' ', 's', 't', 'r', 'i', 'n', 'g'};
+        MyString my = new MyString(a);
+        MyString actual = my.replace('s', '!');
+        String expected = "thi! i! my !tring";
+        Assertions.assertEquals(expected, actual.toString());
+    }
 }

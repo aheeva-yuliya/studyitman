@@ -558,7 +558,7 @@ class ArrayUtilsTests {
         expected[3] = a[2];
         expected[4] = a[4];
         expected[5] = a[5];
-        ArrayUtils.mergeSort(a, 2, 5);
+        ArrayUtils.mergeSort(a, 1, 5);
         for (int i = 0; i < a.length; i++) {
             Assertions.assertSame(expected[i], a[i]);
         }

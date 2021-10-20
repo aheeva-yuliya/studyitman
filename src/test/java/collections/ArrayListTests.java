@@ -271,4 +271,27 @@ class ArrayListTests {
         int[] expected = new int[] {-76, -5, 0, 7, 7, 8, 9, 9, 18, 22, 54, 75, 78, 82, 89, 90, 99};
         Assertions.assertArrayEquals(expected, a.toArray());
     }
+
+    @Test
+    public void clearElements() {
+        ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0);
+        a.clear();
+        Assertions.assertEquals(0, a.size());
+    }
+
+    @Test
+    public void clearEmpty() {
+        ArrayList a = new ArrayList();
+        a.clear();
+        Assertions.assertEquals(0, a.size());
+    }
+
+    @Test
+    public void trimToSize() {
+        ArrayList a = new ArrayList();
+        a.add(100);
+        Assertions.assertEquals(0, a.get(1));
+        a.trimToSize();
+        Assertions.assertEquals(1, a.size());
+    }
 }

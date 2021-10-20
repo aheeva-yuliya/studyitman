@@ -69,12 +69,7 @@ public class MyString {
      *         a positive number if string is greater than that.string.
      */
     public int compareTo(MyString that) {
-        int length;
-        if (this.data.length <= that.data.length) {
-            length = this.data.length;
-        } else {
-            length = that.data.length;
-        }
+        int length = Math.min(this.data.length, that.data.length);
         if (this.data.length == 0 && that.data.length > 0) {
             return -1;
         }
@@ -129,6 +124,41 @@ public class MyString {
         char[] result = new char[a.data.length + b.data.length];
         System.arraycopy(a.data, 0, result, 0, a.data.length);
         System.arraycopy(b.data, 0, result, a.data.length, b.data.length);
+        return new MyString(result);
+    }
+
+    /**
+     * Creates a new object using string concatenation.
+     *
+     * @cpu O(n + m), n = data.length m = that.data.length
+     * @ram O(n + m), n = data.length m = that.data.length
+     *
+     * @param that an object of MyString
+     * @return a new object of MyString.
+     */
+    public MyString plus(MyString that) {
+        return plus(this, that);
+    }
+
+    /**
+     * Creates a new string with the all characters of the parameter target
+     *          replaced with the characters of the replacement.
+     *
+     * @cpu O(n) n = data.length
+     * @ram O(n) n = data.length
+     *
+     * @param target char argument
+     * @param replacement char argument
+     * @return a new string with the replaced characters.
+     */
+    public MyString replace(char target, char replacement) {
+        char[] result = new char[data.length];
+        System.arraycopy(data, 0, result, 0, data.length);
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] == target) {
+                result[i] = replacement;
+            }
+        }
         return new MyString(result);
     }
 }
