@@ -47,6 +47,15 @@ class LinkedListTests {
     }
 
     @Test
+    public void testToStringIfOneNode() {
+        LinkedList list = new LinkedList();
+        list.addFirst(7);
+        String expected = "[7]";
+        String actual = list.toString();
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
     public void testToStringIfEmpty() {
         LinkedList list = new LinkedList();
         String expected = "[]";
