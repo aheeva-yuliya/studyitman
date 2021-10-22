@@ -1,6 +1,7 @@
 package collections;
 
 import entities.Node;
+import utils.StringBuilder;
 
 /**
  * LinkedList
@@ -44,5 +45,29 @@ public class LinkedList {
         int value = first.getElement();
         first = first.getNext();
         return value;
+    }
+
+    /**
+     * Returns a string with all elements from an object of LinkedList.
+     *
+     * @cpu O(n) n = number of Nodes in LinkedList
+     * @ram O(n) n = number of Nodes in LinkedList
+     *
+     * @return a string with all elements from an object of LinkedList.
+     */
+    public String toString() {
+        StringBuilder listToString = new StringBuilder();
+        Node current = first;
+        listToString.append("[");
+        while (current != null && current.getNext() != null) {
+            listToString.append(current.getElement());
+            listToString.append(", ");
+            current = current.getNext();
+            if (current.getNext() == null) {
+                listToString.append(current.getElement());
+            }
+        }
+        listToString.append("]");
+        return listToString.toString();
     }
 }
