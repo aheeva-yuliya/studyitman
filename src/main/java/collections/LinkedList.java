@@ -59,13 +59,14 @@ public class LinkedList {
         StringBuilder listToString = new StringBuilder();
         Node current = first;
         listToString.append("[");
-        while (current != null && current.getNext() != null) {
-            listToString.append(current.getElement());
-            listToString.append(", ");
-            current = current.getNext();
-            if (current.getNext() == null) {
+        while (current != null) {
+            if (current.getNext() != null) {
+                listToString.append(current.getElement());
+                listToString.append(", ");
+            } else {
                 listToString.append(current.getElement());
             }
+            current = current.getNext();
         }
         listToString.append("]");
         return listToString.toString();
