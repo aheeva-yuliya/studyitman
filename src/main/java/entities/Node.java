@@ -7,7 +7,7 @@ public class Node {
     private final int element;
     private Node next;
 
-    public Node(int element, Node next) {
+    public Node(final int element, final Node next) {
         this.element = element;
         this.next = next;
     }
@@ -44,7 +44,7 @@ public class Node {
      *
      * @param next a link for the next Node
      */
-    public void setNext(Node next) {
+    public void setNext(final Node next) {
         this.next = next;
     }
 }
