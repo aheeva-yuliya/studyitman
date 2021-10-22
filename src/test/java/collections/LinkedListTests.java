@@ -34,4 +34,23 @@ class LinkedListTests {
         Assertions.assertEquals(51,list.removeFirst());
         Assertions.assertEquals(55,list.getFirst());
     }
+
+    @Test
+    public void testToStringIfNotEmpty() {
+        LinkedList list = new LinkedList();
+        list.addFirst(7);
+        list.addFirst(55);
+        list.addFirst(51);
+        String expected = "[51, 55, 7]";
+        String actual = list.toString();
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testToStringIfEmpty() {
+        LinkedList list = new LinkedList();
+        String expected = "[]";
+        String actual = list.toString();
+        Assertions.assertEquals(expected,actual);
+    }
 }
