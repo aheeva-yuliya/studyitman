@@ -62,4 +62,67 @@ class LinkedListTests {
         String actual = list.toString();
         Assertions.assertEquals(expected,actual);
     }
+
+    @Test
+    public void addLastIfNotEmpty() {
+        LinkedList list = new LinkedList();
+        list.addFirst(7);
+        list.addFirst(55);
+        list.addFirst(51);
+        list.addLast(100);
+        String expected = "[51, 55, 7, 100]";
+        String actual = list.toString();
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void addLastIfEmpty() {
+        LinkedList list = new LinkedList();
+        list.addLast(100);
+        String expected = "[100]";
+        String actual = list.toString();
+        Assertions.assertEquals(expected,actual);
+    }
+
+
+    @Test
+    public void getLast() {
+        LinkedList list = new LinkedList();
+        list.addFirst(7);
+        list.addFirst(55);
+        list.addFirst(51);
+        list.addLast(100);
+        Assertions.assertEquals(100,list.getLast());
+        String expected = "[51, 55, 7, 100]";
+        String actual = list.toString();
+        Assertions.assertEquals(expected,actual);
+    }
+
+
+    @Test
+    public void removeLastIfSome() {
+        LinkedList list = new LinkedList();
+        list.addFirst(7);
+        list.addFirst(55);
+        list.addFirst(51);
+        Assertions.assertEquals(7,list.removeLast());
+        Assertions.assertEquals("[51, 55]",list.toString());
+    }
+
+    @Test
+    public void removeLastIfTwo() {
+        LinkedList list = new LinkedList();
+        list.addFirst(7);
+        list.addFirst(55);
+        Assertions.assertEquals(7,list.removeLast());
+        Assertions.assertEquals("[55]",list.toString());
+    }
+
+    @Test
+    public void removeLastIfOne() {
+        LinkedList list = new LinkedList();
+        list.addFirst(7);
+        Assertions.assertEquals(7,list.removeLast());
+        Assertions.assertEquals("[]",list.toString());
+    }
 }
