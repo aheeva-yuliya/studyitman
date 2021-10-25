@@ -8,6 +8,7 @@ import utils.StringBuilder;
  */
 public class LinkedList {
     private Node first;
+    private Node last;
 
     /**
      * Adds an element to the beginning of the list.
@@ -18,7 +19,14 @@ public class LinkedList {
      * @param element int argument
      */
     public void addFirst(final int element) {
-        first = new Node(element, first);
+        Node temp = new Node(element,null,null);
+        if (last == null) {
+            last = temp;
+        } else {
+            first.setPrev(temp);
+        }
+        temp.setNext(first);
+        first = temp;
     }
 
     /**
@@ -43,6 +51,11 @@ public class LinkedList {
      */
     public int removeFirst() {
         int value = first.getElement();
+        if (first.getNext() == null) {
+            last = null;
+        } else {
+            first.getNext().setPrev(null);
+        }
         first = first.getNext();
         return value;
     }
@@ -75,60 +88,50 @@ public class LinkedList {
     /**
      * Adds a Node object to the end of the list.
      *
-     * @cpu O(n) n = number of Nodes in LinkedList
+     * @cpu O(1)
      * @ram O(1)
      *
      * @param element int argument
      */
     public void addLast(int element) {
-        Node temp = first;
-        if (temp == null) {
-            addFirst(element);
+        Node temp = new Node(element,null,null);
+        if (first == null) {
+            first = temp;
         } else {
-            while (temp.getNext() != null) {
-                temp = temp.getNext();
-            }
-            temp.setNext(new Node(element, null));
+            last.setNext(temp);
         }
+        temp.setPrev(last);
+        last = temp;
     }
 
     /**
      * Gets the last element of the LinkedList.
      *
-     * @cpu O(n) n = number of Nodes in LinkedList.
+     * @cpu O(1)
      * @ram O(1)
      *
      * @return the value of the last element of the LinkedList.
      */
     public int getLast() {
-        Node temp = first;
-        while (temp.getNext() != null) {
-            temp = temp.getNext();
-        }
-        return temp.getElement();
+       return last.getElement();
     }
 
     /**
      * Gets the last element of the LinkedList and removes it.
      *
-     * @cpu O(n) n = number of Nodes in LinkedList.
+     * @cpu O(1)
      * @ram O(1)
      *
      * @return the previous last element of the LinkedList.
      */
     public int removeLast() {
-        Node temp = first;
-        int value;
-        if (temp.getNext() != null) {
-        while (temp.getNext().getNext() != null) {
-            temp = temp.getNext();
-        }
-        value =  temp.getNext().getElement();
-        temp.setNext(null);
-        } else {
-            value = temp.getElement();
+        int value = last.getElement();
+        if (first.getNext() == null) {
             first = null;
+        } else {
+            last.getPrev().setNext(null);
         }
+        last = last.getPrev();
         return value;
     }
 }

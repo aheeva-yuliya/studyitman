@@ -16,8 +16,8 @@ public class Task551 {
      * @return a  doubly linked list with the elements 12, 99, 37.
      */
     public static Node buildLinkedList() {
-        Node last = new Node(37, null);
-        Node second = new Node(99, last);
+        Node last = new Node(37, null, null);
+        Node second = new Node(99, last, null);
         last.setPrev(second);
         Node first = new Node(12, second, null);
         second.setPrev(first);
