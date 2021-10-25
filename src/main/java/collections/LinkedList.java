@@ -10,6 +10,22 @@ public class LinkedList {
     private Node first;
     private Node last;
 
+    public LinkedList() {}
+
+    public LinkedList(LinkedList that) {
+        if (that != null && that.first != null) {
+            addFirst(that.first.getElement());
+            Node next = that.first.getNext();
+            if (next != null) {
+                while (next.getNext() != null) {
+                    addLast(next.getElement());
+                    next = next.getNext();
+                }
+                addLast(that.last.getElement());
+            }
+        }
+    }
+
     /**
      * Adds an element to the beginning of the list.
      *
