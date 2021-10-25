@@ -3,8 +3,6 @@ package collections;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LinkedListTests {
 
     @Test
@@ -133,5 +131,30 @@ class LinkedListTests {
         list.addFirst(7);
         Assertions.assertEquals(7,list.removeLast());
         Assertions.assertEquals("[]",list.toString());
+    }
+
+    @Test
+    public void linkedListThatCopyOfSome() {
+        LinkedList list = new LinkedList();
+        list.addFirst(11);
+        list.addLast(12);
+        list.addLast(13);
+        LinkedList copy = new LinkedList(list);
+        Assertions.assertEquals("[11, 12, 13]",copy.toString());
+    }
+
+    @Test
+    public void linkedListThatCopyOfOne() {
+        LinkedList list = new LinkedList();
+        list.addFirst(11);
+        LinkedList copy = new LinkedList(list);
+        Assertions.assertEquals("[11]",copy.toString());
+    }
+
+    @Test
+    public void linkedListThatCopyIfEmpty() {
+        LinkedList list = new LinkedList();
+        LinkedList copy = new LinkedList(list);
+        Assertions.assertEquals("[]",copy.toString());
     }
 }
