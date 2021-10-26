@@ -4,7 +4,7 @@ package entities;
  * Node
  */
 public class Node {
-    private final int element;
+    private int element;
     private Node next;
     private Node prev;
 
@@ -48,6 +48,18 @@ public class Node {
      */
     public Node getPrev() {
         return prev;
+    }
+
+    /**
+     * Sets the value of the instance variable "element".
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param element int argument
+     */
+    public void setElement(final int element) {
+        this.element = element;
     }
 
     /**
