@@ -10,18 +10,29 @@ public class LinkedList {
     private Node first;
     private Node last;
 
+    /**
+     * Creates an object of LinkedList.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     */
     public LinkedList() {}
 
-    public LinkedList(LinkedList that) {
-        if (that != null && that.first != null) {
-            addFirst(that.first.getElement());
-            Node next = that.first.getNext();
-            if (next != null) {
-                while (next.getNext() != null) {
-                    addLast(next.getElement());
-                    next = next.getNext();
-                }
-                addLast(that.last.getElement());
+    /**
+     * Creates a copy of the object of LinkedList that.
+     *
+     * @cpu O(n) n = number of Nodes of LinkedList that
+     * @ram O(n) n = number of Nodes of LinkedList that
+     *
+     * @param that an object of LinkedList
+     */
+    public LinkedList(final LinkedList that) {
+        if (that != null) {
+            Node next = that.first;
+            while (next != null) {
+                addLast(next.getElement());
+                next = next.getNext();
             }
         }
     }
@@ -35,7 +46,7 @@ public class LinkedList {
      * @param element int argument
      */
     public void addFirst(final int element) {
-        Node temp = new Node(element,null,null);
+        final Node temp = new Node(element,null,null);
         if (last == null) {
             last = temp;
         } else {
@@ -66,7 +77,7 @@ public class LinkedList {
      * @return the value of the previous first element.
      */
     public int removeFirst() {
-        int value = first.getElement();
+        final int value = first.getElement();
         if (first.getNext() == null) {
             last = null;
         } else {
@@ -85,7 +96,7 @@ public class LinkedList {
      * @return a string with all elements from an object of LinkedList.
      */
     public String toString() {
-        StringBuilder listToString = new StringBuilder();
+        final StringBuilder listToString = new StringBuilder();
         Node current = first;
         listToString.append("[");
         while (current != null) {
@@ -109,8 +120,8 @@ public class LinkedList {
      *
      * @param element int argument
      */
-    public void addLast(int element) {
-        Node temp = new Node(element,null,null);
+    public void addLast(final int element) {
+        final Node temp = new Node(element,null,null);
         if (first == null) {
             first = temp;
         } else {
@@ -141,7 +152,7 @@ public class LinkedList {
      * @return the previous last element of the LinkedList.
      */
     public int removeLast() {
-        int value = last.getElement();
+        final int value = last.getElement();
         if (first.getNext() == null) {
             first = null;
         } else {
@@ -149,5 +160,151 @@ public class LinkedList {
         }
         last = last.getPrev();
         return value;
+    }
+
+    /**
+     * Creates an ArrayList formed from the elements stored in the LinkedList.
+     *
+     * @cpu O(n) n = number of Nodes of LinkedList
+     * @ram O(n) n = number of Nodes of LinkedList
+     *
+     * @return an array formed from the elements in the LinkedList.
+     */
+    public int[] toArray() {
+        final ArrayList arrayList = new ArrayList();
+        Node next = first;
+        while (next != null) {
+            arrayList.add(next.getElement());
+            next = next.getNext();
+        }
+        return arrayList.toArray();
+    }
+
+    /**
+     * Creates an object of LinkedList formed from the parameter elements.
+     *
+     * @cpu O(n) n = elements.length
+     * @ram O(n) n = elements.length
+     *
+     * @param elements variable arguments list
+     * @return an object of LinkedList formed from the elements.
+     */
+    public static LinkedList of(final int... elements) {
+        final LinkedList linkedList = new LinkedList();
+        for (int element : elements) {
+            linkedList.addLast(element);
+        }
+        return linkedList;
+    }
+
+    /**
+     * Sets the parameter element to the parameter index position in the LinkedList.
+     *
+     * @cpu O(n) n = index
+     * @ram O(1)
+     *
+     * @param index int argument
+     * @param element int argument
+     */
+    public void set(final int index, final int element) {
+        final Node node = search(index);
+        node.setElement(element);
+    }
+
+    /**
+     * Gets the value of the element at the index position in the LinkedList.
+     *
+     * @cpu O(n) n = index
+     * @ram O(1)
+     *
+     * @param index int argument
+     * @return the element at the index position
+     */
+    public int get(final int index) {
+        final Node node = search(index);
+        return node.getElement();
+    }
+
+    /**
+     * Gets the value of the element at the index position in the LinkedList and removes it.
+     *
+     * @cpu O(n) n = index
+     * @ram O(1)
+     *
+     * @param index int argument
+     * @return the element at the index position
+     */
+    public int remove(final int index) {
+        final Node node = search(index);
+        if (node == first) {
+            return removeFirst();
+        } else if (node == last) {
+            return removeLast();
+        } else {
+            node.getPrev().setNext(node.getNext());
+            node.getNext().setPrev(node.getPrev());
+            return node.getElement();
+        }
+    }
+
+    private Node search(final int index) {
+        int listIndex = 0;
+        Node next = first;
+        while (listIndex != index) {
+            next = next.getNext();
+            listIndex++;
+        }
+        return next;
+    }
+
+    /**
+     * Finds the length of the LinkedList.
+     *
+     * @cpu O(n) n = number of Nodes
+     * @ram O(1)
+     *
+     * @return the length of the LinkedList.
+     */
+    public int size() {
+        int size = 0;
+        Node next = first;
+        while (next != null) {
+            next = next.getNext();
+            size++;
+        }
+        return size;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one .
+     *
+     * @cpu (n + m) n = number of Nodes in this LinkedList and m = number of Nodes of that LinkedList.
+     * @ram O(1)
+     *
+     * @param that an object of LinkedList or null
+     * @return true if the objects are equal and false if aren't.
+     */
+    public boolean equals(LinkedList that) {
+        if (that == null) {
+            return false;
+        }
+        final int thisSize = this.size();
+        final int thatSize = that.size();
+        if (thisSize == 0 && thatSize == 0) {
+            return true;
+        } else if (thisSize > thatSize || thatSize > thisSize) {
+            return false;
+        } else {
+            Node thisNext = this.first;
+            Node thatNext = that.first;
+            while (thisNext != null) {
+                if (thisNext.getElement() != thatNext.getElement()) {
+                    return false;
+                }
+                thisNext = thisNext.getNext();
+                thatNext = thatNext.getNext();
+            }
+            return true;
+        }
     }
 }
