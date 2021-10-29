@@ -19,7 +19,7 @@ public class ExampleControllerTests {
         public void shouldReturnStringWhenMappingSecond() {
             ExampleController controller = new ExampleController();
             String expected = "I'm the second binding";
-            String actual = controller.secondIndex();
+            String actual = controller.second();
             Assertions.assertEquals(expected,actual);
         }
     }
