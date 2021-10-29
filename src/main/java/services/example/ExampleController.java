@@ -30,7 +30,7 @@ public class ExampleController {
      *
      * @return an example String.
      */
-    @GetMapping("second/")
+    @GetMapping("/second")
     public String secondIndex() {
         return "I'm the second binding";
     }
