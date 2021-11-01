@@ -235,6 +235,20 @@ public class LinkedListTests {
         }
 
         @Test
+        public void shouldReturnSizeWhenTryAddAndRemove() {
+            LinkedList list = new LinkedList();
+            Assertions.assertEquals(0, list.size());
+            list.addFirst(7);
+            Assertions.assertEquals(1, list.size());
+            list.addLast(5);
+            Assertions.assertEquals(2, list.size());
+            list.removeLast();
+            Assertions.assertEquals(1, list.size());
+            list.removeFirst();
+            Assertions.assertEquals(0, list.size());
+        }
+
+        @Test
         public void shouldReturnZeroWhenListEmpty() {
             LinkedList list = new LinkedList();
             Assertions.assertEquals(0, list.size());
