@@ -23,4 +23,39 @@ public class ExampleControllerTests {
             Assertions.assertEquals(expected,actual);
         }
     }
+
+    @Nested
+    public class Annotations {
+        @Test
+        public void shouldReturnStringWhenMappingSecondPost() {
+            ExampleController controller = new ExampleController();
+            String expected = "I'm post mapping";
+            String actual = controller.secondPost();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenMappingSecondPut() {
+            ExampleController controller = new ExampleController();
+            String expected = "I'm put mapping";
+            String actual = controller.secondPut();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenMappingSecondPatch() {
+            ExampleController controller = new ExampleController();
+            String expected = "I'm patch mapping";
+            String actual = controller.secondPatch();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenSecondDelete() {
+            ExampleController controller = new ExampleController();
+            String expected = "I'm delete mapping";
+            String actual = controller.secondDelete();
+            Assertions.assertEquals(expected, actual);
+        }
+    }
 }
