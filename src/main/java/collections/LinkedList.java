@@ -8,7 +8,7 @@ import utils.StringBuilder;
 public class LinkedList {
     private Node first;
     private Node last;
-
+    private int size;
 
     /**
      * Node
@@ -141,6 +141,7 @@ public class LinkedList {
         }
         temp.setNext(first);
         first = temp;
+        size++;
     }
 
     /**
@@ -171,6 +172,7 @@ public class LinkedList {
             first.getNext().setPrev(null);
         }
         first = first.getNext();
+        size--;
         return value;
     }
 
@@ -216,6 +218,7 @@ public class LinkedList {
         }
         temp.setPrev(last);
         last = temp;
+        size++;
     }
 
     /**
@@ -246,6 +249,7 @@ public class LinkedList {
             last.getPrev().setNext(null);
         }
         last = last.getPrev();
+        size--;
         return value;
     }
 
@@ -347,18 +351,12 @@ public class LinkedList {
     /**
      * Finds the length of the LinkedList.
      *
-     * @cpu O(n) n = number of Nodes
+     * @cpu O(1)
      * @ram O(1)
      *
      * @return the length of the LinkedList.
      */
     public int size() {
-        int size = 0;
-        Node next = first;
-        while (next != null) {
-            next = next.getNext();
-            size++;
-        }
         return size;
     }
 
