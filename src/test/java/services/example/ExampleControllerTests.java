@@ -19,6 +19,7 @@ public class ExampleControllerTests {
     public class Extract {
         @Autowired
         private MockMvc mockMvc;
+        
         @Test
         public void shouldExecutedWith200WhenPassAllParams() throws Exception {
             final MockHttpServletRequestBuilder request =
@@ -68,20 +69,31 @@ public class ExampleControllerTests {
 
     @Nested
     public class GetMapping {
+        @Autowired
+        private MockMvc mockMvc;
+
         @Test
-        public void shouldReturnStringWhenGet() {
-            ExampleController controller = new ExampleController();
-            String expected = "I'm your first web-service";
-            String actual = controller.index();
-            Assertions.assertEquals(expected,actual);
+        public void shouldExecutedWith200WhenGet() throws Exception {
+            final MockHttpServletRequestBuilder request =
+                    MockMvcRequestBuilders.get
+                            ("/");
+            this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().string(
+                            "I'm your first web-service"
+                    ));
         }
 
         @Test
-        public void shouldReturnStringWhenGetSecond() {
-            ExampleController controller = new ExampleController();
-            String expected = "I'm the second binding";
-            String actual = controller.second();
-            Assertions.assertEquals(expected,actual);
+        public void shouldExecutedWith200WhenGetSecond() throws Exception {
+            final MockHttpServletRequestBuilder request =
+                    MockMvcRequestBuilders.get
+                            ("/second");
+            this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().string(
+                            "I'm the second binding"
+                    ));
         }
     }
 
@@ -89,15 +101,7 @@ public class ExampleControllerTests {
     public class Methods {
         @Autowired
         private MockMvc mockMvc;
-
-        @Test
-        public void shouldReturnStringWhenMappingSecondPost() {
-            ExampleController controller = new ExampleController();
-            String expected = "I'm post mapping";
-            String actual = controller.secondPost();
-            Assertions.assertEquals(expected, actual);
-        }
-
+        
         @Test
         public void shouldExecutedWith200WhenPost() throws Exception {
             final MockHttpServletRequestBuilder request =
@@ -109,15 +113,7 @@ public class ExampleControllerTests {
                             "I'm post mapping"
                     ));
         }
-
-        @Test
-        public void shouldReturnStringWhenMappingSecondPut() {
-            ExampleController controller = new ExampleController();
-            String expected = "I'm put mapping";
-            String actual = controller.secondPut();
-            Assertions.assertEquals(expected, actual);
-        }
-
+        
         @Test
         public void shouldExecutedWith200WhenPut() throws Exception {
             final MockHttpServletRequestBuilder request =
@@ -131,14 +127,6 @@ public class ExampleControllerTests {
         }
 
         @Test
-        public void shouldReturnStringWhenMappingSecondPatch() {
-            ExampleController controller = new ExampleController();
-            String expected = "I'm patch mapping";
-            String actual = controller.secondPatch();
-            Assertions.assertEquals(expected, actual);
-        }
-
-        @Test
         public void shouldExecutedWith200WhenPatch() throws Exception {
             final MockHttpServletRequestBuilder request =
                     MockMvcRequestBuilders.patch
@@ -148,14 +136,6 @@ public class ExampleControllerTests {
                     .andExpect(MockMvcResultMatchers.content().string(
                             "I'm patch mapping"
                     ));
-        }
-
-        @Test
-        public void shouldReturnStringWhenSecondDelete() {
-            ExampleController controller = new ExampleController();
-            String expected = "I'm delete mapping";
-            String actual = controller.secondDelete();
-            Assertions.assertEquals(expected, actual);
         }
 
         @Test
