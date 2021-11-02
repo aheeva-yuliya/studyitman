@@ -58,4 +58,12 @@ public class ExampleControllerTests {
             Assertions.assertEquals(expected, actual);
         }
     }
+
+    @Nested
+    public class Extract {
+        @Test
+        public void shouldExtractWhenTry() {
+            ExampleController controller = new ExampleController();
+        }
+    }
 }

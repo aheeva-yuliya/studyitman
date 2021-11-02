@@ -85,4 +85,33 @@ public class ExampleController {
     public String secondDelete() {
         return "I'm delete mapping";
     }
+
+    /**
+     * Extracts data and substitutes into a method.
+     *
+     * @cpu O()
+     * @ram O()
+     *
+     * @param pathVariable String argument
+     * @param secondVariable int argument
+     * @param required String argument
+     * @param optional String argument
+     * @param defaultValue int argument
+     * @param body String argument
+     * @return response
+     */
+    @PostMapping("/extract/{pathVariable}/{second}")
+    public String extract(@PathVariable String pathVariable,
+                          @PathVariable(name = "second") int secondVariable,
+                          @RequestParam String required,
+                          @RequestParam(required = false) String optional,
+                          @RequestParam(name = "default", defaultValue = "-1") int defaultValue,
+                          @RequestBody String body) {
+        return "patchVariable = " + pathVariable + "\n"
+                + "second = " + secondVariable + "\n"
+                + "required = " + required + "\n"
+                + "optional = " + optional + "\n"
+                + "default = " + defaultValue + "\n"
+                + "body = " + body + "\n";
+    }
 }
