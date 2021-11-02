@@ -107,7 +107,7 @@ public class ExampleController {
                           @RequestParam(required = false) String optional,
                           @RequestParam(name = "default", defaultValue = "-1") int defaultValue,
                           @RequestBody String body) {
-        return "patchVariable = " + pathVariable + "\n"
+        return "pathVariable = " + pathVariable + "\n"
                 + "second = " + secondVariable + "\n"
                 + "required = " + required + "\n"
                 + "optional = " + optional + "\n"
