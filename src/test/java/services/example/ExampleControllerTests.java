@@ -1,6 +1,5 @@
 package services.example;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ExampleControllerTests {
     public class Extract {
         @Autowired
         private MockMvc mockMvc;
-        
+
         @Test
         public void shouldExecutedWith200WhenPassAllParams() throws Exception {
             final MockHttpServletRequestBuilder request =

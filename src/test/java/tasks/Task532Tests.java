@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class Task532Tests {
     @Nested
-    public class Chain {
+    public class ChainByDfs {
         @Test
         public void shouldReturnTrueWhenExistsChain() {
             Pair[] acquaintances = new Pair[]{
@@ -48,6 +48,35 @@ public class Task532Tests {
             };
             Assertions.assertFalse(Task532.existsChain(5, acquaintances, 3, 2));
             Assertions.assertFalse(Task532.existsChain(5, acquaintances, 5, 1));
+        }
+    }
+
+    @Nested
+    public class ChainByBfs {
+        @Test
+        public void shouldReturnTrueWhenTryFindFromOneToSeven() {
+            Pair[] acquaintances = new Pair[]{
+                    new Pair(1, 3),
+                    new Pair(1, 2),
+                    new Pair(3, 4),
+                    new Pair(3, 5),
+                    new Pair(5, 6),
+                    new Pair(5, 7),
+                    new Pair(1, 8),
+                    new Pair(8, 9)
+            };
+            Assertions.assertTrue(Task532.existsChainByBfs(9, acquaintances, 1, 7));
+        }
+
+        @Test
+        public void shouldReturnFalseWhenNoChain() {
+            Pair[] acquaintances = new Pair[]{
+                    new Pair(1, 2),
+                    new Pair(1, 3),
+                    new Pair(3, 4),
+                    new Pair(3, 5)
+            };
+            Assertions.assertFalse(Task532.existsChainByBfs(5, acquaintances, 3, 2));
         }
     }
 }
