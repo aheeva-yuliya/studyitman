@@ -151,7 +151,7 @@ public class ExampleControllerTests {
         public void shouldExecutedWith200WhenTryGetNumbersFromQuery() throws Exception {
             final MockHttpServletRequestBuilder request =
                     MockMvcRequestBuilders.get
-                            ("/api/range?from=33&to=36");
+                            ("/api/range?from=33&to=37");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -166,7 +166,7 @@ public class ExampleControllerTests {
         public void shouldExecutedWith200WhenTryGetNumbersFromPath() throws Exception {
             final MockHttpServletRequestBuilder request =
                     MockMvcRequestBuilders.get
-                            ("/api/range/33/36");
+                            ("/api/range/33/37");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(

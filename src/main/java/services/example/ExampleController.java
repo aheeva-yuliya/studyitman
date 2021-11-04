@@ -152,11 +152,11 @@ public class ExampleController {
 
     private StringBuilder createBody(final int from, final int to) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = from; i < to; i++) {
+        for (int i = from; i < to - 1; i++) {
             stringBuilder.append(i);
             stringBuilder.append("\n");
         }
-        stringBuilder.append(to);
+        stringBuilder.append(to - 1);
         return stringBuilder;
     }
 }
