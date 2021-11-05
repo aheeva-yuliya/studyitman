@@ -11,13 +11,13 @@ public class QueueControllerTests {
         @Test
         public void shouldReturnTwoTicketsWhenTwoDaysWithOneTicket () {
             QueueController controller = new QueueController();
-            String expected = "Ticket{number=1, place='place'}";
+            String expected = "Ticket{number=1, place='bank'}";
             String actual = controller.getNextTicket();
             Assertions.assertEquals(expected, actual);
             Assertions.assertEquals("1", controller.getTotalTickets());
             Assertions.assertEquals("[1]", controller.getVisitsByDay());
             controller.postNextWorkDay();
-            String expectedSecond = "Ticket{number=1, place='place'}";
+            String expectedSecond = "Ticket{number=1, place='bank'}";
             String actualSecond = controller.getNextTicket();
             Assertions.assertEquals(expectedSecond, actualSecond);
             Assertions.assertEquals("2", controller.getTotalTickets());
@@ -33,7 +33,7 @@ public class QueueControllerTests {
             Assertions.assertEquals("0", controller.getTotalTickets());
             Assertions.assertEquals("[0, 0]", controller.getVisitsByDay());
             controller.postNextWorkDay();
-            String expected = "Ticket{number=1, place='place'}";
+            String expected = "Ticket{number=1, place='bank'}";
             String actual  = controller.getNextTicket();
             Assertions.assertEquals(expected, actual);
             Assertions.assertEquals("1", controller.getTotalTickets());
