@@ -21,9 +21,8 @@ public class QueueController {
      * @return String information of the next ticket.
      */
     @GetMapping("/api/queue/nextTicket")
-    public String getNextTicket() {
-        Ticket ticket = queue.getNextTicket();
-        return ticket.toString();
+    public Ticket getNextTicket() {
+        return queue.getNextTicket();
     }
 
     /**
@@ -60,8 +59,8 @@ public class QueueController {
      * @return a new object of the ArrayList class.
      */
     @GetMapping("/api/queue/getVisitsByDays")
-    public String getVisitsByDay() {
+    public int[] getVisitsByDay() {
         ArrayList arrayList = queue.getVisitsByDay();
-        return arrayList.toString();
+        return arrayList.toArray();
     }
 }
