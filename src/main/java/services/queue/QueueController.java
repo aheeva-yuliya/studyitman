@@ -53,8 +53,8 @@ public class QueueController {
     /**
      * Creates an attendance list by day.
      *
-     * @cpu O(1)
-     * @ram O(n), n = the length of instance variable visits
+     * @cpu O(n) n = number of days
+     * @ram O(n), n = number of days
      *
      * @return a new object of the ArrayList class.
      */
