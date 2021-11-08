@@ -10,7 +10,7 @@ import tasks.QueueManagementSystem;
  */
 @RestController
 public class QueueController {
-    private QueueManagementSystem queue = new QueueManagementSystem("bank");
+    private final QueueManagementSystem queue = new QueueManagementSystem("bank");
 
     /**
      * Creates the next ticket.
