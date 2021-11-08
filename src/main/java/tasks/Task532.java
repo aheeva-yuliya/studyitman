@@ -80,4 +80,37 @@ public class Task532 {
         }
         return false;
     }
+
+    /**
+     * Finds the minimum chain length through which from knows to.
+     *
+     * @cpu O (n + m) n = people m = number of acquaintances
+     * @ram O(n + m) n = people m = number of acquaintances
+     *
+     * @param people int argument
+     * @param acquaintances represents an array of edges in a directed graph
+     * @param from int argument
+     * @param to int argument
+     * @return the minimum chain length if from know to, otherwise -1.
+     */
+    public static int findMinChainLengthByVisits(int people, Pair[] acquaintances, int from, int to) {
+        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+        final int[] used = new int[adjacencyList.length];
+        final Queue queue = new Queue();
+        queue.offer(from);
+        while (!queue.isEmpty()) {
+            final int vertex = queue.poll();
+            final ArrayList neighbors = adjacencyList[vertex];
+            for (int i = neighbors.size() - 1; i>= 0; i--) {
+                if (used[neighbors.get(i)] == 0) {
+                    queue.offer(neighbors.get(i));
+                    used[neighbors.get(i)] = used[vertex] + 1;
+                    if (neighbors.get(i) == to) {
+                        return used[neighbors.get(i)];
+                    }
+                }
+            }
+        }
+        return -1;
+    }
 }
