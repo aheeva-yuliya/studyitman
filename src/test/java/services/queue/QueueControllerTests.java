@@ -1,43 +1,57 @@
 package services.queue;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+@SpringBootTest
+@AutoConfigureMockMvc
 public class QueueControllerTests {
+    @Autowired
+    private MockMvc mockMvc;
 
     @Nested
     public class EndToEnd {
         @Test
-        public void shouldReturnTwoTicketsWhenTwoDaysWithOneTicket () {
-            final QueueController controller = new QueueController();
-            final String expected = "Ticket{number=1, place='bank'}";
-            final String actual = controller.getNextTicket().toString();
-            Assertions.assertEquals(expected, actual);
-            Assertions.assertEquals("1", controller.getTotalTickets());
-            Assertions.assertArrayEquals(new int[]{1}, controller.getVisitsByDay());
-            controller.postNextWorkDay();
-            final String expectedSecond = "Ticket{number=1, place='bank'}";
-            final String actualSecond = controller.getNextTicket().toString();
-            Assertions.assertEquals(expectedSecond, actualSecond);
-            Assertions.assertEquals("2", controller.getTotalTickets());
-            Assertions.assertArrayEquals(new int[] {1, 1}, controller.getVisitsByDay());
-        }
-
-        @Test
-        public void shouldReturnOneTicketWhenTwoDaysWithoutTicketsLastDayOneTicket () {
-            final QueueController controller = new QueueController();
-            Assertions.assertEquals("0", controller.getTotalTickets());
-            Assertions.assertArrayEquals(new int[] {0}, controller.getVisitsByDay());
-            controller.postNextWorkDay();
-            Assertions.assertEquals("0", controller.getTotalTickets());
-            Assertions.assertArrayEquals(new int[] {0, 0}, controller.getVisitsByDay());
-            controller.postNextWorkDay();
-            final String expected = "Ticket{number=1, place='bank'}";
-            final String actual  = controller.getNextTicket().toString();
-            Assertions.assertEquals(expected, actual);
-            Assertions.assertEquals("1", controller.getTotalTickets());
-            Assertions.assertArrayEquals(new int[]{0, 0, 1}, controller.getVisitsByDay());
+        public void shouldReturnTwoTicketsTotalWhenTwoDaysWithOneTicket() throws Exception {
+            MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/api/queue/nextTicket");
+            QueueControllerTests.this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().json(
+                            "{\"number\":1,\"place\":\"bank\"}"));
+            request = MockMvcRequestBuilders.get("/api/queue/totalTickets");
+            QueueControllerTests.this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().string("1"));
+            request = MockMvcRequestBuilders.get("/api/queue/getVisitsByDays");
+            QueueControllerTests.this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().json(
+                            "[1]"));
+            request = MockMvcRequestBuilders.post("/api/queue/toNextWorkDay");
+            QueueControllerTests.this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().string(""));
+            request = MockMvcRequestBuilders.get("/api/queue/nextTicket");
+            QueueControllerTests.this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().json(
+                            "{\"number\":1,\"place\":\"bank\"}"));
+            request = MockMvcRequestBuilders.get("/api/queue/totalTickets");
+            QueueControllerTests.this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().string("2"));
+            request = MockMvcRequestBuilders.get("/api/queue/getVisitsByDays");
+            QueueControllerTests.this.mockMvc.perform(request)
+                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(MockMvcResultMatchers.content().json(
+                            "[1, 1]"));
         }
     }
 }

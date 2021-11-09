@@ -18,7 +18,7 @@ public class QueueController {
      * @cpu O(1)
      * @ram O(1)
      *
-     * @return String information of the next ticket.
+     * @return JSON object of the next ticket.
      */
     @GetMapping("/api/queue/nextTicket")
     public Ticket getNextTicket() {
@@ -56,7 +56,7 @@ public class QueueController {
      * @cpu O(n) n = number of days
      * @ram O(n), n = number of days
      *
-     * @return a new object of the ArrayList class.
+     * @return a JSON object of the attendance list by day.
      */
     @GetMapping("/api/queue/getVisitsByDays")
     public int[] getVisitsByDay() {
