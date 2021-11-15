@@ -3,39 +3,109 @@ package collections;
 import entities.BfsNode;
 
 public class BfsQueue {
-    private BfsNode[] queue = new BfsNode[16];
-    private int size;
+    private BfsNodeAndNext firstNode = new BfsNodeAndNext(null, null);
+    private BfsNodeAndNext lastNode = new BfsNodeAndNext(null, null);
+    private int size = 0;
 
+    /**
+     * //     * Add last element in BfsQueue
+     * //     *
+     * //     * @param element - value of element
+     * //     * @cpu O(1)
+     * //     * @ram O(1)
+     * //
+     */
     public void offer(BfsNode element) {
-        if (size == queue.length) {
-            BfsNode[] temp = new BfsNode[size * 2];
-            System.arraycopy(queue, 0, temp, 0, size);
-            queue = temp;
+        if (size == 0) {
+            firstNode.node = element;
+            firstNode.nextNode = new BfsNodeAndNext(null, null);
+            lastNode = firstNode.nextNode;
+        } else {
+            lastNode.node = element;
+            lastNode.nextNode = new BfsNodeAndNext(null, null);
+            lastNode = lastNode.nextNode;
         }
-        queue[size++] = element;
+        size++;
     }
 
+    /**
+     * //     * Get value first element
+     * //     *
+     * //     * @return value first element
+     * //     * @cpu O(1)
+     * //     * @ram O(1)
+     * //
+     */
     public BfsNode peek() {
-        return queue[0];
+        return firstNode.node;
     }
 
+    /**
+     * Get value first element and delete
+     *
+     * @return value first element
+     * @cpu O(1)
+     * @ram O(1)
+     */
+    // n - size
     public BfsNode poll() {
-        BfsNode node = queue[0];
-        System.arraycopy(queue, 1, queue, 0, size - 1);
-        queue[size - 1] = null;
+        if (size == 0) {
+            return null;
+        }
+        BfsNode node = firstNode.node;
+        firstNode = firstNode.nextNode;
         size--;
         return node;
     }
 
+    /**
+     * Give size of BfsQueue
+     *
+     * @return size of BfsQueue
+     * @cpu O(1)
+     * @ram O(1)
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Get is BfsQueue is Empty
+     *
+     * @return false is size BfsQueue more than zero and true is equals zero
+     * @cpu O(1)
+     * @ram O(1)
+     */
     public boolean isEmpty() {
         return size == 0;
     }
 
+    /**
+     * Get array of elements BfsQueue
+     *
+     * @return array of elements BfsQueue
+     * @cpu O(n)
+     * @ram O(n)
+     */
+    // n - size
     public BfsNode[] toArray() {
-        return queue;
+        BfsNode[] bfsNodes = new BfsNode[size];
+        BfsNodeAndNext node = firstNode;
+        int index = 0;
+        while (node.node != null) {
+            bfsNodes[index++] = node.node;
+            node = node.nextNode;
+        }
+        return bfsNodes;
+    }
+
+    private static class BfsNodeAndNext {
+        BfsNode node;
+        BfsNodeAndNext nextNode;
+
+        public BfsNodeAndNext(BfsNode node, BfsNodeAndNext nextNode) {
+            this.node = node;
+            this.nextNode = nextNode;
+        }
     }
 }

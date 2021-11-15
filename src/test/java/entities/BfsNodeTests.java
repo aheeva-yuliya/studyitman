@@ -1,25 +1,56 @@
 package entities;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class BfsNodeTests {
+    @Nested
+    public class Get {
+        @Test
+        public void getVertex() {
+            BfsNode node = new BfsNode(10, 20);
+            Assertions.assertEquals(10, node.getVertex());
+        }
 
-class BfsNodeTests {
-
-    @Test
-    void getVertex() {
+        @Test
+        public void getDistance() {
+            BfsNode node = new BfsNode(10, 20);
+            Assertions.assertEquals(20, node.getDistance());
+        }
     }
 
-    @Test
-    void getDistance() {
+    @Nested
+    public class ToString {
+        @Test
+        public void testToString() {
+            BfsNode node = new BfsNode(10, 20);
+            String expected = "BfsNode{vertex=10, distance=20}";
+            String actual = node.toString();
+            Assertions.assertEquals(expected, actual);
+        }
     }
 
-    @Test
-    void testToString() {
+    @Nested
+    public class Equals {
+        @Test
+        public void shouldReturnTrueWhenEquals() {
+            BfsNode first = new BfsNode(10, 20);
+            BfsNode second = new BfsNode(10, 20);
+            Assertions.assertTrue(first.equals(second));
+        }
 
-    }
+        @Test
+        public void shouldReturnFalseWhenNotEqual() {
+            BfsNode first = new BfsNode(10, 20);
+            BfsNode second = new BfsNode(20, 20);
+            Assertions.assertFalse(first.equals(second));
+        }
 
-    @Test
-    void testEquals() {
+        @Test
+        public void shouldReturnFalseWhenSecondNull() {
+            BfsNode first = new BfsNode(10, 20);
+            Assertions.assertFalse(first.equals(null));
+        }
     }
 }
