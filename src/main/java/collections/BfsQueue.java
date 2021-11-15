@@ -3,7 +3,6 @@ package collections;
 import entities.BfsNode;
 
 public class BfsQueue {
-    private BfsNode node;
     private BfsNode[] queue = new BfsNode[16];
     private int size;
 
@@ -14,7 +13,6 @@ public class BfsQueue {
             queue = temp;
         }
         queue[size++] = element;
-
     }
 
     public BfsNode peek() {
@@ -23,7 +21,7 @@ public class BfsQueue {
 
     public BfsNode poll() {
         BfsNode node = queue[0];
-        System.arraycopy(queue, 1, queue, 0, size);
+        System.arraycopy(queue, 1, queue, 0, size - 1);
         queue[size - 1] = null;
         size--;
         return node;
