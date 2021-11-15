@@ -18,7 +18,7 @@ public class BfsNode {
     }
 
     public String toString() {
-        return "{vertex=" + vertex + ", distance=" + distance + "}";
+        return "BfsNode{vertex=" + vertex + ", distance=" + distance + "}";
     }
 
     public boolean equals(BfsNode that) {
