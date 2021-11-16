@@ -130,9 +130,11 @@ public class Task532 {
      */
     public static int findMinChainLengthByQueue(int people, Pair[] acquaintances, int from, int to) {
         final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+        final boolean[] used = new boolean[adjacencyList.length];
         final BfsQueue queue = new BfsQueue();
         int distance = 0;
         queue.offer(new BfsNode(from, distance));
+        used[from] = true;
         while (!queue.isEmpty()) {
             final int vertex = queue.poll().getVertex();
             final ArrayList neighbors = adjacencyList[vertex];
@@ -141,8 +143,9 @@ public class Task532 {
                 final int neighbor = neighbors.get(i);
                 if (neighbor == to) {
                     return distance;
-                } else {
+                } else if (!used[neighbor]){
                     queue.offer(new BfsNode(neighbor, distance));
+                    used[neighbor] = true;
                 }
             }
         }
