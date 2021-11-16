@@ -128,7 +128,43 @@ public class Task532 {
      * @param to int argument
      * @return the minimum chain length if from know to, otherwise -1.
      */
-    public static ArrayList findMinChainLengthByQueue(int people, Pair[] acquaintances, int from, int to) {
+    public static int findMinChainLengthByQueue(int people, Pair[] acquaintances, int from, int to) {
+        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+        final boolean[] used = new boolean[adjacencyList.length];
+        final BfsQueue queue = new BfsQueue();
+        int distance = 0;
+        queue.offer(new BfsNode(from, distance));
+        used[from] = true;
+        while (!queue.isEmpty()) {
+            distance = queue.peek().getDistance() + 1;
+            final int vertex = queue.poll().getVertex();
+            final ArrayList neighbors = adjacencyList[vertex];
+            for (int i = neighbors.size() - 1; i >= 0; i--) {
+                final int neighbor = neighbors.get(i);
+                if (neighbor == to) {
+                    return distance;
+                } else if (!used[neighbor]){
+                    queue.offer(new BfsNode(neighbor, distance));
+                    used[neighbor] = true;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Finds the minimum chain length through which from knows to.
+     *
+     * @cpu O (n + m) n = people m = number of acquaintances
+     * @ram O(n + m) n = people m = number of acquaintances
+     *
+     * @param people int argument
+     * @param acquaintances represents an array of edges in a directed graph
+     * @param from int argument
+     * @param to int argument
+     * @return the minimum chain length if from know to, otherwise -1.
+     */
+    public static ArrayList findMinChainByQueue(int people, Pair[] acquaintances, int from, int to) {
         final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
         final boolean[] used = new boolean[adjacencyList.length];
         final BfsQueue queue = new BfsQueue();
