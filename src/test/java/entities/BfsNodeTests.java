@@ -8,13 +8,13 @@ public class BfsNodeTests {
     @Nested
     public class Get {
         @Test
-        public void getVertex() {
+        public void shouldGetVertexValueWhenHas() {
             BfsNode node = new BfsNode(10, 20);
             Assertions.assertEquals(10, node.getVertex());
         }
 
         @Test
-        public void getDistance() {
+        public void shouldGetDistanceValueWhenHas() {
             BfsNode node = new BfsNode(10, 20);
             Assertions.assertEquals(20, node.getDistance());
         }
@@ -23,7 +23,7 @@ public class BfsNodeTests {
     @Nested
     public class ToString {
         @Test
-        public void testToString() {
+        public void shouldReturnStringWithValuesWhenNotNull() {
             BfsNode node = new BfsNode(10, 20);
             String expected = "BfsNode{vertex=10, distance=20}";
             String actual = node.toString();

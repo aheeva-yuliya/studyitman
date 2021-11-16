@@ -3,109 +3,114 @@ package collections;
 import entities.BfsNode;
 
 public class BfsQueue {
-    private BfsNodeAndNext firstNode = new BfsNodeAndNext(null, null);
-    private BfsNodeAndNext lastNode = new BfsNodeAndNext(null, null);
-    private int size = 0;
+    private Node first;
+    private Node last;
+    private int size;
+
+    private static class Node {
+        private BfsNode bfsNode;
+        private Node prev;
+        private Node next;
+
+        public Node(BfsNode bfsNode, Node prev, Node next) {
+            this.bfsNode = bfsNode;
+            this.prev = prev;
+            this.next = next;
+        }
+    }
 
     /**
-     * //     * Add last element in BfsQueue
-     * //     *
-     * //     * @param element - value of element
-     * //     * @cpu O(1)
-     * //     * @ram O(1)
-     * //
+     * Adds an element to the end of BfsQueue.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param element - an object of BfsNode
      */
     public void offer(BfsNode element) {
-        if (size == 0) {
-            firstNode.node = element;
-            firstNode.nextNode = new BfsNodeAndNext(null, null);
-            lastNode = firstNode.nextNode;
+        final Node temp = new Node(element,null,null);
+        if (first == null) {
+            first = temp;
         } else {
-            lastNode.node = element;
-            lastNode.nextNode = new BfsNodeAndNext(null, null);
-            lastNode = lastNode.nextNode;
+            last.next = temp;
         }
+        temp.prev = last;
+        last = temp;
         size++;
     }
 
     /**
-     * //     * Get value first element
-     * //     *
-     * //     * @return value first element
-     * //     * @cpu O(1)
-     * //     * @ram O(1)
-     * //
+     * Gets the value of the first element of the BfsQueue.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return value first element
      */
     public BfsNode peek() {
-        return firstNode.node;
+        return first.bfsNode;
     }
 
     /**
-     * Get value first element and delete
+     * Gets the value of the first element and removes it.
      *
-     * @return value first element
      * @cpu O(1)
      * @ram O(1)
+     *
+     * @return value first element
      */
-    // n - size
     public BfsNode poll() {
-        if (size == 0) {
-            return null;
+        final BfsNode node = first.bfsNode;
+        if (first.next == null) {
+            last = null;
+        } else {
+            first.next.prev = null;
         }
-        BfsNode node = firstNode.node;
-        firstNode = firstNode.nextNode;
+        first = first.next;
         size--;
         return node;
     }
 
     /**
-     * Give size of BfsQueue
+     * Returns the size of BfsQueue.
      *
-     * @return size of BfsQueue
      * @cpu O(1)
      * @ram O(1)
+     *
+     * @return size of BfsQueue
      */
     public int size() {
         return size;
     }
 
     /**
-     * Get is BfsQueue is Empty
+     * Returns true if the queue is empty.
      *
-     * @return false is size BfsQueue more than zero and true is equals zero
      * @cpu O(1)
      * @ram O(1)
+     *
+     * @return true if the queue is empty, otherwise false.
      */
     public boolean isEmpty() {
         return size == 0;
     }
 
     /**
-     * Get array of elements BfsQueue
+     * Returns an array containing all the elements of the queue.
      *
-     * @return array of elements BfsQueue
-     * @cpu O(n)
-     * @ram O(n)
+     * @cpu O(n) n = size of BfsQueue
+     * @ram O(n) n = size of BfsQueue
+     *
+     * @return an array containing all the elements of the queue.
      */
-    // n - size
     public BfsNode[] toArray() {
-        BfsNode[] bfsNodes = new BfsNode[size];
-        BfsNodeAndNext node = firstNode;
+        final BfsNode[] bfsNodes = new BfsNode[size];
+        Node node = first;
         int index = 0;
-        while (node.node != null) {
-            bfsNodes[index++] = node.node;
-            node = node.nextNode;
+        while (node != null) {
+            bfsNodes[index++] = node.bfsNode;
+            node = node.next;
         }
         return bfsNodes;
-    }
-
-    private static class BfsNodeAndNext {
-        BfsNode node;
-        BfsNodeAndNext nextNode;
-
-        public BfsNodeAndNext(BfsNode node, BfsNodeAndNext nextNode) {
-            this.node = node;
-            this.nextNode = nextNode;
-        }
     }
 }

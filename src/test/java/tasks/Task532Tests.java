@@ -118,4 +118,44 @@ public class Task532Tests {
             Assertions.assertEquals(-1, Task532.findMinChainLengthByVisits(5, acquaintances, 5, 1));
         }
     }
+
+    @Nested
+    public class FindMinChainLengthByQueue {
+        @Test
+        public void shouldReturnTwoWhenFromIsOneAndToIsFive() {
+            Pair[] acquaintances = new Pair[]{
+                    new Pair(1, 2),
+                    new Pair(1, 3),
+                    new Pair(3, 4),
+                    new Pair(3, 5),
+            };
+            Assertions.assertEquals(2, Task532.findMinChainLengthByQueue(5, acquaintances, 1, 5));
+        }
+
+        @Test
+        public void shouldFindMinLengthWhenSomePeopleKnowTo() {
+            Pair[] acquaintances = new Pair[]{
+                    new Pair(1, 2),
+                    new Pair(1, 3),
+                    new Pair(1, 6),
+                    new Pair(3, 4),
+                    new Pair(3, 5),
+                    new Pair(3, 6),
+                    new Pair (5, 6)
+            };
+            Assertions.assertEquals(1, Task532.findMinChainLengthByQueue(6, acquaintances, 1, 6));
+        }
+
+        @Test
+        public void shouldReturnMinusOneWhenFromIsFiveAndToIsOne() {
+            Pair[] acquaintances = new Pair[]{
+                    new Pair(1, 2),
+                    new Pair(1, 3),
+                    new Pair(3, 4),
+                    new Pair(3, 5),
+            };
+            Assertions.assertEquals(-1, Task532.findMinChainLengthByQueue(5, acquaintances, 5, 1));
+        }
+    }
+
 }
