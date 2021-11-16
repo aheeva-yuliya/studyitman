@@ -1,5 +1,6 @@
 package tasks;
 
+import collections.ArrayList;
 import entities.Pair;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -122,18 +123,20 @@ public class Task532Tests {
     @Nested
     public class FindMinChainLengthByQueue {
         @Test
-        public void shouldReturnTwoWhenFromIsOneAndToIsFive() {
+        public void shouldReturnArrayWhenChainExists() {
             Pair[] acquaintances = new Pair[]{
                     new Pair(1, 2),
                     new Pair(1, 3),
                     new Pair(3, 4),
                     new Pair(3, 5),
             };
-            Assertions.assertEquals(2, Task532.findMinChainLengthByQueue(5, acquaintances, 1, 5));
+            ArrayList expected = ArrayList.of(1, 3, 4);
+            ArrayList actual = Task532.findMinChainLengthByQueue(5, acquaintances, 1, 4);
+            Assertions.assertTrue(expected.equals(actual));
         }
 
         @Test
-        public void shouldFindMinLengthWhenSomePeopleKnowTo() {
+        public void shouldFindMinChainWhenSomePeopleKnowTo() {
             Pair[] acquaintances = new Pair[]{
                     new Pair(1, 2),
                     new Pair(1, 3),
@@ -143,22 +146,24 @@ public class Task532Tests {
                     new Pair(3, 6),
                     new Pair (5, 6)
             };
-            Assertions.assertEquals(1, Task532.findMinChainLengthByQueue(6, acquaintances, 1, 6));
+            ArrayList expected = ArrayList.of(1, 6);
+            ArrayList actual = Task532.findMinChainLengthByQueue(6, acquaintances, 1, 6);
+            Assertions.assertTrue(expected.equals(actual));
         }
 
         @Test
-        public void shouldReturnMinusOneWhenFromIsFiveAndToIsOne() {
+        public void shouldReturnNullWhenFromNotKnowTo() {
             Pair[] acquaintances = new Pair[]{
                     new Pair(1, 2),
                     new Pair(1, 3),
                     new Pair(3, 4),
                     new Pair(3, 5),
             };
-            Assertions.assertEquals(-1, Task532.findMinChainLengthByQueue(5, acquaintances, 5, 1));
+            Assertions.assertNull(Task532.findMinChainLengthByQueue(5, acquaintances, 5, 1));
         }
 
         @Test
-        public void shouldReturnMinDistanceWhenCycleGraph() {
+        public void shouldReturnMinDistanceChainWhenCycleGraph() {
             Pair[] acquaintances = new Pair[]{
                     new Pair(1, 2),
                     new Pair(2, 1),
@@ -175,7 +180,9 @@ public class Task532Tests {
                     new Pair(1, 7),
                     new Pair(7, 1)
             };
-            Assertions.assertEquals(3, Task532.findMinChainLengthByQueue(7, acquaintances, 1, 5));
+            ArrayList expected = ArrayList.of(1, 7, 6, 5);
+            ArrayList actual = Task532.findMinChainLengthByQueue(7, acquaintances, 1, 5);
+            Assertions.assertTrue(expected.equals(actual));
         }
     }
 }

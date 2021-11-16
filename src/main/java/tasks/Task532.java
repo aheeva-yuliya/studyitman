@@ -128,27 +128,39 @@ public class Task532 {
      * @param to int argument
      * @return the minimum chain length if from know to, otherwise -1.
      */
-    public static int findMinChainLengthByQueue(int people, Pair[] acquaintances, int from, int to) {
+    public static ArrayList findMinChainLengthByQueue(int people, Pair[] acquaintances, int from, int to) {
         final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
         final boolean[] used = new boolean[adjacencyList.length];
         final BfsQueue queue = new BfsQueue();
         int distance = 0;
-        queue.offer(new BfsNode(from, distance));
+        queue.offer(new BfsNode(from, distance, null));
         used[from] = true;
         while (!queue.isEmpty()) {
             distance = queue.peek().getDistance() + 1;
+            BfsNode prev = queue.peek();
             final int vertex = queue.poll().getVertex();
             final ArrayList neighbors = adjacencyList[vertex];
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 final int neighbor = neighbors.get(i);
                 if (neighbor == to) {
-                    return distance;
+                    final ArrayList chain = new ArrayList();
+                    final ArrayList support = new ArrayList();
+                    support.add(to);
+                    while (prev != null) {
+                        support.add(prev.getVertex());
+                        prev = prev.getPrev();
+                    }
+                    int[] supportChain = support.toArray();
+                    for (int j = supportChain.length - 1; j >= 0; j--) {
+                        chain.add(supportChain[j]);
+                    }
+                    return chain;
                 } else if (!used[neighbor]){
-                    queue.offer(new BfsNode(neighbor, distance));
+                    queue.offer(new BfsNode(neighbor, distance, prev));
                     used[neighbor] = true;
                 }
             }
         }
-        return -1;
+        return null;
     }
 }
