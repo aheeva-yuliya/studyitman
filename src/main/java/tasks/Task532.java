@@ -136,9 +136,9 @@ public class Task532 {
         queue.offer(new BfsNode(from, distance));
         used[from] = true;
         while (!queue.isEmpty()) {
+            distance = queue.peek().getDistance() + 1;
             final int vertex = queue.poll().getVertex();
             final ArrayList neighbors = adjacencyList[vertex];
-            distance++;
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 final int neighbor = neighbors.get(i);
                 if (neighbor == to) {

@@ -156,6 +156,26 @@ public class Task532Tests {
             };
             Assertions.assertEquals(-1, Task532.findMinChainLengthByQueue(5, acquaintances, 5, 1));
         }
-    }
 
+        @Test
+        public void shouldReturnMinDistanceWhenCycleGraph() {
+            Pair[] acquaintances = new Pair[]{
+                    new Pair(1, 2),
+                    new Pair(2, 1),
+                    new Pair(2, 3),
+                    new Pair(3, 2),
+                    new Pair(3, 4),
+                    new Pair(4, 3),
+                    new Pair(4, 5),
+                    new Pair(5, 4),
+                    new Pair(5, 6),
+                    new Pair(6, 5),
+                    new Pair(6, 7),
+                    new Pair(7, 6),
+                    new Pair(1, 7),
+                    new Pair(7, 1)
+            };
+            Assertions.assertEquals(3, Task532.findMinChainLengthByQueue(7, acquaintances, 1, 5));
+        }
+    }
 }
