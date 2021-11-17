@@ -123,7 +123,7 @@ public class Event {
      * @return a string with information.
      */
     public String toString() {
-        return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "'}";
+        return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "', id=" + id + "}";
     }
 
     /**
@@ -136,7 +136,7 @@ public class Event {
      * @return boolean true if objects are equal and false if aren't.
      */
     public boolean equals(Event that) {
-        return that != null && year == that.year && month == that.month && day == that.day
+        return that != null && year == that.year && month == that.month && day == that.day && id == that.id
                 && (name != null && name.equals(that.name) || name == null && that.name == null);
     }
 

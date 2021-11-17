@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class CalendarController {
     private final DynamicEventList dynamicEventList = new DynamicEventList();
-    private Event event;
 
     /**
      * Checks the data object and adds it to the array of DynamicEventList or returns an error message.
@@ -22,8 +21,7 @@ public class CalendarController {
      */
     @PostMapping("/api/add")
     public String addEvent(@RequestBody Event body) {
-        event = body;
-        return dynamicEventList.add(event);
+        return dynamicEventList.add(body);
     }
 
     /**
@@ -39,8 +37,7 @@ public class CalendarController {
     @PatchMapping("/api/set/{id}")
     public String setEvent(@PathVariable (name = "id") int id,
                            @RequestBody Event body) {
-        event = body;
-        return dynamicEventList.set(id, event);
+        return dynamicEventList.set(id, body);
     }
 
     /**
