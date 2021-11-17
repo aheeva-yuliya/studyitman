@@ -8,7 +8,7 @@ public class BfsQueue {
     private int size;
 
     private static class Node {
-        private BfsNode bfsNode;
+        private final BfsNode bfsNode;
         private Node prev;
         private Node next;
 

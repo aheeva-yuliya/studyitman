@@ -191,7 +191,7 @@ public class Task532 {
                         chain.add(supportChain[j]);
                     }
                     return chain;
-                } else if (!used[neighbor]){
+                } else if (!used[neighbor]) {
                     queue.offer(new BfsNode(neighbor, distance, prev));
                     used[neighbor] = true;
                 }
