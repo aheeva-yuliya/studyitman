@@ -8,6 +8,7 @@ public class Event {
     private int month;
     private int day;
     private String name;
+    private int id;
 
     public Event() {}
 
@@ -23,6 +24,46 @@ public class Event {
         this.month = month;
         this.day = day;
         this.name = name;
+    }
+
+    /**
+     * Event
+     * @param year int argument
+     * @param month int argument
+     * @param day int argument
+     * @param name String argument
+     * @param id int argument
+     */
+    public Event (int year, int month, int day, String name, int id) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.name = name;
+        this.id = id;
+    }
+
+    /**
+     * Sets the value of the instance variable "id"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param id int argument
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets the value of the instance variable "id"
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @return the value of the instance variable "id"
+     */
+    public int getId() {
+        return id;
     }
 
     /**
@@ -82,7 +123,7 @@ public class Event {
      * @return a string with information.
      */
     public String toString() {
-        return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "'}";
+        return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "', id=" + id + "}";
     }
 
     /**
@@ -95,7 +136,7 @@ public class Event {
      * @return boolean true if objects are equal and false if aren't.
      */
     public boolean equals(Event that) {
-        return that != null && year == that.year && month == that.month && day == that.day
+        return that != null && year == that.year && month == that.month && day == that.day && id == that.id
                 && (name != null && name.equals(that.name) || name == null && that.name == null);
     }
 
