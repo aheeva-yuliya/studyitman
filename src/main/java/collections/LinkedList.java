@@ -262,13 +262,14 @@ public class LinkedList {
      * @return an array formed from the elements in the LinkedList.
      */
     public int[] toArray() {
-        final ArrayList arrayList = new ArrayList();
+        final int[] array = new int[size];
+        int i = 0;
         Node next = first;
         while (next != null) {
-            arrayList.add(next.getElement());
+            array[i++] = next.getElement();
             next = next.getNext();
         }
-        return arrayList.toArray();
+        return array;
     }
 
     /**

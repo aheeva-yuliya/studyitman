@@ -33,7 +33,7 @@ public class Task579 {
 
         private boolean check(char[][] map, final int i, final int j) {
             return i >= 0 && i < rowCnt && j >= 0 && j < colCnt
-                    && (map[i][j] == 46 || map[i][j] == 102 || map[i][j] == 115);
+                    && (map[i][j] == '.' || map[i][j] == 'f' || map[i][j] == 's');
         }
 
         private void createPairs(char[][] map) {
@@ -42,10 +42,10 @@ public class Task579 {
             for (int i = 0; i < rowCnt; i++) {
                 for (int j = 0; j < colCnt; j++) {
                     int vertex = i * colCnt + j;
-                    if (map[i][j] == 46 || map[i][j] == 102 || map[i][j] == 115) {
-                        if (map[i][j] == 115) {
+                    if (map[i][j] == '.' || map[i][j] == 'f' || map[i][j] == 's') {
+                        if (map[i][j] == 's') {
                             from = vertex;
-                        } else if (map[i][j] == 102) {
+                        } else if (map[i][j] == 'f') {
                             to = vertex;
                         }
                         int right;
@@ -74,9 +74,8 @@ public class Task579 {
     /**
      * Draw with '*' the minimum distance way from S to F.
      *
-     * @cpu O(n + m) n - number of vertices (number of map row * number of map col),
-     *               m - number of edges (number of map ('.' + 's' + 'f') multiplied by two)
-     * @ram O(n + m) n - number of vertices, m - number of edges
+     * @cpu O(n * m) n - number of map row, m - number of map col
+     * @ram O(n * m) n - number of map row, m - number of map col
      *
      * @param map a field of containing ('s', 'f', '.', 'x') chars.
      */
@@ -91,7 +90,7 @@ public class Task579 {
                 final int vertex = way.get(i);
                 final int row = vertex / support.colCnt;
                 final int col = vertex - row * support.colCnt;
-                map[row][col] = 42;
+                map[row][col] = '*';
             }
         }
     }
