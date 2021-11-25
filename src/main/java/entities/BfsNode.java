@@ -47,7 +47,7 @@ public class BfsNode {
      * Indicates whether some other object is "equal to" this one .
      *
      * @cpu O(n), n - number of linked nodes
-     * @ram O(1)
+     * @ram O(n), n - number of linked nodes
      *
      * @param that an object argument
      * @return true if the objects are equal and false if aren't.
