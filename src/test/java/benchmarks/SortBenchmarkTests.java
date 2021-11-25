@@ -2,47 +2,50 @@ package benchmarks;
 
 import entities.Event;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class SortBenchmarkTests {
-
-    @Test
-    public void randomArrayCreate() {
-        int[] ints = SortBenchmark.randomArray(10, 5, 15);
-        Assertions.assertEquals(10, ints.length);
-        for (int i = 0; i < ints.length; i++) {
-            Assertions.assertTrue(ints[i] < 15 || ints[i] >= 5);
+public class SortBenchmarkTests {
+    @Nested
+    public class Create {
+        @Test
+        public void shouldCreateWhenTryCreateRandomArray() {
+            int[] ints = SortBenchmark.randomArray(10, 5, 15);
+            Assertions.assertEquals(10, ints.length);
+            for (int anInt : ints) {
+                Assertions.assertTrue(anInt < 15 || anInt >= 5);
+            }
         }
-    }
 
-    @Test
-    public void randomArrayCreateAndCheck() {
-        int[] ints = SortBenchmark.randomArray(100, 67, 150);
-        Assertions.assertEquals(100, ints.length);
-        for (int i = 0; i < ints.length; i++) {
-            Assertions.assertTrue(ints[i] < 150 || ints[i] >= 67);
+        @Test
+        public void shouldCreateAndCheckWhenTryCreateRandomArray() {
+            int[] ints = SortBenchmark.randomArray(100, 67, 150);
+            Assertions.assertEquals(100, ints.length);
+            for (int anInt : ints) {
+                Assertions.assertTrue(anInt < 150 || anInt >= 67);
+            }
         }
-    }
 
-    @Test
-    public void randomEventsCreate() {
-        Event[] events = SortBenchmark.randomEvents(100, 8, 10);
-        for (int i = 0; i < events.length; i++) {
-            Assertions.assertTrue(events[i].getYear() < 10 && events[i].getYear() >= 8);
-            Assertions.assertTrue(events[i].getMonth() <= 12 && events[i].getMonth() >= 1);
-            Assertions.assertTrue(events[i].getDay() <= 31 && events[i].getDay() >= 1);
-            Assertions.assertTrue(events[i].getName().length() <= 20 && events[i].getName().length() > 0);
+        @Test
+        public void shouldCreateWhenTryCreateRandomEvents() {
+            Event[] events = SortBenchmark.randomEvents(100, 8, 10);
+            for (Event event : events) {
+                Assertions.assertTrue(event.getYear() < 10 && event.getYear() >= 8);
+                Assertions.assertTrue(event.getMonth() <= 12 && event.getMonth() >= 1);
+                Assertions.assertTrue(event.getDay() <= 31 && event.getDay() >= 1);
+                Assertions.assertTrue(event.getName().length() <= 20 && event.getName().length() > 0);
+            }
         }
-    }
 
-    @Test
-    public void randomEventsCreateAndCheckYEvents() {
-        Event[] events = SortBenchmark.randomEvents(100, 1, 2000);
-        for (int i = 0; i < events.length; i++) {
-            Assertions.assertTrue(events[i].getYear() < 2000 && events[i].getYear() >= 1);
-            Assertions.assertTrue(events[i].getMonth() <= 12 && events[i].getMonth() >= 1);
-            Assertions.assertTrue(events[i].getDay() <= 31 && events[i].getDay() >= 1);
-            Assertions.assertTrue(events[i].getName().length() <= 20 && events[i].getName().length() > 0);
+        @Test
+        public void shouldCreateAndCheckWhenTryCreateRandomEvents() {
+            Event[] events = SortBenchmark.randomEvents(100, 1, 2000);
+            for (Event event : events) {
+                Assertions.assertTrue(event.getYear() < 2000 && event.getYear() >= 1);
+                Assertions.assertTrue(event.getMonth() <= 12 && event.getMonth() >= 1);
+                Assertions.assertTrue(event.getDay() <= 31 && event.getDay() >= 1);
+                Assertions.assertTrue(event.getName().length() <= 20 && event.getName().length() > 0);
+            }
         }
     }
 }
