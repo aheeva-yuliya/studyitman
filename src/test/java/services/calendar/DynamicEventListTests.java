@@ -125,15 +125,15 @@ public class DynamicEventListTests {
             list.add(new Event(1991,9,8,"Aaa"));
             list.set(1, new Event(1991, 9, 8, "aaa"));
             Event[] expected = new Event[] {
-                    new Event(1991,9,8,"Aaa", 2),
-                    new Event(1991, 9, 8, "aaa", 1)};
+                    new Event(2, 1991,9,8,"Aaa"),
+                    new Event(1, 1991, 9, 8, "aaa")};
             Event[] actual = list.getAll();
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));
                 Assertions.assertEquals(expected[i].getId(), actual[i].getId());
             }
             list.remove(1);
-            expected = new Event[] {new Event(1991,9,8,"Aaa", 2)};
+            expected = new Event[] {new Event(2,1991,9,8,"Aaa")};
             actual = list.getAll();
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));
@@ -143,20 +143,20 @@ public class DynamicEventListTests {
             list.add(new Event(1991,10,8,"AAA"));
             list.add(new Event(1992,10,8,"AAA"));
             expected = new Event[] {
-                    new Event(1991,9,8,"AAA", 3),
-                    new Event(1991,9,8,"Aaa", 2)};
+                    new Event(3, 1991,9,8,"AAA"),
+                    new Event(2, 1991,9,8,"Aaa")};
             actual = list.getByDate(8, 9, 1991);
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));
                 Assertions.assertEquals(expected[i].getId(), actual[i].getId());
             }
-            expected = new Event[] {new Event(1991,10,8,"AAA", 4)};
+            expected = new Event[] {new Event(4, 1991,10,8,"AAA")};
             actual = list.getByMonth(10,1991);
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));
                 Assertions.assertEquals(expected[i].getId(), actual[i].getId());
             }
-            expected = new Event[] {new Event(1992,10,8,"AAA", 5)};
+            expected = new Event[] {new Event(5, 1992,10,8,"AAA")};
             actual = list.getByYear(1992);
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));

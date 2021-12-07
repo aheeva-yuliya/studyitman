@@ -28,18 +28,18 @@ public class Event {
 
     /**
      * Event
+     * @param id int argument
      * @param year int argument
      * @param month int argument
      * @param day int argument
      * @param name String argument
-     * @param id int argument
      */
-    public Event (int year, int month, int day, String name, int id) {
+    public Event (int id, int year, int month, int day, String name) {
+        this.id = id;
         this.year = year;
         this.month = month;
         this.day = day;
         this.name = name;
-        this.id = id;
     }
 
     /**
