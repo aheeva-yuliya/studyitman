@@ -4,11 +4,11 @@ package entities;
  * Event
  */
 public class Event {
+    private int id;
     private int year;
     private int month;
     private int day;
     private String name;
-    private int id;
 
     public Event() {}
 
@@ -123,7 +123,7 @@ public class Event {
      * @return a string with information.
      */
     public String toString() {
-        return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "', id=" + id + "}";
+        return "Event{id=" + id + "year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "}";
     }
 
     /**
