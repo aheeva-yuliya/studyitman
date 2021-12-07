@@ -10,7 +10,7 @@ public class EventTests {
         @Test
         public void shouldReturnStringWhenEventNotNull() {
             Event event = new Event(1918, 3, 25, "The independence of the BNR", 1);
-            String expected = "Event{year=1918, month=3, day=25, name='The independence of the BNR', id=1}";
+            String expected = "Event{id=1, year=1918, month=3, day=25, name='The independence of the BNR'}";
             String actual = event.toString();
             Assertions.assertEquals(expected, actual);
         }

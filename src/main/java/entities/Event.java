@@ -123,7 +123,7 @@ public class Event {
      * @return a string with information.
      */
     public String toString() {
-        return "Event{id=" + id + "year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "}";
+        return "Event{id=" + id + ", year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "'}";
     }
 
     /**
