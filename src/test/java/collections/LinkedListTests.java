@@ -125,6 +125,14 @@ public class LinkedListTests {
             Assertions.assertEquals(16,list.remove(4));
             Assertions.assertEquals("[12, 13, 14, 15]",list.toString());
         }
+
+        @Test
+        public void shouldRemoveWhenTryRemoveFromTheMiddleIndex() {
+            LinkedList list = LinkedList.of(10, 20, 30);
+            Assertions.assertEquals(20,list.remove(1));
+            Assertions.assertEquals("[10, 30]",list.toString());
+            Assertions.assertEquals(2, list.size());
+        }
     }
 
     @Nested

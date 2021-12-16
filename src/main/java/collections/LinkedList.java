@@ -335,6 +335,7 @@ public class LinkedList {
         } else {
             node.getPrev().setNext(node.getNext());
             node.getNext().setPrev(node.getPrev());
+            size--;
             return node.getElement();
         }
     }
