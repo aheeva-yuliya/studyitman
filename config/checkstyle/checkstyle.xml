@@ -13,7 +13,7 @@
     Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov, Dmitry Wroblewski.
  -->
 
-<module name = "Checker">
+<module name="Checker">
     <property name="charset" value="UTF-8"/>
 
     <property name="severity" value="warning"/>
@@ -323,24 +323,33 @@
         </module>
         <module name="JavadocMethod">
             <property name="accessModifiers" value="public"/>
-            <property name="allowMissingParamTags" value="true"/>
-            <property name="allowMissingReturnTag" value="true"/>
+            <property name="allowMissingParamTags" value="false"/>
+            <property name="allowMissingReturnTag" value="false"/>
             <property name="allowedAnnotations" value="Override, Test"/>
             <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
         </module>
         <module name="MissingJavadocMethod">
+            <property name="id" value="AllMissingJavadocMethod"/>
+            <property name="scope" value="public"/>
+            <property name="minLineCount" value="-1"/>
+            <property name="allowedAnnotations" value="Override, Test, Configuration"/>
+            <property name="allowMissingPropertyJavadoc" value="false"/>
+            <property name="ignoreMethodNamesRegex" value="^main$"/>
+            <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
+        </module>
+        <module name="MissingJavadocMethod">
+            <property name="id" value="EntityMissingJavadocMethod"/>
             <property name="scope" value="public"/>
             <property name="minLineCount" value="-1"/>
             <property name="allowedAnnotations" value="Override, Test, Configuration"/>
             <property name="allowMissingPropertyJavadoc" value="true"/>
-            <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,
-                                   COMPACT_CTOR_DEF"/>
+            <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
+            <property name="ignoreMethodNamesRegex" value="^[A-Z].*$"/>
         </module>
         <module name="MissingJavadocType">
             <property name="scope" value="protected"/>
             <property name="tokens"
-                      value="INTERFACE_DEF, ENUM_DEF,
-                      RECORD_DEF, ANNOTATION_DEF"/>
+                      value="INTERFACE_DEF, ENUM_DEF, RECORD_DEF, ANNOTATION_DEF"/>
             <property name="excludeScope" value="nothing"/>
         </module>
         <module name="MethodName">
@@ -351,7 +360,8 @@
         </module>
         <module name="MethodName">
             <property name="id" value="MethodNameTest"/>
-            <property name="format" value="([a-z][a-zA-Z0-9_]+(Should)[A-Z][a-zA-Z0-9_]+(When)[A-Z][a-zA-Z0-9_]+)|((should)[A-Z][a-zA-Z0-9_]+[When][A-Z][a-zA-Z0-9_]+)$"/>
+            <property name="format"
+                      value="([a-z][a-zA-Z0-9_]+(Should)[A-Z][a-zA-Z0-9_]+(When)[A-Z][a-zA-Z0-9_]+)|((should)[A-Z][a-zA-Z0-9_]+[When][A-Z][a-zA-Z0-9_]+)$"/>
             <property name="applyToProtected" value="false"/>
             <property name="applyToPackage" value="false"/>
             <property name="applyToPrivate" value="false"/>
@@ -368,7 +378,7 @@
         <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
         <module name="SuppressionXpathFilter">
             <property name="file" value="${org.checkstyle.google.suppressionxpathfilter.config}"
-                      default="checkstyle-xpath-suppressions.xml" />
+                      default="checkstyle-xpath-suppressions.xml"/>
             <property name="optional" value="true"/>
         </module>
     </module>
