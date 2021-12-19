@@ -2,7 +2,7 @@ package tasks;
 
 
 /**
- * MyString
+ * MyString.
  */
 public class MyString {
     private final char[] data;

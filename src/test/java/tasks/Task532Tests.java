@@ -103,7 +103,7 @@ public class Task532Tests {
                     new Pair(3, 4),
                     new Pair(3, 5),
                     new Pair(3, 6),
-                    new Pair (5, 6)
+                    new Pair(5, 6)
             };
             Assertions.assertEquals(1, Task532.findMinChainLengthByVisits(6, acquaintances, 1, 6));
         }
@@ -142,7 +142,7 @@ public class Task532Tests {
                     new Pair(3, 4),
                     new Pair(3, 5),
                     new Pair(3, 6),
-                    new Pair (5, 6)
+                    new Pair(5, 6)
             };
             Assertions.assertEquals(1, Task532.findMinChainLengthByQueue(6, acquaintances, 1, 6));
         }
@@ -204,7 +204,7 @@ public class Task532Tests {
                     new Pair(3, 4),
                     new Pair(3, 5),
                     new Pair(3, 6),
-                    new Pair (5, 6)
+                    new Pair(5, 6)
             };
             ArrayList expected = ArrayList.of(1, 6);
             ArrayList actual = Task532.findMinChainByQueue(6, acquaintances, 1, 6);

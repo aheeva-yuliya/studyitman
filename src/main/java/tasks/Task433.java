@@ -1,7 +1,7 @@
 package tasks;
 
 /**
- * Task433
+ * Task433.
  */
 public class Task433 {
 

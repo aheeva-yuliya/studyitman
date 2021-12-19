@@ -154,7 +154,7 @@ public class QueueManagementSystemUtils {
             forStatistics[i] = new ArrayList(1);
         }
         int length = maxSize;
-        for (int j = 0; j < length; j++ ) {
+        for (int j = 0; j < length; j++) {
             for (int i = 0; i < systems.length; i++) {
                 if (arrays[i].size() == maxSize) {
                     forStatistics[j].add(arrays[i].get(0));

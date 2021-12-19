@@ -1,7 +1,7 @@
 package entities;
 
 /**
- * Ticket
+ * Ticket.
  */
 public class Ticket {
     private int number;
@@ -10,7 +10,8 @@ public class Ticket {
     public Ticket() {}
 
     /**
-     * Ticket
+     * Ticket.
+     *
      * @param number int argument
      * @param place String argument
      */

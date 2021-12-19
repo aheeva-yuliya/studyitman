@@ -4,7 +4,7 @@ import collections.ArrayList;
 import entities.Pair;
 
 /**
- * GraphUtils
+ * GraphUtils.
  */
 public class GraphUtils {
 
@@ -18,7 +18,7 @@ public class GraphUtils {
      * @param edges Pair[] represents an array of edges in a directed graph
      * @return an adjacency list for a given graph.
      */
-    public static ArrayList[] toAdjacencyList(int vertices, Pair[] edges){
+    public static ArrayList[] toAdjacencyList(int vertices, Pair[] edges) {
         ArrayList[] adjacency = create(vertices);
         for (Pair edge : edges) {
             adjacency[edge.getLeft()].add(edge.getRight());
@@ -44,7 +44,7 @@ public class GraphUtils {
      * @param edges Pair[] represents an array of edges in an undirected graph
      * @return an adjacency list for a given graph.
      */
-    public static ArrayList[] toUndirectedAdjacencyList(int vertices, Pair[] edges){
+    public static ArrayList[] toUndirectedAdjacencyList(int vertices, Pair[] edges) {
         ArrayList[] adjacency = create(vertices);
         for (Pair edge : edges) {
             adjacency[edge.getLeft()].add(edge.getRight());

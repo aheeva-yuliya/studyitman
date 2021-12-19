@@ -4,7 +4,7 @@ import collections.ArrayList;
 import collections.LinkedList;
 
 /**
- * ListBenchmark
+ * ListBenchmark.
  */
 public class ListBenchmark {
 
@@ -60,10 +60,15 @@ public class ListBenchmark {
         return linkedList;
     }
 
-    //createArrayListWithCapacity: 0.162s
-    //createArrayList: 0.328s
-    //createLinkedList: 2.188s
-
+    /**
+     * Main.
+     *
+     * @param args String[] arguments
+     *
+     * createArrayListWithCapacity: 0.162s
+     * createArrayList: 0.328s
+     * createLinkedList: 2.188s
+     */
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         createArrayListWithCapacity(10000000);

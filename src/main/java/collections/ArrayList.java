@@ -6,7 +6,7 @@ import utils.StringBuilder;
 import java.util.Arrays;
 
 /**
- * ArrayList
+ * ArrayList.
  */
 public class ArrayList {
     private int[] array;
@@ -35,14 +35,14 @@ public class ArrayList {
     }
 
     /**
-     * ArrayList
+     * ArrayList.
      *
      * @cpu O(n), n = parameter that array.length
      * @ram O(n), n = parameter that array.length
      *
      * @param that a class object
      */
-    public ArrayList (ArrayList that) {
+    public ArrayList(ArrayList that) {
         size = that.size;
         array = new int[that.array.length];
         System.arraycopy(that.array, 0, array, 0, that.array.length);
@@ -128,9 +128,9 @@ public class ArrayList {
      * @param index int argument
      * @return the deleted element.
      */
-    public int remove(int index){
+    public int remove(int index) {
         int value = array[index];
-        System.arraycopy(array, index + 1, array, index,size - index - 1);
+        System.arraycopy(array, index + 1, array, index, size - index - 1);
         size--;
         return value;
     }
@@ -163,7 +163,7 @@ public class ArrayList {
      * @ram O(n) n = instance variable "size"
      */
     public void sort() {
-       ArrayUtils.mergeSort(array, 0, size);
+        ArrayUtils.mergeSort(array, 0, size);
     }
 
     /**

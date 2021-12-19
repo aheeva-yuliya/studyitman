@@ -14,7 +14,7 @@ public class QueueManagementSystem {
     private Queue queue = new Queue();
 
     /**
-     * Creates an object of QueueManagementSystem
+     * Creates an object of QueueManagementSystem.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -82,8 +82,8 @@ public class QueueManagementSystem {
     /**
      * Returns tickets of the current queue.
      *
-     * cpu O(n), n = number of tickets in current queue
-     * ram O(n), n = number of tickets in current queue
+     * @cpu O(n), n = number of tickets in current queue
+     * @ram O(n), n = number of tickets in current queue
      *
      * @return tickets of the current queue.
      */
@@ -96,8 +96,8 @@ public class QueueManagementSystem {
     /**
      * Returns ticket of the head of current queue.
      *
-     * cpu O(n), n = number of tickets in current queue
-     * ram O(1)
+     * @cpu O(n), n = number of tickets in current queue
+     * @ram O(1)
      *
      * @return tickets of the current queue.
      */
@@ -120,7 +120,7 @@ public class QueueManagementSystem {
 
         private Ticket poll() {
             Ticket value = list[0];
-            System.arraycopy(list,  1, list, 0,size - 1);
+            System.arraycopy(list,  1, list, 0, size - 1);
             size--;
             return value;
         }

@@ -247,8 +247,8 @@ public class ArrayListTests {
 
         @Test
         public void shouldCreateOneWhenTryCreateOfElementsAndCreateAnotherWhenTryAdd() {
-            ArrayList a = ArrayList.of(-1, 1, 5);
-            ArrayList b = new ArrayList(5);
+            final ArrayList a = ArrayList.of(-1, 1, 5);
+            final ArrayList b = new ArrayList(5);
             b.add(-1);
             b.add(1);
             b.add(5);

@@ -15,7 +15,7 @@ public class CuboidTests {
 
         @Test
         public void shouldCalcSurfaceAreaWhenLong() {
-            Cuboid cuboid = new Cuboid(100000,200000,300000);
+            Cuboid cuboid = new Cuboid(100000, 200000, 300000);
             Assertions.assertEquals(220000000000L, cuboid.calcSurfaceArea());
         }
     }
@@ -40,9 +40,9 @@ public class CuboidTests {
         @Test
         public void shouldGetWhenTryGet() {
             Cuboid cuboid = new Cuboid(10000, 20000, 30000);
-            Assertions.assertEquals(10000, cuboid.getA());
-            Assertions.assertEquals(20000, cuboid.getB());
-            Assertions.assertEquals(30000, cuboid.getC());
+            Assertions.assertEquals(10000, cuboid.getHigh());
+            Assertions.assertEquals(20000, cuboid.getWidth());
+            Assertions.assertEquals(30000, cuboid.getLength());
         }
     }
 }

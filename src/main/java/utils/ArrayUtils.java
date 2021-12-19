@@ -4,7 +4,7 @@ import collections.ArrayList;
 import entities.Event;
 
 /**
- * ArrayUtils
+ * ArrayUtils.
  */
 public class ArrayUtils {
 
@@ -67,6 +67,38 @@ public class ArrayUtils {
                 index += 1;
             }
         }
+    }
+
+    /**
+     * Sorts the objects of the parameter events by counting sort.
+     *
+     * @cpu O(n + m), n = events.length
+     *     and m = maximum - minimum of the dates, each date equals to the number of days from the beginning of the era
+     * @ram O(n + m), n = events.length
+     *     and m = maximum - minimum of the dates, each date equals to the number of days from the beginning of the era
+     *
+     *  @param events Event[]
+     */
+    public static void countingSort(Event[] events) {
+        int[] dates = new int[events.length];
+        for (int i = 0; i < events.length; i++) {
+            dates[i] = events[i].getDay() + events[i].getMonth() * 31 + events[i].getYear() * 372;
+        }
+        int[] minMax = findMinAndMax(dates);
+        int min = minMax[0];
+        int max = minMax[1];
+        int[] cnt = count(dates, min, max);
+        for (int i = 1; i < cnt.length; i++) {
+            cnt[i] = cnt[i] + cnt[i - 1];
+        }
+        Event[] sorted = new Event[events.length];
+        int index;
+        for (int i = dates.length - 1; i >= 0; i--) {
+            index = cnt[dates[i] - min] - 1;
+            sorted[index] = events[i];
+            cnt[dates[i] - min]--;
+        }
+        System.arraycopy(sorted, 0, events, 0, events.length);
     }
 
     private static int[] findMinAndMax(int[] array) {
@@ -178,38 +210,6 @@ public class ArrayUtils {
     }
 
     /**
-     * Sorts the objects of the parameter events by counting sort.
-     *
-     * @cpu O(n + m), n = events.length
-     *     and m = maximum - minimum of the dates, each date equals to the number of days from the beginning of the era
-     * @ram O(n + m), n = events.length
-     *     and m = maximum - minimum of the dates, each date equals to the number of days from the beginning of the era
-     *
-     *  @param events Event[]
-     */
-    public static void countingSort(Event[] events) {
-        int[] dates = new int[events.length];
-        for (int i = 0; i < events.length; i++) {
-            dates[i] = events[i].getDay() + events[i].getMonth() * 31 + events[i].getYear() * 372;
-        }
-        int[] minMax = findMinAndMax(dates);
-        int min = minMax[0];
-        int max = minMax[1];
-        int[] cnt = count(dates, min, max);
-        for (int i = 1; i < cnt.length; i++) {
-            cnt[i] = cnt[i] + cnt[i - 1];
-        }
-        Event[] sorted = new Event[events.length];
-        int index;
-        for (int i = dates.length - 1; i >= 0; i--) {
-            index = cnt[dates[i] - min] - 1;
-            sorted[index] = events[i];
-            cnt[dates[i] - min]--;
-        }
-        System.arraycopy(sorted, 0, events, 0, events.length);
-    }
-
-    /**
      * Finds the index of the element of the parameter array equal to the parameter key.
      *
      * @cpu O(log(n)) n = array.length
@@ -292,6 +292,37 @@ public class ArrayUtils {
     }
 
     /**
+     * Copies objects from array a (interval [aFrom, aTo)) and array b (interval [bFrom, bTo))
+     *          into array r (by interval [rFrom, rFrom + aTo - aFrom + bTo - bFrom).
+     *
+     * @cpu O(n) n = rFrom + aTo - aFrom + bTo - bFrom - rFrom
+     * @ram O(1)
+     *
+     * @param a Event[] sorted in ascending order from position aFrom to position aTo
+     * @param aFrom int argument
+     * @param aTo int argument
+     * @param b Event[] sorted in ascending order from position bFrom to position bTo
+     * @param bFrom int argument
+     * @param bTo int argument
+     * @param r Event[]
+     * @param rFrom int argument
+     */
+    public static void merge(Event[] a, int aFrom, int aTo, Event[] b, int bFrom, int bTo, Event[] r, int rFrom) {
+        int indexA = aFrom;
+        int indexB = bFrom;
+        int rTo = rFrom + aTo - aFrom + bTo - bFrom;
+        for (int i = rFrom; i < rTo; i++) {
+            if (indexA < aTo && (indexB >= bTo || a[indexA].compareTo(b[indexB]) <= 0)) {
+                r[i] = a[indexA];
+                indexA++;
+            } else {
+                r[i] = b[indexB];
+                indexB++;
+            }
+        }
+    }
+
+    /**
      * Sorts the elements of the parameter int[] a in ascending order.
      *
      * @cpu O(nlog(n)) n = a.length
@@ -338,37 +369,6 @@ public class ArrayUtils {
             size = size * 2;
         }
         System.arraycopy(currentScr, 0, array, fromIndex, length);
-    }
-
-    /**
-     * Copies objects from array a (interval [aFrom, aTo)) and array b (interval [bFrom, bTo))
-     *          into array r (by interval [rFrom, rFrom + aTo - aFrom + bTo - bFrom).
-     *
-     * @cpu O(n) n = rFrom + aTo - aFrom + bTo - bFrom - rFrom
-     * @ram O(1)
-     *
-     * @param a Event[] sorted in ascending order from position aFrom to position aTo
-     * @param aFrom int argument
-     * @param aTo int argument
-     * @param b Event[] sorted in ascending order from position bFrom to position bTo
-     * @param bFrom int argument
-     * @param bTo int argument
-     * @param r Event[]
-     * @param rFrom int argument
-     */
-    public static void merge(Event[] a, int aFrom, int aTo, Event[] b, int bFrom, int bTo, Event[] r, int rFrom) {
-        int indexA = aFrom;
-        int indexB = bFrom;
-        int rTo = rFrom + aTo - aFrom + bTo - bFrom;
-        for (int i = rFrom; i < rTo; i++) {
-            if (indexA < aTo && (indexB >= bTo || a[indexA].compareTo(b[indexB]) <= 0)) {
-                r[i] = a[indexA];
-                indexA++;
-            } else {
-                r[i] = b[indexB];
-                indexB++;
-            }
-        }
     }
 
     /**

@@ -1,7 +1,7 @@
 package tasks;
 
 /**
- * Task406
+ * Task406.
  */
 public class Task406 {
 
@@ -18,14 +18,14 @@ public class Task406 {
         int max = Integer.MIN_VALUE;
         int second = Integer.MIN_VALUE;
         for (int i = 0; i < array.length; i++) {
-           if (array[i] > max) {
-               second = max;
-               max = array[i];
-           } else {
-               if (array[i] > second) {
-                   second = array[i];
-               }
-           }
+            if (array[i] > max) {
+                second = max;
+                max = array[i];
+            } else {
+                if (array[i] > second) {
+                    second = array[i];
+                }
+            }
         }
         return second;
     }

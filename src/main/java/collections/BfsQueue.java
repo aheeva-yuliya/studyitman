@@ -28,7 +28,7 @@ public class BfsQueue {
      * @param element - an object of BfsNode
      */
     public void offer(BfsNode element) {
-        final Node temp = new Node(element,null,null);
+        final Node temp = new Node(element, null, null);
         if (first == null) {
             first = temp;
         } else {

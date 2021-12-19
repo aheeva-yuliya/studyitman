@@ -3,7 +3,7 @@ package tasks;
 import collections.Stack;
 
 /**
- * Task514
+ * Task514.
  */
 public class Task514 {
 

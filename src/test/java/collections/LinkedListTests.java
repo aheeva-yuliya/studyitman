@@ -27,7 +27,7 @@ public class LinkedListTests {
             list.addLast(100);
             String expected = "[55, 7, 51, 100]";
             String actual = list.toString();
-            Assertions.assertEquals(expected,actual);
+            Assertions.assertEquals(expected, actual);
         }
 
         @Test
@@ -36,7 +36,7 @@ public class LinkedListTests {
             list.addLast(100);
             String expected = "[100]";
             String actual = list.toString();
-            Assertions.assertEquals(expected,actual);
+            Assertions.assertEquals(expected, actual);
         }
     }
 
@@ -52,16 +52,16 @@ public class LinkedListTests {
         @Test
         public void shouldGetLastWhenListContainsSomeElements() {
             LinkedList list = LinkedList.of(7, 55, 51, 100);
-            Assertions.assertEquals(100,list.getLast());
+            Assertions.assertEquals(100, list.getLast());
             String expected = "[7, 55, 51, 100]";
             String actual = list.toString();
-            Assertions.assertEquals(expected,actual);
+            Assertions.assertEquals(expected, actual);
         }
 
         @Test
         public void shouldGetWhenTryGetFromIndex() {
             LinkedList list = LinkedList.of(12, 13, 14, 15, 16);
-            Assertions.assertEquals(14,list.get(2));
+            Assertions.assertEquals(14, list.get(2));
         }
     }
 
@@ -86,51 +86,51 @@ public class LinkedListTests {
         @Test
         public void shouldRemoveLastWhenListContainsSomeElements() {
             LinkedList list = LinkedList.of(51, 55, 7);
-            Assertions.assertEquals(7,list.removeLast());
-            Assertions.assertEquals("[51, 55]",list.toString());
+            Assertions.assertEquals(7, list.removeLast());
+            Assertions.assertEquals("[51, 55]", list.toString());
         }
 
         @Test
         public void shouldRemoveLastWhenListContainsTwoElements() {
             LinkedList list = LinkedList.of(55, 7);
-            Assertions.assertEquals(7,list.removeLast());
-            Assertions.assertEquals("[55]",list.toString());
+            Assertions.assertEquals(7, list.removeLast());
+            Assertions.assertEquals("[55]", list.toString());
         }
 
         @Test
         public void shouldRemoveLastWhenListContainsOneElement() {
             LinkedList list = LinkedList.of(7);
-            Assertions.assertEquals(7,list.removeLast());
-            Assertions.assertEquals("[]",list.toString());
+            Assertions.assertEquals(7, list.removeLast());
+            Assertions.assertEquals("[]", list.toString());
         }
 
 
         @Test
         public void shouldRemoveWhenTryRemoveFromTheMiddle() {
             LinkedList list = LinkedList.of(12, 13, 14, 15, 16);
-            Assertions.assertEquals(14,list.remove(2));
-            Assertions.assertEquals("[12, 13, 15, 16]",list.toString());
+            Assertions.assertEquals(14, list.remove(2));
+            Assertions.assertEquals("[12, 13, 15, 16]", list.toString());
         }
 
         @Test
         public void shouldRemoveWhenTryRemoveFromFirstIndex() {
             LinkedList list = LinkedList.of(12, 13, 14, 15, 16);
-            Assertions.assertEquals(12,list.remove(0));
-            Assertions.assertEquals("[13, 14, 15, 16]",list.toString());
+            Assertions.assertEquals(12, list.remove(0));
+            Assertions.assertEquals("[13, 14, 15, 16]", list.toString());
         }
 
         @Test
         public void shouldRemoveWhenTryRemoveFromLastIndex() {
             LinkedList list = LinkedList.of(12, 13, 14, 15, 16);
-            Assertions.assertEquals(16,list.remove(4));
-            Assertions.assertEquals("[12, 13, 14, 15]",list.toString());
+            Assertions.assertEquals(16, list.remove(4));
+            Assertions.assertEquals("[12, 13, 14, 15]", list.toString());
         }
 
         @Test
         public void shouldRemoveWhenTryRemoveFromTheMiddleIndex() {
             LinkedList list = LinkedList.of(10, 20, 30);
-            Assertions.assertEquals(20,list.remove(1));
-            Assertions.assertEquals("[10, 30]",list.toString());
+            Assertions.assertEquals(20, list.remove(1));
+            Assertions.assertEquals("[10, 30]", list.toString());
             Assertions.assertEquals(2, list.size());
         }
     }
@@ -191,7 +191,7 @@ public class LinkedListTests {
             LinkedList list = LinkedList.of(67, 78, 94, 100, 33);
             String expected = "[67, 78, 94, 100, 33]";
             String actual = list.toString();
-            Assertions.assertEquals(expected,actual);
+            Assertions.assertEquals(expected, actual);
         }
 
         @Test
@@ -199,7 +199,7 @@ public class LinkedListTests {
             LinkedList list = LinkedList.of();
             String expected = "[]";
             String actual = list.toString();
-            Assertions.assertEquals(expected,actual);
+            Assertions.assertEquals(expected, actual);
         }
     }
 

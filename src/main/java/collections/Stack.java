@@ -1,7 +1,7 @@
 package collections;
 
 /**
- * Stack
+ * Stack.
  */
 public class Stack {
     private final ArrayList arrayList = new ArrayList();
@@ -14,7 +14,7 @@ public class Stack {
      *
      * @param element int argument
      */
-    public void push(int element){
+    public void push(int element) {
         arrayList.add(element);
     }
 

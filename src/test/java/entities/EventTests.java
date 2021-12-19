@@ -9,7 +9,7 @@ public class EventTests {
     public class ToString {
         @Test
         public void shouldReturnStringWhenEventNotNull() {
-            Event event = new Event(1,1918, 3, 25, "The independence of the BNR");
+            Event event = new Event(1, 1918, 3, 25, "The independence of the BNR");
             String expected = "Event{id=1, year=1918, month=3, day=25, name='The independence of the BNR'}";
             String actual = event.toString();
             Assertions.assertEquals(expected, actual);
@@ -34,14 +34,14 @@ public class EventTests {
 
         @Test
         public void shouldReturnFalseWhenThatNull() {
-            Event a = new Event(1,2022, 2, 28, "A");
+            Event a = new Event(1, 2022, 2, 28, "A");
             Assertions.assertFalse(a.equals(null));
         }
 
         @Test
         public void shouldReturnTrueWhenSameEventsContainNull() {
-            Event a = new Event(1,2024, 2, 28, null);
-            Event b = new Event(1,2024, 2, 28, null);
+            Event a = new Event(1, 2024, 2, 28, null);
+            Event b = new Event(1, 2024, 2, 28, null);
             Assertions.assertTrue(a.equals(b));
         }
 

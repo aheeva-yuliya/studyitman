@@ -4,7 +4,7 @@ import collections.ArrayList;
 import collections.Stack;
 
 /**
- * Task527
+ * Task527.
  */
 public class Task527 {
 

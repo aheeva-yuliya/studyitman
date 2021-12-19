@@ -1,14 +1,21 @@
 package collections;
 
 /**
- * Queue
+ * Queue.
  */
 public class Queue {
     private final LinkedList list;
 
+    /**
+     * Queue.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     */
     public Queue() {
         list = new LinkedList();
     }
+
     /**
      * Adds an element to the tail of the queue.
      *

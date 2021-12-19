@@ -4,7 +4,7 @@ import collections.ArrayList;
 import entities.Pair;
 
 /**
- * Task579
+ * Task579.
  */
 public class Task579 {
 

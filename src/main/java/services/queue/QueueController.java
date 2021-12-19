@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tasks.QueueManagementSystem;
 
 /**
- * QueueController
+ * QueueController.
  */
 @RestController
 public class QueueController {
@@ -67,8 +67,8 @@ public class QueueController {
     /**
      * Returns tickets of the current queue.
      *
-     * cpu O(n), n = number of tickets in current queue
-     * ram O(n), n = number of tickets in current queue
+     * @cpu O(n), n = number of tickets in current queue
+     * @ram O(n), n = number of tickets in current queue
      *
      * @return tickets of the current queue.
      */
@@ -80,8 +80,8 @@ public class QueueController {
     /**
      * Returns ticket of the head of current queue.
      *
-     * cpu O(n), n = number of tickets in current queue
-     * ram O(1)
+     * @cpu O(n), n = number of tickets in current queue
+     * @ram O(1)
      *
      * @return tickets of the current queue.
      */

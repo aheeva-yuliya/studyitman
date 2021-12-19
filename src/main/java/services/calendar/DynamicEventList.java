@@ -3,7 +3,7 @@ package services.calendar;
 import entities.Event;
 
 /**
- * DynamicEventList
+ * DynamicEventList.
  */
 public class DynamicEventList {
     private Event[] array;

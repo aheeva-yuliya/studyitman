@@ -3,7 +3,7 @@ package collections;
 import utils.StringBuilder;
 
 /**
- * LinkedList
+ * LinkedList.
  */
 public class LinkedList {
     private Node first;
@@ -11,7 +11,7 @@ public class LinkedList {
     private int size;
 
     /**
-     * Node
+     * Node.
      */
     private static class Node {
         private int element;
@@ -133,7 +133,7 @@ public class LinkedList {
      * @param element int argument
      */
     public void addFirst(final int element) {
-        final Node temp = new Node(element,null,null);
+        final Node temp = new Node(element, null, null);
         if (last == null) {
             last = temp;
         } else {
@@ -210,7 +210,7 @@ public class LinkedList {
      * @param element int argument
      */
     public void addLast(final int element) {
-        final Node temp = new Node(element,null,null);
+        final Node temp = new Node(element, null, null);
         if (first == null) {
             first = temp;
         } else {
@@ -230,7 +230,7 @@ public class LinkedList {
      * @return the value of the last element of the LinkedList.
      */
     public int getLast() {
-       return last.getElement();
+        return last.getElement();
     }
 
     /**

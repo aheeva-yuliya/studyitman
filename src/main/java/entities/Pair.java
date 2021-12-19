@@ -1,7 +1,7 @@
 package entities;
 
 /**
- * Pair
+ * Pair.
  */
 public class Pair {
     private final int left;
@@ -58,6 +58,6 @@ public class Pair {
      * @return boolean true if objects are equal and false if aren't.
      */
     public boolean equals(Pair that) {
-        return that!= null && left == that.left && right == that.right;
+        return that != null && left == that.left && right == that.right;
     }
 }

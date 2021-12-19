@@ -3,7 +3,7 @@ package collections;
 import utils.StringBuilder;
 
 /**
- * StringArrayList
+ * StringArrayList.
  */
 public class StringArrayList {
     private String[] data;
@@ -110,9 +110,9 @@ public class StringArrayList {
      * @param index int argument
      * @return the deleted element.
      */
-    public String remove(int index){
-        String value = data[index];
-        System.arraycopy(data, index + 1, data, index,size - index - 1);
+    public String remove(int index) {
+        final String value = data[index];
+        System.arraycopy(data, index + 1, data, index, size - index - 1);
         data[size - 1] = null;
         size--;
         return value;
@@ -201,7 +201,7 @@ public class StringArrayList {
      */
     public void trimToSize() {
         String[] copy = new String[size];
-        System.arraycopy(data,0,copy,0,size);
+        System.arraycopy(data, 0, copy, 0, size);
         data = copy;
     }
 }

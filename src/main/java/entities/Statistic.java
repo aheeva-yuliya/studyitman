@@ -1,7 +1,7 @@
 package entities;
 
 /**
- * Statistic
+ * Statistic.
  */
 public class Statistic {
     private final int min;
@@ -11,7 +11,8 @@ public class Statistic {
     private final double median;
 
     /**
-     * Statistic
+     * Statistic.
+     *
      * @param min int argument
      * @param max int argument
      * @param count long argument
@@ -95,7 +96,7 @@ public class Statistic {
      * @return a string with information.
      */
     public String toString() {
-        return "Statistic{min=" + min + ", max=" + max +", count=" + count
+        return "Statistic{min=" + min + ", max=" + max + ", count=" + count
                 + ", average=" + average + ", median=" + median + "}";
     }
 

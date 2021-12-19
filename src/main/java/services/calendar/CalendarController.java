@@ -4,7 +4,7 @@ import entities.Event;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * CalendarController
+ * CalendarController.
  */
 @RestController
 public class CalendarController {

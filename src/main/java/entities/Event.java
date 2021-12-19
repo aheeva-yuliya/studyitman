@@ -1,7 +1,7 @@
 package entities;
 
 /**
- * Event
+ * Event.
  */
 public class Event {
     private int id;
@@ -13,13 +13,14 @@ public class Event {
     public Event() {}
 
     /**
-     * Event
+     * Event.
+     *
      * @param year int argument
      * @param month int argument
      * @param day int argument
      * @param name String argument
      */
-    public Event (int year, int month, int day, String name) {
+    public Event(int year, int month, int day, String name) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -27,14 +28,15 @@ public class Event {
     }
 
     /**
-     * Event
+     * Event.
+     *
      * @param id int argument
      * @param year int argument
      * @param month int argument
      * @param day int argument
      * @param name String argument
      */
-    public Event (int id, int year, int month, int day, String name) {
+    public Event(int id, int year, int month, int day, String name) {
         this.id = id;
         this.year = year;
         this.month = month;
@@ -43,7 +45,7 @@ public class Event {
     }
 
     /**
-     * Sets the value of the instance variable "id"
+     * Sets the value of the instance variable "id".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -55,7 +57,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "id"
+     * Gets the value of the instance variable "id".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -67,7 +69,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "year"
+     * Gets the value of the instance variable "year".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -79,7 +81,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "month"
+     * Gets the value of the instance variable "month".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -91,7 +93,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "day"
+     * Gets the value of the instance variable "day".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -103,7 +105,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "name"
+     * Gets the value of the instance variable "name".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -157,6 +159,7 @@ public class Event {
             return 1;
         } else if (this.year == that.year && this.month == that.month && this.day == that.day) {
             return 0;
-        } return -1;
+        }
+        return -1;
     }
 }

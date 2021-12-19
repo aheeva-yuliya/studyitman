@@ -6,7 +6,7 @@ import entities.Pair;
 import utils.GraphUtils;
 
 /**
- * Task533
+ * Task533.
  */
 public class Task533 {
 

@@ -3,7 +3,7 @@ package tasks;
 import collections.ArrayList;
 
 /**
- * FibonacciCalculator
+ * FibonacciCalculator.
  */
 public class FibonacciCalculator {
     private final ArrayList cache = ArrayList.of(0, 1);

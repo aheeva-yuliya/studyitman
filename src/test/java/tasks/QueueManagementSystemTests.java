@@ -200,7 +200,7 @@ public class QueueManagementSystemTests {
                     new Ticket(2, "a")
             };
             final Ticket[] actual = a.getCurrentQueue();
-            for(int i = 0; i < actual.length; i++) {
+            for (int i = 0; i < actual.length; i++) {
                 Assertions.assertTrue(expected[i].equals(actual[i]));
             }
         }
@@ -217,7 +217,7 @@ public class QueueManagementSystemTests {
                     new Ticket(3, "a")
             };
             final Ticket[] actual = a.getCurrentQueue();
-            for(int i = 0; i < actual.length; i++) {
+            for (int i = 0; i < actual.length; i++) {
                 Assertions.assertTrue(expected[i].equals(actual[i]));
             }
         }
@@ -234,7 +234,7 @@ public class QueueManagementSystemTests {
                     new Ticket(2, "a")
             };
             final Ticket[] actual = a.getCurrentQueue();
-            for(int i = 0; i < actual.length; i++) {
+            for (int i = 0; i < actual.length; i++) {
                 Assertions.assertTrue(expected[i].equals(actual[i]));
             }
         }

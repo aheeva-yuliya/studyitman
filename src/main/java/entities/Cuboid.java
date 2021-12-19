@@ -1,57 +1,57 @@
 package entities;
 
 /**
- * Cuboid
+ * Cuboid.
  */
 public class Cuboid {
-    private int a;
-    private int b;
-    private int c;
+    private final int high;
+    private final int width;
+    private final int length;
 
     public Cuboid(int a, int b, int c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        this.high = a;
+        this.width = b;
+        this.length = c;
     }
 
     /**
-     * Gets the value of the instance variable "a"
+     * Gets the value of the instance variable "high".
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @return the value of the instance variable "a"
+     * @return the value of the instance variable "high"
      */
-    public int getA() {
-        return a;
+    public int getHigh() {
+        return high;
     }
 
     /**
-     * Gets the value of the instance variable "b"
+     * Gets the value of the instance variable "width".
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @return the value of the instance variable "b"
+     * @return the value of the instance variable "width"
      */
-    public int getB() {
-        return b;
+    public int getWidth() {
+        return width;
     }
 
     /**
-     * Gets the value of the instance variable "c"
+     * Gets the value of the instance variable "length".
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @return the value of the instance variable "c"
+     * @return the value of the instance variable "length"
      */
-    public int getC() {
-        return c;
+    public int getLength() {
+        return length;
     }
 
     /**
-     * Calculates the surface area of a cuboid.
+     * Calculates the surface area of high cuboid.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -59,11 +59,11 @@ public class Cuboid {
      * @return the value equals to the surface area of the cuboid.
      */
     public long calcSurfaceArea() {
-        return 2 * ((long) a * b + (long) b * c + (long) a * c);
+        return 2 * ((long) high * width + (long) width * length + (long) high * length);
     }
 
     /**
-     * Calculates the volume of a cuboid..
+     * Calculates the volume of high cuboid.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -71,6 +71,6 @@ public class Cuboid {
      * @return the value equals to the volume of the cuboid.
      */
     public long calcVolume() {
-        return (long) a * b * c;
+        return (long) high * width * length;
     }
 }

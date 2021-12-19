@@ -119,13 +119,13 @@ public class DynamicEventListTests {
     @Nested
     public class EndToEnd {
         @Test
-        public void endToEnd() {
+        public void shouldActAccordingScenarioWhenAsked() {
             DynamicEventList list = new DynamicEventList();
-            list.add(new Event(1991,9,8,"AAa"));
-            list.add(new Event(1991,9,8,"Aaa"));
+            list.add(new Event(1991, 9, 8, "AAa"));
+            list.add(new Event(1991, 9, 8, "Aaa"));
             list.set(1, new Event(1991, 9, 8, "aaa"));
-            Event[] expected = new Event[] {
-                    new Event(2, 1991,9,8,"Aaa"),
+            Event[] expected = new Event[]{
+                    new Event(2, 1991, 9, 8, "Aaa"),
                     new Event(1, 1991, 9, 8, "aaa")};
             Event[] actual = list.getAll();
             for (int i = 0; i < actual.length; i++) {
@@ -133,30 +133,30 @@ public class DynamicEventListTests {
                 Assertions.assertEquals(expected[i].getId(), actual[i].getId());
             }
             list.remove(1);
-            expected = new Event[] {new Event(2,1991,9,8,"Aaa")};
+            expected = new Event[]{new Event(2, 1991, 9, 8, "Aaa")};
             actual = list.getAll();
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));
                 Assertions.assertEquals(expected[i].getId(), actual[i].getId());
             }
-            list.add(new Event(1991,9,8,"AAA"));
-            list.add(new Event(1991,10,8,"AAA"));
-            list.add(new Event(1992,10,8,"AAA"));
-            expected = new Event[] {
-                    new Event(3, 1991,9,8,"AAA"),
-                    new Event(2, 1991,9,8,"Aaa")};
+            list.add(new Event(1991, 9, 8, "AAA"));
+            list.add(new Event(1991, 10, 8, "AAA"));
+            list.add(new Event(1992, 10, 8, "AAA"));
+            expected = new Event[]{
+                    new Event(3, 1991, 9, 8, "AAA"),
+                    new Event(2, 1991, 9, 8, "Aaa")};
             actual = list.getByDate(8, 9, 1991);
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));
                 Assertions.assertEquals(expected[i].getId(), actual[i].getId());
             }
-            expected = new Event[] {new Event(4, 1991,10,8,"AAA")};
-            actual = list.getByMonth(10,1991);
+            expected = new Event[]{new Event(4, 1991, 10, 8, "AAA")};
+            actual = list.getByMonth(10, 1991);
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));
                 Assertions.assertEquals(expected[i].getId(), actual[i].getId());
             }
-            expected = new Event[] {new Event(5, 1992,10,8,"AAA")};
+            expected = new Event[]{new Event(5, 1992, 10, 8, "AAA")};
             actual = list.getByYear(1992);
             for (int i = 0; i < actual.length; i++) {
                 Assertions.assertEquals(0, actual[i].compareTo(expected[i]));

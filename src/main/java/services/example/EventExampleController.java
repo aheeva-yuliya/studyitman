@@ -4,7 +4,7 @@ import entities.Event;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * EventExampleController
+ * EventExampleController.
  */
 @RestController
 public class EventExampleController {

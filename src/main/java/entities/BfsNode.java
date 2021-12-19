@@ -1,7 +1,7 @@
 package entities;
 
 /**
- * BfsNode
+ * BfsNode.
  */
 public class BfsNode {
     private final int vertex;
