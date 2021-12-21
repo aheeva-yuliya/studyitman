@@ -21,7 +21,7 @@ public class BookTests {
         @Test
         public void shouldReturnValueOfPagesWhenCalled() {
             final Book book = new Book(1, "title", 10, "author", 30);
-            Assertions.assertEquals(10, book.getPages());
+            Assertions.assertEquals(30, book.getPages());
         }
     }
 
