@@ -8,7 +8,7 @@ public class GameTests {
     @Nested
     public class GetPlayersMinTest {
         @Test
-        public void shouldReturnValueOfAuthorWhenCalled() {
+        public void shouldReturnValueOfPlayersMinWhenCalled() {
             final Game game = new Game(1, "title", 10, 4, 30);
             Assertions.assertEquals(4, game.getPlayersMin());
         }
@@ -17,7 +17,7 @@ public class GameTests {
     @Nested
     public class GetPlayersMaxTest {
         @Test
-        public void shouldReturnValueOfPagesWhenCalled() {
+        public void shouldReturnValueOfPlayersMaxWhenCalled() {
             final Game game = new Game(1, "title", 10, 4, 30);
             Assertions.assertEquals(30, game.getPlayersMax());
         }

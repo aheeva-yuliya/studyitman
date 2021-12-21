@@ -7,7 +7,7 @@ public class Game extends Item {
     private final int playersMin;
     private final int playersMax;
 
-    public Game(int id, String title, int price, int playersMin, int playersMax) {
+    public Game(final int id, final String title, final int price, final int playersMin, final int playersMax) {
         super(id, title, price);
         this.playersMin = playersMin;
         this.playersMax = playersMax;
