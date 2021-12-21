@@ -18,9 +18,9 @@ public class VideoGameTests {
     public class ToStringTest {
         @Test
         public void shouldReturnStringWhenFieldsHasNotDefaultValues() {
-            final VideoGame videoGame = new VideoGame(1, "title", 10, 4, 30, "plat");
+            final VideoGame videoGame = new VideoGame(1, "title", 10, 4, 30, "pl");
             final String expected =
-                    "VideoGame{Game{Item{id=1, title='title', price=10}, playersMin=4, playersMax=30}, platform=plat}";
+                    "VideoGame{Game{Item{id=1, title='title', price=10}, playersMin=4, playersMax=30}, platform='pl'}";
             final String actual = videoGame.toString();
             Assertions.assertEquals(expected, actual);
         }
