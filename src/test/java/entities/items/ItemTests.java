@@ -1,0 +1,47 @@
+package entities.items;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ItemTests {
+    @Nested
+    public class GetIdTest {
+        @Test
+        public void shouldReturnValueOfIdWhenCalled() {
+            final Item item = new Item(1, "title", 10);
+            Assertions.assertEquals(1, item.getId());
+        }
+    }
+
+    @Nested
+    public class GetTitleTest {
+        @Test
+        public void shouldReturnValueOfTitleWhenCalled() {
+            final Item item = new Item(1, "title", 10);
+            Assertions.assertEquals("title", item.getTitle());
+        }
+    }
+
+    @Nested
+    public class GetPriceTest {
+        @Test
+        public void shouldReturnValueOfPriceWhenCalled() {
+            final Item item = new Item(1, "title", 10);
+            Assertions.assertEquals(10, item.getPrice());
+        }
+    }
+
+    @Nested
+    public class ToStringTest {
+        @Test
+        public void shouldReturnStringWhenFieldsHasNotDefaultValues() {
+            final Item item = new Item(1, "title", 10);
+            final String expected = "Item{id=1, title='title', price=10}";
+            final String actual = item.toString();
+            Assertions.assertEquals(expected, actual);
+        }
+    }
+}
