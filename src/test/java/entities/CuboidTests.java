@@ -40,9 +40,9 @@ public class CuboidTests {
         @Test
         public void shouldGetWhenTryGet() {
             Cuboid cuboid = new Cuboid(10000, 20000, 30000);
-            Assertions.assertEquals(10000, cuboid.getHigh());
-            Assertions.assertEquals(20000, cuboid.getWidth());
-            Assertions.assertEquals(30000, cuboid.getLength());
+            Assertions.assertEquals(10000, cuboid.getA());
+            Assertions.assertEquals(20000, cuboid.getB());
+            Assertions.assertEquals(30000, cuboid.getC());
         }
     }
 }

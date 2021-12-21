@@ -22,7 +22,7 @@ public class Cuboid {
      *
      * @return the value of the instance variable "high"
      */
-    public int getHigh() {
+    public int getA() {
         return high;
     }
 
@@ -34,7 +34,7 @@ public class Cuboid {
      *
      * @return the value of the instance variable "width"
      */
-    public int getWidth() {
+    public int getB() {
         return width;
     }
 
@@ -46,7 +46,7 @@ public class Cuboid {
      *
      * @return the value of the instance variable "length"
      */
-    public int getLength() {
+    public int getC() {
         return length;
     }
 
