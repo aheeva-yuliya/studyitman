@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class ItemTests {
     @Nested
     public class GetIdTest {
@@ -42,6 +40,29 @@ public class ItemTests {
             final String expected = "Item{id=1, title='title', price=10}";
             final String actual = item.toString();
             Assertions.assertEquals(expected, actual);
+        }
+    }
+
+    @Nested
+    public class EqualsTests {
+        @Test
+        public void shouldReturnTrueWhenAllFieldsTheSame() {
+            final Item item1 = new Item(1, "title", 10);
+            final Item item2 = new Item(1, "title", 10);
+            Assertions.assertTrue(item1.equals(item2));
+        }
+
+        @Test
+        public void shouldReturnFalseWhenStringFieldsDifferent() {
+            final Item item1 = new Item(1, "title", 10);
+            final Item item2 = new Item(1, "tile", 10);
+            Assertions.assertFalse(item1.equals(item2));
+        }
+
+        @Test
+        public void shouldReturnFalseWhenThatIsNull() {
+            final Item item1 = new Item(1, "title", 10);
+            Assertions.assertFalse(item1.equals(null));
         }
     }
 }

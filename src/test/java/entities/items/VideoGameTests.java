@@ -25,4 +25,27 @@ public class VideoGameTests {
             Assertions.assertEquals(expected, actual);
         }
     }
+
+    @Nested
+    public class EqualsTests {
+        @Test
+        public void shouldReturnTrueWhenAllFieldsTheSame() {
+            final VideoGame game1 = new VideoGame(1, "title", 10, 3, 30, "a");
+            final VideoGame game2 = new VideoGame(1, "title", 10, 3, 30, "a");
+            Assertions.assertTrue(game1.equals(game2));
+        }
+
+        @Test
+        public void shouldReturnFalseWhenFieldsDifferent() {
+            final VideoGame game1 = new VideoGame(1, "title", 10, 3, 30, "a");
+            final VideoGame game2 = new VideoGame(1, "t", 10, 3, 30, "a");
+            Assertions.assertFalse(game1.equals(game2));
+        }
+
+        @Test
+        public void shouldReturnFalseWhenThatIsNull() {
+            final VideoGame game1 = new VideoGame(1, "title", 10, 3, 30, "a");
+            Assertions.assertFalse(game1.equals(null));
+        }
+    }
 }

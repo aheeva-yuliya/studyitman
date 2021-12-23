@@ -33,4 +33,17 @@ public class BoardGame extends Game {
     public String toString() {
         return "BoardGame{" + super.toString() + ", timeMin=" + timeMin + ", timeMax=" + timeMax + "}";
     }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param that the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
+     */
+    public boolean equals(final BoardGame that) {
+        return super.equals(that) && timeMin == that.timeMin && timeMax == that.timeMax;
+    }
 }

@@ -32,4 +32,17 @@ public class Game extends Item {
     public String toString() {
         return "Game{" + super.toString() + ", playersMin=" + playersMin + ", playersMax=" + playersMax + "}";
     }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param that the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
+     */
+    public boolean equals(final Game that) {
+        return super.equals(that) && playersMin == that.playersMin && playersMax == that.playersMax;
+    }
 }

@@ -27,4 +27,18 @@ public class VideoGame extends Game {
     public String toString() {
         return "VideoGame{" + super.toString() + ", platform='" + platform + "'}";
     }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param that the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
+     */
+    public boolean equals(final VideoGame that) {
+        return super.equals(that)
+                && (platform != null && platform.equals(that.platform) || platform == null && that.platform == null);
+    }
 }

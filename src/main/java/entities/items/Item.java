@@ -37,4 +37,18 @@ public class Item {
     public String toString() {
         return "Item{id=" + id + ", title='" + title + "', price=" + price + "}";
     }
+
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param that the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
+     */
+    public boolean equals(final Item that) {
+        return that != null && id == that.id && price == that.price
+                && (title != null && title.equals(that.title) || title == null && that.title == null);
+    }
 }
