@@ -49,20 +49,20 @@ public class ItemTests {
         public void shouldReturnTrueWhenAllFieldsTheSame() {
             final Item item1 = new Item(1, "title", 10);
             final Item item2 = new Item(1, "title", 10);
-            Assertions.assertTrue(item1.equals(item2));
+            Assertions.assertEquals(item1, item2);
         }
 
         @Test
         public void shouldReturnFalseWhenStringFieldsDifferent() {
             final Item item1 = new Item(1, "title", 10);
             final Item item2 = new Item(1, "tile", 10);
-            Assertions.assertFalse(item1.equals(item2));
+            Assertions.assertNotEquals(item1, item2);
         }
 
         @Test
         public void shouldReturnFalseWhenThatIsNull() {
             final Item item1 = new Item(1, "title", 10);
-            Assertions.assertFalse(item1.equals(null));
+            Assertions.assertNotEquals(item1, null);
         }
     }
 }

@@ -33,16 +33,25 @@ public class Book extends Item {
         return "Book{" + super.toString() + ", author='" + author + "', pages=" + pages + "}";
     }
 
+
     /**
      * Indicates whether some other object is "equal to" this one.
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that the reference object with which to compare.
+     * @param obj the reference object with which to compare.
      * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(final Book that) {
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Book that = (Book) obj;
         return super.equals(that) && pages == that.pages
                 && (author != null && author.equals(that.author) || author == null && that.author == null);
     }

@@ -40,10 +40,18 @@ public class BoardGame extends Game {
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that the reference object with which to compare.
+     * @param obj the reference object with which to compare.
      * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(final BoardGame that) {
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final BoardGame that = (BoardGame) obj;
         return super.equals(that) && timeMin == that.timeMin && timeMax == that.timeMax;
     }
 }

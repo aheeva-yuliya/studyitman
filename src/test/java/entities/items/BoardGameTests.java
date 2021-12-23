@@ -41,20 +41,20 @@ public class BoardGameTests {
         public void shouldReturnTrueWhenAllFieldsTheSame() {
             final BoardGame game1 = new BoardGame(1, "title", 10, 3, 30, 10, 90);
             final BoardGame game2 = new BoardGame(1, "title", 10, 3, 30, 10, 90);
-            Assertions.assertTrue(game1.equals(game2));
+            Assertions.assertEquals(game1, game2);
         }
 
         @Test
         public void shouldReturnFalseWhenFieldsDifferent() {
             final BoardGame game1 = new BoardGame(1, "title", 10, 3, 30, 10, 70);
             final BoardGame game2 = new BoardGame(1, "title", 10, 3, 30, 10, 90);
-            Assertions.assertFalse(game1.equals(game2));
+            Assertions.assertNotEquals(game1, game2);
         }
 
         @Test
         public void shouldReturnFalseWhenThatIsNull() {
             final BoardGame game1 = new BoardGame(1, "title", 10, 3, 30, 10, 90);
-            Assertions.assertFalse(game1.equals(null));
+            Assertions.assertNotEquals(null, game1);
         }
     }
 }

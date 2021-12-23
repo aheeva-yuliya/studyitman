@@ -44,11 +44,19 @@ public class Item {
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that the reference object with which to compare.
+     * @param obj the reference object with which to compare.
      * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(final Item that) {
-        return that != null && id == that.id && price == that.price
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Item that = (Item) obj;
+        return id == that.id && price == that.price
                 && (title != null && title.equals(that.title) || title == null && that.title == null);
     }
 }

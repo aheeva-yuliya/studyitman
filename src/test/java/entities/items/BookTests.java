@@ -42,20 +42,20 @@ public class BookTests {
         public void shouldReturnTrueWhenAllFieldsTheSame() {
             final Book book1 = new Book(1, "title", 10, "author", 30);
             final Book book2 = new Book(1, "title", 10, "author", 30);
-            Assertions.assertTrue(book1.equals(book2));
+            Assertions.assertEquals(book1, book2);
         }
 
         @Test
         public void shouldReturnFalseWhenStringFieldsDifferent() {
             final Book book1 = new Book(1, "title", 10, "author", 30);
             final Book book2 = new Book(1, "tile", 10, "author", 30);
-            Assertions.assertFalse(book1.equals(book2));
+            Assertions.assertNotEquals(book1, book2);
         }
 
         @Test
         public void shouldReturnFalseWhenThatIsNull() {
             final Book book1 = new Book(1, "title", 10, "author", 30);
-            Assertions.assertFalse(book1.equals(null));
+            Assertions.assertNotEquals(null, book1);
         }
     }
 }
