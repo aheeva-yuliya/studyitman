@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import collections.Stack;
 import entities.Pair;
 import utils.GraphUtils;
@@ -22,7 +22,7 @@ public class Task533 {
      */
     public static int countComponents(int n, Pair[] edges) {
         int components = 0;
-        final ArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
+        final IntArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
         final boolean[] used = new boolean[adjacencyList.length];
         final Stack stack = new Stack();
         for (int startVertex = 1; startVertex <= n; startVertex++) {
@@ -33,7 +33,7 @@ public class Task533 {
                     final int vertex = stack.pop();
                     if (!used[vertex]) {
                         used[vertex] = true;
-                        final ArrayList neighbors = adjacencyList[vertex];
+                        final IntArrayList neighbors = adjacencyList[vertex];
                         for (int i = neighbors.size() - 1; i >= 0; i--) {
                             if (!used[neighbors.get(i)]) {
                                 stack.push(neighbors.get(i));
@@ -59,7 +59,7 @@ public class Task533 {
      */
     public static int countComponentsByRecursion(int n, Pair[] edges) {
         int component = 0;
-        final ArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
+        final IntArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
         final boolean[] used = new boolean[adjacencyList.length];
         for (int startVertex = 1; startVertex <= n; startVertex++) {
             if (!used[startVertex]) {
@@ -70,7 +70,7 @@ public class Task533 {
         return component;
     }
 
-    private static void dfs(int startVertex, ArrayList[] adjacencyList, boolean[] used) {
+    private static void dfs(int startVertex, IntArrayList[] adjacencyList, boolean[] used) {
         used[startVertex] = true;
         for (int i = 0; i < adjacencyList[startVertex].size(); i++) {
             final int vertex = adjacencyList[startVertex].get(i);

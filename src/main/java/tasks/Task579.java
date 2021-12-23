@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Pair;
 
 /**
@@ -83,7 +83,7 @@ public class Task579 {
         final Support support = new Support();
         support.createPairs(map);
         support.trimToSize();
-        final ArrayList way = Task532.findMinChainByQueue(
+        final IntArrayList way = Task532.findMinChainByQueue(
                 support.rowCnt * support.colCnt - 1, support.pairs, support.from, support.to);
         if (way != null) {
             for (int i = 0; i < way.size(); i++) {

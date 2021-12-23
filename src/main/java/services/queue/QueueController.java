@@ -1,6 +1,6 @@
 package services.queue;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Ticket;
 import org.springframework.web.bind.annotation.*;
 import tasks.QueueManagementSystem;
@@ -60,8 +60,8 @@ public class QueueController {
      */
     @GetMapping("/api/queue/getVisitsByDays")
     public int[] getVisitsByDay() {
-        ArrayList arrayList = queue.getVisitsByDay();
-        return arrayList.toArray();
+        IntArrayList intArrayList = queue.getVisitsByDay();
+        return intArrayList.toArray();
     }
 
     /**

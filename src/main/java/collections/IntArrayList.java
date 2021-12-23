@@ -6,7 +6,7 @@ import utils.StringBuilder;
 /**
  * ArrayList.
  */
-public class ArrayList {
+public class IntArrayList {
     private int[] array;
     private int size;
 
@@ -16,7 +16,7 @@ public class ArrayList {
      * @cpu O(1)
      * @ram O(1)
      */
-    public ArrayList() {
+    public IntArrayList() {
         array = new int[16];
     }
 
@@ -28,7 +28,7 @@ public class ArrayList {
      *
      * @param capacity int argument
      */
-    public ArrayList(int capacity) {
+    public IntArrayList(int capacity) {
         array = new int[capacity];
     }
 
@@ -40,7 +40,7 @@ public class ArrayList {
      *
      * @param that a class object
      */
-    public ArrayList(ArrayList that) {
+    public IntArrayList(IntArrayList that) {
         size = that.size;
         array = new int[that.array.length];
         System.arraycopy(that.array, 0, array, 0, that.array.length);
@@ -150,7 +150,7 @@ public class ArrayList {
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-        final ArrayList that = (ArrayList) obj;
+        final IntArrayList that = (IntArrayList) obj;
         if (size != that.size) {
             return false;
         }
@@ -181,11 +181,11 @@ public class ArrayList {
      * @param elements variable arguments list
      * @return an object of the class.
      */
-    public static ArrayList of(int... elements) {
-        ArrayList arrayList = new ArrayList(elements.length);
-        arrayList.size = elements.length;
-        System.arraycopy(elements, 0, arrayList.array, 0, elements.length);
-        return arrayList;
+    public static IntArrayList of(int... elements) {
+        IntArrayList intArrayList = new IntArrayList(elements.length);
+        intArrayList.size = elements.length;
+        System.arraycopy(elements, 0, intArrayList.array, 0, elements.length);
+        return intArrayList;
     }
 
     /**

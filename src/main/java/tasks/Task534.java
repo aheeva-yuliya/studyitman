@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import collections.Stack;
 import entities.Pair;
 import utils.GraphUtils;
@@ -25,7 +25,7 @@ public class Task534 {
         int children = 0;
         boolean isX = false;
         int stackLength = 0;
-        final ArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
+        final IntArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
         final boolean[] used = new boolean[adjacencyList.length];
         final Stack stack = new Stack();
         stack.push(1);
@@ -39,7 +39,7 @@ public class Task534 {
             }
             if (!used[vertex]) {
                 used[vertex] = true;
-                final ArrayList neighbors = adjacencyList[vertex];
+                final IntArrayList neighbors = adjacencyList[vertex];
                 for (int i = neighbors.size() - 1; i >= 0; i--) {
                     if (!used[neighbors.get(i)]) {
                         stack.push(neighbors.get(i));
@@ -65,12 +65,12 @@ public class Task534 {
      * @return the number of vertices in the subtree rooted at X.
      */
     public static int countChildrenInSubtreeByRecursion(int n, Pair[] edges, int x) {
-        final ArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
+        final IntArrayList[] adjacencyList = GraphUtils.toUndirectedAdjacencyList(n, edges);
         final boolean[] used = new boolean[adjacencyList.length];
         return dfs(1, adjacencyList, used, x, false);
     }
 
-    private static int dfs(int vertex, ArrayList[] adjacencyList, boolean[] used, int x, boolean flag) {
+    private static int dfs(int vertex, IntArrayList[] adjacencyList, boolean[] used, int x, boolean flag) {
         if (vertex == x) {
             flag = true;
         }

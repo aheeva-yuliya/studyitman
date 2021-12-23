@@ -1,6 +1,6 @@
 package utils;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Event;
 
 /**
@@ -135,7 +135,7 @@ public class ArrayUtils {
      * @return an array containing only unique elements.
      */
     public static int[] distinct(int[] array) {
-        ArrayList arrayList = new ArrayList();
+        IntArrayList intArrayList = new IntArrayList();
         int[] minMax = findMinAndMax(array);
         int min = minMax[0];
         int max = minMax[1];
@@ -144,11 +144,11 @@ public class ArrayUtils {
         for (int j : array) {
             element = j;
             if (cnt[element - min] > 0) {
-                arrayList.add(element);
+                intArrayList.add(element);
                 cnt[element - min] = 0;
             }
         }
-        return arrayList.toArray();
+        return intArrayList.toArray();
     }
 
     /**

@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Ticket;
 
 /**
@@ -9,7 +9,7 @@ import entities.Ticket;
 public class QueueManagementSystem {
     private final String place;
     private int total;
-    private final ArrayList visits = ArrayList.of(0);
+    private final IntArrayList visits = IntArrayList.of(0);
     private int byDay;
     private Queue queue = new Queue();
 
@@ -74,9 +74,9 @@ public class QueueManagementSystem {
      *
      * @return a new object of the ArrayList class.
      */
-    public ArrayList getVisitsByDay() {
+    public IntArrayList getVisitsByDay() {
         visits.set(visits.size() - 1, byDay);
-        return new ArrayList(visits);
+        return new IntArrayList(visits);
     }
 
     /**

@@ -1,12 +1,12 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 
 /**
  * FibonacciCalculator.
  */
 public class FibonacciCalculator {
-    private final ArrayList cache = ArrayList.of(0, 1);
+    private final IntArrayList cache = IntArrayList.of(0, 1);
 
     /**
      * Finds the Fn Fibonacci number using cache.

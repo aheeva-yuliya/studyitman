@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 public class CalendarController {
-    private final DynamicEventList dynamicEventList = new DynamicEventList();
+    private final EventArrayList eventArrayList = new EventArrayList();
 
     /**
      * Checks the data object and adds it to the array of DynamicEventList or returns an error message.
@@ -21,7 +21,7 @@ public class CalendarController {
      */
     @PostMapping("/api/add")
     public String addEvent(@RequestBody Event body) {
-        return dynamicEventList.add(body);
+        return eventArrayList.add(body);
     }
 
     /**
@@ -37,7 +37,7 @@ public class CalendarController {
     @PatchMapping("/api/set/{id}")
     public String setEvent(@PathVariable (name = "id") int id,
                            @RequestBody Event body) {
-        return dynamicEventList.set(id, body);
+        return eventArrayList.set(id, body);
     }
 
     /**
@@ -51,7 +51,7 @@ public class CalendarController {
      */
     @DeleteMapping("/api/delete/{id}")
     public String deleteEvent(@PathVariable (name = "id") int id) {
-        return dynamicEventList.remove(id);
+        return eventArrayList.remove(id);
     }
 
     /**
@@ -64,7 +64,7 @@ public class CalendarController {
      */
     @GetMapping("/api/get/all")
     public Event[] getEvents() {
-        return dynamicEventList.getAll();
+        return eventArrayList.getAll();
     }
 
     /**
@@ -78,7 +78,7 @@ public class CalendarController {
      */
     @GetMapping("/api/get/year/{year}")
     public Event[] getEventsByYear(@PathVariable (name = "year") int year) {
-        return dynamicEventList.getByYear(year);
+        return eventArrayList.getByYear(year);
     }
 
     /**
@@ -95,7 +95,7 @@ public class CalendarController {
     @GetMapping("/api/get/month/{month}/year/{year}")
     public Event[] getEventsByMonth(@PathVariable (name = "month") int month,
                                     @PathVariable (name = "year") int year) {
-        return dynamicEventList.getByMonth(month, year);
+        return eventArrayList.getByMonth(month, year);
     }
 
     /**
@@ -113,6 +113,6 @@ public class CalendarController {
     public Event[] getEventsByDate(@PathVariable (name = "day") int day,
                                    @PathVariable (name = "month") int month,
                                    @PathVariable (name = "year") int year) {
-        return dynamicEventList.getByDate(day, month, year);
+        return eventArrayList.getByDate(day, month, year);
     }
 }

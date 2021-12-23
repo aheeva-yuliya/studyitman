@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class ArrayListTests {
+public class IntArrayListTests {
     @Nested
     public class Set {
         @Test
         public void shouldSetWhenTrySetFirstAndThirdElements() {
-            ArrayList a = new ArrayList(5);
+            IntArrayList a = new IntArrayList(5);
             a.add(5);
             a.add(5);
             a.add(5);
@@ -25,7 +25,7 @@ public class ArrayListTests {
     public class Get {
         @Test
         public void shouldGetWhenTryGetSecondElement() {
-            ArrayList a = new ArrayList(3);
+            IntArrayList a = new IntArrayList(3);
             a.add(5);
             a.add(10);
             a.add(20);
@@ -37,13 +37,13 @@ public class ArrayListTests {
     public class Size {
         @Test
         public void shouldReturnZeroWhenArraySizeZero() {
-            ArrayList a = new ArrayList(5);
+            IntArrayList a = new IntArrayList(5);
             Assertions.assertEquals(0, a.size());
         }
 
         @Test
         public void shouldReturnTwoWhenArraySizeTwo() {
-            ArrayList a = new ArrayList(5);
+            IntArrayList a = new IntArrayList(5);
             a.add(5);
             a.add(10);
             Assertions.assertEquals(2, a.size());
@@ -54,7 +54,7 @@ public class ArrayListTests {
     public class Add {
         @Test
         public void shouldAddWhenLengthIsOne() {
-            ArrayList a = new ArrayList(1);
+            IntArrayList a = new IntArrayList(1);
             a.add(10);
             a.add(20);
             a.add(30);
@@ -64,7 +64,7 @@ public class ArrayListTests {
 
         @Test
         public void shouldAddWhenCapacityMultipliesByTwo() {
-            ArrayList a = new ArrayList(1);
+            IntArrayList a = new IntArrayList(1);
             a.add(2);
             a.add(7);
             a.add(1);
@@ -80,7 +80,7 @@ public class ArrayListTests {
     public class Remove {
         @Test
         public void shouldRemoveWhenTryRemoveFromTheFirstIndex() {
-            ArrayList a = new ArrayList(4);
+            IntArrayList a = new IntArrayList(4);
             a.add(1);
             a.add(2);
             a.add(3);
@@ -93,7 +93,7 @@ public class ArrayListTests {
 
         @Test
         public void shouldRemoveWhenTryRemoveFromTheLastIndex() {
-            ArrayList a = new ArrayList(4);
+            IntArrayList a = new IntArrayList(4);
             a.add(1);
             a.add(2);
             a.add(3);
@@ -106,7 +106,7 @@ public class ArrayListTests {
 
         @Test
         public void shouldRemoveWhenTryRemoveFromTheFirstAndZeroIndexes() {
-            ArrayList a = new ArrayList(4);
+            IntArrayList a = new IntArrayList(4);
             a.add(1);
             a.add(2);
             a.add(3);
@@ -128,11 +128,11 @@ public class ArrayListTests {
     public class Equals {
         @Test
         public void shouldReturnTrueWhenArrayListsContainEqualElements() {
-            ArrayList a = new ArrayList(3);
+            IntArrayList a = new IntArrayList(3);
             a.add(1);
             a.add(2);
             a.add(3);
-            ArrayList b = new ArrayList(3);
+            IntArrayList b = new IntArrayList(3);
             b.add(3);
             b.add(2);
             b.add(3);
@@ -142,11 +142,11 @@ public class ArrayListTests {
 
         @Test
         public void shouldReturnFalseWhenArrayListsContainDifferentElements() {
-            ArrayList a = new ArrayList(3);
+            IntArrayList a = new IntArrayList(3);
             a.add(1);
             a.add(2);
             a.add(3);
-            ArrayList b = new ArrayList(3);
+            IntArrayList b = new IntArrayList(3);
             b.add(3);
             b.add(2);
             b.add(3);
@@ -155,14 +155,14 @@ public class ArrayListTests {
 
         @Test
         public void shouldReturnTrueWhenArrayListsContainSameElementsButDifferentCapacities() {
-            ArrayList a = new ArrayList(1);
-            ArrayList b = new ArrayList(2);
+            IntArrayList a = new IntArrayList(1);
+            IntArrayList b = new IntArrayList(2);
             Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenThatIsNull() {
-            ArrayList a = new ArrayList(3);
+            IntArrayList a = new IntArrayList(3);
             a.add(1);
             a.add(2);
             a.add(3);
@@ -174,7 +174,7 @@ public class ArrayListTests {
     public class Sort {
         @Test
         public void shouldSortInAscendingOrderWhenTrySortDifferentElements() {
-            ArrayList a = new ArrayList(3);
+            IntArrayList a = new IntArrayList(3);
             a.add(8);
             a.add(3);
             a.add(6);
@@ -187,7 +187,7 @@ public class ArrayListTests {
 
         @Test
         public void shouldSortWhenTrySortSameElements() {
-            ArrayList a = new ArrayList(3);
+            IntArrayList a = new IntArrayList(3);
             a.add(8);
             a.add(8);
             a.add(8);
@@ -199,7 +199,7 @@ public class ArrayListTests {
 
         @Test
         public void shouldSortUsingMergeSortWhenTrySort() {
-            ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0, 54, 78, 99, 75, 89, 82, -76);
+            IntArrayList a = IntArrayList.of(7, 18, 9, -5, 8, 9, 90, 0, 54, 78, 99, 75, 89, 82, -76);
             a.add(7);
             a.add(22);
             a.sort();
@@ -212,17 +212,17 @@ public class ArrayListTests {
     public class Create {
         @Test
         public void shouldCreateWhenTryCreateFromAnObject() {
-            ArrayList first = new ArrayList();
+            IntArrayList first = new IntArrayList();
             first.set(0, 10);
             first.set(1, 20);
-            ArrayList second = new ArrayList(first);
+            IntArrayList second = new IntArrayList(first);
             Assertions.assertTrue(first.equals(second));
         }
 
         @Test
         public void shouldCreateWhenTryCreateOfElements() {
             int[] a = new int[]{-1, 1, 5};
-            ArrayList actual = ArrayList.of(a);
+            IntArrayList actual = IntArrayList.of(a);
             a[1] = 0;
             int[] expected = new int[]{-1, 1, 5};
             Assertions.assertArrayEquals(expected, actual.toArray());
@@ -230,7 +230,7 @@ public class ArrayListTests {
 
         @Test
         public void shouldCreateWhenTryCreateOfNil() {
-            ArrayList a = ArrayList.of();
+            IntArrayList a = IntArrayList.of();
             int[] expected = new int[]{};
             int[] actual = a.toArray();
             Assertions.assertArrayEquals(expected, actual);
@@ -239,15 +239,15 @@ public class ArrayListTests {
 
         @Test
         public void shouldCreateAndCheckIfEqualWhenTryCreateOfElements() {
-            ArrayList a = ArrayList.of(-1, 1, 5);
-            ArrayList b = ArrayList.of(-1, 1, 5);
+            IntArrayList a = IntArrayList.of(-1, 1, 5);
+            IntArrayList b = IntArrayList.of(-1, 1, 5);
             Assertions.assertTrue(a.equals(b));
         }
 
         @Test
         public void shouldCreateOneWhenTryCreateOfElementsAndCreateAnotherWhenTryAdd() {
-            final ArrayList a = ArrayList.of(-1, 1, 5);
-            final ArrayList b = new ArrayList(5);
+            final IntArrayList a = IntArrayList.of(-1, 1, 5);
+            final IntArrayList b = new IntArrayList(5);
             b.add(-1);
             b.add(1);
             b.add(5);
@@ -259,19 +259,19 @@ public class ArrayListTests {
     public class ToString {
         @Test
         public void shouldMakeAStringWhenTryDoItUsingStringBuilder() {
-            ArrayList a = ArrayList.of(8, 9, 7, 6, 2, 3, 5, 4);
+            IntArrayList a = IntArrayList.of(8, 9, 7, 6, 2, 3, 5, 4);
             Assertions.assertEquals("[8, 9, 7, 6, 2, 3, 5, 4]", a.toString());
         }
 
         @Test
         public void shouldMakeAStringWhenEmptyArray() {
-            ArrayList a = ArrayList.of();
+            IntArrayList a = IntArrayList.of();
             Assertions.assertEquals("[]", a.toString());
         }
 
         @Test
         public void shouldMakeAStringWhenLengthIsOne() {
-            ArrayList a = ArrayList.of(1);
+            IntArrayList a = IntArrayList.of(1);
             Assertions.assertEquals("[1]", a.toString());
         }
     }
@@ -280,14 +280,14 @@ public class ArrayListTests {
     public class Clear {
         @Test
         public void shouldClearWhenArrayContainsSomeElements() {
-            ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0);
+            IntArrayList a = IntArrayList.of(7, 18, 9, -5, 8, 9, 90, 0);
             a.clear();
             Assertions.assertEquals(0, a.size());
         }
 
         @Test
         public void shouldClearWhenArrayEmpty() {
-            ArrayList a = new ArrayList();
+            IntArrayList a = new IntArrayList();
             a.clear();
             Assertions.assertEquals(0, a.size());
         }
@@ -297,7 +297,7 @@ public class ArrayListTests {
     public class TrimToSize {
         @Test
         public void shouldTrimToSizeWhenCapacityGreaterThanSize() {
-            ArrayList a = new ArrayList();
+            IntArrayList a = new IntArrayList();
             a.add(100);
             Assertions.assertEquals(0, a.get(1));
             a.trimToSize();

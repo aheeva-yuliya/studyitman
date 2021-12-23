@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 
 /**
  * CountingSortTask.
@@ -49,13 +49,13 @@ public class CountingSortTask {
      * @return int[] with numbers in ascending order
      */
     public static int[] restore(int[] array) {
-        ArrayList arrayList = new ArrayList();
+        IntArrayList intArrayList = new IntArrayList();
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i]; j++) {
-                arrayList.add(i);
+                intArrayList.add(i);
             }
         }
-        return arrayList.toArray();
+        return intArrayList.toArray();
     }
 
     /**

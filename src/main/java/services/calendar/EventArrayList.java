@@ -5,7 +5,7 @@ import entities.Event;
 /**
  * DynamicEventList.
  */
-public class DynamicEventList {
+public class EventArrayList {
     private Event[] array;
     private int size;
     private int id;
@@ -16,7 +16,7 @@ public class DynamicEventList {
      * @cpu O(1)
      * @ram O(1)
      */
-    public DynamicEventList() {
+    public EventArrayList() {
         array = new Event[16];
     }
 

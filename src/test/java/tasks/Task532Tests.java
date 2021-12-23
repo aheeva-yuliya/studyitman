@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Pair;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -190,8 +190,8 @@ public class Task532Tests {
                     new Pair(3, 4),
                     new Pair(3, 5),
             };
-            ArrayList expected = ArrayList.of(1, 3, 4);
-            ArrayList actual = Task532.findMinChainByQueue(5, acquaintances, 1, 4);
+            IntArrayList expected = IntArrayList.of(1, 3, 4);
+            IntArrayList actual = Task532.findMinChainByQueue(5, acquaintances, 1, 4);
             Assertions.assertTrue(expected.equals(actual));
         }
 
@@ -206,8 +206,8 @@ public class Task532Tests {
                     new Pair(3, 6),
                     new Pair(5, 6)
             };
-            ArrayList expected = ArrayList.of(1, 6);
-            ArrayList actual = Task532.findMinChainByQueue(6, acquaintances, 1, 6);
+            IntArrayList expected = IntArrayList.of(1, 6);
+            IntArrayList actual = Task532.findMinChainByQueue(6, acquaintances, 1, 6);
             Assertions.assertTrue(expected.equals(actual));
         }
 
@@ -240,8 +240,8 @@ public class Task532Tests {
                     new Pair(1, 7),
                     new Pair(7, 1)
             };
-            ArrayList expected = ArrayList.of(1, 7, 6, 5);
-            ArrayList actual = Task532.findMinChainByQueue(7, acquaintances, 1, 5);
+            IntArrayList expected = IntArrayList.of(1, 7, 6, 5);
+            IntArrayList actual = Task532.findMinChainByQueue(7, acquaintances, 1, 5);
             Assertions.assertTrue(expected.equals(actual));
         }
     }

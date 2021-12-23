@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Ticket;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -108,8 +108,8 @@ public class QueueManagementSystemTests {
             system.toNextWorkDay();
             system.getNextTicket();
             system.toNextWorkDay();
-            ArrayList expected = ArrayList.of(2, 1, 0);
-            ArrayList actual = system.getVisitsByDay();
+            IntArrayList expected = IntArrayList.of(2, 1, 0);
+            IntArrayList actual = system.getVisitsByDay();
             Assertions.assertEquals(3, system.getTotalTickets());
             Assertions.assertTrue(expected.equals(actual));
         }
@@ -125,8 +125,8 @@ public class QueueManagementSystemTests {
             a.toNextWorkDay();
             a.getNextTicket();
             a.toNextWorkDay();
-            ArrayList expected = ArrayList.of(2, 1, 0);
-            ArrayList actual = a.getVisitsByDay();
+            IntArrayList expected = IntArrayList.of(2, 1, 0);
+            IntArrayList actual = a.getVisitsByDay();
             Assertions.assertTrue(expected.equals(actual));
             Assertions.assertEquals(3, a.getTotalTickets());
         }
@@ -138,8 +138,8 @@ public class QueueManagementSystemTests {
             a.getNextTicket();
             a.toNextWorkDay();
             a.getNextTicket();
-            ArrayList expected = ArrayList.of(2, 1);
-            ArrayList actual = a.getVisitsByDay();
+            IntArrayList expected = IntArrayList.of(2, 1);
+            IntArrayList actual = a.getVisitsByDay();
             Assertions.assertTrue(expected.equals(actual));
         }
 
@@ -159,11 +159,11 @@ public class QueueManagementSystemTests {
             a.getNextTicket();
             a.getNextTicket();
             a.toNextWorkDay();
-            ArrayList aExpected = ArrayList.of(2, 1, 0, 2, 0);
-            ArrayList aActual = a.getVisitsByDay();
+            IntArrayList aExpected = IntArrayList.of(2, 1, 0, 2, 0);
+            IntArrayList aActual = a.getVisitsByDay();
             Assertions.assertTrue(aExpected.equals(aActual));
-            ArrayList bExpected = ArrayList.of(2, 0);
-            ArrayList bActual = b.getVisitsByDay();
+            IntArrayList bExpected = IntArrayList.of(2, 0);
+            IntArrayList bActual = b.getVisitsByDay();
             Assertions.assertTrue(bExpected.equals(bActual));
             Assertions.assertEquals(5, a.getTotalTickets());
             Assertions.assertEquals(2, b.getTotalTickets());
@@ -174,8 +174,8 @@ public class QueueManagementSystemTests {
             QueueManagementSystem a = new QueueManagementSystem("a");
             a.toNextWorkDay();
             a.toNextWorkDay();
-            ArrayList expected = ArrayList.of(0, 0, 0);
-            ArrayList actual = a.getVisitsByDay();
+            IntArrayList expected = IntArrayList.of(0, 0, 0);
+            IntArrayList actual = a.getVisitsByDay();
             Assertions.assertTrue(expected.equals(actual));
         }
     }
