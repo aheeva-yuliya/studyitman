@@ -1,7 +1,7 @@
 package tasks;
 
-import collections.IntArrayList;
 import collections.BfsQueue;
+import collections.IntArrayList;
 import collections.Queue;
 import collections.Stack;
 import entities.BfsNode;
