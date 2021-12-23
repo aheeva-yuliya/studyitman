@@ -399,4 +399,37 @@ public class LinkedList {
             return true;
         }
     }
+
+    /**
+     * Indicates whether some other object is "equal to" this one .
+     *
+     * @cpu (n + m) n = number of Nodes in this LinkedList and m = number of Nodes of that LinkedList.
+     * @ram O(1)
+     *
+     * @param that an object of LinkedList or null
+     * @return true if the objects are equal and false if aren't.
+     */
+    public boolean equals(LinkedList that) {
+        if (that == null) {
+            return false;
+        }
+        final int thisSize = this.size();
+        final int thatSize = that.size();
+        if (thisSize == 0 && thatSize == 0) {
+            return true;
+        } else if (thisSize > thatSize || thatSize > thisSize) {
+            return false;
+        } else {
+            Node thisNext = this.first;
+            Node thatNext = that.first;
+            while (thisNext != null) {
+                if (thisNext.getElement() != thatNext.getElement()) {
+                    return false;
+                }
+                thisNext = thisNext.getNext();
+                thatNext = thatNext.getNext();
+            }
+            return true;
+        }
+    }
 }
