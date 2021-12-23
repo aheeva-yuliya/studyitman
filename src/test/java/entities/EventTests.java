@@ -22,34 +22,34 @@ public class EventTests {
         public void shouldReturnFalseWhenDifferentEvents() {
             Event a = new Event(1, 1991, 9, 8, "my birthday");
             Event b = new Event(2, 1992, 2, 20, "igor's birthday");
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnTrueWhenSameEvents() {
             Event a = new Event(1, 1991, 9, 8, "my birthday");
             Event b = new Event(1, 1991, 9, 8, "my birthday");
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenThatNull() {
             Event a = new Event(1, 2022, 2, 28, "A");
-            Assertions.assertFalse(a.equals(null));
+            Assertions.assertNotEquals(null, a);
         }
 
         @Test
         public void shouldReturnTrueWhenSameEventsContainNull() {
             Event a = new Event(1, 2024, 2, 28, null);
             Event b = new Event(1, 2024, 2, 28, null);
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenOnlyOneEventContainsNull() {
             Event a = new Event(1, 2024, 2, 28, null);
             Event b = new Event(1, 2024, 2, 28, "interesting");
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
     }
 

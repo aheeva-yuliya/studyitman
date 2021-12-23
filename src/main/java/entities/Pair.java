@@ -49,15 +49,23 @@ public class Pair {
     }
 
     /**
-     * Compares all instance variables of two objects.
+     * Indicates whether some other object is "equal to" this one.
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that Pair object
-     * @return boolean true if objects are equal and false if aren't.
+     * @param obj the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(Pair that) {
-        return that != null && left == that.left && right == that.right;
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Pair that = (Pair) obj;
+        return left == that.left && right == that.right;
     }
 }

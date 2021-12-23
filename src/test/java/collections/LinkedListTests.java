@@ -269,48 +269,48 @@ public class LinkedListTests {
         public void shouldReturnTrueWhenListsContainSameElements() {
             LinkedList a = LinkedList.of(12, 13, 14, 15, 16);
             LinkedList b = LinkedList.of(12, 13, 14, 15, 16);
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenListsContainDifferentElements() {
             LinkedList a = LinkedList.of(12, 13, 14, 15, 16);
             LinkedList b = LinkedList.of(12, 13, 100, 15, 16);
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenListsHaveDifferentLengths() {
             LinkedList a = LinkedList.of(12, 13, 14, 15, 16);
             LinkedList b = LinkedList.of(12, 13, 14, 15, 16, 17);
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenThisEmpty() {
             LinkedList a = new LinkedList();
             LinkedList b = LinkedList.of(12, 13, 100, 15, 16);
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenThatEmpty() {
             LinkedList a = new LinkedList();
             LinkedList b = LinkedList.of(12, 13, 100, 15, 16);
-            Assertions.assertFalse(b.equals(a));
+            Assertions.assertNotEquals(b, a);
         }
 
         @Test
         public void shouldReturnTrueWhenBothEmpty() {
             LinkedList a = new LinkedList();
             LinkedList b = new LinkedList();
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenThatNull() {
             LinkedList a = new LinkedList();
-            Assertions.assertFalse(a.equals(null));
+            Assertions.assertNotEquals(null, a);
         }
     }
 }

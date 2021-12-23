@@ -162,11 +162,19 @@ public class StringArrayList {
      * @cpu O(n), n = instance variable "size"
      * @ram O(1)
      *
-     * @param that an object argument
+     * @param obj an object argument
      * @return true if the objects are equal and false if aren't.
      */
-    public boolean equals(StringArrayList that) {
-        if (that == null || size != that.size) {
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final StringArrayList that = (StringArrayList) obj;
+        if (size != that.size) {
             return false;
         }
         for (int i = 0; i < size; i++) {

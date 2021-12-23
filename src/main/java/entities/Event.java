@@ -129,16 +129,24 @@ public class Event {
     }
 
     /**
-     * Compares all instance variables of two objects.
+     * Indicates whether some other object is "equal to" this one.
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that Event object
-     * @return boolean true if objects are equal and false if aren't.
+     * @param obj the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(Event that) {
-        return that != null && year == that.year && month == that.month && day == that.day && id == that.id
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Event that = (Event) obj;
+        return year == that.year && month == that.month && day == that.day && id == that.id
                 && (name != null && name.equals(that.name) || name == null && that.name == null);
     }
 

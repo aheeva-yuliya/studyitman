@@ -137,7 +137,7 @@ public class ArrayListTests {
             b.add(2);
             b.add(3);
             b.set(0, 1);
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
@@ -150,14 +150,14 @@ public class ArrayListTests {
             b.add(3);
             b.add(2);
             b.add(3);
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnTrueWhenArrayListsContainSameElementsButDifferentCapacities() {
             ArrayList a = new ArrayList(1);
             ArrayList b = new ArrayList(2);
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
@@ -166,8 +166,7 @@ public class ArrayListTests {
             a.add(1);
             a.add(2);
             a.add(3);
-            ArrayList b = null;
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, null);
         }
     }
 

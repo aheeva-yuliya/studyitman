@@ -141,14 +141,14 @@ public class StringArrayListTests {
         public void shouldReturnTueWhenListsContainSameElements() {
             StringArrayList a = StringArrayList.of("hello", null, "bye");
             StringArrayList b = StringArrayList.of("hello", null, "bye");
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenListsContainDifferentElements() {
             StringArrayList a = StringArrayList.of("hello", null, "bye");
             StringArrayList b = StringArrayList.of("hello", "hi-hi", "bye");
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
     }
 

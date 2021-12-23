@@ -368,13 +368,18 @@ public class LinkedList {
      * @cpu (n + m) n = number of Nodes in this LinkedList and m = number of Nodes of that LinkedList.
      * @ram O(1)
      *
-     * @param that an object of LinkedList or null
+     * @param obj an object of LinkedList or null
      * @return true if the objects are equal and false if aren't.
      */
-    public boolean equals(LinkedList that) {
-        if (that == null) {
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
+        final LinkedList that = (LinkedList) obj;
         final int thisSize = this.size();
         final int thatSize = that.size();
         if (thisSize == 0 && thatSize == 0) {

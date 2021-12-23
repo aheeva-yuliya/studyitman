@@ -57,16 +57,24 @@ public class Ticket {
     }
 
     /**
-     * Compares all instance variables of two objects.
+     * Indicates whether some other object is "equal to" this one.
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that Event object
-     * @return boolean true if two objects are equal and false if aren't.
+     * @param obj the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(Ticket that) {
-        return that != null && number == that.number
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Ticket that = (Ticket) obj;
+        return number == that.number
                 && (place != null && place.equals(that.place) || place == null && that.place == null);
     }
 }

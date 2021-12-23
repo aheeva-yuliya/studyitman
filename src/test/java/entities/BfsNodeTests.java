@@ -52,27 +52,27 @@ public class BfsNodeTests {
         public void shouldReturnTrueWhenEqualsAndPrevNull() {
             BfsNode first = new BfsNode(10, 20, null);
             BfsNode second = new BfsNode(10, 20, null);
-            Assertions.assertTrue(first.equals(second));
+            Assertions.assertEquals(first, second);
         }
 
         @Test
         public void shouldReturnTrueWhenEqualsAndPrevNotNull() {
             BfsNode first = new BfsNode(10, 20, new BfsNode(5, 5, null));
             BfsNode second = new BfsNode(10, 20, new BfsNode(5, 5, null));
-            Assertions.assertTrue(first.equals(second));
+            Assertions.assertEquals(first, second);
         }
 
         @Test
         public void shouldReturnFalseWhenNotEqual() {
             BfsNode first = new BfsNode(10, 20, new BfsNode(5, 10, null));
             BfsNode second = new BfsNode(10, 20, new BfsNode(10, 5, null));
-            Assertions.assertFalse(first.equals(second));
+            Assertions.assertNotEquals(first, second);
         }
 
         @Test
         public void shouldReturnFalseWhenThatNull() {
             BfsNode first = new BfsNode(10, 20, null);
-            Assertions.assertFalse(first.equals(null));
+            Assertions.assertNotEquals(null, first);
         }
     }
 }
