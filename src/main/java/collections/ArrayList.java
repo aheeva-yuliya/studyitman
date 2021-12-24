@@ -42,7 +42,13 @@ public class ArrayList {
      * @param element String argument
      */
     public void set(final int index, final Object element) {
-        data[index] = (element == null) ? null : element.toString();
+        if (element == null) {
+            data[index] = null;
+        } else if (element.getClass() == Object.class) {
+            data[index] = "Object{}";
+        } else {
+            data[index] = element.toString();
+        }
     }
 
     /**
@@ -84,7 +90,13 @@ public class ArrayList {
             System.arraycopy(data, 0, temp, 0, size);
             data = temp;
         }
-        data[size++] = (element == null) ? null : element.toString();
+        if (element == null) {
+            data[size++] = null;
+        } else if (element.getClass() == Object.class) {
+            data[size++] = "Object{}";
+        } else {
+            data[size++] = element.toString();
+        }
     }
 
     /**
@@ -96,7 +108,7 @@ public class ArrayList {
      * @return String[] with all copied elements.
      */
     public Object[] toArray() {
-        Object[] array = new Object[size];
+        final Object[] array = new Object[size];
         System.arraycopy(data, 0, array, 0, size);
         return array;
     }

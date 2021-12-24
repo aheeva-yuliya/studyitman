@@ -1,5 +1,6 @@
 package collections;
 
+import entities.Event;
 import entities.items.Game;
 import entities.items.Item;
 import org.junit.jupiter.api.Assertions;
@@ -60,8 +61,10 @@ public class ArrayListTests {
             final ArrayList a = new ArrayList();
             a.add(new Game(5, "t", 10, 1, 15));
             a.add(new Item(6, "title", 8));
+            a.add(new Event());
             Assertions.assertEquals("Game{Item{id=5, title='t', price=10}, playersMin=1, playersMax=15}", a.get(0));
             Assertions.assertEquals("Item{id=6, title='title', price=8}", a.get(1));
+            Assertions.assertEquals("Event{id=0, year=0, month=0, day=0, name='null'}", a.get(2));
         }
 
         @Test
@@ -71,6 +74,13 @@ public class ArrayListTests {
             a.add(null);
             a.add("hi");
             Assertions.assertNull(a.get(1));
+        }
+
+        @Test
+        public void shouldAddNewObjectWhenListNotEmpty() {
+            final ArrayList a = new ArrayList();
+            a.add(new Object());
+            Assertions.assertEquals("Object{}", a.get(0));
         }
     }
 
