@@ -143,7 +143,13 @@ public class ArrayList {
         final ArrayList arrayList = new ArrayList(elements.length);
         arrayList.size = elements.length;
         for (int i = 0; i < elements.length; i++) {
-            arrayList.data[i] = (elements[i] == null) ? null : elements[i].toString();
+            if (elements[i] == null) {
+                arrayList.data[i] = null;
+            } else if (elements[i].getClass() == Object.class) {
+                arrayList.data[i] = "Object{}";
+            } else {
+                arrayList.data[i] = elements[i].toString();
+            }
         }
         return arrayList;
     }

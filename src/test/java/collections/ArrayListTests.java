@@ -104,7 +104,7 @@ public class ArrayListTests {
             final ArrayList a = new ArrayList();
             a.add("hello");
             a.add(null);
-            Object[] expected = new Object[]{"hello", null};
+            final Object[] expected = new Object[]{"hello", null};
             Assertions.assertArrayEquals(expected, a.toArray());
         }
     }
@@ -113,21 +113,21 @@ public class ArrayListTests {
     public class RemoveTests {
         @Test
         public void shouldRemoveWhenTryRemoveFromMiddle() {
-            ArrayList a = ArrayList.of("hello", "hi", "bye");
-            String expected = "hi";
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final String expected = "hi";
             Assertions.assertEquals(expected, a.remove(1));
-            String expectedString = "[hello, bye]";
+            final String expectedString = "[hello, bye]";
             Assertions.assertEquals(expectedString, a.toString());
         }
 
         @Test
         public void shouldRemoveWhenTryRemoveFromFirstANdLastIndexes() {
-            ArrayList a = ArrayList.of("hello", "hi", "bye");
-            String expectedZero = "hello";
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final String expectedZero = "hello";
             Assertions.assertEquals(expectedZero, a.remove(0));
-            String expectedLast = "bye";
+            final String expectedLast = "bye";
             Assertions.assertEquals(expectedLast, a.remove(1));
-            String expectedString = "[hi]";
+            final String expectedString = "[hi]";
             Assertions.assertEquals(expectedString, a.toString());
         }
     }
@@ -136,17 +136,36 @@ public class ArrayListTests {
     public class OfTests {
         @Test
         public void shouldCreateWhenTryCreateOfSomeElements() {
-            ArrayList a = ArrayList.of("hello", "hi", "bye");
-            Object[] expected = new String[]{"hello", "hi", "bye"};
-            Object[] actual = a.toArray();
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final Object[] expected = new String[]{"hello", "hi", "bye"};
+            final Object[] actual = a.toArray();
+            Assertions.assertArrayEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldCreateWhenTryCreateOfNewObjectElement() {
+            final ArrayList a = ArrayList.of("hello", new Object(), "bye");
+            final Object[] expected = new String[]{"hello", "Object{}", "bye"};
+            final Object[] actual = a.toArray();
+            Assertions.assertArrayEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldCreateWhenTryCreateOfDifferentObjectsElements() {
+            final ArrayList a = ArrayList.of(new Event(), new Object(), new Item(5, "y", 7));
+            final Object[] expected = new String[]{
+                    "Event{id=0, year=0, month=0, day=0, name='null'}",
+                    "Object{}",
+                    "Item{id=5, title='y', price=7}"};
+            final Object[] actual = a.toArray();
             Assertions.assertArrayEquals(expected, actual);
         }
 
         @Test
         public void shouldCreateWhenTryCreateOfNull() {
-            ArrayList a = ArrayList.of("hello", null, "bye");
-            Object[] expected = new String[]{"hello", null, "bye"};
-            Object[] actual = a.toArray();
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final Object[] expected = new String[]{"hello", null, "bye"};
+            final Object[] actual = a.toArray();
             Assertions.assertArrayEquals(expected, actual);
         }
     }
@@ -155,17 +174,17 @@ public class ArrayListTests {
     public class ToStringTests {
         @Test
         public void shouldReturnStringWhenListContainsSomeElements() {
-            ArrayList a = ArrayList.of("hello", "hi", "bye");
-            String expected = "[hello, hi, bye]";
-            String actual = a.toString();
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final String expected = "[hello, hi, bye]";
+            final String actual = a.toString();
             Assertions.assertEquals(expected, actual);
         }
 
         @Test
         public void shouldReturnStringWhenListContainsNull() {
-            ArrayList a = ArrayList.of("hello", null, "bye");
-            String expected = "[hello, null, bye]";
-            String actual = a.toString();
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final String expected = "[hello, null, bye]";
+            final String actual = a.toString();
             Assertions.assertEquals(expected, actual);
         }
     }
@@ -174,16 +193,43 @@ public class ArrayListTests {
     public class EqualsTests {
         @Test
         public void shouldReturnTueWhenListsContainSameElements() {
-            ArrayList a = ArrayList.of("hello", null, "bye");
-            ArrayList b = ArrayList.of("hello", null, "bye");
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final ArrayList b = ArrayList.of("hello", null, "bye");
             Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenListsContainDifferentElements() {
-            ArrayList a = ArrayList.of("hello", null, "bye");
-            ArrayList b = ArrayList.of("hello", "hi-hi", "bye");
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final ArrayList b = ArrayList.of("hello", "hi-hi", "bye");
             Assertions.assertNotEquals(a, b);
+        }
+
+        @Test
+        public void shouldReturnFalseWhenListsContainDifferentObjectElements() {
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final ArrayList b = ArrayList.of(new Object(), "hi-hi", "bye");
+            Assertions.assertNotEquals(a, b);
+        }
+
+        @Test
+        public void shouldReturnTrueWhenSameEmptyArrayList() {
+            final ArrayList a = ArrayList.of();
+            final ArrayList b = ArrayList.of();
+            Assertions.assertEquals(a, b);
+        }
+
+        @Test
+        public void shouldReturnFalseWhenNotArrayListToCompare() {
+            final ArrayList a = ArrayList.of();
+            final Object b = new Object();
+            Assertions.assertNotEquals(a, b);
+        }
+
+        @Test
+        public void shouldReturnFalseWhenNullToCompare() {
+            final ArrayList a = ArrayList.of();
+            Assertions.assertNotEquals(a, null);
         }
     }
 }
