@@ -3,20 +3,20 @@ package collections;
 import utils.StringBuilder;
 
 /**
- * StringArrayList.
+ * ArrayList.
  */
-public class StringArrayList {
+public class ArrayList {
     private String[] data;
     private int size;
 
     /**
-     * Creates an object of StringArrayList with the length of String[] data equals 16.
+     * Creates an object of ArrayList with the length of Object[] data equals 16.
      *
      * @cpu O(1)
      * @ram O(1)
      *
      */
-    public StringArrayList() {
+    public ArrayList() {
         data = new String[16];
     }
 
@@ -28,7 +28,7 @@ public class StringArrayList {
      *
      * @param capacity int argument
      */
-    public StringArrayList(int capacity) {
+    public ArrayList(final int capacity) {
         data = new String[capacity];
     }
 
@@ -41,8 +41,8 @@ public class StringArrayList {
      * @param index int argument
      * @param element String argument
      */
-    public void set(int index, String element) {
-        data[index] = element;
+    public void set(final int index, final Object element) {
+        data[index] = (element == null) ? null : element.toString();
     }
 
     /**
@@ -54,7 +54,7 @@ public class StringArrayList {
      * @param index int argument
      * @return the value of an array element.
      */
-    public String get(int index) {
+    public Object get(final int index) {
         return data[index];
     }
 
@@ -78,13 +78,13 @@ public class StringArrayList {
      *
      * @param element String argument
      */
-    public void add(String element) {
+    public void add(final Object element) {
         if (size == data.length) {
             String[] temp = new String[size * 2];
             System.arraycopy(data, 0, temp, 0, size);
             data = temp;
         }
-        data[size++] = element;
+        data[size++] = (element == null) ? null : element.toString();
     }
 
     /**
@@ -95,8 +95,8 @@ public class StringArrayList {
      *
      * @return String[] with all copied elements.
      */
-    public String[] toArray() {
-        String[] array = new String[size];
+    public Object[] toArray() {
+        Object[] array = new Object[size];
         System.arraycopy(data, 0, array, 0, size);
         return array;
     }
@@ -110,8 +110,8 @@ public class StringArrayList {
      * @param index int argument
      * @return the deleted element.
      */
-    public String remove(int index) {
-        final String value = data[index];
+    public Object remove(final int index) {
+        final Object value = data[index];
         System.arraycopy(data, index + 1, data, index, size - index - 1);
         data[size - 1] = null;
         size--;
@@ -127,10 +127,12 @@ public class StringArrayList {
      * @param elements variable arguments list
      * @return an object of the class.
      */
-    public static StringArrayList of(String... elements) {
-        StringArrayList arrayList = new StringArrayList(elements.length);
+    public static ArrayList of(Object... elements) {
+        final ArrayList arrayList = new ArrayList(elements.length);
         arrayList.size = elements.length;
-        System.arraycopy(elements, 0, arrayList.data, 0, elements.length);
+        for (int i = 0; i < elements.length; i++) {
+            arrayList.data[i] = (elements[i] == null) ? null : elements[i].toString();
+        }
         return arrayList;
     }
 
@@ -173,7 +175,7 @@ public class StringArrayList {
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-        final StringArrayList that = (StringArrayList) obj;
+        final ArrayList that = (ArrayList) obj;
         if (size != that.size) {
             return false;
         }
@@ -183,33 +185,5 @@ public class StringArrayList {
             }
         }
         return true;
-    }
-
-
-    /**
-     * Removes all elements from StringArrayList.
-     *
-     * @cpu O(n) n = size of the data
-     * @ram O(1)
-     *
-     */
-    public void clear() {
-        for (int i = 0; i < size; i++) {
-            data[i] = null;
-        }
-        size = 0;
-    }
-
-    /**
-     * Decreases the capacity of the StringArrayList to the current size.
-     *
-     * @cpu O(n) n = size
-     * @ram O(n) n = size
-     *
-     */
-    public void trimToSize() {
-        String[] copy = new String[size];
-        System.arraycopy(data, 0, copy, 0, size);
-        data = copy;
     }
 }

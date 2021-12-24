@@ -4,7 +4,7 @@ import utils.ArrayUtils;
 import utils.StringBuilder;
 
 /**
- * ArrayList.
+ * IntArrayList.
  */
 public class IntArrayList {
     private int[] array;
