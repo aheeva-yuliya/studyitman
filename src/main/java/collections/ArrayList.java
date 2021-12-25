@@ -6,7 +6,7 @@ import utils.StringBuilder;
  * ArrayList.
  */
 public class ArrayList {
-    private String[] data;
+    private Object[] data;
     private int size;
 
     /**
@@ -17,7 +17,7 @@ public class ArrayList {
      *
      */
     public ArrayList() {
-        data = new String[16];
+        data = new Object[16];
     }
 
     /**
@@ -29,7 +29,7 @@ public class ArrayList {
      * @param capacity int argument
      */
     public ArrayList(final int capacity) {
-        data = new String[capacity];
+        data = new Object[capacity];
     }
 
     /**
@@ -42,13 +42,7 @@ public class ArrayList {
      * @param element String argument
      */
     public void set(final int index, final Object element) {
-        if (element == null) {
-            data[index] = null;
-        } else if (element.getClass() == Object.class) {
-            data[index] = "Object{}";
-        } else {
-            data[index] = element.toString();
-        }
+        data[index] = element;
     }
 
     /**
@@ -82,25 +76,19 @@ public class ArrayList {
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param element String argument
+     * @param element Object argument
      */
     public void add(final Object element) {
         if (size == data.length) {
-            String[] temp = new String[size * 2];
+            Object[] temp = new Object[size * 2];
             System.arraycopy(data, 0, temp, 0, size);
             data = temp;
         }
-        if (element == null) {
-            data[size++] = null;
-        } else if (element.getClass() == Object.class) {
-            data[size++] = "Object{}";
-        } else {
-            data[size++] = element.toString();
-        }
+        data[size++] = element;
     }
 
     /**
-     * Creates a new String[] and copies all elements from the instance variable "data".
+     * Creates a new Object[] and copies all elements from the instance variable "data".
      *
      * @cpu O(n), n = instance variable "size"
      * @ram O(n), n = instance variable "size"
@@ -142,15 +130,7 @@ public class ArrayList {
     public static ArrayList of(Object... elements) {
         final ArrayList arrayList = new ArrayList(elements.length);
         arrayList.size = elements.length;
-        for (int i = 0; i < elements.length; i++) {
-            if (elements[i] == null) {
-                arrayList.data[i] = null;
-            } else if (elements[i].getClass() == Object.class) {
-                arrayList.data[i] = "Object{}";
-            } else {
-                arrayList.data[i] = elements[i].toString();
-            }
-        }
+        System.arraycopy(elements, 0, arrayList.data, 0, elements.length);
         return arrayList;
     }
 
@@ -166,11 +146,13 @@ public class ArrayList {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
         for (int i = 0; i < size - 1; i++) {
-            stringBuilder.append(data[i]);
+            stringBuilder.append(data[i] == null ? null :
+                    (data[i].getClass() == Object.class ? "Object{}" : data[i].toString()));
             stringBuilder.append(", ");
         }
         if (size - 1 >= 0) {
-            stringBuilder.append(data[size - 1]);
+            stringBuilder.append(data[size - 1] == null ? null :
+                    (data[size - 1].getClass() == Object.class ? "Object{}" : data[size - 1].toString()));
         }
         stringBuilder.append("]");
         return stringBuilder.toString();

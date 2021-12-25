@@ -29,9 +29,8 @@ public class ArrayListTests {
             final ArrayList a = ArrayList.of("hello", "hi", "bye");
             final Object game = new Game(5, "t", 10, 1, 15);
             a.set(0, game);
-            Assertions.assertEquals("Game{Item{id=5, title='t', price=10}, playersMin=1, playersMax=15}", a.get(0));
+            Assertions.assertEquals(game, a.get(0));
         }
-
     }
 
     @Nested
@@ -59,12 +58,15 @@ public class ArrayListTests {
         @Test
         public void shouldAddDifferentObjectsAsStringWhenFirstListEmptyAndAfterNotEmpty() {
             final ArrayList a = new ArrayList();
-            a.add(new Game(5, "t", 10, 1, 15));
-            a.add(new Item(6, "title", 8));
-            a.add(new Event());
-            Assertions.assertEquals("Game{Item{id=5, title='t', price=10}, playersMin=1, playersMax=15}", a.get(0));
-            Assertions.assertEquals("Item{id=6, title='title', price=8}", a.get(1));
-            Assertions.assertEquals("Event{id=0, year=0, month=0, day=0, name='null'}", a.get(2));
+            final Game game = new Game(5, "t", 10, 1, 15);
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            a.add(game);
+            a.add(item);
+            a.add(event);
+            Assertions.assertSame(game, a.get(0));
+            Assertions.assertSame(item, a.get(1));
+            Assertions.assertSame(event, a.get(2));
         }
 
         @Test
@@ -77,10 +79,11 @@ public class ArrayListTests {
         }
 
         @Test
-        public void shouldAddNewObjectWhenListNotEmpty() {
+        public void shouldAddNewObjectWhenListEmpty() {
             final ArrayList a = new ArrayList();
-            a.add(new Object());
-            Assertions.assertEquals("Object{}", a.get(0));
+            final Object object = new Object();
+            a.add(object);
+            Assertions.assertSame(object, a.get(0));
         }
     }
 
@@ -88,14 +91,11 @@ public class ArrayListTests {
     public class ToArrayTests {
         @Test
         public void shouldReturnArrayWhenListNotEmpty() {
-            final ArrayList a = ArrayList.of(
-                    new Game(5, "t", 10, 1, 15),
-                    new Item(6, "title", 8)
-            );
-            Object[] expected = new Object[]{
-                    "Game{Item{id=5, title='t', price=10}, playersMin=1, playersMax=15}",
-                    "Item{id=6, title='title', price=8}"
-            };
+            final Game game = new Game(5, "t", 10, 1, 15);
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            final ArrayList a = ArrayList.of(game, item, event);
+            final Object[] expected = new Object[]{game, item, event};
             Assertions.assertArrayEquals(expected, a.toArray());
         }
 
@@ -144,19 +144,20 @@ public class ArrayListTests {
 
         @Test
         public void shouldCreateWhenTryCreateOfNewObjectElement() {
-            final ArrayList a = ArrayList.of("hello", new Object(), "bye");
-            final Object[] expected = new String[]{"hello", "Object{}", "bye"};
+            final Object o = new Object();
+            final ArrayList a = ArrayList.of("hello", o, "bye");
+            final Object[] expected = new Object[]{"hello",  o, "bye"};
             final Object[] actual = a.toArray();
             Assertions.assertArrayEquals(expected, actual);
         }
 
         @Test
         public void shouldCreateWhenTryCreateOfDifferentObjectsElements() {
-            final ArrayList a = ArrayList.of(new Event(), new Object(), new Item(5, "y", 7));
-            final Object[] expected = new String[]{
-                    "Event{id=0, year=0, month=0, day=0, name='null'}",
-                    "Object{}",
-                    "Item{id=5, title='y', price=7}"};
+            final Game game = new Game(5, "t", 10, 1, 15);
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            final ArrayList a = ArrayList.of(game, item, event);
+            final Object[] expected = new Object[]{game, item, event};
             final Object[] actual = a.toArray();
             Assertions.assertArrayEquals(expected, actual);
         }
@@ -173,9 +174,28 @@ public class ArrayListTests {
     @Nested
     public class ToStringTests {
         @Test
-        public void shouldReturnStringWhenListContainsSomeElements() {
+        public void shouldReturnStringWhenListContainsSomeStringElements() {
             final ArrayList a = ArrayList.of("hello", "hi", "bye");
             final String expected = "[hello, hi, bye]";
+            final String actual = a.toString();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenListContainsSomeObjectElements() {
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            final ArrayList a = ArrayList.of(item, event);
+            final String expected =
+                    "[Item{id=6, title='title', price=8}, Event{id=0, year=0, month=0, day=0, name='null'}]";
+            final String actual = a.toString();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenListContainsNewObjectElement() {
+            final ArrayList a = ArrayList.of(new Object());
+            final String expected = "[Object{}]";
             final String actual = a.toString();
             Assertions.assertEquals(expected, actual);
         }
