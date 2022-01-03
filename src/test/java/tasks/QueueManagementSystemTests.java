@@ -14,7 +14,7 @@ public class QueueManagementSystemTests {
             QueueManagementSystem a = new QueueManagementSystem("a");
             Ticket expected = new Ticket(1, "a");
             Ticket actual = a.getNextTicket();
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
         }
 
         @Test
@@ -24,7 +24,7 @@ public class QueueManagementSystemTests {
             QueueManagementSystem b = new QueueManagementSystem("b");
             Ticket expected = new Ticket(1, "b");
             Ticket actual = b.getNextTicket();
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
         }
 
         @Test
@@ -39,7 +39,7 @@ public class QueueManagementSystemTests {
             c.getNextTicket();
             Ticket actual = c.getNextTicket();
             Ticket expected = new Ticket(4, "c");
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
         }
 
         @Test
@@ -51,9 +51,9 @@ public class QueueManagementSystemTests {
             Ticket expectedFirst = new Ticket(1, "a");
             Ticket expectedSecond = new Ticket(2, "a");
             Ticket expectedThird = new Ticket(3, "a");
-            Assertions.assertTrue(expectedFirst.equals(first));
-            Assertions.assertTrue(expectedSecond.equals(second));
-            Assertions.assertTrue(expectedThird.equals(third));
+            Assertions.assertEquals(expectedFirst, first);
+            Assertions.assertEquals(expectedSecond, second);
+            Assertions.assertEquals(expectedThird, third);
         }
     }
 
@@ -111,7 +111,7 @@ public class QueueManagementSystemTests {
             IntArrayList expected = IntArrayList.of(2, 1, 0);
             IntArrayList actual = system.getVisitsByDay();
             Assertions.assertEquals(3, system.getTotalTickets());
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
         }
     }
 
@@ -127,7 +127,7 @@ public class QueueManagementSystemTests {
             a.toNextWorkDay();
             IntArrayList expected = IntArrayList.of(2, 1, 0);
             IntArrayList actual = a.getVisitsByDay();
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
             Assertions.assertEquals(3, a.getTotalTickets());
         }
 
@@ -140,7 +140,7 @@ public class QueueManagementSystemTests {
             a.getNextTicket();
             IntArrayList expected = IntArrayList.of(2, 1);
             IntArrayList actual = a.getVisitsByDay();
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
         }
 
         @Test
@@ -161,10 +161,10 @@ public class QueueManagementSystemTests {
             a.toNextWorkDay();
             IntArrayList aExpected = IntArrayList.of(2, 1, 0, 2, 0);
             IntArrayList aActual = a.getVisitsByDay();
-            Assertions.assertTrue(aExpected.equals(aActual));
+            Assertions.assertEquals(aExpected, aActual);
             IntArrayList bExpected = IntArrayList.of(2, 0);
             IntArrayList bActual = b.getVisitsByDay();
-            Assertions.assertTrue(bExpected.equals(bActual));
+            Assertions.assertEquals(bExpected, bActual);
             Assertions.assertEquals(5, a.getTotalTickets());
             Assertions.assertEquals(2, b.getTotalTickets());
         }
@@ -176,7 +176,7 @@ public class QueueManagementSystemTests {
             a.toNextWorkDay();
             IntArrayList expected = IntArrayList.of(0, 0, 0);
             IntArrayList actual = a.getVisitsByDay();
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
         }
     }
 
@@ -201,7 +201,7 @@ public class QueueManagementSystemTests {
             };
             final Ticket[] actual = a.getCurrentQueue();
             for (int i = 0; i < actual.length; i++) {
-                Assertions.assertTrue(expected[i].equals(actual[i]));
+                Assertions.assertEquals(expected[i], actual[i]);
             }
         }
 
@@ -218,7 +218,7 @@ public class QueueManagementSystemTests {
             };
             final Ticket[] actual = a.getCurrentQueue();
             for (int i = 0; i < actual.length; i++) {
-                Assertions.assertTrue(expected[i].equals(actual[i]));
+                Assertions.assertEquals(expected[i], actual[i]);
             }
         }
 
@@ -235,7 +235,7 @@ public class QueueManagementSystemTests {
             };
             final Ticket[] actual = a.getCurrentQueue();
             for (int i = 0; i < actual.length; i++) {
-                Assertions.assertTrue(expected[i].equals(actual[i]));
+                Assertions.assertEquals(expected[i], actual[i]);
             }
         }
     }
@@ -247,7 +247,7 @@ public class QueueManagementSystemTests {
             final QueueManagementSystem a = new QueueManagementSystem("a");
             final Ticket expected = a.getNextTicket();
             final Ticket actual = a.callNext();
-            Assertions.assertTrue(expected.equals(actual));
+            Assertions.assertEquals(expected, actual);
             final Ticket[] expectedTickets = new Ticket[0];
             final Ticket[] actualTickets = a.getCurrentQueue();
             Assertions.assertArrayEquals(expectedTickets, actualTickets);
@@ -259,9 +259,9 @@ public class QueueManagementSystemTests {
             final Ticket first = a.getNextTicket();
             final Ticket second = a.getNextTicket();
             Ticket actual = a.callNext();
-            Assertions.assertTrue(first.equals(actual));
+            Assertions.assertEquals(first, actual);
             actual = a.callNext();
-            Assertions.assertTrue(second.equals(actual));
+            Assertions.assertEquals(second, actual);
             final Ticket[] expectedTickets = new Ticket[0];
             final Ticket[] actualTickets = a.getCurrentQueue();
             Assertions.assertArrayEquals(expectedTickets, actualTickets);

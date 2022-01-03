@@ -36,8 +36,8 @@ public class QueueManagementSystem {
     public Ticket getNextTicket() {
         total++;
         byDay++;
-        Ticket ticket = new Ticket(byDay, place);
-        queue.offer(ticket);
+        final Ticket ticket = new Ticket(byDay, place);
+        queue.push(ticket);
         return ticket;
     }
 
@@ -88,41 +88,69 @@ public class QueueManagementSystem {
      * @return tickets of the current queue.
      */
     public Ticket[] getCurrentQueue() {
-        final Ticket[] currentQueue = new Ticket[queue.size];
-        System.arraycopy(queue.list, 0, currentQueue, 0, queue.size);
-        return currentQueue;
+        return queue.currentQueue();
     }
 
     /**
      * Returns ticket of the head of current queue.
      *
-     * @cpu O(n), n = number of tickets in current queue
+     * @cpu O(1)
      * @ram O(1)
      *
      * @return tickets of the current queue.
      */
     public Ticket callNext() {
-        return queue.poll();
+        return queue.pop();
     }
 
     private static class Queue {
-        private Ticket[] list = new Ticket[2];
+        private Node head;
         private int size;
 
-        private void offer(Ticket ticket) {
-            if (size == list.length) {
-                Ticket[] temp = new Ticket[size * 2];
-                System.arraycopy(list, 0, temp, 0, size);
-                list = temp;
-            }
-            list[size++] = ticket;
+        private Queue() {
+            head = null;
         }
 
-        private Ticket poll() {
-            Ticket value = list[0];
-            System.arraycopy(list,  1, list, 0, size - 1);
+        private static class Node {
+            private final Ticket ticket;
+            private Node next;
+
+            private Node(final Ticket ticket) {
+                this.ticket = ticket;
+                next = null;
+            }
+        }
+
+        private void push(final Ticket ticket) {
+            final Node newNode = new Node(ticket);
+            Node currentNode = head;
+            if (head == null) {
+                head = newNode;
+            } else {
+                while (currentNode.next != null) {
+                    currentNode = currentNode.next;
+                }
+                currentNode.next = newNode;
+            }
+            size++;
+        }
+
+        private Ticket pop() {
+            final Ticket ticket = head.ticket;
+            head = head.next;
             size--;
-            return value;
+            return ticket;
+        }
+
+        private Ticket[] currentQueue() {
+            final Ticket[] currentQueue = new Ticket[size];
+            Node node = head;
+            int index = 0;
+            while (node != null) {
+                currentQueue[index++] = node.ticket;
+                node = node.next;
+            }
+            return currentQueue;
         }
     }
 }
