@@ -36,6 +36,7 @@ public class Item {
      *
      * @return a string representation of the object.
      */
+    @Override
     public String toString() {
         return "Item{id=" + id + ", title='" + title + "', price=" + price + "}";
     }

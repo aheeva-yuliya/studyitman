@@ -28,6 +28,7 @@ public class VideoGame extends Game {
      *
      * @return a string representation of the object.
      */
+    @Override
     public String toString() {
         return "VideoGame{" + super.toString() + ", platform='" + platform + "'}";
     }

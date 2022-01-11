@@ -33,6 +33,7 @@ public class Game extends Item {
      *
      * @return a string representation of the object.
      */
+    @Override
     public String toString() {
         return "Game{" + super.toString() + ", playersMin=" + playersMin + ", playersMax=" + playersMax + "}";
     }

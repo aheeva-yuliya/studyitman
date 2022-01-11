@@ -36,6 +36,7 @@ public class BoardGame extends Game {
      *
      * @return a string representation of the object.
      */
+    @Override
     public String toString() {
         return "BoardGame{" + super.toString() + ", timeMin=" + timeMin + ", timeMax=" + timeMax + "}";
     }
