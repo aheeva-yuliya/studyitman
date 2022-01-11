@@ -29,8 +29,10 @@ public class Item {
     /**
      * Returns a string representation of the object.
      *
-     * @cpu O()
-     * @ram O()
+     * @cpu O(k + l + m) k - number of chars at the field "id", l - number of chars at the field "title",
+     *                   m - number of chars at the field "price"
+     * @ram O(k + l + m) k - number of chars at the field "id", l - number of chars at the field "title",
+     *                   m - number of chars at the field "price")
      *
      * @return a string representation of the object.
      */
@@ -41,7 +43,7 @@ public class Item {
     /**
      * Indicates whether some other object is "equal to" this one.
      *
-     * @cpu O(1)
+     * @cpu O(l) l - number of chars at the field "title"
      * @ram O(1)
      *
      * @param obj the reference object with which to compare.

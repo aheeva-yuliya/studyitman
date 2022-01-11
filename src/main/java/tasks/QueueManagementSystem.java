@@ -92,7 +92,7 @@ public class QueueManagementSystem {
     }
 
     /**
-     * Returns ticket of the head of current queue.
+     * Returns ticket of the first of current queue.
      *
      * @cpu O(1)
      * @ram O(1)
@@ -104,47 +104,49 @@ public class QueueManagementSystem {
     }
 
     private static class Queue {
-        private Node head;
+        private Node first;
+        private Node last;
         private int size;
 
         private Queue() {
-            head = null;
+            first = null;
         }
 
         private static class Node {
             private final Ticket ticket;
+            private Node prev;
             private Node next;
 
             private Node(final Ticket ticket) {
                 this.ticket = ticket;
+                prev = null;
                 next = null;
+
             }
         }
 
         private void push(final Ticket ticket) {
-            final Node newNode = new Node(ticket);
-            Node currentNode = head;
-            if (head == null) {
-                head = newNode;
+            final Node temp = new Node(ticket);
+            if (first == null) {
+                first = temp;
             } else {
-                while (currentNode.next != null) {
-                    currentNode = currentNode.next;
-                }
-                currentNode.next = newNode;
+                last.next = temp;
             }
+            temp.prev = last;
+            last = temp;
             size++;
         }
 
         private Ticket pop() {
-            final Ticket ticket = head.ticket;
-            head = head.next;
+            final Ticket ticket = first.ticket;
+            first = first.next;
             size--;
             return ticket;
         }
 
         private Ticket[] currentQueue() {
             final Ticket[] currentQueue = new Ticket[size];
-            Node node = head;
+            Node node = first;
             int index = 0;
             while (node != null) {
                 currentQueue[index++] = node.ticket;

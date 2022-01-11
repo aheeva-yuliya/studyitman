@@ -24,8 +24,12 @@ public class Book extends Item {
     /**
      * Returns a string representation of the object.
      *
-     * @cpu O()
-     * @ram O()
+     * @cpu O(k + l + m + n + o) k - number of chars at the field "id", l - number of chars at the field "title",
+     *        m - number of chars at the field "price", n - number of chars at the field "author",
+     *        o - number of chars at the field "pages"
+     * @ram O(k + l + m + n + o) k - number of chars at the field "id", l - number of chars at the field "title",
+     *        m - number of chars at the field "price", n - number of chars at the field "author",
+     *        o - number of chars at the field "pages"
      *
      * @return a string representation of the object.
      */
@@ -37,7 +41,7 @@ public class Book extends Item {
     /**
      * Indicates whether some other object is "equal to" this one.
      *
-     * @cpu O(1)
+     * @cpu O(l + n) l - number of chars at the field "title", n - number of chars at the field "author"
      * @ram O(1)
      *
      * @param obj the reference object with which to compare.

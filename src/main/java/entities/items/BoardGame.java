@@ -25,8 +25,14 @@ public class BoardGame extends Game {
     /**
      * Returns a string representation of the object.
      *
-     * @cpu O()
-     * @ram O()
+     * @cpu O( k + l + m + p + q + r + s) k - number of chars at the field "id", l - number of chars at the field "title",
+     *      m - number of chars at the field "price", p - number of chars at the field "playersMin",
+     *      q - number of chars at the field "playersMax", r - number of chars at the field "timeMin",
+     *      s - number of chars at the field "timeMax"
+     * @ram O(k + l + m + p + q + r + s) k - number of chars at the field "id", l - number of chars at the field "title",
+     *      m - number of chars at the field "price", p - number of chars at the field "playersMin",
+     *      q - number of chars at the field "playersMax", r - number of chars at the field "timeMin",
+     *      s - number of chars at the field "timeMax"
      *
      * @return a string representation of the object.
      */
@@ -37,7 +43,7 @@ public class BoardGame extends Game {
     /**
      * Indicates whether some other object is "equal to" this one.
      *
-     * @cpu O(1)
+     * @cpu O(l) - number of chars at the field "title"
      * @ram O(1)
      *
      * @param obj the reference object with which to compare.

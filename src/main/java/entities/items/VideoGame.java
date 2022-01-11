@@ -19,8 +19,12 @@ public class VideoGame extends Game {
     /**
      * Returns a string representation of the object.
      *
-     * @cpu O()
-     * @ram O()
+     * @cpu O(k + l + m + p + q + t) k - number of chars at the field "id", l - number of chars at the field "title",
+     *      m - number of chars at the field "price", p - number of chars at the field "playersMin",
+     *      q - number of chars at the field "playersMax", t -  number of chars at the field "platform"
+     * @ram O(k + l + m + p + q + t) k - number of chars at the field "id", l - number of chars at the field "title",
+     *      m - number of chars at the field "price", p - number of chars at the field "playersMin",
+     *      q - number of chars at the field "playersMax", t -  number of chars at the field "platform"
      *
      * @return a string representation of the object.
      */
@@ -31,7 +35,7 @@ public class VideoGame extends Game {
     /**
      * Indicates whether some other object is "equal to" this one.
      *
-     * @cpu O(1)
+     * @cpu O(l + t) l - number of chars at the field "title", t -  number of chars at the field "platform"
      * @ram O(1)
      *
      * @param obj the reference object with which to compare.
