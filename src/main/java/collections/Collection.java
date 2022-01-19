@@ -1,5 +1,8 @@
 package collections;
 
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+
 /**
  * Collection.
  *
@@ -34,7 +37,7 @@ public interface Collection<T> extends Iterable<T> {
      * @param collection collection
      * @return boolean
      */
-    boolean addAll(Collection<T> collection);
+    boolean addAll(final Collection<? extends T> collection);
 
     /**
      * Contains.
@@ -42,7 +45,7 @@ public interface Collection<T> extends Iterable<T> {
      * @param element element
      * @return boolean
      */
-    boolean contains(T element);
+    boolean contains(final T element);
 
     /**
      * Remove.
@@ -50,7 +53,7 @@ public interface Collection<T> extends Iterable<T> {
      * @param element element
      * @return boolean
      */
-    boolean remove(T element);
+    boolean remove(final T element);
 
     /**
      * Contains all.
@@ -58,7 +61,7 @@ public interface Collection<T> extends Iterable<T> {
      * @param collection collection
      * @return boolean
      */
-    boolean containsAll(Collection<T> collection);
+    boolean containsAll(final Collection<T> collection);
 
     /**
      * Remove all.
@@ -78,4 +81,19 @@ public interface Collection<T> extends Iterable<T> {
      * @return array
      */
     Object[] toArray();
+
+    /**
+     * To array.
+     *
+     * @param factory factory
+     * @return type array
+     */
+    T[] toArray(IntFunction<T[]> factory);
+
+    /**
+     * Remove if.
+     *
+     * @param predicate predicate
+     */
+    void removeIf(Predicate<? super T> predicate);
 }

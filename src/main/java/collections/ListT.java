@@ -2,13 +2,17 @@ package collections;
 
 import utils.StringBuilder;
 
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
 /**
  * List.
  *
  * @param <T> type
  */
+@SuppressWarnings("unchecked")
 public abstract class ListT<T> {
     protected int size;
 
@@ -53,7 +57,7 @@ public abstract class ListT<T> {
      * @param collection collection
      * @return boolean
      */
-    public boolean addAll(final Collection<T> collection) {
+    public boolean addAll(final Collection<? extends T> collection) {
         for (T t : collection) {
             add(t);
         }
@@ -67,7 +71,7 @@ public abstract class ListT<T> {
      * @param collection collection
      * @return boolean
      */
-    public boolean addAll(int index, final Collection<T> collection) {
+    public boolean addAll(int index, final Collection<? extends T> collection) {
         for (T t : collection) {
             add(index++, t);
         }
@@ -125,6 +129,20 @@ public abstract class ListT<T> {
     }
 
     /**
+     * Remove if.
+     *
+     * @param predicate predicate
+     */
+    public void removeIf(final Predicate<? super T> predicate) {
+        Iterator<T> iterator = iterator();
+        while (iterator.hasNext()) {
+            if (predicate.test(iterator.next())) {
+                iterator.remove();
+            }
+        }
+    }
+
+    /**
      * Equals.
      *
      * @param that collection
@@ -178,9 +196,72 @@ public abstract class ListT<T> {
     }
 
     /**
+     * To array.
+     *
+     * @param factory factory
+     * @return array
+     */
+    public T[] toArray(final IntFunction<T[]> factory) {
+        T[] result = factory.apply(size);
+        final Iterator<T> iterator = iterator();
+        for (int i = 0; i < size; i++) {
+            result[i] = iterator.next();
+        }
+        return result;
+    }
+
+    /**
      * Iterator.
      *
      * @return iterator
      */
     public abstract Iterator<T> iterator();
+
+    protected T[] listSort(final Comparator<T> comparator) {
+        T[] array = toArray(size -> (T[]) new Object[size]);
+        mergeSort(array, comparator);
+        return array;
+    }
+
+    private static <T> void mergeSort(T[] array, Comparator<T> comparator) {
+        final int length = array.length;
+        T[] currentScr = (T[]) new Object[length];
+        System.arraycopy(array, 0, currentScr, 0, length);
+        T[] destination = (T[]) new Object[length];
+        int size = 1;
+        while (size < length) {
+            for (int i = 0; i < length; i += size * 2) {
+                int fromTo = i + size;
+                if (fromTo >= length) {
+                    fromTo = length - 1;
+                }
+                int to = i + size * 2;
+                if (to > length) {
+                    to = length;
+                }
+                merge(currentScr, i, fromTo, currentScr, fromTo, to, destination, i, comparator);
+            }
+            T[] tmp = currentScr;
+            currentScr = destination;
+            destination = tmp;
+            size = size * 2;
+        }
+        System.arraycopy(currentScr, 0, array, 0, length);
+    }
+
+    private static <T> void merge(T[] a, int aFrom, int aTo, T[] b, int bFrom, int bTo, T[] r, int rFrom,
+                                  Comparator<T> comparator) {
+        int indexA = aFrom;
+        int indexB = bFrom;
+        int rTo = rFrom + aTo - aFrom + bTo - bFrom;
+        for (int i = rFrom; i < rTo; i++) {
+            if (indexA < aTo && (indexB >= bTo || comparator.compare(a[indexA], b[indexB]) <= 0)) {
+                r[i] = a[indexA];
+                indexA++;
+            } else {
+                r[i] = b[indexB];
+                indexB++;
+            }
+        }
+    }
 }

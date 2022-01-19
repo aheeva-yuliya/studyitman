@@ -136,4 +136,48 @@ class ListTTests {
         Object[] actual = shapes.toArray();
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    void shouldToArrayTWhenLinkedList() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        LinkedListT<Shape> list = LinkedListT.of(circle, rectangle, square, rectangle);
+        Shape[] expected = new Shape[] {circle, rectangle, square, rectangle};
+        Shape[] actual = list.toArray(Shape[]::new);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldToArrayTWhenArrayList() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, square, rectangle);
+        Shape[] expected = new Shape[] {circle, rectangle, square, rectangle};
+        Shape[] actual = shapes.toArray(Shape[]::new);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldRemoveIfWhenArrayList() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, circle);
+        shapes.removeIf(shape -> shape.equals(circle));
+        Object[] expected = new Object[] {rectangle};
+        Object[] actual = shapes.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldRemoveIfWhenLinkedList() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        LinkedListT<Shape> shapes = LinkedListT.of(circle, rectangle, circle);
+        shapes.removeIf(shape -> true);
+        Object[] expected = new Object[] {};
+        Object[] actual = shapes.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }

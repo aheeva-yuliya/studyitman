@@ -6,6 +6,7 @@ import entities.Shape;
 import entities.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import utils.MyComparator;
 
 class LinkedListTTests {
     @Test
@@ -101,5 +102,17 @@ class LinkedListTTests {
         LinkedListT<Integer> list = new LinkedListT<>();
         list.addFirst(7);
         Assertions.assertEquals(7, list.get(0));
+    }
+
+    @Test
+    void shouldSortWhen() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        LinkedListT<Shape> shapes = LinkedListT.of(circle, rectangle, square);
+        shapes.sort(new MyComparator());
+        Object[] expected = new Object[] {square, rectangle, circle};
+        Object[] actual = shapes.toArray();
+        Assertions.assertArrayEquals(expected, actual);
     }
 }

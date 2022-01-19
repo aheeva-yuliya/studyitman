@@ -1,5 +1,7 @@
 package collections;
 
+import java.util.Comparator;
+
 /**
  * List.
  *
@@ -13,7 +15,7 @@ public interface List<T> extends Collection<T> {
      * @param index index
      * @return boolean
      */
-    boolean add(int index, T element);
+    boolean add(final int index, final T element);
 
     /**
      * Add all.
@@ -22,7 +24,7 @@ public interface List<T> extends Collection<T> {
      * @param index index
      * @return boolean
      */
-    boolean addAll(int index, Collection<T> collection);
+    boolean addAll(final int index, final Collection<? extends T> collection);
 
     /**
      * Get.
@@ -38,7 +40,7 @@ public interface List<T> extends Collection<T> {
      * @param index index
      * @param element element
      */
-    void set(int index, T element);
+    void set(final int index, final T element);
 
     /**
      * Remove.
@@ -46,5 +48,19 @@ public interface List<T> extends Collection<T> {
      * @param index index
      * @return type
      */
-    T remove(int index);
+    T remove(final int index);
+
+    /**
+     * Sort.
+     *
+     * @param comparator comparator
+     */
+    void sort(final Comparator<T> comparator);
+
+    /**
+     * ListIterator.
+     *
+     * @return ListIterator.
+     */
+    ListIterator<T> iterator();
 }

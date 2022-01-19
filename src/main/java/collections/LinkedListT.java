@@ -1,6 +1,6 @@
 package collections;
 
-import java.util.Iterator;
+import java.util.Comparator;
 
 public class LinkedListT<T> extends ListT<T> implements List<T> {
     private Node<T> first;
@@ -335,6 +335,17 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         return false;
     }
 
+    @Override
+    public void sort(final Comparator<T> comparator) {
+        T[] sorted = listSort(comparator);
+        ListIterator<T> iterator = iterator();
+        for (T object : sorted) {
+            iterator.next();
+            iterator.set(object);
+        }
+    }
+
+
     /**
      * Clear.
      */
@@ -351,11 +362,11 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      * @return iterator
      */
     @Override
-    public Iterator<T> iterator() {
+    public ListIterator<T> iterator() {
         return new LinkedListTIterator();
     }
 
-    private class LinkedListTIterator implements Iterator<T> {
+    private class LinkedListTIterator implements ListIterator<T> {
         private Node<T> next = first;
 
         /**
@@ -378,6 +389,44 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
             final T value = next.element;
             next = next.next;
             return value;
+        }
+
+        @Override
+        public void set(final T element) {
+            if (next != null) {
+                next.prev.element = element;
+            } else {
+                last.element = element;
+            }
+        }
+
+        @Override
+        public void insertBefore(final T element) {
+            final Node<T> prev = next.getPrev();
+            if (prev.getPrev() == null) {
+                addFirst(element);
+            } else {
+                final Node<T> node = new Node<>(element, prev, prev.getPrev());
+                prev.getPrev().setNext(node);
+                prev.setPrev(node);
+                size++;
+            }
+        }
+
+        @Override
+        public void remove() {
+            if (next == null) {
+                removeLast();
+            } else {
+                final Node<T> prev = next.getPrev();
+                if (prev.getPrev() == null) {
+                    removeFirst();
+                } else {
+                    prev.prev.setNext(prev.next);
+                    prev.next.setPrev(prev.prev);
+                    size--;
+                }
+            }
         }
     }
 

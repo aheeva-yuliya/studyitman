@@ -1,6 +1,7 @@
 package collections;
 
-import java.util.Iterator;
+import java.util.Comparator;
+import java.util.RandomAccess;
 
 /**
  * ArrayList.
@@ -8,7 +9,7 @@ import java.util.Iterator;
  * @param <T> type
  */
 @SuppressWarnings("unchecked")
-public class ArrayListT<T> extends ListT<T> implements List<T> {
+public class ArrayListT<T> extends ListT<T> implements List<T>, RandomAccess {
     private T[] array;
 
     /**
@@ -113,6 +114,11 @@ public class ArrayListT<T> extends ListT<T> implements List<T> {
         return value;
     }
 
+    @Override
+    public void sort(final Comparator<T> comparator) {
+        array = listSort(comparator);
+    }
+
     /**
      * Clear.
      */
@@ -168,11 +174,11 @@ public class ArrayListT<T> extends ListT<T> implements List<T> {
      * @return iterator.
      */
     @Override
-    public Iterator<T> iterator() {
+    public ListIterator<T> iterator() {
         return new ArrayListTIterator();
     }
 
-    private class ArrayListTIterator implements Iterator<T> {
+    private class ArrayListTIterator implements ListIterator<T> {
         private int index;
 
         /**
@@ -182,7 +188,7 @@ public class ArrayListT<T> extends ListT<T> implements List<T> {
          */
         @Override
         public boolean hasNext() {
-            return index != size;
+            return index < size;
         }
 
         /**
@@ -195,6 +201,31 @@ public class ArrayListT<T> extends ListT<T> implements List<T> {
             T value = array[index];
             index++;
             return value;
+        }
+
+        @Override
+        public void set(final T element) {
+            array[index - 1] = element;
+        }
+
+        @Override
+        public void insertBefore(final T element) {
+            final int indexBefore = index - 1;
+            if (size == array.length) {
+                T[] temp = (T[]) new Object[size * 2];
+                System.arraycopy(array, 0, temp, 0, indexBefore);
+                System.arraycopy(array, indexBefore, temp, index, size - indexBefore);
+                array = temp;
+            } else {
+                System.arraycopy(array, indexBefore, array, index, size - indexBefore);
+            }
+            array[indexBefore] = element;
+            size++;
+        }
+
+        @Override
+        public void remove() {
+            ArrayListT.this.remove(index - 1);
         }
     }
 }

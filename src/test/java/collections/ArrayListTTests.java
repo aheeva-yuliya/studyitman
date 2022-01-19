@@ -6,6 +6,7 @@ import entities.Shape;
 import entities.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import utils.MyComparator;
 
 class ArrayListTTests {
     @Test
@@ -89,6 +90,18 @@ class ArrayListTTests {
         ArrayListT<Shape> shapes = new ArrayListT<>(list);
         shapes.set(2, circle);
         Object[] expected = new Object[] {circle, rectangle, circle};
+        Object[] actual = shapes.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSortWhen() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, square);
+        shapes.sort(new MyComparator());
+        Object[] expected = new Object[] {square, rectangle, circle};
         Object[] actual = shapes.toArray();
         Assertions.assertArrayEquals(expected, actual);
     }
