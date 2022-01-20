@@ -1,7 +1,7 @@
 package tasks;
 
 /**
- * Task432
+ * Task432.
  */
 public class Task432 {
 
@@ -21,13 +21,13 @@ public class Task432 {
             return countDivs;
         }
         int count = 0;
-        for(long i = 2; i * i <= x; i++) {
+        for (long i = 2; i * i <= x; i++) {
             if (x % i == 0) {
                 countDivs[count] = i;
                 count++;
                 do {
                     x = x / i;
-                } while(x % i == 0);
+                } while (x % i == 0);
             }
         }
         if (x != 1) {

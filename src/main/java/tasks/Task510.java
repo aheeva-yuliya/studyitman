@@ -3,7 +3,7 @@ package tasks;
 import utils.ArrayUtils;
 
 /**
- * Task510
+ * Task510.
  */
 public class Task510 {
 

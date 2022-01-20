@@ -1,308 +1,255 @@
 package collections;
 
+import entities.Event;
+import entities.items.Game;
+import entities.items.Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class ArrayListTests {
     @Nested
-    public class Set {
+    public class SetAndGetTests {
         @Test
-        public void shouldSetWhenTrySetFirstAndThirdElements() {
-            ArrayList a = new ArrayList(5);
-            a.add(5);
-            a.add(5);
-            a.add(5);
-            a.set(0, 10);
-            a.set(2, 10);
-            int[] expected = new int[]{10, 5, 10};
-            int[] actual = a.toArray();
+        public void shouldSetAndGetWhenTrySetAndGetStringAtZeroIndex() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            a.set(0, "hi");
+            Assertions.assertEquals("hi", a.get(0));
+        }
+
+        @Test
+        public void shouldSetAndGetWhenTrySetAndGetNull() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            a.set(0, null);
+            Assertions.assertNull(a.get(0));
+        }
+
+        @Test
+        public void shouldSetAndGetWhenTrySetAndGetAnObjectAtZeroIndex() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final Object game = new Game(5, "t", 10, 1, 15);
+            a.set(0, game);
+            Assertions.assertEquals(game, a.get(0));
+        }
+    }
+
+    @Nested
+    public class SizeTest {
+        @Test
+        public void shouldReturnCorrectSizeWhenAdding() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            Assertions.assertEquals(3, a.size());
+            a.add("morning");
+            Assertions.assertEquals(4, a.size());
+        }
+    }
+
+    @Nested
+    public class AddTests {
+        @Test
+        public void shouldAddStringObjectWhenFirstListEmptyAndAfterNotEmpty() {
+            final ArrayList a = new ArrayList();
+            a.add("hello");
+            a.add("hi");
+            Assertions.assertEquals("hello", a.get(0));
+            Assertions.assertEquals("hi", a.get(1));
+        }
+
+        @Test
+        public void shouldAddDifferentObjectsAsStringWhenFirstListEmptyAndAfterNotEmpty() {
+            final ArrayList a = new ArrayList();
+            final Game game = new Game(5, "t", 10, 1, 15);
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            a.add(game);
+            a.add(item);
+            a.add(event);
+            Assertions.assertSame(game, a.get(0));
+            Assertions.assertSame(item, a.get(1));
+            Assertions.assertSame(event, a.get(2));
+        }
+
+        @Test
+        public void shouldAddWhenTryAddNull() {
+            final ArrayList a = new ArrayList();
+            a.add("hello");
+            a.add(null);
+            a.add("hi");
+            Assertions.assertNull(a.get(1));
+        }
+
+        @Test
+        public void shouldAddNewObjectWhenListEmpty() {
+            final ArrayList a = new ArrayList();
+            final Object object = new Object();
+            a.add(object);
+            Assertions.assertSame(object, a.get(0));
+        }
+    }
+
+    @Nested
+    public class ToArrayTests {
+        @Test
+        public void shouldReturnArrayWhenListNotEmpty() {
+            final Game game = new Game(5, "t", 10, 1, 15);
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            final ArrayList a = ArrayList.of(game, item, event);
+            final Object[] expected = new Object[]{game, item, event};
+            Assertions.assertArrayEquals(expected, a.toArray());
+        }
+
+        @Test
+        public void shouldReturnArrayWhenTryAddNull() {
+            final ArrayList a = new ArrayList();
+            a.add("hello");
+            a.add(null);
+            final Object[] expected = new Object[]{"hello", null};
+            Assertions.assertArrayEquals(expected, a.toArray());
+        }
+    }
+
+    @Nested
+    public class RemoveTests {
+        @Test
+        public void shouldRemoveWhenTryRemoveFromMiddle() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final String expected = "hi";
+            Assertions.assertEquals(expected, a.remove(1));
+            final String expectedString = "[hello, bye]";
+            Assertions.assertEquals(expectedString, a.toString());
+        }
+
+        @Test
+        public void shouldRemoveWhenTryRemoveFromFirstANdLastIndexes() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final String expectedZero = "hello";
+            Assertions.assertEquals(expectedZero, a.remove(0));
+            final String expectedLast = "bye";
+            Assertions.assertEquals(expectedLast, a.remove(1));
+            final String expectedString = "[hi]";
+            Assertions.assertEquals(expectedString, a.toString());
+        }
+    }
+
+    @Nested
+    public class OfTests {
+        @Test
+        public void shouldCreateWhenTryCreateOfSomeElements() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final Object[] expected = new String[]{"hello", "hi", "bye"};
+            final Object[] actual = a.toArray();
+            Assertions.assertArrayEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldCreateWhenTryCreateOfNewObjectElement() {
+            final Object o = new Object();
+            final ArrayList a = ArrayList.of("hello", o, "bye");
+            final Object[] expected = new Object[]{"hello",  o, "bye"};
+            final Object[] actual = a.toArray();
+            Assertions.assertArrayEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldCreateWhenTryCreateOfDifferentObjectsElements() {
+            final Game game = new Game(5, "t", 10, 1, 15);
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            final ArrayList a = ArrayList.of(game, item, event);
+            final Object[] expected = new Object[]{game, item, event};
+            final Object[] actual = a.toArray();
+            Assertions.assertArrayEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldCreateWhenTryCreateOfNull() {
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final Object[] expected = new String[]{"hello", null, "bye"};
+            final Object[] actual = a.toArray();
             Assertions.assertArrayEquals(expected, actual);
         }
     }
 
     @Nested
-    public class Get {
+    public class ToStringTests {
         @Test
-        public void shouldGetWhenTryGetSecondElement() {
-            ArrayList a = new ArrayList(3);
-            a.add(5);
-            a.add(10);
-            a.add(20);
-            Assertions.assertEquals(10, a.get(1));
+        public void shouldReturnStringWhenListContainsSomeStringElements() {
+            final ArrayList a = ArrayList.of("hello", "hi", "bye");
+            final String expected = "[hello, hi, bye]";
+            final String actual = a.toString();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenListContainsSomeObjectElements() {
+            final Item item = new Item(6, "title", 8);
+            final Event event = new Event();
+            final ArrayList a = ArrayList.of(item, event);
+            final String expected =
+                    "[Item{id=6, title='title', price=8}, Event{id=0, year=0, month=0, day=0, name='null'}]";
+            final String actual = a.toString();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenListContainsNewObjectElement() {
+            final ArrayList a = ArrayList.of(new Object());
+            final String expected = "[Object{}]";
+            final String actual = a.toString();
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void shouldReturnStringWhenListContainsNull() {
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final String expected = "[hello, null, bye]";
+            final String actual = a.toString();
+            Assertions.assertEquals(expected, actual);
         }
     }
 
     @Nested
-    public class Size {
+    public class EqualsTests {
         @Test
-        public void shouldReturnZeroWhenArraySizeZero() {
-            ArrayList a = new ArrayList(5);
-            Assertions.assertEquals(0, a.size());
+        public void shouldReturnTueWhenListsContainSameElements() {
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final ArrayList b = ArrayList.of("hello", null, "bye");
+            Assertions.assertEquals(a, b);
         }
 
         @Test
-        public void shouldReturnTwoWhenArraySizeTwo() {
-            ArrayList a = new ArrayList(5);
-            a.add(5);
-            a.add(10);
-            Assertions.assertEquals(2, a.size());
-        }
-    }
-
-    @Nested
-    public class Add {
-        @Test
-        public void shouldAddWhenLengthIsOne() {
-            ArrayList a = new ArrayList(1);
-            a.add(10);
-            a.add(20);
-            a.add(30);
-            int[] expected = new int[]{10, 20, 30};
-            Assertions.assertArrayEquals(expected, a.toArray());
+        public void shouldReturnFalseWhenListsContainDifferentElements() {
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final ArrayList b = ArrayList.of("hello", "hi-hi", "bye");
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
-        public void shouldAddWhenCapacityMultipliesByTwo() {
-            ArrayList a = new ArrayList(1);
-            a.add(2);
-            a.add(7);
-            a.add(1);
-            a.add(3);
-            a.add(8);
-            a.add(4);
-            int[] expected = new int[]{2, 7, 1, 3, 8, 4};
-            Assertions.assertArrayEquals(expected, a.toArray());
-        }
-    }
-
-    @Nested
-    public class Remove {
-        @Test
-        public void shouldRemoveWhenTryRemoveFromTheFirstIndex() {
-            ArrayList a = new ArrayList(4);
-            a.add(1);
-            a.add(2);
-            a.add(3);
-            a.add(4);
-            int b = a.remove(1);
-            int[] expected = new int[]{1, 3, 4};
-            Assertions.assertArrayEquals(expected, a.toArray());
-            Assertions.assertEquals(2, b);
+        public void shouldReturnFalseWhenListsContainDifferentObjectElements() {
+            final ArrayList a = ArrayList.of("hello", null, "bye");
+            final ArrayList b = ArrayList.of(new Object(), "hi-hi", "bye");
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
-        public void shouldRemoveWhenTryRemoveFromTheLastIndex() {
-            ArrayList a = new ArrayList(4);
-            a.add(1);
-            a.add(2);
-            a.add(3);
-            a.add(4);
-            int b = a.remove(3);
-            int[] expected = new int[]{1, 2, 3};
-            Assertions.assertArrayEquals(expected, a.toArray());
-            Assertions.assertEquals(4, b);
+        public void shouldReturnTrueWhenSameEmptyArrayList() {
+            final ArrayList a = ArrayList.of();
+            final ArrayList b = ArrayList.of();
+            Assertions.assertEquals(a, b);
         }
 
         @Test
-        public void shouldRemoveWhenTryRemoveFromTheFirstAndZeroIndexes() {
-            ArrayList a = new ArrayList(4);
-            a.add(1);
-            a.add(2);
-            a.add(3);
-            a.add(4);
-            int b = a.remove(1);
-            int[] expected = new int[]{1, 3, 4};
-            int[] actual = a.toArray();
-            Assertions.assertArrayEquals(expected, actual);
-            Assertions.assertEquals(2, b);
-            int c = a.remove(0);
-            expected = new int[]{3, 4};
-            actual = a.toArray();
-            Assertions.assertEquals(1, c);
-            Assertions.assertArrayEquals(expected, actual);
-        }
-    }
-
-    @Nested
-    public class Equals {
-        @Test
-        public void shouldReturnTrueWhenArrayListsContainEqualElements() {
-            ArrayList a = new ArrayList(3);
-            a.add(1);
-            a.add(2);
-            a.add(3);
-            ArrayList b = new ArrayList(3);
-            b.add(3);
-            b.add(2);
-            b.add(3);
-            b.set(0, 1);
-            Assertions.assertTrue(a.equals(b));
+        public void shouldReturnFalseWhenNotArrayListToCompare() {
+            final ArrayList a = ArrayList.of();
+            final Object b = new Object();
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
-        public void shouldReturnFalseWhenArrayListsContainDifferentElements() {
-            ArrayList a = new ArrayList(3);
-            a.add(1);
-            a.add(2);
-            a.add(3);
-            ArrayList b = new ArrayList(3);
-            b.add(3);
-            b.add(2);
-            b.add(3);
-            Assertions.assertFalse(a.equals(b));
-        }
-
-        @Test
-        public void shouldReturnTrueWhenArrayListsContainSameElementsButDifferentCapacities() {
-            ArrayList a = new ArrayList(1);
-            ArrayList b = new ArrayList(2);
-            Assertions.assertTrue(a.equals(b));
-        }
-
-        @Test
-        public void shouldReturnFalseWhenThatIsNull() {
-            ArrayList a = new ArrayList(3);
-            a.add(1);
-            a.add(2);
-            a.add(3);
-            ArrayList b = null;
-            Assertions.assertFalse(a.equals(b));
-        }
-    }
-
-    @Nested
-    public class Sort {
-        @Test
-        public void shouldSortInAscendingOrderWhenTrySortDifferentElements() {
-            ArrayList a = new ArrayList(3);
-            a.add(8);
-            a.add(3);
-            a.add(6);
-            a.add(1);
-            a.add(2);
-            a.sort();
-            int[] expected = new int[]{1, 2, 3, 6, 8};
-            Assertions.assertArrayEquals(expected, a.toArray());
-        }
-
-        @Test
-        public void shouldSortWhenTrySortSameElements() {
-            ArrayList a = new ArrayList(3);
-            a.add(8);
-            a.add(8);
-            a.add(8);
-            a.sort();
-            int[] expected = new int[]{8, 8, 8};
-            int[] actual = a.toArray();
-            Assertions.assertArrayEquals(expected, actual);
-        }
-
-        @Test
-        public void shouldSortUsingMergeSortWhenTrySort() {
-            ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0, 54, 78, 99, 75, 89, 82, -76);
-            a.add(7);
-            a.add(22);
-            a.sort();
-            int[] expected = new int[] {-76, -5, 0, 7, 7, 8, 9, 9, 18, 22, 54, 75, 78, 82, 89, 90, 99};
-            Assertions.assertArrayEquals(expected, a.toArray());
-        }
-    }
-
-    @Nested
-    public class Create {
-        @Test
-        public void shouldCreateWhenTryCreateFromAnObject() {
-            ArrayList first = new ArrayList();
-            first.set(0, 10);
-            first.set(1, 20);
-            ArrayList second = new ArrayList(first);
-            Assertions.assertTrue(first.equals(second));
-        }
-
-        @Test
-        public void shouldCreateWhenTryCreateOfElements() {
-            int[] a = new int[]{-1, 1, 5};
-            ArrayList actual = ArrayList.of(a);
-            a[1] = 0;
-            int[] expected = new int[]{-1, 1, 5};
-            Assertions.assertArrayEquals(expected, actual.toArray());
-        }
-
-        @Test
-        public void shouldCreateWhenTryCreateOfNil() {
-            ArrayList a = ArrayList.of();
-            int[] expected = new int[]{};
-            int[] actual = a.toArray();
-            Assertions.assertArrayEquals(expected, actual);
-            Assertions.assertEquals(0, a.size());
-        }
-
-        @Test
-        public void shouldCreateAndCheckIfEqualWhenTryCreateOfElements() {
-            ArrayList a = ArrayList.of(-1, 1, 5);
-            ArrayList b = ArrayList.of(-1, 1, 5);
-            Assertions.assertTrue(a.equals(b));
-        }
-
-        @Test
-        public void shouldCreateOneWhenTryCreateOfElementsAndCreateAnotherWhenTryAdd() {
-            ArrayList a = ArrayList.of(-1, 1, 5);
-            ArrayList b = new ArrayList(5);
-            b.add(-1);
-            b.add(1);
-            b.add(5);
-            Assertions.assertTrue(a.equals(b));
-        }
-    }
-
-    @Nested
-    public class ToString {
-        @Test
-        public void shouldMakeAStringWhenTryDoItUsingStringBuilder() {
-            ArrayList a = ArrayList.of(8, 9, 7, 6, 2, 3, 5, 4);
-            Assertions.assertEquals("[8, 9, 7, 6, 2, 3, 5, 4]", a.toString());
-        }
-
-        @Test
-        public void shouldMakeAStringWhenEmptyArray() {
-            ArrayList a = ArrayList.of();
-            Assertions.assertEquals("[]", a.toString());
-        }
-
-        @Test
-        public void shouldMakeAStringWhenLengthIsOne() {
-            ArrayList a = ArrayList.of(1);
-            Assertions.assertEquals("[1]", a.toString());
-        }
-    }
-
-    @Nested
-    public class Clear {
-        @Test
-        public void shouldClearWhenArrayContainsSomeElements() {
-            ArrayList a = ArrayList.of(7, 18, 9, -5, 8, 9, 90, 0);
-            a.clear();
-            Assertions.assertEquals(0, a.size());
-        }
-
-        @Test
-        public void shouldClearWhenArrayEmpty() {
-            ArrayList a = new ArrayList();
-            a.clear();
-            Assertions.assertEquals(0, a.size());
-        }
-    }
-
-    @Nested
-    public class TrimToSize {
-        @Test
-        public void shouldTrimToSizeWhenCapacityGreaterThanSize() {
-            ArrayList a = new ArrayList();
-            a.add(100);
-            Assertions.assertEquals(0, a.get(1));
-            a.trimToSize();
-            Assertions.assertEquals(1, a.size());
+        public void shouldReturnFalseWhenNullToCompare() {
+            final ArrayList a = ArrayList.of();
+            Assertions.assertNotEquals(a, null);
         }
     }
 }

@@ -317,7 +317,7 @@ public class ArrayUtilsTests {
         }
 
         @Test
-        public void souldSearchAtZeroIndexWhenEvenLength() {
+        public void shouldSearchAtZeroIndexWhenEvenLength() {
             int[] array = new int[]{20, 30, 40, 50, 60, 70, 80, 90};
             Assertions.assertEquals(0, ArrayUtils.binarySearch(array, 20));
         }
@@ -440,18 +440,18 @@ public class ArrayUtilsTests {
 
             @Test
             public void shouldMergeEventsWhenDifferentDates() {
-                Event[] a = new Event[]{
+                final Event[] a = new Event[]{
                         new Event(1991, 9, 8, "y"),
                         new Event(1991, 9, 8, "smth"),
                         new Event(1992, 2, 20, "i"),
                         new Event(2018, 8, 9, "l")
                 };
-                Event[] b = new Event[]{
+                final Event[] b = new Event[]{
                         new Event(1993, 6, 14, "le"),
                         new Event(2017, 7, 22, "w"),
                         new Event(2019, 8, 9, "l1")
                 };
-                Event[] r = new Event[]{
+                final Event[] r = new Event[]{
                         new Event(0, 1, 1, "something"),
                         new Event(0, 1, 1, "something"),
                         new Event(0, 1, 1, "something"),
@@ -462,7 +462,7 @@ public class ArrayUtilsTests {
                         new Event(0, 1, 1, "something"),
                         new Event(0, 1, 1, "something"),
                 };
-                Event[] expected = new Event[r.length];
+                final Event[] expected = new Event[r.length];
                 expected[0] = r[0];
                 expected[1] = a[0];
                 expected[2] = a[1];

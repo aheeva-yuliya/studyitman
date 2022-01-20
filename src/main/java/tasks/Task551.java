@@ -1,7 +1,7 @@
 package tasks;
 
 /**
- * Task551
+ * Task551.
  */
 public class Task551 {
 
@@ -23,13 +23,23 @@ public class Task551 {
     }
 
     /**
-     * Node
+     * Node.
      */
     public static class Node {
         private int element;
         private Node next;
         private Node prev;
 
+        /**
+         * Creates Node object.
+         *
+         * @cpu O(1)
+         * @ram O(1)
+         *
+         * @param element int argument
+         * @param next Node argument
+         * @param prev Node argument
+         */
         public Node(final int element, final Node next, final Node prev) {
             this.element = element;
             this.next = next;

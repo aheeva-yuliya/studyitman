@@ -64,34 +64,34 @@ public class MyStringTests {
         public void shouldReturnFalseWhenStringsDifferentLengths() {
             MyString a = new MyString(new char[]{'a'});
             MyString b = new MyString(new char[]{});
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnTrueWhenStringsEqual() {
             MyString a = new MyString(new char[]{'a', 'b'});
             MyString b = new MyString(new char[]{'a', 'b'});
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenContainDifferentChars() {
             MyString a = new MyString(new char[]{'t', 'e', 's', 't', '2'});
             MyString b = new MyString(new char[]{'t', 'e', 's', 't', '1'});
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnTrueWhenContainSame() {
             MyString a = new MyString(new char[]{'t', 'e', 's', 't', '2'});
             MyString b = new MyString(new char[]{'t', 'e', 's', 't', '2'});
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenThatNull() {
             MyString a = new MyString(new char[]{'a'});
-            Assertions.assertFalse(a.equals(null));
+            Assertions.assertNotEquals(null, a);
         }
     }
 

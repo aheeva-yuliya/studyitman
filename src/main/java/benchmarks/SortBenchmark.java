@@ -2,10 +2,11 @@ package benchmarks;
 
 import entities.Event;
 import utils.ArrayUtils;
+
 import java.util.Random;
 
 /**
- * SortBenchmark
+ * SortBenchmark.
  */
 public class SortBenchmark {
     /**
@@ -52,33 +53,36 @@ public class SortBenchmark {
         return random;
     }
 
-    // bsp1: 0.28s
-    // bsp2: 0.27s
-    // bsp3: 23.59s
-    // bsp4: 23.50s
-    // bso1: 1.22s
-    // bso2: 0.96s
-    // bso3: 225.82s
-    // bso4: 236.07s
-
-    // сsp1: 0.001s
-    // сsp2: OutOfMemory
-    // сsp3: 0.003s
-    // сsp4: OutOfMemory
-    // сso1: 0.005s
-    // сso2: OutOfMemory
-    // сso3: 0.017s
-    // сso4: OutOfMemory
-
-    // msp1: 0.004s
-    // msp2: 0.003s
-    // msp3: 0.021s
-    // msp4: 0.021s
-    // mso1: 0.008s
-    // mso2: 0.007s
-    // mso3: 0.087s
-    // mso4: 0.083s
-
+    /**
+     * Main.
+     *
+     * @param args String[] arguments
+     *
+     * bsp1: 0.28s
+     * bsp2: 0.27s
+     * bsp3: 23.59s
+     * bsp4: 23.50s
+     * bso1: 1.22s
+     * bso2: 0.96s
+     * bso3: 225.82s
+     * bso4: 236.07s
+     * сsp1: 0.001s
+     * сsp2: OutOfMemory
+     * сsp3: 0.003s
+     * сsp4: OutOfMemory
+     * сso1: 0.005s
+     * сso2: OutOfMemory
+     * сso3: 0.017s
+     * сso4: OutOfMemory
+     * msp1: 0.004s
+     * msp2: 0.003s
+     * msp3: 0.021s
+     * msp4: 0.021s
+     * mso1: 0.008s
+     * mso2: 0.007s
+     * mso3: 0.087s
+     * mso4: 0.083s
+     */
     public static void main(String[] args) {
         int[] bsp1 = randomArray(10000, -10000, 10000);
         long start = System.currentTimeMillis();
