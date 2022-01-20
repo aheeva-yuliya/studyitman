@@ -25,13 +25,21 @@ public class BoardGame extends Game {
     /**
      * Returns a string representation of the object.
      *
-     * @cpu O( k + l + m + p + q + r + s) k - number of chars at the field "id", l - number of chars at the field "title",
-     *      m - number of chars at the field "price", p - number of chars at the field "playersMin",
-     *      q - number of chars at the field "playersMax", r - number of chars at the field "timeMin",
+     * @cpu O( k + l + m + p + q + r + s)
+     *      k - number of chars at the field "id",
+     *      l - number of chars at the field "title",
+     *      m - number of chars at the field "price",
+     *      p - number of chars at the field "playersMin",
+     *      q - number of chars at the field "playersMax",
+     *      r - number of chars at the field "timeMin",
      *      s - number of chars at the field "timeMax"
-     * @ram O(k + l + m + p + q + r + s) k - number of chars at the field "id", l - number of chars at the field "title",
-     *      m - number of chars at the field "price", p - number of chars at the field "playersMin",
-     *      q - number of chars at the field "playersMax", r - number of chars at the field "timeMin",
+     * @ram O(k + l + m + p + q + r + s)
+     *      k - number of chars at the field "id",
+     *      l - number of chars at the field "title",
+     *      m - number of chars at the field "price",
+     *      p - number of chars at the field "playersMin",
+     *      q - number of chars at the field "playersMax",
+     *      r - number of chars at the field "timeMin",
      *      s - number of chars at the field "timeMax"
      *
      * @return a string representation of the object.
