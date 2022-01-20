@@ -24,7 +24,7 @@ public class ArrayListT<T> extends ListT<T> implements List<T>, RandomAccess {
      *
      * @param that collection
      */
-    public ArrayListT(final Collection<T> that) {
+    public ArrayListT(final Collection<? extends T> that) {
         if (that != null) {
             array = (T[]) new Object[that.size()];
             addAll(that);
@@ -221,6 +221,7 @@ public class ArrayListT<T> extends ListT<T> implements List<T>, RandomAccess {
             }
             array[indexBefore] = element;
             size++;
+            index++;
         }
 
         @Override

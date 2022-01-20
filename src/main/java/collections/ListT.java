@@ -72,8 +72,14 @@ public abstract class ListT<T> {
      * @return boolean
      */
     public boolean addAll(int index, final Collection<? extends T> collection) {
+        final ListIterator<T> iterator = iterator();
+        int currentIndex = 0;
+        while (currentIndex <= index) {
+            iterator.next();
+            currentIndex++;
+        }
         for (T t : collection) {
-            add(index++, t);
+            iterator.insertBefore(t);
         }
         return true;
     }
@@ -85,7 +91,7 @@ public abstract class ListT<T> {
      * @return boolean
      */
     public boolean contains(final T element) {
-        Iterator<T> iterator = iterator();
+        final Iterator<T> iterator = iterator();
         while (iterator.hasNext()) {
             if (iterator.next().equals(element)) {
                 return true;
@@ -100,7 +106,7 @@ public abstract class ListT<T> {
      * @param collection collection
      * @return boolean
      */
-    public boolean containsAll(final Collection<T> collection) {
+    public boolean containsAll(final Collection<? extends T> collection) {
         for (T t : collection) {
             if (!contains(t)) {
                 return false;
@@ -122,7 +128,7 @@ public abstract class ListT<T> {
      *
      * @param collection collection
      */
-    public void removeAll(final Collection<T> collection) {
+    public void removeAll(final Collection<? extends T> collection) {
         for (T t : collection) {
             remove(t);
         }
@@ -134,7 +140,7 @@ public abstract class ListT<T> {
      * @param predicate predicate
      */
     public void removeIf(final Predicate<? super T> predicate) {
-        Iterator<T> iterator = iterator();
+        final Iterator<T> iterator = iterator();
         while (iterator.hasNext()) {
             if (predicate.test(iterator.next())) {
                 iterator.remove();
@@ -148,7 +154,7 @@ public abstract class ListT<T> {
      * @param that collection
      * @return boolean
      */
-    public boolean equals(final Collection<T> that) {
+    public boolean equals(final Collection<? extends T> that) {
         if (this == that) {
             return true;
         }
@@ -215,7 +221,7 @@ public abstract class ListT<T> {
      *
      * @return iterator
      */
-    public abstract Iterator<T> iterator();
+    public abstract ListIterator<T> iterator();
 
     protected T[] listSort(final Comparator<T> comparator) {
         T[] array = toArray(size -> (T[]) new Object[size]);

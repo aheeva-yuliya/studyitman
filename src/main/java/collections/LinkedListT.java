@@ -104,7 +104,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      *
      * @param that an object of LinkedList
      */
-    public LinkedListT(final Collection<T> that) {
+    public LinkedListT(final Collection<? extends T> that) {
         addAll(that);
     }
 

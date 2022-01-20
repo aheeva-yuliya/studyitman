@@ -61,14 +61,14 @@ public interface Collection<T> extends Iterable<T> {
      * @param collection collection
      * @return boolean
      */
-    boolean containsAll(final Collection<T> collection);
+    boolean containsAll(final Collection<? extends T> collection);
 
     /**
      * Remove all.
      *
      * @param collection collection
      */
-    void removeAll(Collection<T> collection);
+    void removeAll(Collection<? extends T> collection);
 
     /**
      * Clear.
