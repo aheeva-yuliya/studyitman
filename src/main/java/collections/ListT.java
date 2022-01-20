@@ -90,8 +90,8 @@ public abstract class ListT<T> {
      * @param element element
      * @return boolean
      */
-    public boolean contains(final T element) {
-        final Iterator<T> iterator = iterator();
+    public boolean contains(final Object element) {
+        final ListIterator<T> iterator = iterator();
         while (iterator.hasNext()) {
             if (iterator.next().equals(element)) {
                 return true;
@@ -106,8 +106,8 @@ public abstract class ListT<T> {
      * @param collection collection
      * @return boolean
      */
-    public boolean containsAll(final Collection<? extends T> collection) {
-        for (T t : collection) {
+    public boolean containsAll(final Collection<?> collection) {
+        for (Object t : collection) {
             if (!contains(t)) {
                 return false;
             }
@@ -121,16 +121,19 @@ public abstract class ListT<T> {
      * @param element element
      * @return boolean
      */
-    public abstract boolean remove(final T element);
+    public abstract boolean remove(final Object element);
 
     /**
      * Remove all.
      *
      * @param collection collection
      */
-    public void removeAll(final Collection<? extends T> collection) {
-        for (T t : collection) {
-            remove(t);
+    public void removeAll(final Collection<?> collection) {
+        final ListIterator<T> iterator = iterator();
+        while (iterator.hasNext()) {
+            if (collection.contains(iterator.next())) {
+                iterator.remove();
+            }
         }
     }
 
@@ -140,7 +143,7 @@ public abstract class ListT<T> {
      * @param predicate predicate
      */
     public void removeIf(final Predicate<? super T> predicate) {
-        final Iterator<T> iterator = iterator();
+        final ListIterator<T> iterator = iterator();
         while (iterator.hasNext()) {
             if (predicate.test(iterator.next())) {
                 iterator.remove();

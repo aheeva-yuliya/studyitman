@@ -45,7 +45,7 @@ public interface Collection<T> extends Iterable<T> {
      * @param element element
      * @return boolean
      */
-    boolean contains(final T element);
+    boolean contains(final Object element);
 
     /**
      * Remove.
@@ -53,7 +53,7 @@ public interface Collection<T> extends Iterable<T> {
      * @param element element
      * @return boolean
      */
-    boolean remove(final T element);
+    boolean remove(final Object element);
 
     /**
      * Contains all.
@@ -61,14 +61,14 @@ public interface Collection<T> extends Iterable<T> {
      * @param collection collection
      * @return boolean
      */
-    boolean containsAll(final Collection<? extends T> collection);
+    boolean containsAll(final Collection<?> collection);
 
     /**
      * Remove all.
      *
      * @param collection collection
      */
-    void removeAll(Collection<? extends T> collection);
+    void removeAll(Collection<?> collection);
 
     /**
      * Clear.

@@ -315,7 +315,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      * @return boolean
      */
     @Override
-    public boolean remove(final T element) {
+    public boolean remove(final Object element) {
         int i = 0;
         Node<T> node = first;
         while (i < size) {

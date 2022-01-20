@@ -7,6 +7,7 @@ import entities.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+
 class ListTTests {
     @Test
     void shouldSizeWhen() {

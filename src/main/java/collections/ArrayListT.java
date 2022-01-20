@@ -88,7 +88,7 @@ public class ArrayListT<T> extends ListT<T> implements List<T>, RandomAccess {
      * @return boolean
      */
     @Override
-    public boolean remove(final T element) {
+    public boolean remove(final Object element) {
         for (int i = 0; i < size; i++) {
             if (array[i].equals(element)) {
                 System.arraycopy(array, i + 1, array, i, size - i - 1);
