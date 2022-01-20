@@ -223,7 +223,7 @@ public abstract class ListT<T> {
      */
     public abstract ListIterator<T> iterator();
 
-    protected T[] listSort(final Comparator<T> comparator) {
+    protected T[] listSort(final Comparator<? super T> comparator) {
         T[] array = toArray(size -> (T[]) new Object[size]);
         mergeSort(array, comparator);
         return array;

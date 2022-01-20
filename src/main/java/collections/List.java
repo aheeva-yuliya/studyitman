@@ -55,7 +55,7 @@ public interface List<T> extends Collection<T> {
      *
      * @param comparator comparator
      */
-    void sort(final Comparator<T> comparator);
+    void sort(final Comparator<? super T> comparator);
 
     /**
      * ListIterator.

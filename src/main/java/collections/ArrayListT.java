@@ -115,7 +115,7 @@ public class ArrayListT<T> extends ListT<T> implements List<T>, RandomAccess {
     }
 
     @Override
-    public void sort(final Comparator<T> comparator) {
+    public void sort(final Comparator<? super T> comparator) {
         array = listSort(comparator);
     }
 

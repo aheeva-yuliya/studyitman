@@ -336,7 +336,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
     }
 
     @Override
-    public void sort(final Comparator<T> comparator) {
+    public void sort(final Comparator<? super T> comparator) {
         T[] sorted = listSort(comparator);
         ListIterator<T> iterator = iterator();
         for (T object : sorted) {
