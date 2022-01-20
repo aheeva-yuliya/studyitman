@@ -115,10 +115,4 @@ class LinkedListTTests {
         Object[] actual = shapes.toArray();
         Assertions.assertArrayEquals(expected, actual);
     }
-
-    @Test
-    void should() {
-        LinkedListT<Number> list = LinkedListT.of(8., 7L, 5);
-        Assertions.assertEquals(7, list.get(0));
-    }
 }
