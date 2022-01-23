@@ -38,6 +38,33 @@ class ArrayListTTests {
     }
 
     @Test
+    void shouldAddAllWhenAddAtIndex() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle);
+        LinkedListT<Shape> list = LinkedListT.of(square, circle);
+        Assertions.assertTrue(shapes.addAll(0, list));
+        Object[] expected = new Object[] {square, circle, circle, rectangle};
+        Object[] actual = shapes.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldAddAllWhenAddAtIndexAndEnoughCapacity() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, square, square);
+        shapes.add(circle);
+        LinkedListT<Shape> list = LinkedListT.of(square, circle);
+        Assertions.assertTrue(shapes.addAll(2, list));
+        Object[] expected = new Object[] {circle, rectangle, square, circle, square, square, circle};
+        Object[] actual = shapes.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
     void shouldRemoveWhen() {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
@@ -102,6 +129,18 @@ class ArrayListTTests {
         ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, square);
         shapes.sort(new MyComparator());
         Object[] expected = new Object[] {square, rectangle, circle};
+        Object[] actual = shapes.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSortWhenContainsNull() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, null, rectangle, square);
+        shapes.sort(new MyComparator());
+        Object[] expected = new Object[] {square, rectangle, circle, null};
         Object[] actual = shapes.toArray();
         Assertions.assertArrayEquals(expected, actual);
     }

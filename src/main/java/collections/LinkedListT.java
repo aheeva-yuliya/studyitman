@@ -1,6 +1,8 @@
 package collections;
 
 import java.util.Comparator;
+import java.util.ConcurrentModificationException;
+import java.util.Objects;
 
 public class LinkedListT<T> extends ListT<T> implements List<T> {
     private Node<T> first;
@@ -105,6 +107,9 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      * @param that an object of LinkedList
      */
     public LinkedListT(final Collection<? extends T> that) {
+        if (that == null) {
+            throw new IllegalArgumentException("Collection is null");
+        }
         addAll(that);
     }
 
@@ -125,6 +130,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         temp.setNext(first);
         first = temp;
         size++;
+        modificationCount++;
     }
 
     /**
@@ -154,6 +160,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         }
         first = first.getNext();
         size--;
+        modificationCount++;
         return value;
     }
 
@@ -174,6 +181,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         temp.setPrev(last);
         last = temp;
         size++;
+        modificationCount++;
     }
 
     /**
@@ -203,6 +211,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         }
         last = last.getPrev();
         size--;
+        modificationCount++;
         return value;
     }
 
@@ -216,6 +225,9 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      */
     @SafeVarargs
     public static <T> LinkedListT<T> of(final T... elements) {
+        if (elements == null) {
+            throw new IllegalArgumentException("Impossible to create of null");
+        }
         final LinkedListT<T> linkedList = new LinkedListT<>();
         for (T element : elements) {
             linkedList.addLast(element);
@@ -232,17 +244,14 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      */
     @Override
     public boolean add(final int index, final T element) {
-        if (index == 0) {
-            addFirst(element);
-        } else if (index == size - 1) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for size " + size);
+        }
+        if (index == size - 1) {
             addLast(element);
         } else {
             final Node<T> nodeAtIndex = search(index);
-            final Node<T> prev = nodeAtIndex.getPrev();
-            final Node<T> node = new Node<>(element, nodeAtIndex, prev);
-            nodeAtIndex.setPrev(node);
-            prev.setNext(node);
-            size++;
+            addBefore(nodeAtIndex, element);
         }
         return true;
     }
@@ -260,6 +269,31 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
     }
 
     /**
+     * Add all.
+     *
+     * @param index index
+     * @param collection collection
+     * @return boolean
+     */
+    @Override
+    public boolean addAll(final int index, final Collection<? extends T> collection) {
+        if (collection == null) {
+            throw new IllegalArgumentException("Collection is null");
+        }
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for size " + size);
+        }
+        if (collection.isEmpty()) {
+            return false;
+        }
+        final Node<T> atIndex = search(index);
+        for (T element : collection) {
+            addBefore(atIndex, element);
+        }
+        return true;
+    }
+
+    /**
      * Gets the value of the element at the index position in the LinkedList.
      *
      * @param index int argument
@@ -269,6 +303,9 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      */
     @Override
     public T get(final int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for size " + size);
+        }
         final Node<T> node = search(index);
         return node.getElement();
     }
@@ -283,8 +320,12 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      */
     @Override
     public void set(final int index, final T element) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for size " + size);
+        }
         final Node<T> node = search(index);
         node.setElement(element);
+        modificationCount++;
     }
 
     /**
@@ -296,15 +337,15 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      * @ram O(1)
      */
     public T remove(final int index) {
-        final Node<T> node = search(index);
-        if (node == first) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for size " + size);
+        }
+        if (index == 0) {
             return removeFirst();
-        } else if (node == last) {
+        } else if (index == size - 1) {
             return removeLast();
         } else {
-            node.getPrev().setNext(node.getNext());
-            node.getNext().setPrev(node.getPrev());
-            return node.getElement();
+            return removeNode(search(index));
         }
     }
 
@@ -316,33 +357,28 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
      */
     @Override
     public boolean remove(final Object element) {
-        int i = 0;
-        Node<T> node = first;
-        while (i < size) {
-            if (node.element.equals(element)) {
-                if (node.prev != null) {
-                    node.prev.setNext(node.next);
-                }
-                if (node.next != null) {
-                    node.next.setPrev(node.prev);
-                }
-                size--;
+        ListIterator<T> iterator = iterator();
+        while (iterator.hasNext()) {
+            if (Objects.equals(iterator.next(), element)) {
+                iterator.remove();
                 return true;
             }
-            i++;
-            node = node.next;
         }
         return false;
     }
 
     @Override
     public void sort(final Comparator<? super T> comparator) {
+        if (comparator == null) {
+            throw new IllegalArgumentException("Comparator is null");
+        }
         T[] sorted = listSort(comparator);
         ListIterator<T> iterator = iterator();
         for (T object : sorted) {
             iterator.next();
             iterator.set(object);
         }
+        modificationCount++;
     }
 
 
@@ -354,6 +390,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         first = null;
         last = null;
         size = 0;
+        modificationCount++;
     }
 
     /**
@@ -368,6 +405,8 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
 
     private class LinkedListTIterator implements ListIterator<T> {
         private Node<T> next = first;
+        private int previousModificationCount = modificationCount;
+        private boolean called;
 
         /**
          * Has next.
@@ -376,6 +415,9 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
          */
         @Override
         public boolean hasNext() {
+            if (modificationCount != previousModificationCount) {
+                throw new ConcurrentModificationException("Collection was modified");
+            }
             return next != null;
         }
 
@@ -386,47 +428,61 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
          */
         @Override
         public T next() {
+            if (modificationCount != previousModificationCount) {
+                throw new ConcurrentModificationException("Collection was modified");
+            }
             final T value = next.element;
             next = next.next;
+            called = true;
             return value;
         }
 
         @Override
         public void set(final T element) {
+            if (modificationCount != previousModificationCount) {
+                throw new ConcurrentModificationException("Collection was modified");
+            }
+            if (!called) {
+                throw new IllegalStateException("Method has been invoked at an illegal time");
+            }
             if (next != null) {
                 next.prev.element = element;
             } else {
                 last.element = element;
             }
+            previousModificationCount = ++modificationCount;
+            called = false;
         }
 
         @Override
         public void insertBefore(final T element) {
-            final Node<T> prev = next.getPrev();
-            if (prev.getPrev() == null) {
-                addFirst(element);
-            } else {
-                final Node<T> node = new Node<>(element, prev, prev.getPrev());
-                prev.getPrev().setNext(node);
-                prev.setPrev(node);
-                size++;
+            if (modificationCount != previousModificationCount) {
+                throw new ConcurrentModificationException("Collection was modified");
             }
+            if (!called) {
+                throw new IllegalStateException("Method has been invoked at an illegal time");
+            }
+            final Node<T> prev = next.getPrev();
+            addBefore(prev, element);
+            previousModificationCount = modificationCount;
+            called = false;
         }
 
         @Override
         public void remove() {
+            if (modificationCount != previousModificationCount) {
+                throw new ConcurrentModificationException("Collection was modified");
+            }
+            if (!called) {
+                throw new IllegalStateException("Method has been invoked at an illegal time");
+            }
             if (next == null) {
                 removeLast();
             } else {
-                final Node<T> prev = next.getPrev();
-                if (prev.getPrev() == null) {
-                    removeFirst();
-                } else {
-                    prev.prev.setNext(prev.next);
-                    prev.next.setPrev(prev.prev);
-                    size--;
-                }
+                removeNode(next.getPrev());
             }
+            previousModificationCount = modificationCount;
+            called = false;
         }
     }
 
@@ -438,6 +494,32 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
             listIndex++;
         }
         return next;
+    }
+
+    private void addBefore(final Node<T> nodeAtIndex, T element) {
+        if (nodeAtIndex.getPrev() == null) {
+            addFirst(element);
+        } else {
+            final Node<T> node = new Node<>(element, nodeAtIndex, nodeAtIndex.getPrev());
+            nodeAtIndex.getPrev().setNext(node);
+            nodeAtIndex.setPrev(node);
+            size++;
+            modificationCount++;
+        }
+    }
+
+    private T removeNode(final Node<T> nodeAtIndex) {
+        if (nodeAtIndex == first) {
+            return removeFirst();
+        } else if (nodeAtIndex == last) {
+            return removeLast();
+        } else {
+            nodeAtIndex.getPrev().setNext(nodeAtIndex.getNext());
+            nodeAtIndex.getNext().setPrev(nodeAtIndex.getPrev());
+            modificationCount++;
+            size--;
+            return nodeAtIndex.getElement();
+        }
     }
 }
 

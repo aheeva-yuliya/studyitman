@@ -20,10 +20,16 @@ public class CollectionUtils {
      * @return type
      */
     public static <T> T findMin(final List<T> list, final Comparator<T> comparator) {
-        if (list == null || comparator == null) {
-            return null;
+        if (list == null) {
+            throw new IllegalArgumentException("List is null");
         }
-        T element = list.isEmpty() ? null : list.get(0);
+        if (comparator == null) {
+            throw new IllegalArgumentException("Comparator is null");
+        }
+        if (list.isEmpty()) {
+            throw new IllegalArgumentException("List is empty");
+        }
+        T element = list.get(0);
         for (T t : list) {
             if (comparator.compare(element, t) > 0) {
                 element = t;
@@ -41,6 +47,12 @@ public class CollectionUtils {
      * @return type
      */
     public static <T> T findMax(final List<T> list, final Comparator<T> comparator) {
+        if (list == null) {
+            throw new IllegalArgumentException("List is null");
+        }
+        if (comparator == null) {
+            throw new IllegalArgumentException("Comparator is null");
+        }
         return findMin(list, (o1, o2) -> Integer.compare(0, comparator.compare(o1, o2)));
     }
 
@@ -54,6 +66,15 @@ public class CollectionUtils {
      * @return int
      */
     public static <T> int binarySearch(final List<T> list, T obj, final Comparator<T> comparator) {
+        if (list == null) {
+            throw new IllegalArgumentException("List is null");
+        }
+        if (list.isEmpty()) {
+            throw new IllegalArgumentException("List is empty");
+        }
+        if (comparator == null) {
+            throw new IllegalArgumentException("Comparator is null");
+        }
         int l = 0;
         int r = list.size() - 1;
         while (l <= r) {
@@ -92,6 +113,9 @@ public class CollectionUtils {
      * @param <T> type
      */
     public static <T extends Comparable<T>> void sort(final List<T> list) {
+        if (list == null) {
+            throw new IllegalArgumentException("List is null");
+        }
         list.sort(Comparable::compareTo);
     }
 
@@ -102,6 +126,9 @@ public class CollectionUtils {
      * @param <T> type
      */
     public static <T> void reverse(final List<T> list) {
+        if (list == null) {
+            throw new IllegalArgumentException("List is null");
+        }
         final T[] objects = list.toArray(size -> (T[]) new Object[size]);
         ListIterator<T> iterator = list.iterator();
         for (int i = objects.length - 1; i >= 0; i--) {
@@ -117,6 +144,9 @@ public class CollectionUtils {
      * @param <T> type
      */
     public static <T> void shuffle(final List<T> list) {
+        if (list == null) {
+            throw new IllegalArgumentException("List is null");
+        }
         final T[] objects = list.toArray(size -> (T[]) new Object[size]);
         final int length = objects.length;
         ThreadLocalRandom random = ThreadLocalRandom.current();

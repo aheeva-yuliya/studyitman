@@ -7,7 +7,6 @@ import entities.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 class ListTTests {
     @Test
     void shouldSizeWhen() {
@@ -44,23 +43,6 @@ class ListTTests {
     }
 
     @Test
-    void shouldAddAllWhenAddAtIndex() {
-        Circle circle = new Circle(5);
-        Rectangle rectangle =  new Rectangle(3, 4);
-        Square square = new Square(3);
-        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle);
-        LinkedListT<Shape> list = LinkedListT.of(square, circle);
-        Assertions.assertTrue(shapes.addAll(0, list));
-        Object[] expected = new Object[] {square, circle, circle, rectangle};
-        Object[] actual = shapes.toArray();
-        Assertions.assertArrayEquals(expected, actual);
-        Assertions.assertTrue(list.addAll(0, shapes));
-        expected = new Object[] {square, circle, circle, rectangle, square, circle};
-        actual = list.toArray();
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
     void shouldReturnWhenAskedContains() {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
@@ -68,6 +50,14 @@ class ListTTests {
         ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle);
         Assertions.assertTrue(shapes.contains(circle));
         Assertions.assertFalse(shapes.contains(square));
+    }
+
+    @Test
+    void shouldReturnTrueWhenBothCollectionsContainNull() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, null, rectangle);
+        Assertions.assertTrue(shapes.contains(null));
     }
 
     @Test
@@ -129,6 +119,17 @@ class ListTTests {
     }
 
     @Test
+    void shouldTestToStringWhenOneOfElementsIsNull() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, null, square);
+        String expected = "[Circle{radius=5}, Rectangle{width=3, height=4}, null, Square{side=3}]";
+        String actual = shapes.toString();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void shouldToArrayWhen() {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
@@ -145,6 +146,17 @@ class ListTTests {
         Square square = new Square(3);
         LinkedListT<Shape> list = LinkedListT.of(circle, rectangle, square, rectangle);
         Shape[] expected = new Shape[] {circle, rectangle, square, rectangle};
+        Shape[] actual = list.toArray(Shape[]::new);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldToArrayTWhenLinkedListContainsNull() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        LinkedListT<Shape> list = LinkedListT.of(circle, null, rectangle, square, rectangle);
+        Shape[] expected = new Shape[] {circle, null, rectangle, square, rectangle};
         Shape[] actual = list.toArray(Shape[]::new);
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -172,7 +184,7 @@ class ListTTests {
     }
 
     @Test
-    void shouldRemoveIfWhenLinkedList() {
+    void shouldRemoveIfWhenLinkedListContainsNull() {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
         LinkedListT<Shape> shapes = LinkedListT.of(circle, rectangle, circle);
@@ -180,5 +192,31 @@ class ListTTests {
         Object[] expected = new Object[] {};
         Object[] actual = shapes.toArray();
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldThrowWhenNegativeIndex() {
+        IndexOutOfBoundsException exception =
+                Assertions.assertThrows(IndexOutOfBoundsException.class, () -> new ArrayListT<Shape>().get(-1));
+        Assertions.assertEquals("Index -1 out of bounds for size 0", exception.getMessage());
+    }
+
+    @Test
+    void shouldThrowWhenCollectionNull() {
+        ArrayListT<Shape> shapes = ArrayListT.of();
+        IllegalArgumentException exception =
+                Assertions.assertThrows(IllegalArgumentException.class, () -> shapes.addAll(null));
+        Assertions.assertEquals("Collection is null", exception.getMessage());
+    }
+
+    @Test
+    void shouldThrowWhenComparatorNull() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, square);
+        IllegalArgumentException exception =
+                Assertions.assertThrows(IllegalArgumentException.class, () -> shapes.sort(null));
+        Assertions.assertEquals("Comparator is null", exception.getMessage());
     }
 }

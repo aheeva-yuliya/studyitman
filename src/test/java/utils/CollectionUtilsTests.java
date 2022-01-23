@@ -21,22 +21,6 @@ class CollectionUtilsTests {
     }
 
     @Test
-    void shouldFindMinWhenEmpty() {
-        ArrayListT<Shape> list = ArrayListT.of();
-        Assertions.assertNull(CollectionUtils.findMin(list, new MyComparator()));
-    }
-
-    @Test
-    void shouldFindMinWhenNull() {
-        Assertions.assertNull(CollectionUtils.findMin(null, new MyComparator()));
-    }
-
-    @Test
-    void shouldFindMinWhenComparatorNull() {
-        Assertions.assertNull(CollectionUtils.findMin(ArrayListT.of(), null));
-    }
-
-    @Test
     void shouldFindMaxWhen() {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
@@ -83,5 +67,24 @@ class CollectionUtilsTests {
             }
         }
         Assertions.assertFalse(isEqual);
+    }
+
+    @Test
+    void shouldThrowWhenComparatorNull() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> list = ArrayListT.of(circle, rectangle, square);
+        IllegalArgumentException exception =
+                Assertions.assertThrows(IllegalArgumentException.class, () -> CollectionUtils.findMax(list, null));
+        Assertions.assertEquals("Comparator is null", exception.getMessage());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenFindMinAndListIsEmpty() {
+        IllegalArgumentException exception =
+                Assertions.assertThrows(IllegalArgumentException.class, () ->
+                        CollectionUtils.findMin(ArrayListT.of(), new MyComparator()));
+        Assertions.assertEquals("List is empty", exception.getMessage());
     }
 }

@@ -4,6 +4,7 @@ import utils.StringBuilder;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
@@ -15,6 +16,7 @@ import java.util.function.Predicate;
 @SuppressWarnings("unchecked")
 public abstract class ListT<T> {
     protected int size;
+    protected int modificationCount;
 
     /**
      * Size.
@@ -58,28 +60,11 @@ public abstract class ListT<T> {
      * @return boolean
      */
     public boolean addAll(final Collection<? extends T> collection) {
+        if (collection == null) {
+            throw new IllegalArgumentException("Collection is null");
+        }
         for (T t : collection) {
             add(t);
-        }
-        return true;
-    }
-
-    /**
-     * Add all.
-     *
-     * @param index index
-     * @param collection collection
-     * @return boolean
-     */
-    public boolean addAll(int index, final Collection<? extends T> collection) {
-        final ListIterator<T> iterator = iterator();
-        int currentIndex = 0;
-        while (currentIndex <= index) {
-            iterator.next();
-            currentIndex++;
-        }
-        for (T t : collection) {
-            iterator.insertBefore(t);
         }
         return true;
     }
@@ -93,7 +78,7 @@ public abstract class ListT<T> {
     public boolean contains(final Object element) {
         final ListIterator<T> iterator = iterator();
         while (iterator.hasNext()) {
-            if (iterator.next().equals(element)) {
+            if (Objects.equals(iterator.next(), element)) {
                 return true;
             }
         }
@@ -107,6 +92,9 @@ public abstract class ListT<T> {
      * @return boolean
      */
     public boolean containsAll(final Collection<?> collection) {
+        if (collection == null) {
+            throw new IllegalArgumentException("Collection is null");
+        }
         for (Object t : collection) {
             if (!contains(t)) {
                 return false;
@@ -129,6 +117,9 @@ public abstract class ListT<T> {
      * @param collection collection
      */
     public void removeAll(final Collection<?> collection) {
+        if (collection == null) {
+            throw new IllegalArgumentException("Collection is null");
+        }
         final ListIterator<T> iterator = iterator();
         while (iterator.hasNext()) {
             if (collection.contains(iterator.next())) {
@@ -143,6 +134,9 @@ public abstract class ListT<T> {
      * @param predicate predicate
      */
     public void removeIf(final Predicate<? super T> predicate) {
+        if (predicate == null) {
+            throw new IllegalArgumentException("Predicate is null");
+        }
         final ListIterator<T> iterator = iterator();
         while (iterator.hasNext()) {
             if (predicate.test(iterator.next())) {
@@ -211,6 +205,9 @@ public abstract class ListT<T> {
      * @return array
      */
     public T[] toArray(final IntFunction<T[]> factory) {
+        if (factory == null) {
+            throw new IllegalArgumentException("IntFunction is null");
+        }
         T[] result = factory.apply(size);
         final Iterator<T> iterator = iterator();
         for (int i = 0; i < size; i++) {
@@ -227,6 +224,9 @@ public abstract class ListT<T> {
     public abstract ListIterator<T> iterator();
 
     protected T[] listSort(final Comparator<? super T> comparator) {
+        if (comparator == null) {
+            throw new IllegalArgumentException("Comparator is null");
+        }
         T[] array = toArray(size -> (T[]) new Object[size]);
         mergeSort(array, comparator);
         return array;

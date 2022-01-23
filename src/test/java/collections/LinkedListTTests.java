@@ -98,6 +98,19 @@ class LinkedListTTests {
     }
 
     @Test
+    void shouldAddAllWhenAddAtIndex() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle);
+        LinkedListT<Shape> list = LinkedListT.of(square, circle);
+        Assertions.assertTrue(list.addAll(0, shapes));
+        Object[] expected = new Object[] {circle, rectangle, square, circle};
+        Object[] actual = list.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
     void shouldGetAtIndexWhen() {
         LinkedListT<Integer> list = new LinkedListT<>();
         list.addFirst(7);
