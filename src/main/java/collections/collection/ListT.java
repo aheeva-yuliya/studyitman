@@ -1,4 +1,4 @@
-package collections;
+package collections.collection;
 
 import utils.StringBuilder;
 

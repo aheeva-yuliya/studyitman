@@ -1,6 +1,6 @@
 package utils;
 
-import collections.ArrayListT;
+import collections.collection.ArrayListT;
 import entities.Shape;
 
 public class ShapeUtils {

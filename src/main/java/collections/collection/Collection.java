@@ -1,4 +1,4 @@
-package collections;
+package collections.collection;
 
 import java.util.function.IntFunction;
 import java.util.function.Predicate;

@@ -1,7 +1,7 @@
 package utils;
 
-import collections.ArrayListT;
-import collections.LinkedListT;
+import collections.collection.ArrayListT;
+import collections.collection.LinkedListT;
 import entities.Circle;
 import entities.Rectangle;
 import entities.Shape;

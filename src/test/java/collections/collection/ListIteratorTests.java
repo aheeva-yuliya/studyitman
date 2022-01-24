@@ -1,4 +1,4 @@
-package collections;
+package collections.collection;
 
 import entities.Circle;
 import entities.Rectangle;

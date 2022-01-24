@@ -1,6 +1,6 @@
 package utils;
 
-import collections.ArrayListT;
+import collections.collection.ArrayListT;
 import entities.Circle;
 import entities.Rectangle;
 import entities.Shape;
