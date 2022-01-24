@@ -27,7 +27,7 @@ public class CollectionUtils {
             throw new IllegalArgumentException("Comparator is null");
         }
         if (list.isEmpty()) {
-            throw new IllegalArgumentException("List is empty");
+            return null;
         }
         T element = list.get(0);
         for (T t : list) {
@@ -68,9 +68,6 @@ public class CollectionUtils {
     public static <T> int binarySearch(final List<T> list, T obj, final Comparator<T> comparator) {
         if (list == null) {
             throw new IllegalArgumentException("List is null");
-        }
-        if (list.isEmpty()) {
-            throw new IllegalArgumentException("List is empty");
         }
         if (comparator == null) {
             throw new IllegalArgumentException("Comparator is null");

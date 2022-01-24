@@ -381,7 +381,6 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         modificationCount++;
     }
 
-
     /**
      * Clear.
      */

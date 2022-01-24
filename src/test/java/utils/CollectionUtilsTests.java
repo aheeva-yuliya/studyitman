@@ -81,10 +81,7 @@ class CollectionUtilsTests {
     }
 
     @Test
-    void shouldThrowExceptionWhenFindMinAndListIsEmpty() {
-        IllegalArgumentException exception =
-                Assertions.assertThrows(IllegalArgumentException.class, () ->
-                        CollectionUtils.findMin(ArrayListT.of(), new MyComparator()));
-        Assertions.assertEquals("List is empty", exception.getMessage());
+    void shouldReturnNullWhenFindMinAndListIsEmpty() {
+        Assertions.assertNull(CollectionUtils.findMin(ArrayListT.of(), new MyComparator()));
     }
 }
