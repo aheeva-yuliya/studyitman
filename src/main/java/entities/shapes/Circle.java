@@ -1,4 +1,4 @@
-package entities;
+package entities.shapes;
 
 public class Circle extends Shape {
     private final int radius;
@@ -32,5 +32,10 @@ public class Circle extends Shape {
         }
         final Circle circle = (Circle) o;
         return radius == circle.radius;
+    }
+
+    @Override
+    public int hashCode() {
+        return radius;
     }
 }

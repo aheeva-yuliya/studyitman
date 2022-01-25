@@ -1,4 +1,4 @@
-package entities;
+package entities.shapes;
 
 public class Rectangle extends Shape {
     private final int width;
@@ -42,5 +42,10 @@ public class Rectangle extends Shape {
         }
         final Rectangle rectangle = (Rectangle) o;
         return height == rectangle.height && width == rectangle.width;
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * width + height;
     }
 }

@@ -1,4 +1,4 @@
-package entities;
+package entities.shapes;
 
 public class Square extends Shape {
     private final int side;
@@ -36,5 +36,10 @@ public class Square extends Shape {
         }
         final Square square = (Square) o;
         return side == square.side;
+    }
+
+    @Override
+    public int hashCode() {
+        return side;
     }
 }

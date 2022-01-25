@@ -1,10 +1,10 @@
-package utils;
+package utils.collection;
 
-import collections.collection.ArrayListT;
-import entities.Circle;
-import entities.Rectangle;
-import entities.Shape;
-import entities.Square;
+import collections.collection.list.ArrayListT;
+import entities.shapes.Circle;
+import entities.shapes.Rectangle;
+import entities.shapes.Shape;
+import entities.shapes.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

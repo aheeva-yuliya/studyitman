@@ -1,4 +1,7 @@
-package collections.collection;
+package collections.collection.list;
+
+import collections.collection.Collection;
+import collections.collection.ListIterator;
 
 import java.util.Comparator;
 import java.util.ConcurrentModificationException;
@@ -7,87 +10,6 @@ import java.util.Objects;
 public class LinkedListT<T> extends ListT<T> implements List<T> {
     private Node<T> first;
     private Node<T> last;
-
-    /**
-     * Node.
-     */
-    private static class Node<T> {
-        private T element;
-        private Node<T> next;
-        private Node<T> prev;
-
-        public Node(final T element, final Node<T> next, final Node<T> prev) {
-            this.element = element;
-            this.next = next;
-            this.prev = prev;
-        }
-
-        /**
-         * Gets the value of the instance variable "element".
-         *
-         * @return the value of the instance variable "element".
-         * @cpu O(1)
-         * @ram O(1)
-         */
-        public T getElement() {
-            return element;
-        }
-
-        /**
-         * Gets the value of the instance variable "next".
-         *
-         * @return the value of the instance variable "next".
-         * @cpu O(1)
-         * @ram O(1)
-         */
-        public Node<T> getNext() {
-            return next;
-        }
-
-        /**
-         * Gets the value of the instance variable "prev".
-         *
-         * @return the value of the instance variable "prev".
-         * @cpu O(1)
-         * @ram O(1)
-         */
-        public Node<T> getPrev() {
-            return prev;
-        }
-
-        /**
-         * Sets the value of the instance variable "element".
-         *
-         * @param element int argument
-         * @cpu O(1)
-         * @ram O(1)
-         */
-        public void setElement(final T element) {
-            this.element = element;
-        }
-
-        /**
-         * Sets the value of the instance variable "next".
-         *
-         * @param next a link for the next Node
-         * @cpu O(1)
-         * @ram O(1)
-         */
-        public void setNext(final Node<T> next) {
-            this.next = next;
-        }
-
-        /**
-         * Sets the value of the instance variable "prev".
-         *
-         * @param prev a link for the previous Node
-         * @cpu O(1)
-         * @ram O(1)
-         */
-        public void setPrev(final Node<T> prev) {
-            this.prev = prev;
-        }
-    }
 
     /**
      * Creates an object of LinkedList.
@@ -402,6 +324,7 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
         return new LinkedListTIterator();
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private class LinkedListTIterator implements ListIterator<T> {
         private Node<T> next = first;
         private int previousModificationCount = modificationCount;
@@ -484,6 +407,98 @@ public class LinkedListT<T> extends ListT<T> implements List<T> {
             called = false;
         }
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Node.
+     */
+    private static class Node<T> {
+        private T element;
+        private Node<T> next;
+        private Node<T> prev;
+
+        public Node(final T element, final Node<T> next, final Node<T> prev) {
+            this.element = element;
+            this.next = next;
+            this.prev = prev;
+        }
+
+        /**
+         * Gets the value of the instance variable "element".
+         *
+         * @return the value of the instance variable "element".
+         * @cpu O(1)
+         * @ram O(1)
+         */
+        public T getElement() {
+            return element;
+        }
+
+        /**
+         * Gets the value of the instance variable "next".
+         *
+         * @return the value of the instance variable "next".
+         * @cpu O(1)
+         * @ram O(1)
+         */
+        public Node<T> getNext() {
+            return next;
+        }
+
+        /**
+         * Gets the value of the instance variable "prev".
+         *
+         * @return the value of the instance variable "prev".
+         * @cpu O(1)
+         * @ram O(1)
+         */
+        public Node<T> getPrev() {
+            return prev;
+        }
+
+        /**
+         * Sets the value of the instance variable "element".
+         *
+         * @param element int argument
+         * @cpu O(1)
+         * @ram O(1)
+         */
+        public void setElement(final T element) {
+            this.element = element;
+        }
+
+        /**
+         * Sets the value of the instance variable "next".
+         *
+         * @param next a link for the next Node
+         * @cpu O(1)
+         * @ram O(1)
+         */
+        public void setNext(final Node<T> next) {
+            this.next = next;
+        }
+
+        /**
+         * Sets the value of the instance variable "prev".
+         *
+         * @param prev a link for the previous Node
+         * @cpu O(1)
+         * @ram O(1)
+         */
+        public void setPrev(final Node<T> prev) {
+            this.prev = prev;
+        }
+
+        /**
+         * HashCode.
+         *
+         * @return int
+         */
+        public int hashCode() {
+            return element.hashCode();
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private Node<T> search(final int index) {
         int listIndex = 0;

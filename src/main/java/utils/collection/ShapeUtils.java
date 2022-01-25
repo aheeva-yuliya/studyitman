@@ -1,7 +1,7 @@
-package utils;
+package utils.collection;
 
-import collections.collection.ArrayListT;
-import entities.Shape;
+import collections.collection.list.ArrayListT;
+import entities.shapes.Shape;
 
 public class ShapeUtils {
     /**

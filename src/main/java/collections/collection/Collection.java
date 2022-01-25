@@ -96,4 +96,26 @@ public interface Collection<T> extends Iterable<T> {
      * @param predicate predicate
      */
     void removeIf(Predicate<? super T> predicate);
+
+    /**
+     * Equals.
+     *
+     * @param that collection
+     * @return boolean
+     */
+    boolean equals(final Collection<? extends T> that);
+
+    /**
+     * Hash code.
+     *
+     * @return int
+     */
+    int hashCode();
+
+    /**
+     * To string.
+     *
+     * @return string
+     */
+    String toString();
 }

@@ -1,12 +1,12 @@
-package collections.collection;
+package collections.collection.list;
 
-import entities.Circle;
-import entities.Rectangle;
-import entities.Shape;
-import entities.Square;
+import entities.shapes.Circle;
+import entities.shapes.Rectangle;
+import entities.shapes.Shape;
+import entities.shapes.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utils.MyComparator;
+import utils.collection.MyComparator;
 
 class LinkedListTTests {
     @Test

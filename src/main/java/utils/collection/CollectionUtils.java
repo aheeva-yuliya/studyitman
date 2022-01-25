@@ -1,7 +1,7 @@
-package utils;
+package utils.collection;
 
-import collections.collection.List;
 import collections.collection.ListIterator;
+import collections.collection.list.List;
 
 import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;

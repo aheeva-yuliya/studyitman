@@ -1,9 +1,9 @@
-package collections.collection;
+package collections.collection.list;
 
-import entities.Circle;
-import entities.Rectangle;
-import entities.Shape;
-import entities.Square;
+import entities.shapes.Circle;
+import entities.shapes.Rectangle;
+import entities.shapes.Shape;
+import entities.shapes.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -192,6 +192,15 @@ class ListTTests {
         Object[] expected = new Object[] {};
         Object[] actual = shapes.toArray();
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldTestHashCodeWhen() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        LinkedListT<Shape> shapes = LinkedListT.of(circle, rectangle, circle);
+        ArrayListT<Shape> arrayListT = ArrayListT.of(rectangle, circle, circle);
+        Assertions.assertEquals(arrayListT.hashCode(), shapes.hashCode());
     }
 
     @Test

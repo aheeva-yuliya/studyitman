@@ -1,4 +1,4 @@
-package entities;
+package entities.shapes;
 
 public abstract class Shape {
     /**

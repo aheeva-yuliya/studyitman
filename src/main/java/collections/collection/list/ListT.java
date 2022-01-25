@@ -1,5 +1,7 @@
-package collections.collection;
+package collections.collection.list;
 
+import collections.collection.Collection;
+import collections.collection.ListIterator;
 import utils.StringBuilder;
 
 import java.util.Comparator;
@@ -182,6 +184,20 @@ public abstract class ListT<T> {
         }
         listToString.append("]");
         return listToString.toString();
+    }
+
+    /**
+     * Hash code.
+     *
+     * @return int
+     */
+    public int hashCode() {
+        int hash = 0;
+        ListIterator<T> iterator = iterator();
+        while (iterator.hasNext()) {
+            hash += iterator.next().hashCode();
+        }
+        return hash;
     }
 
     /**

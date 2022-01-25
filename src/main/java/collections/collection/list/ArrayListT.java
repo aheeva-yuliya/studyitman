@@ -1,4 +1,7 @@
-package collections.collection;
+package collections.collection.list;
+
+import collections.collection.Collection;
+import collections.collection.ListIterator;
 
 import java.util.Comparator;
 import java.util.ConcurrentModificationException;

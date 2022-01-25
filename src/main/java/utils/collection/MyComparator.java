@@ -1,6 +1,6 @@
-package utils;
+package utils.collection;
 
-import entities.Shape;
+import entities.shapes.Shape;
 
 import java.util.Comparator;
 
