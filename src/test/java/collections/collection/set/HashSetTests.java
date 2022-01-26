@@ -30,9 +30,12 @@ class HashSetTests {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
         Square square = new Square(3);
-        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, square);
+        HashSet<Shape> shapes = new HashSet<>();
+        shapes.add(circle);
+        shapes.add(rectangle);
+        shapes.add(square);
         HashSet<Shape> set = new HashSet<>(shapes);
-        Assertions.assertTrue(set.equals(shapes));
+        Assertions.assertEquals(set, shapes);
     }
 
     @Test
@@ -40,9 +43,12 @@ class HashSetTests {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
         Square square = new Square(3);
-        ArrayListT<Shape> shapes = ArrayListT.of(circle, rectangle, square, circle);
+        HashSet<Shape> shapes = new HashSet<>();
+        shapes.add(circle);
+        shapes.add(rectangle);
         HashSet<Shape> set = new HashSet<>(shapes);
-        Assertions.assertFalse(set.equals(shapes));
+        set.add(square);
+        Assertions.assertNotEquals(set, shapes);
     }
 
     @Test

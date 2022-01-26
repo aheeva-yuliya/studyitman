@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
+@SuppressWarnings({"rawtypes", "unchecked"})
 class HashMapTests {
     @Test
     void shouldReturnSizeWhen() {
@@ -112,7 +115,6 @@ class HashMapTests {
         }
     }
 
-    /////////
     @Nested
     public class PutAllTests {
         @Test
@@ -120,11 +122,14 @@ class HashMapTests {
             HashMap<Number, Number> map = new HashMap<>(3);
             map.put(61, 61);
             map.put(38., 38.);
-            map.put(90L, 90L);
             HashMap<Integer, Integer> that = new HashMap<>(2);
             that.put(10, 10);
             that.put(83, 83);
             map.putAll(that);
+            Entry[] expected = new Entry[]
+                {new Entry(61, 61), new Entry(38.0, 38.0), new Entry(10, 10), new Entry(83, 83)};
+            Map.Entry<Number, Number>[] actual = map.toArray();
+            Assertions.assertArrayEquals(expected, actual);
         }
 
         @Test
@@ -257,16 +262,48 @@ class HashMapTests {
         Assertions.assertTrue(map.isEmpty());
     }
 
-    ///////////
     @Test
     void shouldToArrayWhen() {
         Circle circle = new Circle(5);
         Rectangle rectangle =  new Rectangle(3, 4);
-        Square square = new Square(3);
         HashMap<Integer, Shape> map = new HashMap<>();
         map.put(10, circle);
         map.put(16, rectangle);
-        map.put(1, square);
-        map.toArray();
+        Entry<Integer, Shape>[] expected = new Entry[] {new Entry(16, rectangle), new Entry(10, circle)};
+        Map.Entry<Integer, Shape>[] actual = map.toArray();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static class Entry<K, V> implements Map.Entry<K, V> {
+        private final K key;
+        private final V value;
+
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        @Override
+        public K getKey() {
+            return key;
+        }
+
+        @Override
+        public V getValue() {
+            return value;
+        }
+
+        @Override
+        public boolean equals(final Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (!(obj instanceof Map.Entry)) {
+                return false;
+            }
+            Map.Entry<?, ?> that = (Map.Entry<?, ?>) obj;
+            return Objects.equals(key, that.getKey()) && Objects.equals(value, that.getValue());
+        }
     }
 }

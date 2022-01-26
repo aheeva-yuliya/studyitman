@@ -1,7 +1,10 @@
 package utils.collection;
 
 import collections.collection.ListIterator;
+import collections.collection.list.ArrayListT;
 import collections.collection.list.List;
+import collections.map.HashMap;
+import collections.map.Map;
 
 import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;
@@ -9,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * CollectionUtils.
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked"})
 public class CollectionUtils {
     /**
      * Find min.
@@ -158,5 +161,57 @@ public class CollectionUtils {
             iterator.next();
             iterator.set(object);
         }
+    }
+
+    /**
+     * Find positions.
+     *
+     * @param a list
+     * @param b list
+     * @return int[]
+     */
+    public static int[] findPositions(final List<?> a, final List<?> b) {
+        if (a == null || b == null) {
+            throw new IllegalArgumentException("List is null.");
+        }
+        final int length = b.size();
+        final int[] positions = new int[length];
+        final Object[] objectsA = a.toArray();
+        final HashMap<Object, Integer> map = new HashMap<>();
+        for (int i = a.size() - 1; i >= 0; i--) {
+            map.put(objectsA[i], i);
+        }
+        int i = 0;
+        for (Object object : b) {
+            final Integer value = map.get(object);
+            positions[i++] = value == null ? -1 : value;
+
+        }
+        return positions;
+    }
+
+    /**
+     * Create without duplicates.
+     *
+     * @param list list
+     * @param <T> type
+     * @return list
+     */
+    public static <T> List<T> createWithoutDuplicates(final List<T> list) {
+        if (list == null) {
+            throw new IllegalArgumentException("List is null.");
+        }
+        final HashMap<T, Integer> map = new HashMap<>();
+        int i = 0;
+        for (T t : list) {
+            if (!map.containsKey(t)) {
+                map.put(t, i++);
+            }
+        }
+        final ArrayListT<T> result = ArrayListT.of((T[]) new Object[map.size()]);
+        for (Map.Entry<T, Integer> entry : map) {
+            result.set(entry.getValue(), entry.getKey());
+        }
+        return result;
     }
 }

@@ -150,16 +150,17 @@ public abstract class ListT<T> {
     /**
      * Equals.
      *
-     * @param that collection
+     * @param obj object
      * @return boolean
      */
-    public boolean equals(final Collection<? extends T> that) {
-        if (this == that) {
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (that == null) {
+        if (!(obj instanceof Collection)) {
             return false;
         }
+        final Collection<Object> that = (Collection<Object>) obj;
         if (this.size != that.size()) {
             return false;
         }

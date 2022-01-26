@@ -2,6 +2,7 @@ package utils.collection;
 
 import collections.collection.list.ArrayListT;
 import collections.collection.list.LinkedListT;
+import entities.items.Item;
 import entities.shapes.Circle;
 import entities.shapes.Rectangle;
 import entities.shapes.Shape;
@@ -83,5 +84,28 @@ class CollectionUtilsTests {
     @Test
     void shouldReturnNullWhenFindMinAndListIsEmpty() {
         Assertions.assertNull(CollectionUtils.findMin(ArrayListT.of(), new MyComparator()));
+    }
+
+    @Test
+    void shouldFindPositionsWhen() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Object> a = ArrayListT.of(circle, rectangle, square, circle, null, new Item(1, "t", 5));
+        ArrayListT<Object> b = ArrayListT.of(null, square, new Item(5, "t", 2), circle);
+        int[] expected = new int[] {4, 2, -1, 0};
+        int[] actual = CollectionUtils.findPositions(a, b);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldCreateWithoutDuplicatesWhen() {
+        Circle circle = new Circle(5);
+        Rectangle rectangle =  new Rectangle(3, 4);
+        Square square = new Square(3);
+        ArrayListT<Shape> a = ArrayListT.of(circle, null, null, null, null, square, circle, null, square, rectangle);
+        ArrayListT<Shape> expected = ArrayListT.of(circle, null, square, rectangle);
+        var actual = CollectionUtils.createWithoutDuplicates(a);
+        Assertions.assertEquals(expected, actual);
     }
 }

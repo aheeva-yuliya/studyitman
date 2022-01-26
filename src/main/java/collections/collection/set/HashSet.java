@@ -154,14 +154,22 @@ public class HashSet<T> implements Set<T> {
         return hash;
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj object
+     * @return boolean
+     */
     @Override
-    public boolean equals(final Collection<? extends T> that) {
-        if (this == that) {
+    @SuppressWarnings("unchecked")
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (that == null) {
+        if (!(obj instanceof Set)) {
             return false;
         }
+        final Set<Object> that = (Set<Object>) obj;
         if (map.size() != that.size()) {
             return false;
         }
