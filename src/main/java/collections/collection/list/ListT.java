@@ -160,7 +160,7 @@ public abstract class ListT<T> {
         if (!(obj instanceof Collection)) {
             return false;
         }
-        final Collection<Object> that = (Collection<Object>) obj;
+        final List<Object> that = (List<Object>) obj;
         if (this.size != that.size()) {
             return false;
         }
