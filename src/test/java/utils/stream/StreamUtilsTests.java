@@ -1,17 +1,16 @@
 package utils.stream;
 
+import entities.streamed.Tag;
+import entities.streamed.Task;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import entities.streamed.Tag;
-import entities.streamed.Task;
 
 import java.time.LocalDate;
 import java.util.*;
 
 
 class StreamUtilsTests {
-
     @Test
     void shouldCountNumberOfDoneTasksWhenListWithoutNull() {
         List<Task> tasks =  createList();
@@ -92,7 +91,7 @@ class StreamUtilsTests {
         Tag literature = new Tag("literature");
         Tag physics = new Tag("physics");
         Tag math = new Tag("math");
-        Tag informatics = new Tag ("informatics");
+        Tag informatics = new Tag("informatics");
 
         return List.of(
                 new Task(
