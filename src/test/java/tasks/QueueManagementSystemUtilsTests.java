@@ -88,9 +88,9 @@ public class QueueManagementSystemUtilsTests {
             QueueManagementSystem b = new QueueManagementSystem("b");
             QueueManagementSystem c = new QueueManagementSystem("c");
             QueueManagementSystem d = new QueueManagementSystem("d");
-            QueueManagementSystem[] aBCD = new QueueManagementSystem[]{of(a, 10, 5), of(b, 20, 10, 5),
+            QueueManagementSystem[] abCD = new QueueManagementSystem[]{of(a, 10, 5), of(b, 20, 10, 5),
                     of(c, 20, 20, 20), of(d, 10)};
-            Assertions.assertEquals(25, QueueManagementSystemUtils.calcMedianVisits(aBCD));
+            Assertions.assertEquals(25, QueueManagementSystemUtils.calcMedianVisits(abCD));
         }
     }
 
@@ -122,9 +122,9 @@ public class QueueManagementSystemUtilsTests {
             QueueManagementSystem b = new QueueManagementSystem("b");
             QueueManagementSystem c = new QueueManagementSystem("c");
             QueueManagementSystem d = new QueueManagementSystem("d");
-            QueueManagementSystem[] fromABCD = new QueueManagementSystem[]{of(a, 4, 2, 1), of(b, 2),
+            QueueManagementSystem[] fromABcd = new QueueManagementSystem[]{of(a, 4, 2, 1), of(b, 2),
                     of(c, 4), of(d, 2, 2, 5)};
-            Statistic[] statistics = QueueManagementSystemUtils.calcStatisticByDays(fromABCD);
+            Statistic[] statistics = QueueManagementSystemUtils.calcStatisticByDays(fromABcd);
             String expected0 = "Statistic{min=2, max=4, count=6, average=3.0, median=3.0}";
             String actual0 = statistics[0].toString();
             String expected1 = "Statistic{min=2, max=2, count=4, average=2.0, median=2.0}";

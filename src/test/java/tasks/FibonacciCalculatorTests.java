@@ -23,7 +23,7 @@ class FibonacciCalculatorTests {
         }
 
         @Test
-        public void shouldCalcFibonacciWhenN() {
+        public void shouldCalcFibonacciWhenNOperations() {
             FibonacciCalculator calculator = new FibonacciCalculator();
             Assertions.assertEquals(610, calculator.calc(15));
         }

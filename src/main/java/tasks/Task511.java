@@ -3,7 +3,7 @@ package tasks;
 import utils.ArrayUtils;
 
 /**
- * Task511
+ * Task511.
  */
 public class Task511 {
     /**
@@ -19,7 +19,7 @@ public class Task511 {
     public static int countEquals(int[] a, int[] b) {
         int equals = 0;
         int[] tempA = new int [a.length];
-        System.arraycopy(a,0, tempA, 0, a.length);
+        System.arraycopy(a, 0, tempA, 0, a.length);
         int[] tempB = new int[b.length];
         System.arraycopy(b, 0, tempB, 0, b.length);
         ArrayUtils.mergeSort(tempA);

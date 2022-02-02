@@ -1,6 +1,6 @@
 package utils;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Pair;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -15,13 +15,13 @@ public class GraphUtilsTests {
                     new Pair(1, 2),
                     new Pair(1, 3)
             };
-            ArrayList[] expected = new ArrayList[]{
-                    ArrayList.of(),
-                    ArrayList.of(2, 3),
-                    ArrayList.of(),
-                    ArrayList.of()
+            IntArrayList[] expected = new IntArrayList[]{
+                    IntArrayList.of(),
+                    IntArrayList.of(2, 3),
+                    IntArrayList.of(),
+                    IntArrayList.of()
             };
-            ArrayList[] actual = GraphUtils.toAdjacencyList(3, edges);
+            IntArrayList[] actual = GraphUtils.toAdjacencyList(3, edges);
             for (int i = 0; i < expected.length; i++) {
                 Assertions.assertTrue(expected[i].equals(actual[i]));
             }
@@ -30,13 +30,13 @@ public class GraphUtilsTests {
         @Test
         public void shouldReturnAdjacencyListWhenEdgesEmpty() {
             Pair[] edges = new Pair[]{};
-            ArrayList[] expected = new ArrayList[]{
-                    ArrayList.of(),
-                    ArrayList.of(),
-                    ArrayList.of(),
-                    ArrayList.of()
+            IntArrayList[] expected = new IntArrayList[]{
+                    IntArrayList.of(),
+                    IntArrayList.of(),
+                    IntArrayList.of(),
+                    IntArrayList.of()
             };
-            ArrayList[] actual = GraphUtils.toAdjacencyList(3, edges);
+            IntArrayList[] actual = GraphUtils.toAdjacencyList(3, edges);
             for (int i = 0; i < expected.length; i++) {
                 Assertions.assertTrue(expected[i].equals(actual[i]));
             }
@@ -51,13 +51,13 @@ public class GraphUtilsTests {
                     new Pair(1, 2),
                     new Pair(1, 3)
             };
-            ArrayList[] expected = new ArrayList[]{
-                    ArrayList.of(),
-                    ArrayList.of(2, 3),
-                    ArrayList.of(1),
-                    ArrayList.of(1)
+            IntArrayList[] expected = new IntArrayList[]{
+                    IntArrayList.of(),
+                    IntArrayList.of(2, 3),
+                    IntArrayList.of(1),
+                    IntArrayList.of(1)
             };
-            ArrayList[] actual = GraphUtils.toUndirectedAdjacencyList(3, edges);
+            IntArrayList[] actual = GraphUtils.toUndirectedAdjacencyList(3, edges);
             for (int i = 0; i < expected.length; i++) {
                 Assertions.assertTrue(expected[i].equals(actual[i]));
             }
@@ -66,13 +66,13 @@ public class GraphUtilsTests {
         @Test
         public void shouldReturnUndirectedAdjacencyListWhenEdgesEmpty() {
             Pair[] edges = new Pair[]{};
-            ArrayList[] expected = new ArrayList[]{
-                    ArrayList.of(),
-                    ArrayList.of(),
-                    ArrayList.of(),
-                    ArrayList.of()
+            IntArrayList[] expected = new IntArrayList[]{
+                    IntArrayList.of(),
+                    IntArrayList.of(),
+                    IntArrayList.of(),
+                    IntArrayList.of()
             };
-            ArrayList[] actual = GraphUtils.toUndirectedAdjacencyList(3, edges);
+            IntArrayList[] actual = GraphUtils.toUndirectedAdjacencyList(3, edges);
             for (int i = 0; i < expected.length; i++) {
                 Assertions.assertTrue(expected[i].equals(actual[i]));
             }

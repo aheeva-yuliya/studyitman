@@ -1,7 +1,7 @@
 package entities;
 
 /**
- * Statistic
+ * Statistic.
  */
 public class Statistic {
     private final int min;
@@ -11,7 +11,8 @@ public class Statistic {
     private final double median;
 
     /**
-     * Statistic
+     * Statistic.
+     *
      * @param min int argument
      * @param max int argument
      * @param count long argument
@@ -95,21 +96,29 @@ public class Statistic {
      * @return a string with information.
      */
     public String toString() {
-        return "Statistic{min=" + min + ", max=" + max +", count=" + count
+        return "Statistic{min=" + min + ", max=" + max + ", count=" + count
                 + ", average=" + average + ", median=" + median + "}";
     }
 
     /**
-     * Compares all instance variables of two objects.
+     * Indicates whether some other object is "equal to" this one.
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that Statistic object
-     * @return boolean true if objects are equal and false if aren't.
+     * @param obj the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(Statistic that) {
-        return that != null && min == that.min && max == that.max && count == that.count
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Statistic that = (Statistic) obj;
+        return min == that.min && max == that.max && count == that.count
                 && average == that.average && median == that.median;
     }
 }

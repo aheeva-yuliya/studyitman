@@ -1,10 +1,10 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import collections.Stack;
 
 /**
- * Task527
+ * Task527.
  */
 public class Task527 {
 
@@ -18,14 +18,14 @@ public class Task527 {
      * @param adjacencyList pairs for a given grath
      * @return a boolean array of elements.
      */
-    public static boolean[] findComponent(ArrayList[] adjacencyList) {
+    public static boolean[] findComponent(IntArrayList[] adjacencyList) {
         final boolean[] components = new boolean[adjacencyList.length];
         final Stack stack = new Stack();
         stack.push(0);
         components[0] = true;
         while (!stack.isEmpty()) {
             final int vertex = stack.pop();
-            final ArrayList neighbors = adjacencyList[vertex];
+            final IntArrayList neighbors = adjacencyList[vertex];
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 if (!components[neighbors.get(i)]) {
                     stack.push(neighbors.get(i));

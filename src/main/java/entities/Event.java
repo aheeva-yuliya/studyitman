@@ -1,25 +1,26 @@
 package entities;
 
 /**
- * Event
+ * Event.
  */
 public class Event {
+    private int id;
     private int year;
     private int month;
     private int day;
     private String name;
-    private int id;
 
     public Event() {}
 
     /**
-     * Event
+     * Event.
+     *
      * @param year int argument
      * @param month int argument
      * @param day int argument
      * @param name String argument
      */
-    public Event (int year, int month, int day, String name) {
+    public Event(int year, int month, int day, String name) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -27,23 +28,24 @@ public class Event {
     }
 
     /**
-     * Event
-     * @param year int argument
-     * @param month int argument
-     * @param day int argument
-     * @param name String argument
+     * Event.
+     *
      * @param id int argument
+     * @param year int argument
+     * @param month int argument
+     * @param day int argument
+     * @param name String argument
      */
-    public Event (int year, int month, int day, String name, int id) {
+    public Event(int id, int year, int month, int day, String name) {
+        this.id = id;
         this.year = year;
         this.month = month;
         this.day = day;
         this.name = name;
-        this.id = id;
     }
 
     /**
-     * Sets the value of the instance variable "id"
+     * Sets the value of the instance variable "id".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -55,7 +57,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "id"
+     * Gets the value of the instance variable "id".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -67,7 +69,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "year"
+     * Gets the value of the instance variable "year".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -79,7 +81,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "month"
+     * Gets the value of the instance variable "month".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -91,7 +93,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "day"
+     * Gets the value of the instance variable "day".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -103,7 +105,7 @@ public class Event {
     }
 
     /**
-     * Gets the value of the instance variable "name"
+     * Gets the value of the instance variable "name".
      *
      * @cpu O(1)
      * @ram O(1)
@@ -123,20 +125,28 @@ public class Event {
      * @return a string with information.
      */
     public String toString() {
-        return "Event{year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "', id=" + id + "}";
+        return "Event{id=" + id + ", year=" + year + ", month=" + month + ", day=" + day + ", name='" + name + "'}";
     }
 
     /**
-     * Compares all instance variables of two objects.
+     * Indicates whether some other object is "equal to" this one.
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param that Event object
-     * @return boolean true if objects are equal and false if aren't.
+     * @param obj the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(Event that) {
-        return that != null && year == that.year && month == that.month && day == that.day && id == that.id
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Event that = (Event) obj;
+        return year == that.year && month == that.month && day == that.day && id == that.id
                 && (name != null && name.equals(that.name) || name == null && that.name == null);
     }
 
@@ -157,6 +167,7 @@ public class Event {
             return 1;
         } else if (this.year == that.year && this.month == that.month && this.day == that.day) {
             return 0;
-        } return -1;
+        }
+        return -1;
     }
 }

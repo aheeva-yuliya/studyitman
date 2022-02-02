@@ -1,7 +1,7 @@
 package tasks;
 
-import collections.ArrayList;
 import collections.BfsQueue;
+import collections.IntArrayList;
 import collections.Queue;
 import collections.Stack;
 import entities.BfsNode;
@@ -9,7 +9,7 @@ import entities.Pair;
 import utils.GraphUtils;
 
 /**
- * Task532
+ * Task532.
  */
 public class Task532 {
 
@@ -27,14 +27,14 @@ public class Task532 {
      * @return true if there is a chain otherwise false.
      */
     public static boolean existsChain(int people, Pair[] acquaintances, int from, int to) {
-        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+        final IntArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
         final boolean[] used = new boolean[adjacencyList.length];
         final Stack stack = new Stack();
         stack.push(from);
         used[from] = true;
         while (!stack.isEmpty()) {
             final int vertex = stack.pop();
-            final ArrayList neighbors = adjacencyList[vertex];
+            final IntArrayList neighbors = adjacencyList[vertex];
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 if (!used[neighbors.get(i)]) {
                     if (neighbors.get(i) == to) {
@@ -62,14 +62,14 @@ public class Task532 {
      * @return true if there is a chain otherwise false.
      */
     public static boolean existsChainByBfs(int people, Pair[] acquaintances, int from, int to) {
-        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+        final IntArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
         final boolean[] used = new boolean[adjacencyList.length];
         final Queue queue = new Queue();
         queue.offer(from);
         used[from] = true;
         while (!queue.isEmpty()) {
             final int vertex = queue.poll();
-            final ArrayList neighbors = adjacencyList[vertex];
+            final IntArrayList neighbors = adjacencyList[vertex];
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 if (!used[neighbors.get(i)]) {
                     if (neighbors.get(i) == to) {
@@ -96,13 +96,13 @@ public class Task532 {
      * @return the minimum chain length if from know to, otherwise -1.
      */
     public static int findMinChainLengthByVisits(int people, Pair[] acquaintances, int from, int to) {
-        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+        final IntArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
         final int[] used = new int[adjacencyList.length];
         final Queue queue = new Queue();
         queue.offer(from);
         while (!queue.isEmpty()) {
             final int vertex = queue.poll();
-            final ArrayList neighbors = adjacencyList[vertex];
+            final IntArrayList neighbors = adjacencyList[vertex];
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 if (used[neighbors.get(i)] == 0) {
                     queue.offer(neighbors.get(i));
@@ -129,7 +129,7 @@ public class Task532 {
      * @return the minimum chain length if from know to, otherwise -1.
      */
     public static int findMinChainLengthByQueue(int people, Pair[] acquaintances, int from, int to) {
-        final ArrayList chain = findMinChainByQueue(people, acquaintances, from, to);
+        final IntArrayList chain = findMinChainByQueue(people, acquaintances, from, to);
         if (chain == null) {
             return -1;
         }
@@ -148,8 +148,8 @@ public class Task532 {
      * @param to int argument
      * @return the minimum chain length if from know to, otherwise -1.
      */
-    public static ArrayList findMinChainByQueue(int people, Pair[] acquaintances, int from, int to) {
-        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
+    public static IntArrayList findMinChainByQueue(int people, Pair[] acquaintances, int from, int to) {
+        final IntArrayList[] adjacencyList = GraphUtils.toAdjacencyList(people, acquaintances);
         final boolean[] used = new boolean[adjacencyList.length];
         final BfsQueue queue = new BfsQueue();
         int distance = 0;
@@ -159,12 +159,12 @@ public class Task532 {
             distance = queue.peek().getDistance() + 1;
             BfsNode prev = queue.peek();
             final int vertex = queue.poll().getVertex();
-            final ArrayList neighbors = adjacencyList[vertex];
+            final IntArrayList neighbors = adjacencyList[vertex];
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 final int neighbor = neighbors.get(i);
                 if (neighbor == to) {
-                    final ArrayList chain = new ArrayList();
-                    final ArrayList support = new ArrayList();
+                    final IntArrayList chain = new IntArrayList();
+                    final IntArrayList support = new IntArrayList();
                     support.add(to);
                     while (prev != null) {
                         support.add(prev.getVertex());

@@ -22,27 +22,27 @@ public class TicketTests {
         public void shouldReturnFalseWhenTicketsNotEqual() {
             Ticket a = new Ticket(1, "a");
             Ticket b = new Ticket(2, "b");
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
 
         @Test
         public void shouldReturnTrueWhenTicketsEqual() {
             Ticket a = new Ticket(1, "a");
             Ticket b = new Ticket(1, "a");
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenThatNull() {
             Ticket a = new Ticket(20, "A");
-            Assertions.assertFalse(a.equals(null));
+            Assertions.assertNotEquals(null, a);
         }
 
         @Test
         public void shouldReturnTrueWhenEqualAndBothContainNull() {
             Ticket a = new Ticket(2024, null);
             Ticket b = new Ticket(2024, null);
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
     }
 }

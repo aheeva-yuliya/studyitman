@@ -3,7 +3,7 @@ package tasks;
 import entities.Event;
 
 /**
- * Task439
+ * Task439.
  */
 public class Task439 {
 

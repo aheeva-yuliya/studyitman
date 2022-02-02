@@ -36,14 +36,14 @@ public class PairTests {
         public void shouldReturnTrueWhenPairsEqual() {
             Pair pair = new Pair(4, 6);
             Pair that = new Pair(4, 6);
-            Assertions.assertTrue(pair.equals(that));
+            Assertions.assertEquals(pair, that);
         }
 
         @Test
         public void shouldReturnFalseWhenPairsNotEqual() {
             Pair pair = new Pair(4, 6);
             Pair that = new Pair(6, 4);
-            Assertions.assertFalse(pair.equals(that));
+            Assertions.assertNotEquals(pair, that);
         }
     }
 }

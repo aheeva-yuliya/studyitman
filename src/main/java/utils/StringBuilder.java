@@ -1,7 +1,7 @@
 package utils;
 
 /**
- * StringBuilder
+ * StringBuilder.
  */
 public class StringBuilder {
     private char[] data;
@@ -18,7 +18,7 @@ public class StringBuilder {
     }
 
     /**
-     * The constructor creates an object with a data field length equals to the parameter capacity
+     * The constructor creates an object with a data field length equals to the parameter capacity.
      *
      * @cpu O(1)
      * @ram O(n), n = capacity
@@ -139,8 +139,7 @@ public class StringBuilder {
      */
     public String toString() {
         char[] chars = new char[size];
-        System.arraycopy(data, 0, chars, 0, size );
+        System.arraycopy(data, 0, chars, 0, size);
         return new String(chars);
     }
-
 }

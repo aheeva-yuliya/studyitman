@@ -3,7 +3,7 @@ package collections;
 import utils.StringBuilder;
 
 /**
- * LinkedList
+ * LinkedList.
  */
 public class LinkedList {
     private Node first;
@@ -11,7 +11,7 @@ public class LinkedList {
     private int size;
 
     /**
-     * Node
+     * Node.
      */
     private static class Node {
         private int element;
@@ -133,7 +133,7 @@ public class LinkedList {
      * @param element int argument
      */
     public void addFirst(final int element) {
-        final Node temp = new Node(element,null,null);
+        final Node temp = new Node(element, null, null);
         if (last == null) {
             last = temp;
         } else {
@@ -210,7 +210,7 @@ public class LinkedList {
      * @param element int argument
      */
     public void addLast(final int element) {
-        final Node temp = new Node(element,null,null);
+        final Node temp = new Node(element, null, null);
         if (first == null) {
             first = temp;
         } else {
@@ -230,7 +230,7 @@ public class LinkedList {
      * @return the value of the last element of the LinkedList.
      */
     public int getLast() {
-       return last.getElement();
+        return last.getElement();
     }
 
     /**
@@ -335,6 +335,7 @@ public class LinkedList {
         } else {
             node.getPrev().setNext(node.getNext());
             node.getNext().setPrev(node.getPrev());
+            size--;
             return node.getElement();
         }
     }
@@ -359,6 +360,44 @@ public class LinkedList {
      */
     public int size() {
         return size;
+    }
+
+    /**
+     * Indicates whether some other object is "equal to" this one .
+     *
+     * @cpu (n + m) n = number of Nodes in this LinkedList and m = number of Nodes of that LinkedList.
+     * @ram O(1)
+     *
+     * @param obj an object of LinkedList or null
+     * @return true if the objects are equal and false if aren't.
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final LinkedList that = (LinkedList) obj;
+        final int thisSize = this.size();
+        final int thatSize = that.size();
+        if (thisSize == 0 && thatSize == 0) {
+            return true;
+        } else if (thisSize > thatSize || thatSize > thisSize) {
+            return false;
+        } else {
+            Node thisNext = this.first;
+            Node thatNext = that.first;
+            while (thisNext != null) {
+                if (thisNext.getElement() != thatNext.getElement()) {
+                    return false;
+                }
+                thisNext = thisNext.getNext();
+                thatNext = thatNext.getNext();
+            }
+            return true;
+        }
     }
 
     /**

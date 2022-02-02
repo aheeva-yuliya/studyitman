@@ -1,12 +1,12 @@
 package services.queue;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Ticket;
 import org.springframework.web.bind.annotation.*;
 import tasks.QueueManagementSystem;
 
 /**
- * QueueController
+ * QueueController.
  */
 @RestController
 public class QueueController {
@@ -60,7 +60,33 @@ public class QueueController {
      */
     @GetMapping("/api/queue/getVisitsByDays")
     public int[] getVisitsByDay() {
-        ArrayList arrayList = queue.getVisitsByDay();
-        return arrayList.toArray();
+        IntArrayList intArrayList = queue.getVisitsByDay();
+        return intArrayList.toArray();
+    }
+
+    /**
+     * Returns tickets of the current queue.
+     *
+     * @cpu O(n), n = number of tickets in current queue
+     * @ram O(n), n = number of tickets in current queue
+     *
+     * @return tickets of the current queue.
+     */
+    @GetMapping("/api/queue/getCurrentQueue")
+    public Ticket[] getCurrentQueue() {
+        return queue.getCurrentQueue();
+    }
+
+    /**
+     * Returns ticket of the head of current queue.
+     *
+     * @cpu O(n), n = number of tickets in current queue
+     * @ram O(1)
+     *
+     * @return tickets of the current queue.
+     */
+    @PostMapping("api/queue/callNext")
+    public Ticket callNext() {
+        return queue.callNext();
     }
 }

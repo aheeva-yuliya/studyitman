@@ -1,10 +1,10 @@
 package collections;
 
 /**
- * Stack
+ * Stack.
  */
 public class Stack {
-    private final ArrayList arrayList = new ArrayList();
+    private final IntArrayList intArrayList = new IntArrayList();
 
     /**
      * Pushes the element to the top of the stack.
@@ -14,8 +14,8 @@ public class Stack {
      *
      * @param element int argument
      */
-    public void push(int element){
-        arrayList.add(element);
+    public void push(int element) {
+        intArrayList.add(element);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Stack {
      * @return the value of the top element.
      */
     public int peek() {
-        return arrayList.get(arrayList.size() - 1);
+        return intArrayList.get(intArrayList.size() - 1);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Stack {
      * @return the value of the top element of the stack.
      */
     public int pop() {
-        return arrayList.remove(arrayList.size() - 1);
+        return intArrayList.remove(intArrayList.size() - 1);
     }
 
     /**
@@ -50,7 +50,7 @@ public class Stack {
      * @ram O(1)
      */
     public int size() {
-        return arrayList.size();
+        return intArrayList.size();
     }
 
     /**
@@ -62,7 +62,7 @@ public class Stack {
      * @return boolean true if the stack is empty.
      */
     public boolean isEmpty() {
-        return arrayList.size() == 0;
+        return intArrayList.size() == 0;
     }
 
     /**
@@ -74,6 +74,6 @@ public class Stack {
      * @return int[] with all copied elements.
      */
     public int[] toArray() {
-        return arrayList.toArray();
+        return intArrayList.toArray();
     }
 }
