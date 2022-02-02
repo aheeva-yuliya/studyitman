@@ -157,7 +157,7 @@ public abstract class ListT<T> {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof Collection)) {
+        if (!(obj instanceof List)) {
             return false;
         }
         final List<Object> that = (List<Object>) obj;
