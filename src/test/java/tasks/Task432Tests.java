@@ -10,7 +10,7 @@ public class Task432Tests {
         @Test
         public void shouldCalcPrimeNumbersWhenNumberHasSome() {
             long x = 120;
-            long[] expected = new long[]{2, 3, 5,};
+            long[] expected = new long[]{2, 3, 5};
             long[] actual = Task432.calcPrimeNumbers(x);
             Assertions.assertArrayEquals(expected, actual);
         }

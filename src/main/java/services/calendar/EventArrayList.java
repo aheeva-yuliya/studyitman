@@ -3,9 +3,9 @@ package services.calendar;
 import entities.Event;
 
 /**
- * DynamicEventList
+ * DynamicEventList.
  */
-public class DynamicEventList {
+public class EventArrayList {
     private Event[] array;
     private int size;
     private int id;
@@ -16,7 +16,7 @@ public class DynamicEventList {
      * @cpu O(1)
      * @ram O(1)
      */
-    public DynamicEventList() {
+    public EventArrayList() {
         array = new Event[16];
     }
 
@@ -95,7 +95,7 @@ public class DynamicEventList {
     /**
      * Returns all events from the array.
      *
-     * @cpu O(n(log(n))), n = instance variable "size"
+     * @cpu O(n(log(n))m), n = instance variable "size", m = min of name length
      * @ram O(n), n = instance variable "size"
      *
      * @return all events from the array.
@@ -110,7 +110,7 @@ public class DynamicEventList {
     /**
      * Returns all events from the array with the year equals to the parameter year.
      *
-     * @cpu O(n(log(n))), n = instance variable "size"
+     * @cpu O(n(log(n))m), n = instance variable "size", m = min of name length
      * @ram O(n), n = instance variable "size"
      *
      * @param year int argument
@@ -130,7 +130,7 @@ public class DynamicEventList {
      * Returns all events from the array with the year equals to the parameter year
      *          and the month equals to the parameter month.
      *
-     * @cpu O(n(log(n))), n = instance variable "size"
+     * @cpu O(n(log(n))m), n = instance variable "size", m = min of name length
      * @ram O(n), n = instance variable "size"
      *
      * @param month int argument
@@ -153,7 +153,7 @@ public class DynamicEventList {
     /**
      * Returns all events from the array with the asked date.
      *
-     * @cpu O(n(log(n))), n = instance variable "size"
+     * @cpu O(n(log(n))m), n = instance variable "size", m = min of name length
      * @ram O(n), n = instance variable "size"
      *
      * @param day int argument

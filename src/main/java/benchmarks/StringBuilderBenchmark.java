@@ -1,7 +1,7 @@
 package benchmarks;
 
 /**
- * StringBuilderBenchmark
+ * StringBuilderBenchmark.
  */
 public class StringBuilderBenchmark {
     /**
@@ -39,6 +39,10 @@ public class StringBuilderBenchmark {
     }
 
     /**
+     * Main.
+     *
+     * @param args String[] arguments
+     *
      * concatenateUsingOperator 411,95 s
      * concatenateUsingStringBuilder 0,13 s
      */

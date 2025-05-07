@@ -1,6 +1,6 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Statistic;
 import utils.ArrayUtils;
 
@@ -71,7 +71,7 @@ public class QueueManagementSystemUtils {
         return actual[systems.length / 2];
     }
 
-    private static int findMin(ArrayList min) {
+    private static int findMin(IntArrayList min) {
         int[] ints = min.toArray();
         int minimum = Integer.MAX_VALUE;
         for (int anInt : ints) {
@@ -82,7 +82,7 @@ public class QueueManagementSystemUtils {
         return minimum;
     }
 
-    private static int findMax(ArrayList max) {
+    private static int findMax(IntArrayList max) {
         int[] ints = max.toArray();
         int maximum = Integer.MIN_VALUE;
         for (int anInt : ints) {
@@ -93,7 +93,7 @@ public class QueueManagementSystemUtils {
         return maximum;
     }
 
-    private static long calcCount(ArrayList counts) {
+    private static long calcCount(IntArrayList counts) {
         int[] ints = counts.toArray();
         long count = 0;
         for (int anInt : ints) {
@@ -102,7 +102,7 @@ public class QueueManagementSystemUtils {
         return count;
     }
 
-    private static double calcAverageByDay(ArrayList avg) {
+    private static double calcAverageByDay(IntArrayList avg) {
         int[] ints = avg.toArray();
         double average = 0;
         for (int anInt : ints) {
@@ -111,7 +111,7 @@ public class QueueManagementSystemUtils {
         return average / ints.length;
     }
 
-    private static double calcMedianByDay(ArrayList med) {
+    private static double calcMedianByDay(IntArrayList med) {
         int[] actual = med.toArray();
         ArrayUtils.mergeSort(actual);
         if (actual.length == 0) {
@@ -140,7 +140,7 @@ public class QueueManagementSystemUtils {
         if (systems.length == 0) {
             return new Statistic[0];
         }
-        ArrayList[] arrays = new ArrayList[systems.length];
+        IntArrayList[] arrays = new IntArrayList[systems.length];
         int maxSize = 0;
         for (int i = 0; i < systems.length; i++) {
             arrays[i] = systems[i].getVisitsByDay();
@@ -149,12 +149,12 @@ public class QueueManagementSystemUtils {
             }
         }
         Statistic[] statistics = new Statistic[maxSize];
-        ArrayList[] forStatistics = new ArrayList[maxSize];
+        IntArrayList[] forStatistics = new IntArrayList[maxSize];
         for (int i = 0; i < maxSize; i++) {
-            forStatistics[i] = new ArrayList(1);
+            forStatistics[i] = new IntArrayList(1);
         }
         int length = maxSize;
-        for (int j = 0; j < length; j++ ) {
+        for (int j = 0; j < length; j++) {
             for (int i = 0; i < systems.length; i++) {
                 if (arrays[i].size() == maxSize) {
                     forStatistics[j].add(arrays[i].get(0));

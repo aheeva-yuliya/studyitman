@@ -55,14 +55,14 @@ public class StatisticTests {
         public void shouldReturnTrueWhenStatisticsEqual() {
             Statistic a = new Statistic(1, 2, 3, 4, 5);
             Statistic b = new Statistic(1, 2, 3, 4, 5);
-            Assertions.assertTrue(a.equals(b));
+            Assertions.assertEquals(a, b);
         }
 
         @Test
         public void shouldReturnFalseWhenStatisticsNotEqual() {
             Statistic a = new Statistic(3, 2, 3, 5, 5);
             Statistic b = new Statistic(1, 2, 3, 4, 5);
-            Assertions.assertFalse(a.equals(b));
+            Assertions.assertNotEquals(a, b);
         }
     }
 }

@@ -1,10 +1,10 @@
 package utils;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Pair;
 
 /**
- * GraphUtils
+ * GraphUtils.
  */
 public class GraphUtils {
 
@@ -18,18 +18,18 @@ public class GraphUtils {
      * @param edges Pair[] represents an array of edges in a directed graph
      * @return an adjacency list for a given graph.
      */
-    public static ArrayList[] toAdjacencyList(int vertices, Pair[] edges){
-        ArrayList[] adjacency = create(vertices);
+    public static IntArrayList[] toAdjacencyList(int vertices, Pair[] edges) {
+        IntArrayList[] adjacency = create(vertices);
         for (Pair edge : edges) {
             adjacency[edge.getLeft()].add(edge.getRight());
         }
         return adjacency;
     }
 
-    private static ArrayList[] create(int vertices) {
-        ArrayList[] adjacency = new ArrayList[vertices + 1];
+    private static IntArrayList[] create(int vertices) {
+        IntArrayList[] adjacency = new IntArrayList[vertices + 1];
         for (int i = 0; i < adjacency.length; i++) {
-            adjacency[i] = new ArrayList();
+            adjacency[i] = new IntArrayList();
         }
         return adjacency;
     }
@@ -44,8 +44,8 @@ public class GraphUtils {
      * @param edges Pair[] represents an array of edges in an undirected graph
      * @return an adjacency list for a given graph.
      */
-    public static ArrayList[] toUndirectedAdjacencyList(int vertices, Pair[] edges){
-        ArrayList[] adjacency = create(vertices);
+    public static IntArrayList[] toUndirectedAdjacencyList(int vertices, Pair[] edges) {
+        IntArrayList[] adjacency = create(vertices);
         for (Pair edge : edges) {
             adjacency[edge.getLeft()].add(edge.getRight());
             adjacency[edge.getRight()].add(edge.getLeft());

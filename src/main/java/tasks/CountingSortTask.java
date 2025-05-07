@@ -1,9 +1,9 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 
 /**
- * CountingSortTask
+ * CountingSortTask.
  */
 public class CountingSortTask {
 
@@ -17,8 +17,8 @@ public class CountingSortTask {
      * @return an array containing at position "i" the number of elements equal to "i" in the original array.
      */
     public static int[] count(int[] array) {
-        if(array.length == 0) {
-            return new int[]{};
+        if (array.length == 0) {
+            return new int[0];
         }
         int max = maxValue(array);
         int[] result = new int[max + 1];
@@ -49,13 +49,13 @@ public class CountingSortTask {
      * @return int[] with numbers in ascending order
      */
     public static int[] restore(int[] array) {
-        ArrayList arrayList = new ArrayList();
+        IntArrayList intArrayList = new IntArrayList();
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i]; j++) {
-                arrayList.add(i);
+                intArrayList.add(i);
             }
         }
-        return arrayList.toArray();
+        return intArrayList.toArray();
     }
 
     /**

@@ -1,9 +1,10 @@
 package services.example;
+
 import org.springframework.web.bind.annotation.*;
 import utils.StringBuilder;
 
 /**
- * ExampleController
+ * ExampleController.
  */
 
 @RestController

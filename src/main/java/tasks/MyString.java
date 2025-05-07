@@ -1,8 +1,7 @@
 package tasks;
 
-
 /**
- * MyString
+ * MyString.
  */
 public class MyString {
     private final char[] data;
@@ -90,16 +89,24 @@ public class MyString {
     }
 
     /**
-     * Compares this object to the specified object.
+     * Indicates whether some other object is "equal to" this one.
      *
-     * @cpu O(n), n = data.length
+     * @cpu O(1)
      * @ram O(1)
      *
-     * @param that a String argument of the MyString class.
-     * @return true if the given object represents a String equivalent to this string, false otherwise.
+     * @param obj the reference object with which to compare.
+     * @return true if this object is the same as the obj argument; false otherwise.
      */
-    public boolean equals(MyString that) {
-        if (that != null && data.length == that.data.length) {
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final MyString that = (MyString) obj;
+        if (data.length == that.data.length) {
             for (int i = 0; i < data.length; i++) {
                 if ((int) data[i] != (int) that.data[i]) {
                     return false;

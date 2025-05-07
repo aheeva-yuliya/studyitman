@@ -22,8 +22,8 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenPassAllParams() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.post
-                                    ("/extract/one/1?required=r&optional=opt&default=0&missing=world")
+                    MockMvcRequestBuilders.post(
+                            "/extract/one/1?required=r&optional=opt&default=0&missing=world")
                             .content("all params");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -40,8 +40,8 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenPassOnlyRequired() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.post
-                                    ("/extract/two/2?required=r&missing=world")
+                    MockMvcRequestBuilders.post(
+                            "/extract/two/2?required=r&missing=world")
                             .content("only required");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -58,8 +58,8 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith400WhenPassMissingRequired() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.post
-                                    ("/extract/three/3?missing=world")
+                    MockMvcRequestBuilders.post(
+                            "/extract/three/3?missing=world")
                             .content("missing required");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -71,8 +71,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenGet() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.get
-                            ("/");
+                    MockMvcRequestBuilders.get("/");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -83,8 +82,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenGetSecond() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.get
-                            ("/second");
+                    MockMvcRequestBuilders.get("/second");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -98,8 +96,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenPost() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.post
-                            ("/second");
+                    MockMvcRequestBuilders.post("/second");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -110,8 +107,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenPut() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.put
-                            ("/second");
+                    MockMvcRequestBuilders.put("/second");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -122,8 +118,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenPatch() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.patch
-                            ("/second");
+                    MockMvcRequestBuilders.patch("/second");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -134,8 +129,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenDelete() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.delete
-                            ("/second");
+                    MockMvcRequestBuilders.delete("/second");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -149,8 +143,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenTryGetNumbersFromQuery() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.get
-                            ("/api/range?from=33&to=37");
+                    MockMvcRequestBuilders.get("/api/range?from=33&to=37");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(
@@ -164,8 +157,7 @@ public class ExampleControllerTests {
         @Test
         public void shouldExecutedWith200WhenTryGetNumbersFromPath() throws Exception {
             final MockHttpServletRequestBuilder request =
-                    MockMvcRequestBuilders.get
-                            ("/api/range/33/37");
+                    MockMvcRequestBuilders.get("/api/range/33/37");
             ExampleControllerTests.this.mockMvc.perform(request)
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string(

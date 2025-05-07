@@ -1,51 +1,35 @@
 package collections;
 
-import utils.ArrayUtils;
 import utils.StringBuilder;
 
-import java.util.Arrays;
-
 /**
- * ArrayList
+ * ArrayList.
  */
 public class ArrayList {
-    private int[] array;
+    private Object[] data;
     private int size;
 
     /**
-     * Creates an object of ArrayList with the length of int[] array equals 16.
+     * Creates an object of ArrayList with the length of Object[] data equals 16.
      *
      * @cpu O(1)
      * @ram O(1)
+     *
      */
     public ArrayList() {
-        array = new int[16];
+        data = new Object[16];
     }
 
     /**
-     * Creates an object of ArrayList with the length of int[] array equals to the parameter capacity.
+     * The constructor creates an object with a data field length equals to the parameter capacity.
      *
      * @cpu O(1)
-     * @ram O(n), n = parameter capacity
+     * @ram O(n), n = capacity
      *
      * @param capacity int argument
      */
-    public ArrayList(int capacity) {
-        array = new int[capacity];
-    }
-
-    /**
-     * ArrayList
-     *
-     * @cpu O(n), n = parameter that array.length
-     * @ram O(n), n = parameter that array.length
-     *
-     * @param that a class object
-     */
-    public ArrayList (ArrayList that) {
-        size = that.size;
-        array = new int[that.array.length];
-        System.arraycopy(that.array, 0, array, 0, that.array.length);
+    public ArrayList(final int capacity) {
+        data = new Object[capacity];
     }
 
     /**
@@ -55,10 +39,10 @@ public class ArrayList {
      * @ram O(1)
      *
      * @param index int argument
-     * @param element int argument
+     * @param element String argument
      */
-    public void set(int index, int element) {
-        array[index] = element;
+    public void set(final int index, final Object element) {
+        data[index] = element;
     }
 
     /**
@@ -70,53 +54,51 @@ public class ArrayList {
      * @param index int argument
      * @return the value of an array element.
      */
-    public int get(int index) {
-        return array[index];
+    public Object get(final int index) {
+        return data[index];
     }
 
     /**
-     * Adds the value of the parameter element to the end of the existing array. Creates a new temporary
-     * int[] and a new instance variable "array" and copies all the elements
-     * if the instance variables "size" and "array".length are equal.
+     * Gets the value equals to the logical data length.
      *
      * @cpu O(1)
      * @ram O(1)
      *
-     * @param element int argument
-     */
-    public void add(int element) {
-        if (size == array.length) {
-            int[] temp = new int[size * 2];
-            System.arraycopy(array, 0, temp, 0, size);
-            array = temp;
-        }
-        array[size++] = element;
-    }
-
-    /**
-     * Gets the value equals to the logical array length.
-     *
-     * @cpu O(1)
-     * @ram O(1)
-     *
-     * @return the value equals to the logical array length.
+     * @return the value equals to the logical data length.
      */
     public int size() {
         return size;
     }
 
     /**
-     * Creates a new int[] and copies all elements from the instance variable "array".
+     * Adds the value of the parameter element to the end of the existing array.
+     *
+     * @cpu O(1)
+     * @ram O(1)
+     *
+     * @param element Object argument
+     */
+    public void add(final Object element) {
+        if (size == data.length) {
+            Object[] temp = new Object[size * 2];
+            System.arraycopy(data, 0, temp, 0, size);
+            data = temp;
+        }
+        data[size++] = element;
+    }
+
+    /**
+     * Creates a new Object[] and copies all elements from the instance variable "data".
      *
      * @cpu O(n), n = instance variable "size"
      * @ram O(n), n = instance variable "size"
      *
-     * @return int[] with all copied elements.
+     * @return String[] with all copied elements.
      */
-    public int[] toArray() {
-        int[] data = new int[size];
-        System.arraycopy(array, 0, data, 0, size);
-        return data;
+    public Object[] toArray() {
+        final Object[] array = new Object[size];
+        System.arraycopy(data, 0, array, 0, size);
+        return array;
     }
 
     /**
@@ -128,42 +110,12 @@ public class ArrayList {
      * @param index int argument
      * @return the deleted element.
      */
-    public int remove(int index){
-        int value = array[index];
-        System.arraycopy(array, index + 1, array, index,size - index - 1);
+    public Object remove(final int index) {
+        final Object value = data[index];
+        System.arraycopy(data, index + 1, data, index, size - index - 1);
+        data[size - 1] = null;
         size--;
         return value;
-    }
-
-    /**
-     * Indicates whether some other object is "equal to" this one .
-     *
-     * @cpu O(n), n = instance variable "size"
-     * @ram O(1)
-     *
-     * @param that an object argument
-     * @return true if the objects are equal and false if aren't.
-     */
-    public boolean equals(ArrayList that) {
-        if (that == null || size != that.size) {
-            return false;
-        }
-        for (int i = 0; i < size; i++) {
-            if (array[i] != that.array[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Sorts all the elements in ArrayList in ascending order.
-     *
-     * @cpu O(nlog(n)), n = instance variable "size"
-     * @ram O(n) n = instance variable "size"
-     */
-    public void sort() {
-       ArrayUtils.mergeSort(array, 0, size);
     }
 
     /**
@@ -175,18 +127,18 @@ public class ArrayList {
      * @param elements variable arguments list
      * @return an object of the class.
      */
-    public static ArrayList of(int... elements) {
-        ArrayList arrayList = new ArrayList(elements.length);
+    public static ArrayList of(Object... elements) {
+        final ArrayList arrayList = new ArrayList(elements.length);
         arrayList.size = elements.length;
-        System.arraycopy(elements, 0, arrayList.array, 0, elements.length);
+        System.arraycopy(elements, 0, arrayList.data, 0, elements.length);
         return arrayList;
     }
 
     /**
-     * Returns a String object representing the specified int[] from the instance variable array of ArrayList.
+     * Returns a String object representing the specified String[] from the instance variable data of StringArrayList.
      *
-     * @cpu O(n), n = size
-     * @ram O(n), n = size
+     * @cpu O(n + m), n = size m = the sum of the lengths of all strings in data
+     * @ram O(n + m), n = size m = the sum of the lengths of all strings in data
      *
      * @return a String object.
      */
@@ -194,37 +146,44 @@ public class ArrayList {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
         for (int i = 0; i < size - 1; i++) {
-            stringBuilder.append(array[i]);
+            stringBuilder.append(data[i] == null ? null :
+                    (data[i].getClass() == Object.class ? "Object{}" : data[i].toString()));
             stringBuilder.append(", ");
         }
         if (size - 1 >= 0) {
-            stringBuilder.append(array[size - 1]);
+            stringBuilder.append(data[size - 1] == null ? null :
+                    (data[size - 1].getClass() == Object.class ? "Object{}" : data[size - 1].toString()));
         }
         stringBuilder.append("]");
         return stringBuilder.toString();
     }
 
     /**
-     * Removes all elements from ArrayList.
+     * Indicates whether some other object is "equal to" this one .
      *
-     * @cpu O(1)
+     * @cpu O(n), n = instance variable "size"
      * @ram O(1)
      *
+     * @param obj an object argument
+     * @return true if the objects are equal and false if aren't.
      */
-    public void clear() {
-        size = 0;
-    }
-
-    /**
-     * Decreases the capacity of the ArrayList to the current size.
-     *
-     * @cpu O(n) n = size
-     * @ram O(n) n = size
-     *
-     */
-    public void trimToSize() {
-        int[] copy = new int[size];
-        System.arraycopy(array, 0, copy, 0, size);
-        array = copy;
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final ArrayList that = (ArrayList) obj;
+        if (size != that.size) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (data[i] == null && that.data[i] != null || data[i] != null && !data[i].equals(that.data[i])) {
+                return false;
+            }
+        }
+        return true;
     }
 }

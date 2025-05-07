@@ -1,11 +1,11 @@
 package tasks;
 
-import collections.ArrayList;
+import collections.IntArrayList;
 import entities.Pair;
 import utils.GraphUtils;
 
 /**
- * Task544
+ * Task544.
  */
 public class Task544 {
 
@@ -20,12 +20,12 @@ public class Task544 {
      * @return the height of a given tree.
      */
     public static int findHeight(int n, Pair[] edges) {
-        final ArrayList[] adjacencyList = GraphUtils.toAdjacencyList(n, edges);
+        final IntArrayList[] adjacencyList = GraphUtils.toAdjacencyList(n, edges);
         return dfs(1, adjacencyList);
 
     }
 
-    private static int dfs(int vertex, ArrayList[] adjacencyList) {
+    private static int dfs(int vertex, IntArrayList[] adjacencyList) {
         int maxHeight = 0;
         for (int i = 0; i < adjacencyList[vertex].size(); i++) {
             int neighbor = adjacencyList[vertex].get(i);

@@ -1,7 +1,7 @@
 package entities;
 
 /**
- * BfsNode
+ * BfsNode.
  */
 public class BfsNode {
     private final int vertex;
@@ -49,11 +49,19 @@ public class BfsNode {
      * @cpu O(n), n - number of linked nodes
      * @ram O(n), n - number of linked nodes
      *
-     * @param that an object argument
+     * @param obj an object argument
      * @return true if the objects are equal and false if aren't.
      */
-    public boolean equals(BfsNode that) {
-        return that != null && vertex == that.vertex && distance == that.distance
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final BfsNode that = (BfsNode) obj;
+        return vertex == that.vertex && distance == that.distance
                 && (prev == null && that.prev == null
                 || prev != null && prev.equals(that.prev));
     }

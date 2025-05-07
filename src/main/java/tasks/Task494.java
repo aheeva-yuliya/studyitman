@@ -3,7 +3,7 @@ package tasks;
 import utils.ArrayUtils;
 
 /**
- * Task494
+ * Task494.
  */
 public class Task494 {
 
@@ -21,11 +21,11 @@ public class Task494 {
     public static int[] solveByBinarySearch(int[] a, int[] b) {
         int[] result = new int[b.length];
         for (int i = 0; i < b.length; i++) {
-            int indexMin = ArrayUtils.binarySearch(a,b[i]);
+            int indexMin = ArrayUtils.binarySearch(a, b[i]);
             if (indexMin < 0) {
                 result[i] = 0;
             } else {
-                int indexMax = ArrayUtils.binarySearch(a,b[i] + 1);
+                int indexMax = ArrayUtils.binarySearch(a, b[i] + 1);
                 if (indexMax < 0) {
                     indexMax = -indexMax - 1;
                 }
